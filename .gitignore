@@ -1,1 +1,12 @@
-node_modules
+# Next.js
+.next/
+
+# Videos
+*.mp4
+
+# Node modules
+node_modules/
+
+# Build files
+out/
+dist/
