@@ -87,7 +87,7 @@ export default function TestimonialsPage() {
                   <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-100 text-orange-600">
                     <Icon size={28} />
                   </div>
-                  <div className="mt-6 text-5xl font-bold">
+                  <div className="mt-6 text-4xl font-bold md:text-5xl">
                     <AnimatedCounter end={metric.value} suffix={metric.value === 100 ? "%" : "+"} />
                   </div>
                   <p className="mt-3 font-semibold text-gray-600">{metric.label}</p>
@@ -102,7 +102,7 @@ export default function TestimonialsPage() {
         <div className="container mx-auto px-6">
           <motion.div initial="hidden" whileInView="show" variants={fadeUp} viewport={{ once: true }} className="mx-auto max-w-3xl text-center">
             <p className="font-semibold uppercase tracking-[0.28em] text-orange-600">Testimonials</p>
-            <h2 className="mt-5 text-5xl font-bold">Built for real operational wins</h2>
+            <h2 className="mt-5 text-3xl font-bold md:text-4xl">Built for real operational wins</h2>
           </motion.div>
 
           <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -143,7 +143,7 @@ export default function TestimonialsPage() {
         <div className="container mx-auto grid items-center gap-10 px-6 lg:grid-cols-2">
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
             <p className="font-semibold uppercase tracking-[0.28em] text-orange-400">Your Success Story</p>
-            <h2 className="mt-5 text-5xl font-bold">Let your systems become a business advantage.</h2>
+            <h2 className="mt-5 text-3xl font-bold md:text-4xl">Let your systems become a business advantage.</h2>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: 30 }}

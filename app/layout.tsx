@@ -15,6 +15,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Macro Solution | ERP, POS, HRMS & IT Solutions Mauritius",
   description: "Macro Solution builds ERP, POS, Payroll, HRMS, cloud, mobile, security, and custom IT solutions for businesses in Mauritius.",
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 export default function RootLayout({

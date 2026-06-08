@@ -8,6 +8,8 @@ import {
   Cloud,
   Cpu,
   Users,
+  Globe,
+  Code2,
   CheckCircle,
 } from "lucide-react";
 
@@ -25,19 +27,22 @@ const services = [
   { title: "Crystal POS", icon: Cpu, description: "Easy-to-use, highly customizable point-of-sale software for small, medium, single-store, and multi-store retailers." },
   { title: "Payroll & HR Software", icon: Users, description: "Payroll, PAYE, CSG, NSF, payslips, leave, time, and attendance workflows built for Mauritius compliance." },
   { title: "Mobile Engineering", icon: Smartphone, description: "Cost-effective iOS, Android, and Windows mobile applications that help teams work from anywhere." },
+  { title: "Web Application Development", icon: Globe, description: "Fast, maintainable web platforms for portals, dashboards, e-commerce, and internal business tools." },
+  { title: "Custom Software Development", icon: Code2, description: "Tailor-made business systems built around your workflows, users, and operational edge cases." },
   { title: "Cloud & DMS", icon: Cloud, description: "Affordable implementation and support for cloud systems, hosting, and document management." },
   { title: "IT Security & Networks", icon: Shield, description: "End-to-end data protection, infrastructure security, compliance, hardware, and network solutions." },
 ];
 
 export default function Home() {
   return (
-    <main className="bg-white text-gray-900 overflow-x-hidden">
+    <main className="overflow-x-hidden bg-white text-gray-900">
 
       <Navbar />
       <Macro3DHero />
 
       {/* ABOUT */}
-      <section id="about" className="py-40 relative">
+      <section id="about" className="relative overflow-hidden py-40">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_24%,rgba(249,115,22,0.12),transparent_24%),radial-gradient(circle_at_88%_12%,rgba(56,189,248,0.14),transparent_26%),linear-gradient(180deg,#ffffff_0%,#f8fafc_100%)]" />
         <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
 
           <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
@@ -45,7 +50,7 @@ export default function Home() {
               About Macro Solution
             </span>
 
-            <h2 className="mt-6 text-5xl font-bold leading-tight">
+            <h2 className="mt-6 text-3xl font-bold leading-tight md:text-4xl">
               User friendly applications at affordable prices
             </h2>
 
@@ -73,8 +78,10 @@ export default function Home() {
             whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
             transition={{ duration: 1 }}
             viewport={{ once: true }}
-            className="rounded-3xl bg-gradient-to-br from-orange-500 to-orange-700 p-12 text-white shadow-2xl transform perspective-1000"
+            className="relative rounded-3xl border border-white/40 bg-[linear-gradient(145deg,rgba(249,115,22,0.95),rgba(29,78,216,0.86))] p-12 text-white shadow-[0_40px_120px_rgba(15,23,42,0.18)] transform perspective-1000 overflow-hidden"
           >
+            <div className="absolute -right-10 -top-8 h-36 w-36 rounded-full bg-white/12 blur-2xl" />
+            <div className="absolute -bottom-12 -left-8 h-40 w-40 rounded-full bg-black/10 blur-3xl" />
             <h3 className="text-4xl font-bold">
               Future-Ready Technology Stack
             </h3>
@@ -87,7 +94,8 @@ export default function Home() {
       </section>
 
       {/* STATS */}
-      <section className="relative py-32 bg-gradient-to-r from-orange-600 to-orange-700 text-white overflow-hidden">
+      <section className="relative overflow-hidden bg-[linear-gradient(110deg,#eb6a1f_0%,#f58220_32%,#0f172a_100%)] py-32 text-white">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.18),transparent_20%),radial-gradient(circle_at_82%_72%,rgba(56,189,248,0.18),transparent_22%)]" />
 
         <motion.div
           className="container mx-auto px-6 grid md:grid-cols-4 gap-10 text-center"
@@ -103,7 +111,7 @@ export default function Home() {
             { value: 100, label: "Customer Satisfaction" },
           ].map((item, i) => (
             <motion.div key={i} variants={fadeUp} whileHover={{ scale: 1.1 }}>
-              <div className="text-6xl font-bold">
+              <div className="text-4xl font-bold md:text-5xl">
                 <AnimatedCounter end={item.value} suffix="+" />
               </div>
               <p className="mt-3">{item.label}</p>
@@ -114,16 +122,17 @@ export default function Home() {
       </section>
 
       {/* SERVICES */}
-      <section id="services" className="py-40 bg-gray-50">
+      <section id="services" className="relative overflow-hidden bg-[linear-gradient(180deg,#f8fafc_0%,#fff7ed_100%)] py-40">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_14%_18%,rgba(249,115,22,0.12),transparent_24%),radial-gradient(circle_at_86%_14%,rgba(14,165,233,0.12),transparent_28%)]" />
         <div className="container mx-auto px-6">
 
           <motion.div className="text-center mb-20" initial="hidden" whileInView="show" variants={fadeUp}>
-            <h2 className="text-5xl font-bold">Technology Solutions</h2>
-            <p className="text-gray-600 mt-4">Unlimited solutions to your business needs</p>
+            <h2 className="text-3xl font-bold md:text-4xl">Technology Solutions</h2>
+            <p className="mx-auto mt-4 max-w-2xl text-gray-600">A broader software and IT capability set for retail, operations, service delivery, and digital product teams.</p>
           </motion.div>
 
           <motion.div
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-10"
+            className="grid gap-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
             variants={stagger}
             initial="hidden"
             whileInView="show"
@@ -144,11 +153,11 @@ export default function Home() {
                     group
                     relative
                     rounded-3xl
-                    bg-white
+                    bg-white/88
                     p-10
-                    shadow-lg
-                    border
-                    border-orange-100
+                    shadow-[0_22px_60px_rgba(15,23,42,0.08)]
+                    border border-white/70
+                    backdrop-blur
                     transition-all
                     duration-500
                     hover:shadow-[0_25px_80px_rgba(249,115,22,0.25)]
@@ -169,16 +178,18 @@ export default function Home() {
       </section>
 
       {/* PRODUCTS */}
-      <section id="products" className="py-40 bg-white">
+      <section id="products" className="relative overflow-hidden bg-white py-40">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_88%_14%,rgba(37,99,235,0.08),transparent_24%),radial-gradient(circle_at_12%_76%,rgba(249,115,22,0.08),transparent_24%)]" />
         <div className="container mx-auto px-6">
           <ProductCarousel />
         </div>
       </section>
 
       {/* WHY US */}
-      <section className="py-40 bg-gray-900 text-white">
+      <section className="relative overflow-hidden bg-[linear-gradient(160deg,#0f172a_0%,#111827_55%,#1d4ed8_100%)] py-40 text-white">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_20%,rgba(249,115,22,0.18),transparent_22%),radial-gradient(circle_at_86%_22%,rgba(255,255,255,0.08),transparent_24%)]" />
         <div className="container mx-auto px-6 text-center">
-          <h2 className="text-5xl font-bold mb-20">Why Choose Us</h2>
+          <h2 className="mb-20 text-3xl font-bold md:text-4xl">Why Choose Us</h2>
 
           <div className="grid md:grid-cols-3 gap-10">
             {["Innovation", "Affordability", "Customization"].map((t) => (
@@ -198,20 +209,21 @@ export default function Home() {
       </section>
 
       {/* TESTIMONIALS */}
-      <section className="py-40 bg-gray-50">
+      <section className="relative overflow-hidden bg-[#f8fafc] py-40">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_16%,rgba(249,115,22,0.08),transparent_20%),radial-gradient(circle_at_88%_80%,rgba(56,189,248,0.08),transparent_22%)]" />
         <div className="container mx-auto px-6">
           <TestimonialsSlider />
         </div>
       </section>
 
       {/* CTA */}
-      <section id="contact" className="py-40 bg-gradient-to-br from-orange-500 via-orange-600 to-orange-700 text-white text-center relative overflow-hidden">
+      <section id="contact" className="relative overflow-hidden bg-[linear-gradient(135deg,#eb6a1f_0%,#f97316_35%,#2563eb_100%)] py-40 text-center text-white">
 
         <div className="absolute -top-40 -left-40 w-96 h-96 bg-white/10 blur-3xl rounded-full" />
         <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-white/10 blur-3xl rounded-full" />
 
         <div className="container mx-auto px-6 relative">
-          <h2 className="text-5xl font-bold">
+          <h2 className="text-3xl font-bold md:text-4xl">
             Ready to Transform Your Business?
           </h2>
 

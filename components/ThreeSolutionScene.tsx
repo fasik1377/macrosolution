@@ -3,12 +3,14 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
-type SceneTone = "home" | "contact" | "testimonials";
+type SceneTone = "home" | "contact" | "testimonials" | "services" | "blog";
 
 const toneColors: Record<SceneTone, number[]> = {
-  home: [0xf97316, 0x2563eb, 0x111827, 0xffffff, 0x10b981, 0xf59e0b],
-  contact: [0xf97316, 0x0f172a, 0x2563eb, 0xffffff, 0x14b8a6, 0xf59e0b],
-  testimonials: [0xf97316, 0x7c3aed, 0x111827, 0xffffff, 0x2563eb, 0x10b981],
+  home: [0xf97316, 0xfb923c, 0x111827, 0xffffff, 0x431407, 0xf59e0b],
+  contact: [0xf97316, 0x0f172a, 0xfb923c, 0xffffff, 0x7c2d12, 0xf59e0b],
+  testimonials: [0xf97316, 0xffedd5, 0x111827, 0xffffff, 0x9a3412, 0xf59e0b],
+  services: [0xf97316, 0x0f172a, 0xfb923c, 0xffffff, 0x7c2d12, 0xfacc15],
+  blog: [0xf97316, 0xfb923c, 0x111827, 0xffffff, 0x9a3412, 0xf59e0b],
 };
 
 function makeLabel(text: string) {
@@ -48,6 +50,7 @@ export default function ThreeSolutionScene({ tone = "home" }: { tone?: SceneTone
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
     camera.position.set(0, 1.15, 8);
+    const pointer = new THREE.Vector2(0, 0);
 
     const renderer = new THREE.WebGLRenderer({
       alpha: true,
@@ -69,12 +72,19 @@ export default function ThreeSolutionScene({ tone = "home" }: { tone?: SceneTone
     const group = new THREE.Group();
     scene.add(group);
 
+    const coreGroup = new THREE.Group();
+    group.add(coreGroup);
+
     const colors = toneColors[tone];
     const labels = tone === "contact"
       ? ["CALL", "MAIL", "VISIT", "CRM", "SUPPORT", "START"]
       : tone === "testimonials"
         ? ["TRUST", "ERP", "POS", "HR", "DMS", "RPA"]
-        : ["ERP", "POS", "SECURE", "RPA", "CLOUD", "DMS"];
+        : tone === "services"
+          ? ["ERP", "MOBILE", "WEB", "CUSTOM", "CLOUD", "SECURE"]
+          : tone === "blog"
+            ? ["IDEAS", "GUIDES", "ERP", "POS", "TECH", "GROWTH"]
+            : ["ERP", "POS", "SECURE", "RPA", "CLOUD", "DMS"];
 
     const positions = [
       [-1.65, 1.05, 0.2],
@@ -127,6 +137,77 @@ export default function ThreeSolutionScene({ tone = "home" }: { tone?: SceneTone
       return { cardGroup, geometry, material, edge, labelTexture };
     });
 
+    const coreGeometry = new THREE.IcosahedronGeometry(0.78, 2);
+    const coreMaterial = new THREE.MeshPhysicalMaterial({
+      color: 0xffffff,
+      roughness: 0.18,
+      metalness: 0.08,
+      transparent: true,
+      opacity: 0.78,
+      transmission: 0.2,
+      clearcoat: 0.65,
+      clearcoatRoughness: 0.2,
+    });
+    const core = new THREE.Mesh(coreGeometry, coreMaterial);
+    coreGroup.add(core);
+
+    const coreWire = new THREE.LineSegments(
+      new THREE.EdgesGeometry(coreGeometry),
+      new THREE.LineBasicMaterial({ color: 0xf97316, transparent: true, opacity: 0.56 })
+    );
+    coreGroup.add(coreWire);
+
+    const haloGeometry = new THREE.TorusGeometry(1.32, 0.018, 14, 160);
+    const haloMaterial = new THREE.MeshBasicMaterial({ color: 0xf97316, transparent: true, opacity: 0.42 });
+    const halos = [0, 1, 2].map((haloIndex) => {
+      const halo = new THREE.Mesh(haloGeometry, haloMaterial.clone());
+      halo.rotation.set(1.15 + haloIndex * 0.46, haloIndex * 0.85, -0.28 + haloIndex * 0.18);
+      coreGroup.add(halo);
+      return halo;
+    });
+
+    const nodeGeometry = new THREE.SphereGeometry(0.09, 24, 16);
+    const nodeMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
+    const nodes = positions.map(([x, y, z], index) => {
+      const node = new THREE.Mesh(nodeGeometry, nodeMaterial.clone());
+      node.position.set(x * 0.74, y * 0.74, z + 0.34);
+      const material = node.material as THREE.MeshBasicMaterial;
+      material.color.setHex(colors[index]);
+      coreGroup.add(node);
+      return node;
+    });
+
+    const connectorMaterial = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.24 });
+    const connectors = nodes.map((node) => {
+      const connector = new THREE.Line(
+        new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0, 0, 0), node.position.clone()]),
+        connectorMaterial.clone()
+      );
+      coreGroup.add(connector);
+      return connector;
+    });
+
+    const particleGeometry = new THREE.BufferGeometry();
+    const particleCount = 90;
+    const particlePositions = new Float32Array(particleCount * 3);
+    const particleSeeds = Array.from({ length: particleCount }, (_, index) => ({
+      radius: 2.05 + (index % 9) * 0.16,
+      speed: 0.16 + (index % 7) * 0.018,
+      angle: (index / particleCount) * Math.PI * 2,
+      height: -1.25 + (index % 13) * 0.22,
+    }));
+
+    particleGeometry.setAttribute("position", new THREE.BufferAttribute(particlePositions, 3));
+    const particleMaterial = new THREE.PointsMaterial({
+      color: 0xf97316,
+      size: 0.032,
+      transparent: true,
+      opacity: 0.55,
+      depthWrite: false,
+    });
+    const particles = new THREE.Points(particleGeometry, particleMaterial);
+    group.add(particles);
+
     const pathMaterial = new THREE.LineBasicMaterial({ color: 0xf97316, transparent: true, opacity: 0.32 });
     const pathPoints = positions.map(([x, y, z]) => new THREE.Vector3(x, y, z));
     const path = new THREE.Line(new THREE.BufferGeometry().setFromPoints(pathPoints), pathMaterial);
@@ -138,13 +219,21 @@ export default function ThreeSolutionScene({ tone = "home" }: { tone?: SceneTone
     ring.rotation.set(1.2, 0, -0.34);
     group.add(ring);
 
-    const grid = new THREE.GridHelper(7, 18, 0xf97316, 0x94a3b8);
+    const grid = new THREE.GridHelper(7, 18, 0xf97316, 0x111827);
     grid.position.set(0, -2.05, -1.7);
     grid.rotation.z = -0.18;
     const gridMaterial = Array.isArray(grid.material) ? grid.material[0] : grid.material;
     gridMaterial.transparent = true;
     gridMaterial.opacity = 0.18;
     group.add(grid);
+
+    const handlePointerMove = (event: PointerEvent) => {
+      const rect = mount.getBoundingClientRect();
+      pointer.x = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
+      pointer.y = -((event.clientY - rect.top) / rect.height - 0.5) * 2;
+    };
+
+    mount.addEventListener("pointermove", handlePointerMove);
 
     const resize = () => {
       const width = mount.clientWidth;
@@ -163,11 +252,41 @@ export default function ThreeSolutionScene({ tone = "home" }: { tone?: SceneTone
 
     const render = () => {
       const elapsed = clock.getElapsedTime();
-      group.rotation.y = Math.sin(elapsed * 0.28) * 0.2;
-      group.rotation.x = -0.13 + Math.sin(elapsed * 0.22) * 0.045;
+      group.rotation.y = Math.sin(elapsed * 0.28) * 0.2 + pointer.x * 0.08;
+      group.rotation.x = -0.13 + Math.sin(elapsed * 0.22) * 0.045 + pointer.y * 0.05;
       group.rotation.z = -0.17 + Math.sin(elapsed * 0.18) * 0.035;
       group.position.y = Math.sin(elapsed * 0.55) * 0.12;
       ring.rotation.z = -0.34 + elapsed * 0.14;
+      core.rotation.x = elapsed * 0.32;
+      core.rotation.y = elapsed * 0.46;
+      coreWire.rotation.x = -elapsed * 0.24;
+      coreWire.rotation.y = elapsed * 0.34;
+
+      halos.forEach((halo, index) => {
+        halo.rotation.z += 0.005 + index * 0.0015;
+        halo.rotation.x += 0.0018;
+      });
+
+      nodes.forEach((node, index) => {
+        const pulse = 1 + Math.sin(elapsed * 1.6 + index) * 0.22;
+        node.scale.setScalar(pulse);
+        const connector = connectors[index];
+        const connectorMaterial = connector.material as THREE.LineBasicMaterial;
+        connectorMaterial.opacity = 0.16 + Math.max(0, Math.sin(elapsed * 1.25 + index * 0.72)) * 0.22;
+      });
+
+      const particleAttribute = particleGeometry.getAttribute("position") as THREE.BufferAttribute;
+      particleSeeds.forEach((seed, index) => {
+        const angle = seed.angle + elapsed * seed.speed;
+        const verticalWave = Math.sin(elapsed * 0.7 + index * 0.3) * 0.22;
+        particleAttribute.setXYZ(
+          index,
+          Math.cos(angle) * seed.radius,
+          seed.height + verticalWave,
+          Math.sin(angle) * seed.radius * 0.42 - 0.45
+        );
+      });
+      particleAttribute.needsUpdate = true;
 
       cards.forEach(({ cardGroup }, index) => {
         cardGroup.position.z = positions[index][2] + Math.sin(elapsed * 0.82 + index) * 0.09;
@@ -183,6 +302,7 @@ export default function ThreeSolutionScene({ tone = "home" }: { tone?: SceneTone
     return () => {
       window.cancelAnimationFrame(frameId);
       observer.disconnect();
+      mount.removeEventListener("pointermove", handlePointerMove);
       renderer.dispose();
       cards.forEach(({ cardGroup, geometry, material, edge, labelTexture }) => {
         geometry.dispose();
@@ -204,6 +324,40 @@ export default function ThreeSolutionScene({ tone = "home" }: { tone?: SceneTone
       pathMaterial.dispose();
       ringGeometry.dispose();
       ringMaterial.dispose();
+      coreGeometry.dispose();
+      coreMaterial.dispose();
+      coreWire.geometry.dispose();
+      if (Array.isArray(coreWire.material)) {
+        coreWire.material.forEach((material) => material.dispose());
+      } else {
+        coreWire.material.dispose();
+      }
+      haloGeometry.dispose();
+      halos.forEach((halo) => {
+        if (Array.isArray(halo.material)) {
+          halo.material.forEach((material) => material.dispose());
+        } else {
+          halo.material.dispose();
+        }
+      });
+      nodeGeometry.dispose();
+      nodes.forEach((node) => {
+        if (Array.isArray(node.material)) {
+          node.material.forEach((material) => material.dispose());
+        } else {
+          node.material.dispose();
+        }
+      });
+      connectors.forEach((connector) => {
+        connector.geometry.dispose();
+        if (Array.isArray(connector.material)) {
+          connector.material.forEach((material) => material.dispose());
+        } else {
+          connector.material.dispose();
+        }
+      });
+      particleGeometry.dispose();
+      particleMaterial.dispose();
       grid.geometry.dispose();
       if (Array.isArray(grid.material)) {
         grid.material.forEach((material) => material.dispose());

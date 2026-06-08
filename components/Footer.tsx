@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -6,9 +7,13 @@ export default function Footer() {
       <div className="container mx-auto px-6 py-20">
         <div className="grid gap-10 md:grid-cols-4">
           <div>
-            <h3 className="text-2xl font-bold text-orange-500">
-              Macro Solution
-            </h3>
+            <Image
+              src="/logo.png"
+              alt="Macro Solution"
+              width={166}
+              height={48}
+              className="h-12 w-auto object-contain"
+            />
 
             <p className="mt-4 text-gray-400">
               Transforming businesses through innovative software and technology solutions.
@@ -20,8 +25,9 @@ export default function Footer() {
 
             <ul className="space-y-3">
               <li><Link href="/#about">About</Link></li>
-              <li><Link href="/#services">Services</Link></li>
+              <li><Link href="/services">Services</Link></li>
               <li><Link href="/#products">Products</Link></li>
+              <li><Link href="/blog">Blog</Link></li>
               <li><Link href="/testimonials">Testimonials</Link></li>
               <li><Link href="/contact">Contact</Link></li>
             </ul>
@@ -35,6 +41,8 @@ export default function Footer() {
               <li>POS</li>
               <li>Payroll & HRMS</li>
               <li>Mobile Apps</li>
+              <li>Web Apps</li>
+              <li>Custom Software</li>
             </ul>
           </div>
 

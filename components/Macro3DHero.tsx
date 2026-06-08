@@ -13,22 +13,42 @@ export default function Macro3DHero() {
   const y = useTransform(scrollY, [0, 700], [0, 90]);
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#f7f7f4] pt-28 text-gray-950">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgba(255,126,38,0.18),transparent_28%),radial-gradient(circle_at_84%_10%,rgba(39,101,179,0.16),transparent_26%),linear-gradient(180deg,#ffffff_0%,#f4f3ef_78%)]" />
-      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white to-transparent" />
+    <section className="relative min-h-screen overflow-hidden bg-white pt-28 text-gray-950">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_16%,rgba(249,115,22,0.24),transparent_24%),radial-gradient(circle_at_84%_10%,rgba(251,146,60,0.16),transparent_26%),radial-gradient(circle_at_50%_80%,rgba(15,23,42,0.11),transparent_24%),linear-gradient(180deg,#ffffff_0%,#fff7ed_44%,#111827_100%)]" />
+      <div className="absolute left-[8%] top-24 h-40 w-40 rounded-full bg-orange-500/14 blur-3xl" />
+      <div className="absolute right-[12%] top-28 h-52 w-52 rounded-full bg-orange-300/18 blur-3xl" />
+      <div className="pointer-events-none absolute inset-x-0 top-20 h-[360px] overflow-hidden md:top-24 md:h-[390px]">
+        <motion.div
+          aria-hidden="true"
+          initial={{ opacity: 0, scale: 0.92 }}
+          animate={{ opacity: 0.24, scale: 1 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          className="absolute inset-x-0 -top-24 h-[520px]"
+        >
+          <ThreeSolutionScene />
+        </motion.div>
+        <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-white/80 to-transparent" />
+      </div>
+      <motion.div
+        aria-hidden="true"
+        animate={{ opacity: [0.18, 0.42, 0.18], scale: [0.92, 1.06, 0.92] }}
+        transition={{ duration: 7.5, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute left-1/2 top-[44%] h-[26rem] w-[26rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/45 bg-white/18 blur-3xl md:h-[34rem] md:w-[34rem]"
+      />
+      <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-gray-950/75 to-transparent" />
 
       <div className="container relative z-10 mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="mx-auto max-w-5xl text-center"
+          className="relative mx-auto max-w-5xl text-center"
         >
           <p className="font-semibold uppercase tracking-[0.28em] text-orange-600">
             Macro Solution Mauritius
           </p>
-          <h1 className="mt-6 text-5xl font-bold leading-[1.02] md:text-7xl lg:text-8xl">
-            IT solutions that move your business forward.
+          <h1 className="mt-5 bg-gradient-to-r from-gray-950 via-orange-700 to-gray-950 bg-clip-text text-4xl font-bold leading-[1.08] text-transparent md:text-5xl lg:text-6xl">
+            Intelligent systems with a more dynamic digital presence.
           </h1>
           <p className="mx-auto mt-7 max-w-3xl text-lg leading-8 text-gray-600 md:text-xl">
             User friendly ERP, POS, Payroll, HR, mobile, cloud, security, and custom software
@@ -52,8 +72,14 @@ export default function Macro3DHero() {
           </div>
         </motion.div>
 
-        <div className="relative mx-auto mt-12 h-[440px] max-w-6xl md:h-[540px]">
+        <div className="relative z-20 mx-auto mt-20 h-[440px] max-w-6xl md:mt-24 md:h-[540px]">
           <ThreeSolutionScene />
+          <motion.div
+            aria-hidden="true"
+            animate={{ opacity: [0.45, 0.8, 0.45], scale: [0.96, 1.04, 0.96] }}
+            transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
+            className="pointer-events-none absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full border border-orange-400/30 shadow-[0_0_80px_rgba(249,115,22,0.22)] md:h-96 md:w-96"
+          />
           <motion.div
             style={{ rotateX, rotateZ, y }}
             initial={{ opacity: 0, scale: 0.86, rotateX: 68, rotateZ: -34 }}
@@ -74,7 +100,7 @@ export default function Macro3DHero() {
               <motion.div
                 animate={{ y: [8, -4, 8] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="rounded-2xl bg-[#2765b3]/90 p-5 text-white shadow-xl"
+                className="rounded-2xl bg-gradient-to-br from-orange-600 to-gray-950 p-5 text-white shadow-xl"
               >
                 <MonitorSmartphone />
                 <p className="mt-10 text-sm font-semibold uppercase tracking-widest">POS</p>
@@ -105,8 +131,16 @@ export default function Macro3DHero() {
             <motion.div
               key={item}
               initial={{ opacity: 0, scale: 0.7 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.35 + index * 0.08 }}
+              animate={{
+                opacity: 1,
+                scale: [1, 1.08, 1],
+                y: [0, index % 2 === 0 ? -12 : 12, 0],
+              }}
+              transition={{
+                opacity: { delay: 0.35 + index * 0.08 },
+                scale: { duration: 4.4 + index * 0.25, repeat: Infinity, ease: "easeInOut" },
+                y: { duration: 5 + index * 0.35, repeat: Infinity, ease: "easeInOut" },
+              }}
               className="absolute left-1/2 top-1/2 hidden h-16 w-16 items-center justify-center rounded-2xl border border-white bg-white/85 text-sm font-bold shadow-lg backdrop-blur md:flex"
               style={{
                 marginLeft: `${Math.cos((index / orbitItems.length) * Math.PI * 2) * 330 - 32}px`,
