@@ -3,21 +3,29 @@
 @import 'swiper/css/pagination';
 
 :root {
-  --background: #ffffff;
+  --background: #F5F9FF;
   --foreground: #171717;
+  --brand-blue: #083B8A;
+  --dark-header: #002868;
+  --button-blue: #0B5ED7;
+  --hover-blue: #4D9FFF;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-brand-blue: var(--brand-blue);
+  --color-dark-header: var(--dark-header);
+  --color-button-blue: var(--button-blue);
+  --color-hover-blue: var(--hover-blue);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #F5F9FF;
+    --foreground: #171717;
   }
 }
 

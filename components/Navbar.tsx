@@ -3,10 +3,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight, Menu, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
-import type { MouseEvent } from "react";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -14,54 +13,13 @@ export default function Navbar() {
 
   const links = [
     { label: "Home", href: "/" },
-    { label: "About", href: "/#about" },
+    { label: "About", href: "/about" },
     { label: "Services", href: "/services" },
-    { label: "Products", href: "/#products" },
+    { label: "Products", href: "/products" },
     { label: "Blog", href: "/blog" },
     { label: "Testimonials", href: "/testimonials" },
     { label: "Contact", href: "/contact" },
   ];
-
-  const scrollToHash = (hash: string) => {
-    const id = hash.replace("#", "") === "product" ? "products" : hash.replace("#", "");
-    const target = document.getElementById(id);
-
-    if (!target) {
-      return;
-    }
-
-    const headerOffset = 130;
-    const top = target.getBoundingClientRect().top + window.scrollY - headerOffset;
-    window.scrollTo({ top, behavior: "smooth" });
-  };
-
-  const handleAnchorClick = (event: MouseEvent<HTMLAnchorElement>, href: string) => {
-    setOpen(false);
-
-    if (!href.startsWith("/#")) {
-      return;
-    }
-
-    event.preventDefault();
-    const hash = href.replace("/", "");
-
-    if (pathname !== "/") {
-      window.location.assign(href);
-      return;
-    }
-
-    window.history.pushState(null, "", hash);
-    requestAnimationFrame(() => scrollToHash(hash));
-  };
-
-  useEffect(() => {
-    if (pathname !== "/" || !window.location.hash) {
-      return;
-    }
-
-    const timer = window.setTimeout(() => scrollToHash(window.location.hash), 120);
-    return () => window.clearTimeout(timer);
-  }, [pathname]);
 
   return (
     <header className="fixed left-0 top-0 z-50 w-full px-4 pt-3">
@@ -70,28 +28,39 @@ export default function Navbar() {
           initial={{ opacity: 0, y: -14, scale: 0.94 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.65, ease: "easeOut" }}
-          whileHover={{ scale: 1.05, rotate: -1 }}
-          className="relative"
+          whileHover={{ scale: 1.06 }}
+          className="relative [perspective:1100px]"
         >
           <motion.div
             aria-hidden="true"
-            animate={{ opacity: [0.25, 0.55, 0.25], scale: [0.9, 1.08, 0.9] }}
+            animate={{ opacity: [0.25, 0.55, 0.25], scale: [0.92, 1.14, 0.92] }}
             transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute inset-0 rounded-full bg-orange-400/25 blur-2xl"
+            className="absolute inset-0 rounded-full bg-hover-blue/25 blur-2xl"
           />
           <Link href="/" className="relative flex items-center gap-3" aria-label="Macro Solution home">
-            <Image
-              src="/logo.png"
-              alt="Macro Solution"
-              width={196}
-              height={64}
-              priority
-              className="h-14 w-auto object-contain drop-shadow-[0_14px_24px_rgba(249,115,22,0.18)] md:h-16"
-            />
+            <motion.span
+              animate={{
+                rotateY: [0, -18, 0, 18, 0],
+                rotateX: [0, 8, 0, -6, 0],
+                y: [0, -4, 0, 4, 0],
+                scale: [1, 1.04, 1, 1.03, 1],
+              }}
+              transition={{ duration: 5.6, repeat: Infinity, ease: "easeInOut" }}
+              className="block [transform-style:preserve-3d]"
+            >
+              <Image
+                src="/logo.png"
+                alt="Macro Solution"
+                width={260}
+                height={86}
+                priority
+                className="h-16 w-auto object-contain drop-shadow-[0_20px_34px_rgba(8,59,138,0.34)] md:h-20"
+              />
+            </motion.span>
           </Link>
         </motion.div>
 
-        <nav className="hidden items-center gap-1 rounded-full border border-orange-100 bg-gradient-to-r from-white via-orange-50 to-white p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] md:flex">
+        <nav className="hidden items-center gap-1 rounded-full border border-brand-blue/10 bg-gradient-to-r from-white via-[#F5F9FF] to-white p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] md:flex">
           {links.map((item, index) => {
             const isActive = item.href === "/" ? pathname === "/" : pathname === item.href;
             const isContact = item.href === "/contact";
@@ -107,17 +76,17 @@ export default function Navbar() {
               >
                 <a
                   href={item.href}
-                  onClick={(event) => handleAnchorClick(event, item.href)}
+                  onClick={() => setOpen(false)}
                   className={`group relative block overflow-hidden rounded-full px-4 py-2.5 text-sm font-bold transition ${
                     isActive
-                      ? "bg-gray-950 text-white shadow-[0_12px_30px_rgba(17,24,39,0.2)]"
+                      ? "bg-dark-header text-white shadow-[0_12px_30px_rgba(0,40,104,0.2)]"
                       : isContact
-                        ? "bg-orange-500 text-white shadow-[0_12px_28px_rgba(249,115,22,0.28)] hover:bg-gray-950"
+                        ? "bg-button-blue text-white shadow-[0_12px_28px_rgba(11,94,215,0.28)] hover:bg-hover-blue"
                         : "text-gray-700 hover:text-white"
                   }`}
                 >
                   {!isActive && !isContact && (
-                    <span className="absolute inset-0 origin-left scale-x-0 rounded-full bg-gradient-to-r from-orange-500 to-gray-950 transition-transform duration-300 ease-out group-hover:scale-x-100" />
+                    <span className="absolute inset-0 origin-left scale-x-0 rounded-full bg-gradient-to-r from-button-blue to-dark-header transition-transform duration-300 ease-out group-hover:scale-x-100" />
                   )}
                   <span className="relative inline-flex items-center gap-1.5">
                     {item.label}
@@ -131,7 +100,7 @@ export default function Navbar() {
 
         <button
           onClick={() => setOpen(!open)}
-          className="rounded-full border border-orange-100 bg-white/85 p-3 text-gray-800 shadow-lg md:hidden"
+          className="rounded-full border border-brand-blue/10 bg-white/85 p-3 text-gray-800 shadow-lg md:hidden"
           aria-label="Toggle navigation"
         >
           {open ? <X /> : <Menu />}
@@ -154,11 +123,11 @@ export default function Navbar() {
                   <a
                     key={item.label}
                     href={item.href}
-                    onClick={(event) => handleAnchorClick(event, item.href)}
+                    onClick={() => setOpen(false)}
                     className={`rounded-2xl px-4 py-3 font-bold transition ${
                       isActive
-                        ? "bg-gray-950 text-white"
-                        : "bg-orange-50 text-gray-800 hover:bg-orange-500 hover:text-white"
+                        ? "bg-dark-header text-white"
+                        : "bg-[#F5F9FF] text-gray-800 hover:bg-button-blue hover:text-white"
                     }`}
                   >
                     {item.label}

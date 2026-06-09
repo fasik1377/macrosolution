@@ -56,7 +56,7 @@ const metrics = [
 
 export default function TestimonialsPage() {
   return (
-    <main className="overflow-x-hidden bg-white text-gray-900">
+    <main className="overflow-x-hidden bg-background text-gray-900">
       <Navbar />
       <Page3DHero
         eyebrow="Client Stories"
@@ -82,9 +82,9 @@ export default function TestimonialsPage() {
                   key={metric.label}
                   variants={fadeUp}
                   whileHover={{ y: -10, rotateX: 5 }}
-                  className="rounded-2xl border border-orange-100 bg-[#f8f8f5] p-8 text-center shadow-lg"
+                  className="rounded-2xl border border-brand-blue/10 bg-white p-8 text-center shadow-lg"
                 >
-                  <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-100 text-orange-600">
+                  <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-button-blue/10 text-button-blue">
                     <Icon size={28} />
                   </div>
                   <div className="mt-6 text-4xl font-bold md:text-5xl">
@@ -98,10 +98,10 @@ export default function TestimonialsPage() {
         </div>
       </section>
 
-      <section className="bg-gray-50 py-28">
+      <section className="bg-background py-28">
         <div className="container mx-auto px-6">
           <motion.div initial="hidden" whileInView="show" variants={fadeUp} viewport={{ once: true }} className="mx-auto max-w-3xl text-center">
-            <p className="font-semibold uppercase tracking-[0.28em] text-orange-600">Testimonials</p>
+            <p className="font-semibold uppercase tracking-[0.28em] text-brand-blue">Testimonials</p>
             <h2 className="mt-5 text-3xl font-bold md:text-4xl">Built for real operational wins</h2>
           </motion.div>
 
@@ -116,21 +116,21 @@ export default function TestimonialsPage() {
                 viewport={{ once: true }}
                 className="relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-8 shadow-lg"
               >
-                <div className="absolute right-0 top-0 h-24 w-24 bg-orange-500/10 blur-2xl" />
-                <Quote className="text-orange-500" size={34} />
+                <div className="absolute right-0 top-0 h-24 w-24 bg-button-blue/10 blur-2xl" />
+                <Quote className="text-button-blue" size={34} />
                 <p className="mt-6 text-lg leading-8 text-gray-700">&quot;{item.text}&quot;</p>
                 <div className="mt-8 flex items-center justify-between gap-4">
                   <div>
                     <h3 className="font-bold">{item.name}</h3>
                     <p className="mt-1 text-sm text-gray-500">{item.company}</p>
                   </div>
-                  <div className="flex text-orange-500">
+                  <div className="flex text-button-blue">
                     {[0, 1, 2, 3, 4].map((star) => (
                       <Star key={star} size={16} fill="currentColor" />
                     ))}
                   </div>
                 </div>
-                <p className="mt-5 inline-flex rounded-full bg-orange-100 px-4 py-2 text-sm font-bold text-orange-700">
+                <p className="mt-5 inline-flex rounded-full bg-button-blue/10 px-4 py-2 text-sm font-bold text-brand-blue">
                   {item.solution}
                 </p>
               </motion.article>
@@ -139,10 +139,10 @@ export default function TestimonialsPage() {
         </div>
       </section>
 
-      <section className="bg-gray-950 py-28 text-white">
+      <section className="bg-dark-header py-28 text-white">
         <div className="container mx-auto grid items-center gap-10 px-6 lg:grid-cols-2">
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-            <p className="font-semibold uppercase tracking-[0.28em] text-orange-400">Your Success Story</p>
+            <p className="font-semibold uppercase tracking-[0.28em] text-hover-blue">Your Success Story</p>
             <h2 className="mt-5 text-3xl font-bold md:text-4xl">Let your systems become a business advantage.</h2>
           </motion.div>
           <motion.div
@@ -155,7 +155,7 @@ export default function TestimonialsPage() {
             <p className="text-xl leading-9 text-gray-200">
               Macro Solution combines business software, infrastructure support, and practical implementation so your team can move faster with less friction.
             </p>
-            <a href="/contact" className="mt-8 inline-flex rounded-full bg-orange-500 px-7 py-4 font-bold text-white transition hover:bg-orange-600">
+            <a href="/contact" className="mt-8 inline-flex rounded-full bg-button-blue px-7 py-4 font-bold text-white transition hover:bg-hover-blue">
               Start a project
             </a>
           </motion.div>

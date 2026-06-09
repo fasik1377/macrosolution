@@ -6,11 +6,11 @@ import * as THREE from "three";
 type SceneTone = "home" | "contact" | "testimonials" | "services" | "blog";
 
 const toneColors: Record<SceneTone, number[]> = {
-  home: [0xf97316, 0xfb923c, 0x111827, 0xffffff, 0x431407, 0xf59e0b],
-  contact: [0xf97316, 0x0f172a, 0xfb923c, 0xffffff, 0x7c2d12, 0xf59e0b],
-  testimonials: [0xf97316, 0xffedd5, 0x111827, 0xffffff, 0x9a3412, 0xf59e0b],
-  services: [0xf97316, 0x0f172a, 0xfb923c, 0xffffff, 0x7c2d12, 0xfacc15],
-  blog: [0xf97316, 0xfb923c, 0x111827, 0xffffff, 0x9a3412, 0xf59e0b],
+  home: [0x083b8a, 0x0b5ed7, 0x002868, 0xffffff, 0x4d9fff, 0x0b5ed7],
+  contact: [0x083b8a, 0x002868, 0x0b5ed7, 0xffffff, 0x4d9fff, 0x0b5ed7],
+  testimonials: [0x083b8a, 0xf5f9ff, 0x002868, 0xffffff, 0x4d9fff, 0x0b5ed7],
+  services: [0x083b8a, 0x002868, 0x0b5ed7, 0xffffff, 0x4d9fff, 0x0b5ed7],
+  blog: [0x083b8a, 0x0b5ed7, 0x002868, 0xffffff, 0x4d9fff, 0x0b5ed7],
 };
 
 function makeLabel(text: string) {
@@ -26,7 +26,7 @@ function makeLabel(text: string) {
   context.clearRect(0, 0, canvas.width, canvas.height);
   context.fillStyle = "rgba(255,255,255,0.92)";
   context.fillRect(0, 0, canvas.width, canvas.height);
-  context.fillStyle = "#111827";
+  context.fillStyle = "#002868";
   context.font = "700 54px Arial";
   context.textAlign = "center";
   context.textBaseline = "middle";
@@ -64,7 +64,7 @@ export default function ThreeSolutionScene({ tone = "home" }: { tone?: SceneTone
 
     const ambientLight = new THREE.AmbientLight(0xffffff, 1.2);
     const keyLight = new THREE.DirectionalLight(0xffffff, 2.8);
-    const rimLight = new THREE.PointLight(0xf97316, 3.5, 18);
+    const rimLight = new THREE.PointLight(0x4d9fff, 3.5, 18);
     keyLight.position.set(4, 5, 6);
     rimLight.position.set(-3.5, 1.5, 3.5);
     scene.add(ambientLight, keyLight, rimLight);
@@ -123,7 +123,7 @@ export default function ThreeSolutionScene({ tone = "home" }: { tone?: SceneTone
       const bars = [0, 1, 2].map((barIndex) => {
         const bar = new THREE.Mesh(
           new THREE.BoxGeometry(0.3 + barIndex * 0.2, 0.045, 0.025),
-          new THREE.MeshBasicMaterial({ color: color === 0xffffff ? 0xf97316 : 0xffffff, transparent: true, opacity: 0.7 })
+          new THREE.MeshBasicMaterial({ color: color === 0xffffff ? 0x0b5ed7 : 0xffffff, transparent: true, opacity: 0.7 })
         );
         bar.position.set(-0.65 + barIndex * 0.12, -0.42 + barIndex * 0.13, 0.09);
         return bar;
@@ -153,12 +153,12 @@ export default function ThreeSolutionScene({ tone = "home" }: { tone?: SceneTone
 
     const coreWire = new THREE.LineSegments(
       new THREE.EdgesGeometry(coreGeometry),
-      new THREE.LineBasicMaterial({ color: 0xf97316, transparent: true, opacity: 0.56 })
+      new THREE.LineBasicMaterial({ color: 0x0b5ed7, transparent: true, opacity: 0.56 })
     );
     coreGroup.add(coreWire);
 
     const haloGeometry = new THREE.TorusGeometry(1.32, 0.018, 14, 160);
-    const haloMaterial = new THREE.MeshBasicMaterial({ color: 0xf97316, transparent: true, opacity: 0.42 });
+    const haloMaterial = new THREE.MeshBasicMaterial({ color: 0x4d9fff, transparent: true, opacity: 0.42 });
     const halos = [0, 1, 2].map((haloIndex) => {
       const halo = new THREE.Mesh(haloGeometry, haloMaterial.clone());
       halo.rotation.set(1.15 + haloIndex * 0.46, haloIndex * 0.85, -0.28 + haloIndex * 0.18);
@@ -199,7 +199,7 @@ export default function ThreeSolutionScene({ tone = "home" }: { tone?: SceneTone
 
     particleGeometry.setAttribute("position", new THREE.BufferAttribute(particlePositions, 3));
     const particleMaterial = new THREE.PointsMaterial({
-      color: 0xf97316,
+      color: 0x4d9fff,
       size: 0.032,
       transparent: true,
       opacity: 0.55,
@@ -208,18 +208,18 @@ export default function ThreeSolutionScene({ tone = "home" }: { tone?: SceneTone
     const particles = new THREE.Points(particleGeometry, particleMaterial);
     group.add(particles);
 
-    const pathMaterial = new THREE.LineBasicMaterial({ color: 0xf97316, transparent: true, opacity: 0.32 });
+    const pathMaterial = new THREE.LineBasicMaterial({ color: 0x4d9fff, transparent: true, opacity: 0.32 });
     const pathPoints = positions.map(([x, y, z]) => new THREE.Vector3(x, y, z));
     const path = new THREE.Line(new THREE.BufferGeometry().setFromPoints(pathPoints), pathMaterial);
     group.add(path);
 
     const ringGeometry = new THREE.TorusGeometry(3.05, 0.014, 12, 140);
-    const ringMaterial = new THREE.MeshBasicMaterial({ color: 0xf97316, transparent: true, opacity: 0.22 });
+    const ringMaterial = new THREE.MeshBasicMaterial({ color: 0x4d9fff, transparent: true, opacity: 0.22 });
     const ring = new THREE.Mesh(ringGeometry, ringMaterial);
     ring.rotation.set(1.2, 0, -0.34);
     group.add(ring);
 
-    const grid = new THREE.GridHelper(7, 18, 0xf97316, 0x111827);
+    const grid = new THREE.GridHelper(7, 18, 0x4d9fff, 0x002868);
     grid.position.set(0, -2.05, -1.7);
     grid.rotation.z = -0.18;
     const gridMaterial = Array.isArray(grid.material) ? grid.material[0] : grid.material;

@@ -34,7 +34,7 @@ const responseItems = [
 
 export default function ContactPage() {
   return (
-    <main className="overflow-x-hidden bg-white text-gray-900">
+    <main className="overflow-x-hidden bg-background text-gray-900">
       <Navbar />
       <Page3DHero
         eyebrow="Contact Macro Solution"
@@ -62,9 +62,9 @@ export default function ContactPage() {
                     key={item.label}
                     variants={fadeUp}
                     whileHover={{ y: -6, rotateX: 4 }}
-                    className="flex items-center gap-4 rounded-2xl border border-orange-100 bg-white p-5 shadow-lg"
+                    className="flex items-center gap-4 rounded-2xl border border-brand-blue/10 bg-white p-5 shadow-lg"
                   >
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-orange-100 text-orange-600">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-button-blue/10 text-button-blue">
                       <Icon size={22} />
                     </div>
                     <div>
@@ -82,24 +82,24 @@ export default function ContactPage() {
             whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="rounded-3xl border border-gray-200 bg-[#f8f8f5] p-6 shadow-2xl md:p-10"
+            className="rounded-3xl border border-brand-blue/10 bg-background p-6 shadow-2xl md:p-10"
           >
             <div className="grid gap-5 md:grid-cols-2">
               <label className="block">
                 <span className="text-sm font-bold text-gray-700">Name</span>
-                <input className="mt-2 w-full rounded-xl border border-gray-200 bg-white px-4 py-4 outline-none transition focus:border-orange-500" placeholder="Your name" />
+                <input className="mt-2 w-full rounded-xl border border-gray-200 bg-white px-4 py-4 outline-none transition focus:border-button-blue" placeholder="Your name" />
               </label>
               <label className="block">
                 <span className="text-sm font-bold text-gray-700">Company</span>
-                <input className="mt-2 w-full rounded-xl border border-gray-200 bg-white px-4 py-4 outline-none transition focus:border-orange-500" placeholder="Company name" />
+                <input className="mt-2 w-full rounded-xl border border-gray-200 bg-white px-4 py-4 outline-none transition focus:border-button-blue" placeholder="Company name" />
               </label>
               <label className="block">
                 <span className="text-sm font-bold text-gray-700">Email</span>
-                <input type="email" className="mt-2 w-full rounded-xl border border-gray-200 bg-white px-4 py-4 outline-none transition focus:border-orange-500" placeholder="you@company.com" />
+                <input type="email" className="mt-2 w-full rounded-xl border border-gray-200 bg-white px-4 py-4 outline-none transition focus:border-button-blue" placeholder="you@company.com" />
               </label>
               <label className="block">
                 <span className="text-sm font-bold text-gray-700">Solution</span>
-                <select className="mt-2 w-full rounded-xl border border-gray-200 bg-white px-4 py-4 outline-none transition focus:border-orange-500">
+                <select className="mt-2 w-full rounded-xl border border-gray-200 bg-white px-4 py-4 outline-none transition focus:border-button-blue">
                   <option>ERP</option>
                   <option>POS</option>
                   <option>Payroll & HRMS</option>
@@ -112,10 +112,10 @@ export default function ContactPage() {
 
             <label className="mt-5 block">
               <span className="text-sm font-bold text-gray-700">Message</span>
-              <textarea className="mt-2 min-h-40 w-full rounded-xl border border-gray-200 bg-white px-4 py-4 outline-none transition focus:border-orange-500" placeholder="Tell us about your workflow, problem, or project." />
+              <textarea className="mt-2 min-h-40 w-full rounded-xl border border-gray-200 bg-white px-4 py-4 outline-none transition focus:border-button-blue" placeholder="Tell us about your workflow, problem, or project." />
             </label>
 
-            <button type="button" className="mt-6 inline-flex items-center gap-2 rounded-full bg-gray-950 px-7 py-4 font-bold text-white transition hover:bg-orange-600">
+            <button type="button" className="mt-6 inline-flex items-center gap-2 rounded-full bg-button-blue px-7 py-4 font-bold text-white transition hover:bg-hover-blue">
               Send inquiry
               <Send size={18} />
             </button>
@@ -123,7 +123,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="bg-gray-950 py-24 text-white">
+      <section className="bg-dark-header py-24 text-white">
         <div className="container mx-auto px-6">
           <div className="grid gap-6 md:grid-cols-3">
             {responseItems.map((item) => {
@@ -138,7 +138,7 @@ export default function ContactPage() {
                   viewport={{ once: true }}
                   className="rounded-2xl border border-white/10 bg-white/10 p-8 backdrop-blur"
                 >
-                  <Icon className="text-orange-400" size={32} />
+                  <Icon className="text-hover-blue" size={32} />
                   <h3 className="mt-6 text-2xl font-bold">{item.title}</h3>
                   <p className="mt-4 leading-7 text-gray-300">{item.text}</p>
                 </motion.div>

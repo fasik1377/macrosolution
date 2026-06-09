@@ -54,10 +54,10 @@ export default function ProductCarousel() {
       {products.map((product, index) => (
         <SwiperSlide key={product.title}>
           <div className="group overflow-hidden rounded-3xl bg-white shadow-lg">
-            <div className="relative h-64 overflow-hidden bg-[#f4f1ec]">
-              <div className="absolute left-1/2 top-16 h-36 w-52 -translate-x-1/2 rotate-[-12deg] rounded-2xl bg-orange-500 shadow-2xl transition duration-500 group-hover:rotate-[-6deg]" />
-              <div className="absolute left-1/2 top-10 h-36 w-52 -translate-x-[35%] rotate-[10deg] rounded-2xl bg-[#2765b3] shadow-2xl transition duration-500 group-hover:translate-y-3 group-hover:rotate-[5deg]" />
-              <div className="absolute left-1/2 top-20 flex h-36 w-52 -translate-x-[60%] rotate-[-2deg] items-center justify-center rounded-2xl bg-gray-950 text-4xl font-bold text-white shadow-2xl transition duration-500 group-hover:-translate-y-2">
+            <div className="relative h-64 overflow-hidden bg-background">
+              <div className="absolute left-1/2 top-16 h-36 w-52 -translate-x-1/2 rotate-[-12deg] rounded-2xl bg-hover-blue shadow-2xl transition duration-500 group-hover:rotate-[-6deg]" />
+              <div className="absolute left-1/2 top-10 h-36 w-52 -translate-x-[35%] rotate-[10deg] rounded-2xl bg-button-blue shadow-2xl transition duration-500 group-hover:translate-y-3 group-hover:rotate-[5deg]" />
+              <div className="absolute left-1/2 top-20 flex h-36 w-52 -translate-x-[60%] rotate-[-2deg] items-center justify-center rounded-2xl bg-dark-header text-4xl font-bold text-white shadow-2xl transition duration-500 group-hover:-translate-y-2">
                 {String(index + 1).padStart(2, "0")}
               </div>
             </div>
@@ -67,7 +67,7 @@ export default function ProductCarousel() {
 
               <p className="mt-4 text-gray-600">{product.description}</p>
 
-              <button className="mt-5 font-semibold text-orange-600">
+              <button className="mt-5 font-semibold text-button-blue transition hover:text-hover-blue">
                 Learn More
               </button>
             </div>

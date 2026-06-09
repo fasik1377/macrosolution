@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-950 text-white">
+    <footer className="bg-dark-header text-white">
       <div className="container mx-auto px-6 py-20">
         <div className="grid gap-10 md:grid-cols-4">
           <div>
@@ -24,9 +24,9 @@ export default function Footer() {
             <h4 className="mb-4 font-bold">Company</h4>
 
             <ul className="space-y-3">
-              <li><Link href="/#about">About</Link></li>
+              <li><Link href="/about">About</Link></li>
               <li><Link href="/services">Services</Link></li>
-              <li><Link href="/#products">Products</Link></li>
+              <li><Link href="/products">Products</Link></li>
               <li><Link href="/blog">Blog</Link></li>
               <li><Link href="/testimonials">Testimonials</Link></li>
               <li><Link href="/contact">Contact</Link></li>

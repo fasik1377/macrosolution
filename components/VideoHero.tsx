@@ -31,7 +31,7 @@ export default function VideoHero() {
             className="text-6xl md:text-8xl font-bold"
           >
             Future Ready
-            <span className="block text-orange-500">
+            <span className="block text-hover-blue">
               Technology
             </span>
           </motion.h1>
