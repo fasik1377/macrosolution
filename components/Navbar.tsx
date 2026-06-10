@@ -16,14 +16,12 @@ export default function Navbar() {
     { label: "About", href: "/about" },
     { label: "Services", href: "/services" },
     { label: "Products", href: "/products" },
-    { label: "Blog", href: "/blog" },
-    { label: "Testimonials", href: "/testimonials" },
     { label: "Contact", href: "/contact" },
   ];
 
   return (
     <header className="fixed left-0 top-0 z-50 w-full px-4 pt-3">
-      <div className="container mx-auto flex items-center justify-between rounded-full border border-white/60 bg-white/82 px-5 py-2.5 shadow-[0_18px_70px_rgba(17,24,39,0.12)] backdrop-blur-2xl">
+      <div className="container mx-auto flex items-center justify-between rounded-full bg-white/82 px-5 py-2.5 shadow-[0_18px_70px_rgba(17,24,39,0.12)] backdrop-blur-2xl">
         <motion.div
           initial={{ opacity: 0, y: -14, scale: 0.94 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -60,7 +58,7 @@ export default function Navbar() {
           </Link>
         </motion.div>
 
-        <nav className="hidden items-center gap-1 rounded-full border border-brand-blue/10 bg-gradient-to-r from-white via-[#F5F9FF] to-white p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] md:flex">
+        <nav className="hidden items-center gap-1 rounded-full bg-gradient-to-r from-white via-[#F5F9FF] to-white p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] md:flex">
           {links.map((item, index) => {
             const isActive = item.href === "/" ? pathname === "/" : pathname === item.href;
             const isContact = item.href === "/contact";
@@ -100,7 +98,7 @@ export default function Navbar() {
 
         <button
           onClick={() => setOpen(!open)}
-          className="rounded-full border border-brand-blue/10 bg-white/85 p-3 text-gray-800 shadow-lg md:hidden"
+          className="rounded-full bg-white/85 p-3 text-gray-800 shadow-lg md:hidden"
           aria-label="Toggle navigation"
         >
           {open ? <X /> : <Menu />}
@@ -113,7 +111,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="border-t border-white/50 bg-white/95 shadow-2xl md:hidden"
+            className="bg-white/95 shadow-2xl md:hidden"
           >
             <div className="flex flex-col gap-3 p-6">
               {links.map((item) => {

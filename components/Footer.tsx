@@ -7,13 +7,16 @@ export default function Footer() {
       <div className="container mx-auto px-6 py-20">
         <div className="grid gap-10 md:grid-cols-4">
           <div>
-            <Image
-              src="/logo.png"
-              alt="Macro Solution"
-              width={166}
-              height={48}
-              className="h-12 w-auto object-contain"
-            />
+            <div className="relative inline-flex overflow-hidden rounded-full bg-white/95 p-3 shadow-[0_18px_50px_rgba(255,255,255,0.18)]">
+              <span className="absolute inset-0 animate-pulse bg-white/70" aria-hidden="true" />
+              <Image
+                src="/logo.png"
+                alt="Macro Solution"
+                width={166}
+                height={48}
+                className="relative h-12 w-auto object-contain"
+              />
+            </div>
 
             <p className="mt-4 text-gray-400">
               Transforming businesses through innovative software and technology solutions.
@@ -27,8 +30,6 @@ export default function Footer() {
               <li><Link href="/about">About</Link></li>
               <li><Link href="/services">Services</Link></li>
               <li><Link href="/products">Products</Link></li>
-              <li><Link href="/blog">Blog</Link></li>
-              <li><Link href="/testimonials">Testimonials</Link></li>
               <li><Link href="/contact">Contact</Link></li>
             </ul>
           </div>
