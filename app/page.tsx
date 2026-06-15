@@ -46,13 +46,14 @@ export default function Home() {
           <div className="absolute inset-0 opacity-90">
             <SoftwareScrollScene />
           </div>
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-full bg-[linear-gradient(90deg,rgba(0,40,104,0.96)_0%,rgba(0,40,104,0.88)_34%,rgba(7,27,61,0.42)_58%,transparent_82%)] lg:w-[58%]" />
           <div className="container relative z-10 mx-auto grid items-center gap-12 px-6 lg:grid-cols-[0.82fr_1.18fr]">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.35 }}
               transition={{ duration: 0.75 }}
-              className="max-w-xl"
+              className="relative max-w-xl rounded-2xl border border-white/10 bg-dark-header/72 p-7 shadow-[0_28px_90px_rgba(0,0,0,0.24)] backdrop-blur-md md:p-8 lg:bg-dark-header/58"
             >
               <p className="text-sm font-semibold uppercase tracking-[0.28em] text-hover-blue">
                 Product engineering flow
