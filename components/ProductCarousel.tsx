@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 const products = [
   {
-    title: "Crystal POS",
+    title: "POS",
     description: "A simple, highly customizable POS system for small and medium-sized businesses, from single stores to multi-store retail.",
   },
   {

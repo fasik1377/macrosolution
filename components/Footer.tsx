@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function Footer() {
   return (
     <footer className="bg-dark-header text-white">
-      <div className="container mx-auto px-6 py-20">
+      <div className="container mx-auto px-6 pb-6 pt-16">
         <div className="grid gap-10 md:grid-cols-4">
           <div>
             <div className="relative inline-flex overflow-hidden rounded-full bg-white/95 p-3 shadow-[0_18px_50px_rgba(255,255,255,0.18)]">
@@ -55,7 +55,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 border-t border-white/10 pt-8 text-center text-gray-500">
+        <div className="mt-8 border-t border-white/10 pt-5 text-center text-gray-500">
           Copyright 2026 Macro Solution. All rights reserved.
         </div>
       </div>

@@ -20,8 +20,8 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="fixed left-0 top-0 z-50 w-full px-4 pt-3">
-      <div className="container mx-auto flex items-center justify-between rounded-full bg-white/82 px-5 py-2.5 shadow-[0_18px_70px_rgba(17,24,39,0.12)] backdrop-blur-2xl">
+    <header className="fixed left-0 top-0 z-50 w-full">
+      <div className="flex w-full items-center justify-between bg-white/82 px-5 py-2.5 backdrop-blur-2xl">
         <motion.div
           initial={{ opacity: 0, y: -14, scale: 0.94 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -31,9 +31,9 @@ export default function Navbar() {
         >
           <motion.div
             aria-hidden="true"
-            animate={{ opacity: [0.25, 0.55, 0.25], scale: [0.92, 1.14, 0.92] }}
+            animate={{ opacity: [0.18, 0.36, 0.18], scale: [0.92, 1.08, 0.92] }}
             transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute inset-0 rounded-full bg-hover-blue/25 blur-2xl"
+            className="absolute inset-0 bg-hover-blue/16 blur-2xl"
           />
           <Link href="/" className="relative flex items-center gap-3" aria-label="Macro Solution home">
             <motion.span
@@ -58,7 +58,7 @@ export default function Navbar() {
           </Link>
         </motion.div>
 
-        <nav className="hidden items-center gap-1 rounded-full bg-gradient-to-r from-white via-[#F5F9FF] to-white p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] md:flex">
+        <nav className="hidden items-center gap-1 bg-gradient-to-r from-white via-[#F5F9FF] to-white p-1.5 md:flex">
           {links.map((item, index) => {
             const isActive = item.href === "/" ? pathname === "/" : pathname === item.href;
             const isContact = item.href === "/contact";
@@ -75,16 +75,16 @@ export default function Navbar() {
                 <a
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className={`group relative block overflow-hidden rounded-full px-4 py-2.5 text-sm font-bold transition ${
+                  className={`group relative block overflow-hidden px-4 py-2.5 text-sm font-bold transition ${
                     isActive
-                      ? "bg-dark-header text-white shadow-[0_12px_30px_rgba(0,40,104,0.2)]"
+                      ? "bg-dark-header text-white"
                       : isContact
-                        ? "bg-button-blue text-white shadow-[0_12px_28px_rgba(11,94,215,0.28)] hover:bg-hover-blue"
+                        ? "bg-button-blue text-white hover:bg-hover-blue"
                         : "text-gray-700 hover:text-white"
                   }`}
                 >
                   {!isActive && !isContact && (
-                    <span className="absolute inset-0 origin-left scale-x-0 rounded-full bg-gradient-to-r from-button-blue to-dark-header transition-transform duration-300 ease-out group-hover:scale-x-100" />
+                    <span className="absolute inset-0 origin-left scale-x-0 bg-gradient-to-r from-button-blue to-dark-header transition-transform duration-300 ease-out group-hover:scale-x-100" />
                   )}
                   <span className="relative inline-flex items-center gap-1.5">
                     {item.label}
@@ -98,7 +98,7 @@ export default function Navbar() {
 
         <button
           onClick={() => setOpen(!open)}
-          className="rounded-full bg-white/85 p-3 text-gray-800 shadow-lg md:hidden"
+          className="bg-white/85 p-3 text-gray-800 md:hidden"
           aria-label="Toggle navigation"
         >
           {open ? <X /> : <Menu />}
@@ -111,7 +111,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="bg-white/95 shadow-2xl md:hidden"
+            className="bg-white/95 md:hidden"
           >
             <div className="flex flex-col gap-3 p-6">
               {links.map((item) => {
@@ -122,7 +122,7 @@ export default function Navbar() {
                     key={item.label}
                     href={item.href}
                     onClick={() => setOpen(false)}
-                    className={`rounded-2xl px-4 py-3 font-bold transition ${
+                    className={`px-4 py-3 font-bold transition ${
                       isActive
                         ? "bg-dark-header text-white"
                         : "bg-[#F5F9FF] text-gray-800 hover:bg-button-blue hover:text-white"

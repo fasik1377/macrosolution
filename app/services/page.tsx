@@ -25,7 +25,7 @@ const services = [
     icon: Database,
   },
   {
-    title: "Crystal POS",
+    title: "POS",
     text: "Retail POS systems for single-store and multi-store teams that need cleaner sales and stock control.",
     icon: MonitorSmartphone,
   },

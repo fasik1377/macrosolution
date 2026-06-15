@@ -19,12 +19,13 @@ import ProductCarousel from "@/components/ProductCarousel";
 import TestimonialsSlider from "@/components/TestimonialsSlider";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import Macro3DHero from "@/components/Macro3DHero";
+import SoftwareScrollScene from "@/components/SoftwareScrollScene";
 
 import { stagger } from "@/components/motion";
 
 const services = [
   { title: "Enterprise Resource Planning", icon: Database, description: "End-to-end ERP solutions for business sectors that need connected finance, stock, sales, and operations." },
-  { title: "Crystal POS", icon: Cpu, description: "Easy-to-use, highly customizable point-of-sale software for small, medium, single-store, and multi-store retailers." },
+  { title: "POS", icon: Cpu, description: "Easy-to-use, highly customizable point-of-sale software for small, medium, single-store, and multi-store retailers." },
   { title: "Payroll & HR Software", icon: Users, description: "Payroll, PAYE, CSG, NSF, payslips, leave, time, and attendance workflows built for Mauritius compliance." },
   { title: "Mobile Engineering", icon: Smartphone, description: "Cost-effective iOS, Android, and Windows mobile applications that help teams work from anywhere." },
   { title: "Web Application Development", icon: Globe, description: "Fast, maintainable web platforms for portals, dashboards, e-commerce, and internal business tools." },
@@ -39,6 +40,35 @@ export default function Home() {
 
       <Navbar />
       <Macro3DHero />
+
+      <section className="relative min-h-[165vh] overflow-hidden bg-[linear-gradient(180deg,#002868_0%,#071B3D_48%,#F5F9FF_100%)] text-white">
+        <div className="sticky top-0 flex min-h-screen items-center py-24">
+          <div className="absolute inset-0 opacity-90">
+            <SoftwareScrollScene />
+          </div>
+          <div className="container relative z-10 mx-auto grid items-center gap-12 px-6 lg:grid-cols-[0.82fr_1.18fr]">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.35 }}
+              transition={{ duration: 0.75 }}
+              className="max-w-xl"
+            >
+              <p className="text-sm font-semibold uppercase tracking-[0.28em] text-hover-blue">
+                Product engineering flow
+              </p>
+              <h2 className="mt-5 text-3xl font-bold leading-tight md:text-5xl">
+                Website and mobile apps built from one connected system.
+              </h2>
+              <p className="mt-6 text-lg leading-8 text-blue-100">
+                Scroll to see the dashboard, mobile app, application logic, and cloud layer separate
+                into their roles, then integrate into one software experience.
+              </p>
+            </motion.div>
+            <div className="min-h-[520px]" />
+          </div>
+        </div>
+      </section>
 
       {/* ABOUT */}
       <section id="about" className="relative overflow-hidden py-40">
