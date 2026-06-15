@@ -52,8 +52,8 @@ export default function ProductCarousel() {
       }}
     >
       {products.map((product, index) => (
-        <SwiperSlide key={product.title}>
-          <div className="group overflow-hidden rounded-3xl bg-white shadow-lg">
+        <SwiperSlide key={product.title} className="h-auto">
+          <div className="group flex h-full min-h-[520px] flex-col overflow-hidden rounded-3xl bg-white shadow-lg">
             <div className="relative h-64 overflow-hidden bg-background">
               <div className="absolute left-1/2 top-16 h-36 w-52 -translate-x-1/2 rotate-[-12deg] rounded-2xl bg-hover-blue shadow-2xl transition duration-500 group-hover:rotate-[-6deg]" />
               <div className="absolute left-1/2 top-10 h-36 w-52 -translate-x-[35%] rotate-[10deg] rounded-2xl bg-button-blue shadow-2xl transition duration-500 group-hover:translate-y-3 group-hover:rotate-[5deg]" />
@@ -62,12 +62,12 @@ export default function ProductCarousel() {
               </div>
             </div>
 
-            <div className="p-6">
+            <div className="flex flex-1 flex-col p-6">
               <h3 className="text-2xl font-bold">{product.title}</h3>
 
               <p className="mt-4 text-gray-600">{product.description}</p>
 
-              <button className="mt-5 font-semibold text-button-blue transition hover:text-hover-blue">
+              <button className="mt-auto pt-5 text-left font-semibold text-button-blue transition hover:text-hover-blue">
                 Learn More
               </button>
             </div>
