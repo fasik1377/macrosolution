@@ -1,19 +1,22 @@
 "use client";
 
 import { motion } from "framer-motion";
-import ThreeSolutionScene from "@/components/ThreeSolutionScene";
+import SoftwareScrollScene from "@/components/SoftwareScrollScene";
 
 type Page3DHeroProps = {
   eyebrow: string;
   title: string;
   description: string;
-  tone: "contact" | "testimonials" | "services" | "blog";
+  tone?: "contact" | "testimonials" | "services" | "blog";
 };
 
-export default function Page3DHero({ eyebrow, title, description, tone }: Page3DHeroProps) {
+export default function Page3DHero({ eyebrow, title, description }: Page3DHeroProps) {
   return (
-    <section className="relative min-h-[78vh] overflow-hidden bg-background pt-32 text-gray-950">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(11,94,215,0.2),transparent_28%),radial-gradient(circle_at_80%_14%,rgba(77,159,255,0.18),transparent_30%),radial-gradient(circle_at_50%_88%,rgba(0,40,104,0.12),transparent_26%),linear-gradient(180deg,#F5F9FF_0%,#ffffff_54%,#002868_100%)]" />
+    <section className="relative min-h-[86vh] overflow-hidden bg-background pt-32 text-gray-950">
+      <div className="absolute inset-0 opacity-95">
+        <SoftwareScrollScene stage="webDev" />
+      </div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(11,94,215,0.14),transparent_28%),radial-gradient(circle_at_80%_14%,rgba(77,159,255,0.12),transparent_30%),radial-gradient(circle_at_50%_88%,rgba(0,40,104,0.08),transparent_26%),linear-gradient(180deg,rgba(245,249,255,0.56)_0%,rgba(255,255,255,0.3)_54%,rgba(0,40,104,0.28)_100%)]" />
       <div className="absolute left-[8%] top-32 h-40 w-40 rounded-full bg-button-blue/12 blur-3xl" />
       <div className="absolute right-[10%] top-24 h-52 w-52 rounded-full bg-hover-blue/16 blur-3xl" />
       <motion.div
@@ -45,7 +48,6 @@ export default function Page3DHero({ eyebrow, title, description, tone }: Page3D
           transition={{ duration: 1, ease: "easeOut" }}
           className="relative h-[430px] lg:h-[560px]"
         >
-          <ThreeSolutionScene tone={tone} />
           <motion.div
             aria-hidden="true"
             animate={{ opacity: [0.35, 0.72, 0.35], scale: [0.95, 1.05, 0.95] }}
