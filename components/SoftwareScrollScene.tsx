@@ -322,6 +322,7 @@ export default function SoftwareScrollScene({ progressRootId, className = "absol
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
     camera.position.set(0, 0.72, 9.5);
+    camera.lookAt(0, 0, 0);
 
     const renderer = new THREE.WebGLRenderer({
       alpha: true,
@@ -333,15 +334,41 @@ export default function SoftwareScrollScene({ progressRootId, className = "absol
     renderer.setClearColor(0x000000, 0);
     mount.appendChild(renderer.domElement);
 
-    const ambient = new THREE.AmbientLight(0xffffff, 1.55);
-    const key = new THREE.DirectionalLight(0xffffff, 3.1);
-    const fill = new THREE.PointLight(0x4d9fff, 4.2, 18);
+    const ambient = new THREE.AmbientLight(0xffffff, 2.05);
+    const key = new THREE.DirectionalLight(0xffffff, 3.8);
+    const fill = new THREE.PointLight(0x4d9fff, 6.4, 20);
+    const rim = new THREE.PointLight(0xffffff, 4.8, 16);
     key.position.set(4, 5, 6);
     fill.position.set(-3.8, 1.8, 3.4);
-    scene.add(ambient, key, fill);
+    rim.position.set(2.8, -1.4, 4.2);
+    scene.add(ambient, key, fill, rim);
 
     const productGroup = new THREE.Group();
     scene.add(productGroup);
+
+    const heroBackdrop = new THREE.Group();
+    const heroAura = new THREE.Mesh(
+      new THREE.PlaneGeometry(5.2, 3.4),
+      new THREE.MeshBasicMaterial({ color: 0x4d9fff, transparent: true, opacity: 0.12, side: THREE.DoubleSide })
+    );
+    const heroAuraTwo = heroAura.clone();
+    heroAuraTwo.scale.set(0.72, 1.18, 1);
+    heroAuraTwo.material = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.1, side: THREE.DoubleSide });
+    const heroCore = new THREE.Mesh(
+      new THREE.IcosahedronGeometry(0.58, 2),
+      new THREE.MeshPhysicalMaterial({
+        color: 0xffffff,
+        roughness: 0.12,
+        metalness: 0.06,
+        transparent: true,
+        opacity: 0.82,
+        clearcoat: 0.75,
+      })
+    );
+    heroAura.position.z = -0.18;
+    heroAuraTwo.position.z = -0.28;
+    heroBackdrop.add(heroAura, heroAuraTwo, heroCore);
+    productGroup.add(heroBackdrop);
 
     const websiteTexture = makeWebsiteTexture();
     const mobileTexture = makeMobileTexture();
@@ -532,18 +559,18 @@ export default function SoftwareScrollScene({ progressRootId, className = "absol
       const localProgress = getProgress();
       const progress = localProgress;
 
-      productGroup.rotation.y = mix(-0.36, 0.36, progress) + Math.sin(elapsed * 0.18) * 0.035;
-      productGroup.rotation.x = mix(0.08, -0.1, progress);
+      productGroup.rotation.y = 0.04;
+      productGroup.rotation.x = 0.01;
       productGroup.position.y = mix(-0.06, 0.16, progress);
       productGroup.scale.setScalar(0.92 + Math.sin(progress * Math.PI) * 0.08);
 
       dataModules.forEach((dataBlock, index) => {
         dataBlock.position.y = dataModuleBaseY[index] + Math.sin(elapsed * 1.2 + index) * 0.055;
       });
-      launchCore.rotation.set(elapsed * 0.3, elapsed * 0.42, 0);
-      launchRing.rotation.z = elapsed * 0.18;
-      launchRingTwo.rotation.z = -elapsed * 0.14;
-      cloudGroup.rotation.y = elapsed * 0.18;
+      launchCore.rotation.set(0.18, 0.36, 0);
+      launchRing.rotation.z = Math.sin(elapsed * 0.9) * 0.08;
+      launchRingTwo.rotation.z = -Math.sin(elapsed * 0.75) * 0.08;
+      cloudGroup.rotation.y = Math.sin(elapsed * 0.8) * 0.08;
       cloudGroup.scale.setScalar(0.72 + Math.sin(elapsed * 1.4) * 0.025);
 
       setOpacity(website, 0);
@@ -554,95 +581,137 @@ export default function SoftwareScrollScene({ progressRootId, className = "absol
       setOpacity(securityGroup, 0);
       setOpacity(launchGroup, 0);
       setOpacity(cloudGroup, 0);
+      setOpacity(heroBackdrop, 0);
 
       if (stage === "mobile") {
-        const cardSpread = THREE.MathUtils.smoothstep(progress, 0.18, 0.76);
-        productGroup.rotation.y = mix(0.54, -0.34, progress) + Math.sin(elapsed * 0.26) * 0.04;
-        productGroup.rotation.x = mix(-0.06, 0.08, progress);
-        productGroup.scale.setScalar(1.18);
+        const build = THREE.MathUtils.smoothstep(progress, 0.1, 0.84);
+        productGroup.rotation.y = 0.08;
+        productGroup.rotation.x = -0.02;
+        productGroup.position.y = mix(-0.04, 0.18, progress);
+        productGroup.scale.setScalar(1.08 + Math.sin(progress * Math.PI) * 0.14);
 
-        mobile.position.set(mix(1.7, 0.98, cardSpread), mix(-0.2, 0.24, progress), mix(0.48, 0.22, progress));
-        mobile.rotation.set(-0.05, mix(-0.55, -0.16, progress), mix(0.11, -0.04, progress));
+        heroBackdrop.position.set(mix(-0.08, 0.14, build), mix(0.08, 0.22, progress), -0.84);
+        heroBackdrop.rotation.set(0, 0, 0);
+        heroBackdrop.scale.setScalar(1.2 + Math.sin(elapsed * 1.1) * 0.04);
+        setOpacity(heroBackdrop, 0.78);
+
+        website.position.set(mix(-0.34, 0.0, build), mix(0.16, 0.32, progress), mix(0.0, 0.14, progress));
+        website.rotation.set(-0.04, 0.02, 0);
+        setOpacity(website, 1);
+
+        mobile.position.set(mix(1.72, 1.16, build), mix(-0.32, -0.02, progress), mix(0.78, 0.42, progress));
+        mobile.rotation.set(-0.04, -0.2, 0.025);
         setOpacity(mobile, 1);
 
-        codePanel.position.set(mix(-1.8, -0.92, cardSpread), mix(-1.26, -0.86, progress), mix(-0.48, 0.06, progress));
-        codePanel.rotation.set(-0.12, mix(0.28, -0.08, progress), 0.04);
-        setOpacity(codePanel, 0.72);
+        codePanel.position.set(mix(-1.92, -1.2, build), mix(-1.05, -0.72, progress), mix(-0.42, 0.08, progress));
+        codePanel.rotation.set(-0.08, -0.04, 0.02);
+        setOpacity(codePanel, 0.9);
 
-        dataGroup.position.set(mix(-1.08, -0.28, cardSpread), mix(1.14, 0.78, progress), mix(-0.42, 0.08, progress));
-        dataGroup.rotation.set(elapsed * 0.08, mix(-0.3, 0.28, progress), 0.04);
+        dataGroup.position.set(mix(-1.38, -0.72, build), mix(1.16, 0.86, progress), mix(-0.34, 0.08, progress));
+        dataGroup.rotation.set(0.04, 0.08, 0.02);
+        dataGroup.scale.setScalar(0.86);
         setOpacity(dataGroup, 0.86);
 
-        cloudGroup.position.set(1.82, 1.08, -0.28);
-        setOpacity(cloudGroup, 0.66);
+        launchGroup.position.set(mix(0.62, 0.86, build), mix(1.32, 1.04, progress), -0.28);
+        launchGroup.scale.setScalar(0.64 + Math.sin(elapsed * 1.2) * 0.018);
+        setOpacity(launchGroup, 0.7);
       } else if (stage === "desktopErp") {
         const assemble = THREE.MathUtils.smoothstep(progress, 0.16, 0.82);
-        productGroup.rotation.y = mix(-0.18, 0.3, progress) + Math.sin(elapsed * 0.2) * 0.026;
-        productGroup.rotation.x = mix(0.12, -0.08, progress);
+        productGroup.rotation.y = 0.05;
+        productGroup.rotation.x = 0.02;
         productGroup.scale.setScalar(1.14);
 
         desktop.position.set(mix(1.04, 0.36, assemble), mix(-0.38, -0.22, progress), mix(-0.04, 0.2, progress));
-        desktop.rotation.set(-0.12, mix(0.18, -0.12, progress), mix(-0.04, 0.04, progress));
+        desktop.rotation.set(-0.08, -0.04, 0.01);
         setOpacity(desktop, 1);
 
         dataGroup.position.set(mix(-1.92, -1.28, assemble), mix(0.78, 0.46, progress), mix(-0.4, 0.12, progress));
-        dataGroup.rotation.set(elapsed * 0.08, mix(-0.28, 0.22, progress), 0.04);
+        dataGroup.rotation.set(0.03, 0.08, 0.02);
         setOpacity(dataGroup, 0.92);
 
         securityGroup.position.set(mix(2.08, 1.58, assemble), mix(0.86, 0.44, progress), mix(-0.5, 0.1, progress));
-        securityGroup.rotation.set(0.04, elapsed * 0.12 + mix(-0.18, 0.18, progress), 0);
+        securityGroup.rotation.set(0.04, 0.12, 0);
         setOpacity(securityGroup, 0.76);
 
         cloudGroup.position.set(0.18, 1.42, -0.36);
         setOpacity(cloudGroup, 0.58);
       } else if (stage === "webDev") {
         const build = THREE.MathUtils.smoothstep(progress, 0.12, 0.86);
-        productGroup.rotation.y = mix(-0.28, 0.34, progress) + Math.sin(elapsed * 0.24) * 0.04;
-        productGroup.rotation.x = mix(0.08, -0.1, progress);
+        productGroup.rotation.y = 0.04;
+        productGroup.rotation.x = 0.01;
         productGroup.scale.setScalar(1.1 + build * 0.14);
 
         website.position.set(mix(-0.52, 0.12, build), mix(0.08, 0.32, progress), mix(0.16, 0.24, progress));
-        website.rotation.set(-0.04, mix(-0.28, 0.18, progress), mix(0.04, -0.035, progress));
+        website.rotation.set(-0.03, 0.02, 0);
         setOpacity(website, 1);
 
         codePanel.position.set(mix(1.58, 0.98, build), mix(-1.22, -0.72, progress), mix(-0.52, 0.06, progress));
-        codePanel.rotation.set(-0.12, mix(-0.18, -0.36, progress), 0.05);
+        codePanel.rotation.set(-0.08, -0.18, 0.02);
         setOpacity(codePanel, 0.9);
 
         dataGroup.position.set(mix(-1.48, -1.0, build), mix(-0.82, -0.46, progress), mix(-0.38, 0.08, progress));
-        dataGroup.rotation.set(elapsed * 0.08, mix(-0.32, 0.3, progress), 0.04);
+        dataGroup.rotation.set(0.03, 0.08, 0.02);
         setOpacity(dataGroup, 0.82);
 
         cloudGroup.position.set(mix(1.36, 0.82, build), mix(1.32, 1.0, progress), -0.28);
         setOpacity(cloudGroup, 0.78);
       } else {
         const panels = THREE.MathUtils.smoothstep(progress, 0.16, 0.72);
-        productGroup.rotation.y = mix(-0.44, 0.26, progress) + Math.sin(elapsed * 0.18) * 0.035;
-        productGroup.rotation.x = mix(0.08, -0.08, progress);
-        productGroup.scale.setScalar(1.32 + panels * 0.18);
+        productGroup.rotation.y = 0.05;
+        productGroup.rotation.x = 0.01;
+        productGroup.scale.setScalar(1.04 + panels * 0.1);
 
-        website.position.set(mix(0.94, 1.38, panels), mix(0.1, 0.3, progress), mix(0.24, 0.06, progress));
-        website.rotation.set(-0.04, mix(-0.14, 0.18, progress), mix(0.03, -0.035, progress));
+        heroBackdrop.position.set(mix(0.22, 0.5, panels), mix(0.12, 0.28, progress), -0.62);
+        heroBackdrop.rotation.set(0, 0, 0);
+        heroBackdrop.scale.setScalar(0.98 + Math.sin(elapsed * 1.2) * 0.04);
+        setOpacity(heroBackdrop, 0.78);
+
+        website.position.set(mix(0.32, 0.86, panels), mix(0.08, 0.26, progress), mix(0.22, 0.04, progress));
+        website.rotation.set(-0.03, 0.03, 0);
         setOpacity(website, 1);
 
-        codePanel.position.set(mix(-1.52, -0.92, panels), mix(-1.12, -0.72, progress), mix(-0.48, 0.08, progress));
-        codePanel.rotation.set(-0.12, mix(-0.12, -0.28, progress), 0.04);
-        setOpacity(codePanel, 0.84);
+        codePanel.position.set(mix(-1.78, -1.04, panels), mix(-1.0, -0.64, progress), mix(-0.44, 0.06, progress));
+        codePanel.rotation.set(-0.08, -0.16, 0.02);
+        setOpacity(codePanel, 0.9);
 
-        cloudGroup.position.set(mix(-1.02, -0.48, panels), mix(1.26, 1.02, progress), -0.28);
-        setOpacity(cloudGroup, 0.74);
+        dataGroup.position.set(mix(-1.26, -0.56, panels), mix(0.98, 0.58, progress), mix(-0.34, 0.06, progress));
+        dataGroup.rotation.set(0.03, 0.08, 0.02);
+        setOpacity(dataGroup, 0.88);
+
+        securityGroup.position.set(mix(1.88, 1.36, panels), mix(1.02, 0.7, progress), mix(-0.46, 0.02, progress));
+        securityGroup.rotation.set(0.02, 0.12, 0);
+        securityGroup.scale.setScalar(0.82);
+        setOpacity(securityGroup, 0.74);
+
+        launchGroup.position.set(mix(-0.52, 0.06, panels), mix(1.5, 1.18, progress), -0.36);
+        launchGroup.scale.setScalar(0.72);
+        setOpacity(launchGroup, 0.72);
+
+        cloudGroup.position.set(mix(1.34, 0.84, panels), mix(-1.16, -0.86, progress), -0.26);
+        cloudGroup.scale.setScalar(0.62 + Math.sin(elapsed * 1.4) * 0.022);
+        setOpacity(cloudGroup, 0.72);
       }
 
-      const points = [
-        new THREE.Vector3(website.position.x + 1.65, website.position.y - 0.25, website.position.z + 0.14),
-        new THREE.Vector3(desktop.position.x + 0.9, desktop.position.y + 0.3, desktop.position.z + 0.14),
-        new THREE.Vector3(codePanel.position.x, codePanel.position.y + 0.88, codePanel.position.z + 0.14),
-        new THREE.Vector3(mobile.position.x - 0.54, mobile.position.y + 0.18, mobile.position.z + 0.14),
-        new THREE.Vector3(dataGroup.position.x, dataGroup.position.y, dataGroup.position.z + 0.16),
-        new THREE.Vector3(securityGroup.position.x, securityGroup.position.y, securityGroup.position.z + 0.14),
-        new THREE.Vector3(cloudGroup.position.x, cloudGroup.position.y - 0.34, cloudGroup.position.z + 0.12),
-        new THREE.Vector3(launchGroup.position.x, launchGroup.position.y, launchGroup.position.z + 0.12),
-      ];
+      const points =
+        stage === "mobile"
+          ? [
+              new THREE.Vector3(codePanel.position.x + 1.0, codePanel.position.y + 0.54, codePanel.position.z + 0.14),
+              new THREE.Vector3(website.position.x - 1.54, website.position.y - 0.16, website.position.z + 0.16),
+              new THREE.Vector3(website.position.x + 1.74, website.position.y + 0.18, website.position.z + 0.18),
+              new THREE.Vector3(mobile.position.x - 0.56, mobile.position.y + 0.24, mobile.position.z + 0.16),
+              new THREE.Vector3(dataGroup.position.x, dataGroup.position.y, dataGroup.position.z + 0.18),
+              new THREE.Vector3(launchGroup.position.x, launchGroup.position.y, launchGroup.position.z + 0.16),
+            ]
+          : [
+              new THREE.Vector3(website.position.x + 1.65, website.position.y - 0.25, website.position.z + 0.14),
+              new THREE.Vector3(desktop.position.x + 0.9, desktop.position.y + 0.3, desktop.position.z + 0.14),
+              new THREE.Vector3(codePanel.position.x, codePanel.position.y + 0.88, codePanel.position.z + 0.14),
+              new THREE.Vector3(mobile.position.x - 0.54, mobile.position.y + 0.18, mobile.position.z + 0.14),
+              new THREE.Vector3(dataGroup.position.x, dataGroup.position.y, dataGroup.position.z + 0.16),
+              new THREE.Vector3(securityGroup.position.x, securityGroup.position.y, securityGroup.position.z + 0.14),
+              new THREE.Vector3(cloudGroup.position.x, cloudGroup.position.y - 0.34, cloudGroup.position.z + 0.12),
+              new THREE.Vector3(launchGroup.position.x, launchGroup.position.y, launchGroup.position.z + 0.12),
+            ];
       connectionGeometry.setFromPoints(points);
       connectionMaterial.opacity = stage === "mobile" || stage === "desktopErp" || stage === "webDev" ? 0.38 : 0.34;
 
@@ -707,6 +776,13 @@ export default function SoftwareScrollScene({ progressRootId, className = "absol
         }
       });
       launchGroup.traverse((child) => {
+        if (child instanceof THREE.Mesh) {
+          child.geometry.dispose();
+          if (Array.isArray(child.material)) child.material.forEach((material) => material.dispose());
+          else child.material.dispose();
+        }
+      });
+      heroBackdrop.traverse((child) => {
         if (child instanceof THREE.Mesh) {
           child.geometry.dispose();
           if (Array.isArray(child.material)) child.material.forEach((material) => material.dispose());

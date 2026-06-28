@@ -18,8 +18,8 @@
   --color-dark-header: var(--dark-header);
   --color-button-blue: var(--button-blue);
   --color-hover-blue: var(--hover-blue);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: Arial, Helvetica, sans-serif;
+  --font-mono: "Cascadia Mono", Consolas, "Courier New", monospace;
 }
 
 @media (prefers-color-scheme: dark) {

@@ -1,314 +1,334 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  Shield,
-  Smartphone,
-  Database,
-  Cloud,
-  Cpu,
-  Users,
-  Globe,
-  Code2,
-  CheckCircle,
-} from "lucide-react";
+import Image from "next/image";
+import { CheckCircle } from "lucide-react";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ProductCarousel from "@/components/ProductCarousel";
+import ProductPortfolio3D from "@/components/ProductPortfolio3D";
+import PrimusModules3D from "@/components/PrimusModules3D";
+import PrimusShowcase3D from "@/components/PrimusShowcase3D";
 import TestimonialsSlider from "@/components/TestimonialsSlider";
-import AnimatedCounter from "@/components/AnimatedCounter";
-import SoftwareScrollScene from "@/components/SoftwareScrollScene";
-
-import { stagger } from "@/components/motion";
-import { ArrowRight } from "lucide-react";
-
-const services = [
-  { title: "Enterprise Resource Planning", icon: Database, description: "End-to-end ERP solutions for business sectors that need connected finance, stock, sales, and operations." },
-  { title: "POS", icon: Cpu, description: "Easy-to-use, highly customizable point-of-sale software for small, medium, single-store, and multi-store retailers." },
-  { title: "Payroll & HR Software", icon: Users, description: "Payroll, PAYE, CSG, NSF, payslips, leave, time, and attendance workflows built for Mauritius compliance." },
-  { title: "Mobile Engineering", icon: Smartphone, description: "Cost-effective iOS, Android, and Windows mobile applications that help teams work from anywhere." },
-  { title: "Web Application Development", icon: Globe, description: "Fast, maintainable web platforms for portals, dashboards, e-commerce, and internal business tools." },
-  { title: "Custom Software Development", icon: Code2, description: "Tailor-made business systems built around your workflows, users, and operational edge cases." },
-  { title: "Cloud & DMS", icon: Cloud, description: "Affordable implementation and support for cloud systems, hosting, and document management." },
-  { title: "IT Security & Networks", icon: Shield, description: "End-to-end data protection, infrastructure security, compliance, hardware, and network solutions." },
-];
+import ScrollDrivenHero from "@/components/ScrollDrivenHero";
+import DataNetworkBackground from "@/components/DataNetworkBackground";
+import IndustriesWeServe3D from "@/components/IndustriesWeServe3D";
+import ProfessionalServices3D from "@/components/ProfessionalServices3D";
+import Clients3DSlider from "@/components/Clients3DSlider";
+import PayrollFeatures3D from "@/components/PayrollFeatures3D";
+import WebMobileShowcase3D from "@/components/WebMobileShowcase3D";
 
 export default function Home() {
+  const aboutStats = [
+    "18+ Years of Experience",
+    "Enterprise Products",
+    "Various Business Sectors",
+  ];
+
+  const leadershipTeam = [
+    {
+      initials: "RK",
+      name: "Ranjith Kumar",
+      role: "Director",
+      description:
+        "Visionary leader driving Macro Solution's strategic growth and technology partnerships across Mauritius.",
+      accent: "from-[#0b5ed7] via-[#083b8a] to-[#36c2ff]",
+    },
+    {
+      initials: "AN",
+      name: "Ashvin Nurkoo",
+      role: "Project Manager",
+      description:
+        "Overseeing delivery of complex IT projects, ensuring quality, timelines and client satisfaction.",
+      accent: "from-[#7c3aed] via-[#0b5ed7] to-[#4d9fff]",
+    },
+  ];
+
   return (
-    <main className="overflow-x-hidden bg-background text-gray-900">
+    <main className="relative overflow-x-clip bg-[#031230] text-white">
+      <div className="pointer-events-none fixed inset-0 -z-20 bg-[radial-gradient(circle_at_top,rgba(10,37,84,0.92),rgba(3,18,48,1)_52%,rgba(2,11,30,1)_100%)]" />
+      <DataNetworkBackground variant="dark" className="fixed inset-0 -z-10 opacity-90" />
+      <motion.div
+        aria-hidden="true"
+        animate={{ opacity: [0.2, 0.38, 0.2], scale: [0.96, 1.04, 0.96] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="pointer-events-none fixed left-[8%] top-[12%] -z-10 h-[24rem] w-[24rem] rounded-full bg-[radial-gradient(circle,rgba(77,159,255,0.18),transparent_68%)] blur-3xl"
+      />
+      <motion.div
+        aria-hidden="true"
+        animate={{ opacity: [0.12, 0.32, 0.12], scale: [0.92, 1.06, 0.92] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        className="pointer-events-none fixed bottom-[8%] right-[6%] -z-10 h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,rgba(11,94,215,0.18),transparent_68%)] blur-3xl"
+      />
 
       <Navbar />
-      <section className="relative min-h-screen overflow-hidden bg-background/72 pt-28 text-gray-950">
-        <div className="absolute inset-0 opacity-100">
-          <SoftwareScrollScene stage="website" />
-        </div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_16%,rgba(11,94,215,0.08),transparent_24%),radial-gradient(circle_at_84%_10%,rgba(77,159,255,0.08),transparent_26%),linear-gradient(180deg,rgba(245,249,255,0.3)_0%,rgba(255,255,255,0.14)_54%,rgba(0,40,104,0.1)_100%)]" />
-        <div className="container relative z-10 mx-auto flex min-h-[calc(100vh-7rem)] items-center px-6 py-20">
-          <motion.div
-            initial={{ opacity: 0, y: 28 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="relative max-w-3xl rounded-3xl border border-white/38 bg-white/32 p-8 text-left shadow-[0_30px_100px_rgba(15,23,42,0.12)] backdrop-blur-[4px] md:p-12"
-          >
-            <p className="font-semibold uppercase tracking-[0.28em] text-brand-blue">
-              Macro Solution Mauritius
-            </p>
-            <h1 className="mt-5 bg-gradient-to-r from-dark-header via-brand-blue to-dark-header bg-clip-text text-4xl font-bold leading-[1.08] text-transparent md:text-5xl lg:text-6xl">
-              Intelligent systems with a more dynamic digital presence.
-            </h1>
-            <p className="mt-7 max-w-3xl text-lg leading-8 text-gray-700 md:text-xl">
-              User friendly ERP, POS, Payroll, HR, mobile, cloud, security, and custom software
-              solutions built for productive, competitive, and innovative businesses.
-            </p>
 
-            <div className="mt-9 flex flex-col gap-4 sm:flex-row">
-              <a
-                href="#products"
-                className="inline-flex items-center gap-2 rounded-full bg-button-blue px-7 py-4 font-semibold text-white transition hover:bg-hover-blue"
-              >
-                View products
-                <ArrowRight size={18} />
-              </a>
-              <a
-                href="/contact"
-                className="inline-flex items-center gap-2 rounded-full border border-brand-blue/20 bg-white/70 px-7 py-4 font-semibold backdrop-blur transition hover:border-hover-blue hover:text-button-blue"
-              >
-                Contact us
-              </a>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="relative min-h-[130vh] overflow-hidden bg-[linear-gradient(180deg,rgba(0,40,104,0.78)_0%,rgba(7,27,61,0.62)_48%,rgba(245,249,255,0.34)_100%)] text-white">
-        <div className="absolute inset-0 opacity-100">
-          <SoftwareScrollScene stage="mobile" />
-        </div>
-        <div className="sticky top-0 flex min-h-screen items-center py-24">
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-full bg-[linear-gradient(90deg,rgba(0,40,104,0.56)_0%,rgba(0,40,104,0.38)_34%,rgba(7,27,61,0.16)_58%,transparent_82%)] lg:w-[52%]" />
-          <div className="container relative z-10 mx-auto grid items-center gap-12 px-6 lg:grid-cols-[0.82fr_1.18fr]">
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.35 }}
-              transition={{ duration: 0.75 }}
-              className="relative max-w-xl rounded-2xl border border-white/16 bg-dark-header/38 p-7 shadow-[0_28px_90px_rgba(0,0,0,0.2)] backdrop-blur-[5px] md:p-8 lg:bg-dark-header/32"
-            >
-              <p className="text-sm font-semibold uppercase tracking-[0.28em] text-hover-blue">
-                Product engineering flow
-              </p>
-              <h2 className="mt-5 text-3xl font-bold leading-tight md:text-5xl">
-                Website and mobile apps built from one connected system.
-              </h2>
-              <p className="mt-6 text-lg leading-8 text-blue-100">
-                Scroll to see the dashboard, mobile app, application logic, and cloud layer separate
-                into their roles, then integrate into one software experience.
-              </p>
-            </motion.div>
-            <div className="min-h-[520px]" />
-          </div>
-        </div>
-      </section>
-
-      {/* ABOUT */}
-      <section id="about" className="relative overflow-hidden py-40">
-        <div className="absolute inset-0 opacity-100">
-          <SoftwareScrollScene stage="desktopErp" />
-        </div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_24%,rgba(11,94,215,0.08),transparent_24%),radial-gradient(circle_at_88%_12%,rgba(77,159,255,0.1),transparent_26%),linear-gradient(180deg,rgba(245,249,255,0.38)_0%,rgba(255,255,255,0.2)_100%)]" />
-        <div className="container relative z-10 mx-auto grid items-center gap-20 px-6 lg:grid-cols-2">
-
-          <div className="rounded-3xl border border-white/45 bg-white/42 p-8 shadow-[0_24px_80px_rgba(15,23,42,0.08)] backdrop-blur-[6px] md:p-10">
-            <span className="text-brand-blue font-semibold tracking-widest uppercase">
-              About Macro Solution
-            </span>
-
-            <h2 className="mt-6 text-3xl font-bold leading-tight md:text-4xl">
-              User friendly applications at affordable prices
-            </h2>
-
-            <p className="mt-6 text-gray-600 text-lg leading-relaxed">
-              Macro Solution is a company registered under the laws of Mauritius. We help organizations realize their business visions and goals through innovative, high quality, customized IT solutions.
-            </p>
-
-            <div className="mt-10 space-y-4">
-              {[
-                "Mission: design, create, and implement world class IT management software.",
-                "Vision: become one of the leading software and IT solutions companies in the region.",
-                "Solutions focused on productivity, competitiveness, and innovation.",
-                "Comprehensive and cost effective IT services for growing businesses.",
-              ].map((item) => (
-                <div key={item} className="flex items-center gap-3">
-                  <CheckCircle className="text-button-blue" />
-                  <span>{item}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <motion.div
-            initial={false}
-            animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 1 }}
-            className="relative rounded-3xl border border-white/30 bg-[linear-gradient(145deg,rgba(8,59,138,0.54),rgba(11,94,215,0.42))] p-12 text-white shadow-[0_40px_120px_rgba(0,40,104,0.18)] transform perspective-1000 overflow-hidden backdrop-blur-[5px]"
-          >
-            <div className="absolute -right-10 -top-8 h-36 w-36 rounded-full bg-white/12 blur-2xl" />
-            <div className="absolute -bottom-12 -left-8 h-40 w-40 rounded-full bg-black/10 blur-3xl" />
-            <h3 className="text-4xl font-bold">
-              Future-Ready Technology Stack
-            </h3>
-            <p className="mt-6 text-blue-100">
-              ERP, POS, Payroll, HRMS, mobile apps, DMS, RPA, security, hardware, and fuel industry systems under one technology partner.
-            </p>
-          </motion.div>
-
-        </div>
-      </section>
-
-      {/* STATS */}
-      <section className="relative overflow-hidden bg-[linear-gradient(110deg,rgba(8,59,138,0.86)_0%,rgba(11,94,215,0.74)_38%,rgba(0,40,104,0.88)_100%)] py-32 text-white">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.16),transparent_20%),radial-gradient(circle_at_82%_72%,rgba(77,159,255,0.18),transparent_22%)]" />
-
+      <div className="relative">
+        <ScrollDrivenHero />
         <motion.div
-          className="container mx-auto px-6 grid md:grid-cols-4 gap-10 text-center"
-          variants={stagger}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
+          initial={{ opacity: 0, scale: 0.8, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: "easeOut", delay: 0.35 }}
+          className="pointer-events-none absolute bottom-10 right-6 z-20 hidden md:block"
         >
-          {[
-            { value: 75, label: "Projects Completed" },
-            { value: 75, label: "Happy Clients" },
-            { value: 15, label: "Business Solutions" },
-            { value: 100, label: "Customer Satisfaction" },
-          ].map((item, i) => (
-            <motion.div key={i} whileHover={{ scale: 1.1 }}>
-              <div className="text-4xl font-bold md:text-5xl">
-                <AnimatedCounter end={item.value} suffix="+" />
-              </div>
-              <p className="mt-3">{item.label}</p>
-            </motion.div>
-          ))}
-        </motion.div>
-
-      </section>
-
-      {/* SERVICES */}
-      <section id="services" className="relative overflow-hidden bg-[linear-gradient(180deg,rgba(245,249,255,0.7)_0%,rgba(255,255,255,0.58)_100%)] py-40">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_14%_18%,rgba(11,94,215,0.1),transparent_24%),radial-gradient(circle_at_86%_14%,rgba(77,159,255,0.12),transparent_28%)]" />
-        <div className="container relative z-10 mx-auto px-6">
-
-          <div className="mx-auto mb-20 max-w-3xl rounded-3xl border border-white/65 bg-white/72 p-8 text-center shadow-[0_24px_70px_rgba(15,23,42,0.07)] backdrop-blur-md">
-            <h2 className="text-3xl font-bold md:text-4xl">Technology Solutions</h2>
-            <p className="mx-auto mt-4 max-w-2xl text-gray-600">A broader software and IT capability set for retail, operations, service delivery, and digital product teams.</p>
-          </div>
-
           <motion.div
-            className="grid gap-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-            variants={stagger}
-            initial="hidden"
-            whileInView="show"
+            animate={{ y: [0, -16, 0], rotate: [0, 6, 0, -6, 0] }}
+            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+            className="rounded-[1.8rem] border border-white/16 bg-white/10 p-4 shadow-[0_25px_80px_rgba(0,0,0,0.24)] backdrop-blur-xl"
           >
-            {services.map((s, i) => {
-              const Icon = s.icon;
+            <Image src="/PRIMUS LOGO ONLY TRI.png" alt="PRIMUS symbol" width={96} height={96} className="h-auto w-20 object-contain" />
+          </motion.div>
+        </motion.div>
+      </div>
 
-              return (
-                <motion.div
-                  key={i}
-                  whileHover={{
-                    y: -15,
-                    scale: 1.03,
-                  }}
-                  className="
-                    group
-                    relative
-                    rounded-3xl
-                    bg-white/82
-                    p-10
-                    shadow-[0_22px_60px_rgba(15,23,42,0.08)]
-                    border border-white/70
-                    backdrop-blur
-                    transition-all
-                    duration-500
-                    hover:shadow-[0_25px_80px_rgba(77,159,255,0.25)]
-                  "
-                >
-                  <div className="absolute top-0 right-0 h-24 w-24 bg-button-blue/10 blur-2xl rounded-full" />
+      <WebMobileShowcase3D />
 
-                  <Icon className="text-button-blue mb-6" size={34} />
+      <section id="about" className="relative overflow-hidden py-40 text-white [perspective:2200px]">
+        <DataNetworkBackground variant="dark" className="opacity-75" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_20%,rgba(77,159,255,0.12),transparent_24%),radial-gradient(circle_at_84%_72%,rgba(11,94,215,0.14),transparent_28%),linear-gradient(180deg,rgba(3,18,48,0.18),rgba(3,18,48,0.06))]" />
+        <motion.div
+          aria-hidden="true"
+          animate={{ rotate: [0, 180, 360], scale: [0.96, 1.04, 0.96] }}
+          transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
+          className="absolute left-1/2 top-1/2 h-[24rem] w-[24rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/8 shadow-[0_0_80px_rgba(77,159,255,0.12)] md:h-[42rem] md:w-[42rem]"
+        />
 
-                  <h3 className="text-2xl font-bold">{s.title}</h3>
-                  <p className="mt-4 text-gray-600">{s.description}</p>
-                </motion.div>
-              );
-            })}
+        <div className="container relative z-10 mx-auto grid items-center gap-16 px-6 lg:grid-cols-[0.95fr_1.05fr]">
+          <motion.div
+            initial={{ opacity: 0, y: 40, rotateX: 12 }}
+            whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="relative overflow-hidden rounded-[2rem] border border-white/12 bg-white/8 p-8 shadow-[0_30px_120px_rgba(0,0,0,0.24)] backdrop-blur-xl [transform-style:preserve-3d] md:p-10"
+          >
+            <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_45%,rgba(77,159,255,0.08))]" />
+            <div className="absolute -right-14 -top-14 h-40 w-40 rounded-full bg-white/10 blur-3xl" />
+            <div className="absolute -bottom-16 -left-10 h-44 w-44 rounded-full bg-cyan-300/10 blur-3xl" />
+
+            <div className="relative [transform:translateZ(32px)]">
+              <span className="inline-flex rounded-full border border-cyan-300/18 bg-cyan-300/8 px-5 py-2 text-sm font-semibold uppercase tracking-[0.35em] text-cyan-200">
+                About Macro Solution
+              </span>
+
+              <h2 className="mt-6 text-3xl font-bold leading-tight md:text-5xl">
+                Mauritius-based IT solutions for smarter business growth.
+              </h2>
+
+              <p className="mt-6 text-lg leading-relaxed text-white/75">
+                Macro Solution Ltd is a Mauritius-based IT company specialising in end-to-end technology solutions for businesses across multiple sectors.
+              </p>
+
+              <p className="mt-5 text-lg leading-relaxed text-white/75">
+                We design, develop and deploy robust software, PRIMUS - HR & Payroll systems, General Insurance, M-POS and IT Infrastructure, empowering organisations to operate smarter and grow faster.
+              </p>
+
+              <div className="mt-10 space-y-4">
+                {[
+                  "Our flagship product PRIMUS serves leading organisations including SBI Mauritius, New India Assurance, and various sectors.",
+                  "Location: Quatre Bornes - Port Louis, Mauritius.",
+                ].map((item, index) => (
+                  <motion.div
+                    key={item}
+                    initial={{ opacity: 0, x: -24 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, amount: 0.4 }}
+                    transition={{ duration: 0.55, delay: index * 0.08, ease: "easeOut" }}
+                    whileHover={{ x: 8, scale: 1.01 }}
+                    className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/6 px-4 py-4 text-white/88 backdrop-blur-md"
+                  >
+                    <CheckCircle className="shrink-0 text-cyan-300" />
+                    <span>{item}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           </motion.div>
 
+          <div className="relative h-[700px] [perspective:1800px]">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.88, rotateX: 18, rotateY: -18 }}
+              whileInView={{ opacity: 1, scale: 1, rotateX: 0, rotateY: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.9, ease: "easeOut" }}
+              whileHover={{ rotateX: 6, rotateY: -8, y: -10 }}
+              className="absolute left-1/2 top-1/2 h-[26rem] w-[min(88vw,34rem)] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[2rem] border border-white/12 bg-white/8 p-6 shadow-[0_40px_120px_rgba(0,0,0,0.28)] backdrop-blur-xl [transform-style:preserve-3d]"
+            >
+              <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_45%,rgba(77,159,255,0.08))]" />
+              <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-white/70 to-transparent" />
+              <div className="absolute -right-12 -top-12 h-36 w-36 rounded-full bg-white/10 blur-3xl" />
+              <div className="absolute -bottom-14 -left-12 h-40 w-40 rounded-full bg-cyan-300/10 blur-3xl" />
+
+              <div className="relative flex h-full flex-col justify-between [transform:translateZ(36px)]">
+                <div>
+                  <p className="text-sm font-semibold uppercase tracking-[0.35em] text-cyan-200">Technology Ecosystem</p>
+                  <h3 className="mt-4 text-4xl font-bold">Complete Business Technology Stack</h3>
+                  <p className="mt-5 text-white/72">
+                    ERP, POS, Payroll, HRMS, mobile apps, web platforms, DMS, cloud, IT security, hardware, networks, and fuel industry systems under one technology partner.
+                  </p>
+                </div>
+
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {[
+                    "Custom Software",
+                    "Mobile Apps",
+                    "Cloud & Security",
+                    "Business Automation",
+                  ].map((item, index) => (
+                    <motion.div
+                      key={item}
+                      animate={{ y: index % 2 === 0 ? [0, -8, 0] : [0, 8, 0] }}
+                      transition={{ duration: 4.8 + index * 0.35, repeat: Infinity, ease: "easeInOut" }}
+                      className="rounded-[1.2rem] border border-white/10 bg-white/8 px-4 py-4 text-sm font-semibold text-white/88 shadow-[0_16px_40px_rgba(0,0,0,0.12)]"
+                    >
+                      {item}
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              animate={{ y: [0, -14, 0], rotate: [0, 4, 0, -4, 0] }}
+              transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute left-2 top-14 rounded-[1.6rem] border border-white/12 bg-[linear-gradient(135deg,rgba(11,94,215,0.88),rgba(77,159,255,0.78))] p-5 shadow-[0_26px_80px_rgba(11,94,215,0.28)] md:left-6"
+            >
+              <p className="text-sm uppercase tracking-[0.35em] text-white/75">18+ Years</p>
+              <p className="mt-3 text-3xl font-bold">Experience</p>
+            </motion.div>
+
+            <motion.div
+              animate={{ y: [0, 12, 0], rotate: [0, -3, 0, 3, 0] }}
+              transition={{ duration: 6.2, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute bottom-12 right-0 rounded-[1.6rem] border border-white/12 bg-[linear-gradient(135deg,rgba(124,58,237,0.85),rgba(11,94,215,0.72))] p-5 shadow-[0_26px_80px_rgba(0,0,0,0.24)] md:right-4"
+            >
+              <p className="text-sm uppercase tracking-[0.35em] text-white/75">Multi-Sector</p>
+              <p className="mt-3 text-3xl font-bold">Business Impact</p>
+            </motion.div>
+
+            <motion.div
+              animate={{ y: [0, -10, 0], x: [0, 8, 0] }}
+              transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute right-12 top-8 hidden rounded-[1.4rem] border border-cyan-300/18 bg-white/10 px-5 py-4 text-sm font-semibold text-cyan-200 shadow-[0_18px_60px_rgba(77,159,255,0.16)] backdrop-blur-md md:block"
+            >
+              Innovation + Execution
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* PRODUCTS */}
-      <section id="products" className="relative overflow-hidden bg-white/62 py-40 backdrop-blur-[1px]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_88%_14%,rgba(11,94,215,0.08),transparent_24%),radial-gradient(circle_at_12%_76%,rgba(77,159,255,0.08),transparent_24%)]" />
+      <section className="relative overflow-hidden py-24 text-white [perspective:1200px]">
         <div className="container relative z-10 mx-auto px-6">
-          <ProductCarousel />
-        </div>
-      </section>
-
-      {/* WHY US */}
-      <section className="relative overflow-hidden bg-[linear-gradient(160deg,rgba(0,40,104,0.88)_0%,rgba(8,59,138,0.78)_55%,rgba(11,94,215,0.72)_100%)] py-40 text-white">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_20%,rgba(77,159,255,0.16),transparent_22%),radial-gradient(circle_at_86%_22%,rgba(255,255,255,0.08),transparent_24%)]" />
-        <div className="container relative z-10 mx-auto px-6 text-center">
-          <h2 className="mb-20 text-3xl font-bold md:text-4xl">Why Choose Us</h2>
-
-          <div className="grid md:grid-cols-3 gap-10">
-            {["Innovation", "Affordability", "Customization"].map((t) => (
+          <motion.div
+            animate={{ x: [0, -40, 0] }}
+            transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+            className="flex w-max gap-6 px-6 [transform-style:preserve-3d]"
+          >
+            {[...aboutStats, ...aboutStats].map((item, index) => (
               <motion.div
-                key={t}
-                whileHover={{ scale: 1.05 }}
-                className="bg-dark-header/44 p-10 rounded-3xl backdrop-blur-lg border border-white/14"
+                key={`${item}-${index}`}
+                whileHover={{ y: -14, rotateX: 10, rotateY: index % 2 === 0 ? -10 : 10, scale: 1.04 }}
+                className="flex h-40 w-[min(82vw,360px)] shrink-0 items-center justify-center border border-white/18 bg-white/10 p-8 text-center shadow-[0_32px_90px_rgba(0,0,0,0.22)] backdrop-blur-xl" style={{ clipPath: index % 3 === 0 ? "polygon(6% 0,100% 0,94% 100%,0 100%)" : index % 3 === 1 ? "polygon(0 12%,100% 0,100% 88%,0 100%)" : "polygon(10% 0,100% 0,90% 100%,0 100%)" }}
               >
-                <h3 className="text-3xl font-bold">{t}</h3>
-                <p className="mt-4 text-gray-300">
-                  Practical systems designed around your operations, budget, and growth plans.
-                </p>
+                <span className="text-2xl font-bold leading-tight md:text-3xl">
+                  {item}
+                </span>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
-      <section className="relative overflow-hidden bg-background/66 py-40">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_16%,rgba(11,94,215,0.08),transparent_20%),radial-gradient(circle_at_88%_80%,rgba(77,159,255,0.08),transparent_22%)]" />
+      <PrimusModules3D />
+      <PrimusShowcase3D />
+      <PayrollFeatures3D />
+      <ProductPortfolio3D />
+      <IndustriesWeServe3D />
+
+      <ProfessionalServices3D />
+      <Clients3DSlider />
+
+      <section className="relative overflow-hidden py-32 text-white [perspective:2000px]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(77,159,255,0.12),transparent_42%),radial-gradient(circle_at_bottom_right,rgba(11,94,215,0.16),transparent_36%)]" />
         <div className="container relative z-10 mx-auto px-6">
-          <TestimonialsSlider />
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="mx-auto max-w-3xl text-center"
+          >
+            <span className="inline-flex rounded-full border border-white/15 bg-white/8 px-5 py-2 text-sm font-semibold uppercase tracking-[0.35em] text-cyan-200 backdrop-blur-md">
+              Leadership Team
+            </span>
+            <h2 className="mt-6 text-4xl font-bold md:text-6xl">The People Behind Our Success</h2>
+            <p className="mt-5 text-lg text-white/70 md:text-xl">
+              Meet the leadership shaping Macro Solution&apos;s growth, project excellence and trusted client partnerships.
+            </p>
+          </motion.div>
+
+          <motion.div
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
+            className="mt-16 flex w-max gap-8 pb-6"
+          >
+            {[...leadershipTeam, ...leadershipTeam].map((leader, index) => (
+              <motion.article
+                key={`${leader.name}-${index}`}
+                initial={{ opacity: 0, y: 40, rotateX: 10 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                whileHover={{ y: -16, rotateY: index % 2 === 0 ? -8 : 8, rotateX: 8, scale: 1.02 }}
+                transition={{ duration: 0.65, ease: "easeOut" }}
+                className="group relative h-[28rem] w-[min(86vw,30rem)] shrink-0 overflow-hidden border border-white/12 bg-white/8 p-8 shadow-[0_30px_120px_rgba(0,0,0,0.28)] backdrop-blur-xl [transform-style:preserve-3d]" style={{ clipPath: index % 2 === 0 ? "polygon(0 0,92% 0,100% 14%,100% 100%,8% 100%,0 86%)" : "polygon(8% 0,100% 0,100% 86%,92% 100%,0 100%,0 14%)" }}
+              >
+                <div className={`absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r ${leader.accent}`} />
+                <div className="absolute -right-14 top-10 h-36 w-36 rounded-full bg-white/10 blur-3xl transition duration-500 group-hover:scale-125" />
+                <div className="absolute -left-10 bottom-0 h-40 w-40 rounded-full bg-cyan-300/10 blur-3xl transition duration-500 group-hover:scale-125" />
+                <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_42%,rgba(77,159,255,0.08))] opacity-70" />
+
+                <div className="relative flex h-full flex-col justify-between [transform:translateZ(30px)]">
+                  <div className="flex items-start justify-between gap-6">
+                    <div>
+                      <div className={`flex h-20 w-20 items-center justify-center bg-gradient-to-br ${leader.accent} text-2xl font-black text-white shadow-[0_24px_60px_rgba(11,94,215,0.35)]`} style={{ clipPath: index % 2 === 0 ? "polygon(0 0,100% 0,86% 100%,0 100%)" : "polygon(14% 0,100% 0,100% 100%,0 100%)" }}>
+                        {leader.initials}
+                      </div>
+                      <div className="mt-6">
+                        <p className="text-sm uppercase tracking-[0.35em] text-cyan-200">{leader.role}</p>
+                        <h3 className="mt-3 text-3xl font-bold md:text-4xl">{leader.name}</h3>
+                      </div>
+                    </div>
+                    <div className="hidden h-24 w-24 rounded-full border border-white/10 bg-white/6 md:block" />
+                  </div>
+
+                  <div className="relative mt-8 flex-1 overflow-hidden rounded-[1.75rem] border border-white/10 bg-[#061a3d]/55 p-6 shadow-inner shadow-black/10">
+                    <motion.div
+                      animate={{ y: [0, -18, 0] }}
+                      transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
+                      className="absolute -right-8 -top-8 h-28 w-28 rounded-full bg-white/10 blur-2xl"
+                    />
+                    <motion.div
+                      animate={{ rotate: [0, 180, 360] }}
+                      transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
+                      className="absolute right-4 top-4 h-12 w-12 rounded-full border border-cyan-200/20"
+                    />
+                    <p className="relative z-10 text-xl leading-relaxed text-white/82 md:text-2xl">
+                      {leader.description}
+                    </p>
+                  </div>
+                </div>
+              </motion.article>
+            ))}
+          </motion.div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section id="contact" className="relative overflow-hidden bg-[linear-gradient(135deg,rgba(8,59,138,0.86)_0%,rgba(11,94,215,0.76)_45%,rgba(0,40,104,0.9)_100%)] py-40 text-center text-white">
-        <div className="absolute -top-40 -left-40 w-96 h-96 bg-white/10 blur-3xl rounded-full" />
-        <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-white/10 blur-3xl rounded-full" />
-
-        <div className="container mx-auto px-6 relative">
-          <h2 className="text-3xl font-bold md:text-4xl">
-            Ready to Transform Your Business?
-          </h2>
-
-          <p className="mt-6 text-xl max-w-2xl mx-auto">
-            Let&apos;s build intelligent systems that scale your business.
-          </p>
-
-          <a href="/contact" className="mt-10 inline-flex bg-white text-button-blue px-10 py-4 rounded-full font-bold hover:scale-105 hover:text-hover-blue transition">
-            Contact Us
-          </a>
-        </div>
-    </section>
       <Footer />
-
     </main>
   );
 }
+
+
+
+
+

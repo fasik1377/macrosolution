@@ -1,75 +1,75 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, MapPin, Phone, Send, ShieldCheck, Clock, Settings } from "lucide-react";
+import { Clock, Mail, MapPin, Phone, Send, Settings, ShieldCheck } from "lucide-react";
 
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import Page3DHero from "@/components/Page3DHero";
+import ContactScrollHero3D from "@/components/ContactScrollHero3D";
+import DataNetworkBackground from "@/components/DataNetworkBackground";
+import { company, products } from "@/components/companyProfile";
 import { fadeUp, stagger } from "@/components/motion";
 
 const contactCards = [
   {
     icon: Mail,
     label: "Email",
-    value: "info@macrosolution.mu",
+    value: company.email,
   },
   {
     icon: Phone,
     label: "Phone",
-    value: "+230 589 006 07",
+    value: company.phone,
   },
   {
     icon: MapPin,
     label: "Location",
-    value: "Mauritius",
+    value: company.location,
   },
 ];
 
 const responseItems = [
-  { icon: Clock, title: "Quick Discovery", text: "We clarify your workflow, users, timelines, and system requirements." },
-  { icon: Settings, title: "Tailored Proposal", text: "You get a focused solution plan for ERP, POS, HRMS, DMS, cloud, or custom software." },
-  { icon: ShieldCheck, title: "Reliable Delivery", text: "Implementation, support, security, and training stay aligned with your business." },
+  { icon: Clock, title: "Business Discovery", text: "We clarify your business vision, workflows, users, timelines, and system requirements." },
+  { icon: Settings, title: "Tailored Solution", text: "You get a focused plan for ERP, POS, payroll, HRMS, DMS, cloud, security, or custom software." },
+  { icon: ShieldCheck, title: "Reliable Implementation", text: "Implementation, support, security, training, hardware, and network guidance stay aligned with your business." },
 ];
 
 export default function ContactPage() {
   return (
-    <main className="overflow-x-hidden bg-background text-gray-900">
+    <main className="relative overflow-x-hidden bg-[#031230] text-white">
+      <div className="pointer-events-none fixed inset-0 -z-20 bg-[radial-gradient(circle_at_top,rgba(10,37,84,0.92),rgba(3,18,48,1)_52%,rgba(2,11,30,1)_100%)]" />
+      <DataNetworkBackground variant="dark" className="fixed inset-0 -z-10 opacity-90" />
       <Navbar />
-      <Page3DHero
-        eyebrow="Contact Macro Solution"
-        title="Start a smarter business system."
-        description="Tell us what you need to improve, automate, connect, or secure. Macro Solution helps businesses in Mauritius turn operational challenges into practical software and IT solutions."
-        tone="contact"
-      />
+      <ContactScrollHero3D />
 
-      <section className="py-28">
-        <div className="container mx-auto grid gap-10 px-6 lg:grid-cols-[0.8fr_1.2fr]">
+      <section className="relative -mt-10 overflow-hidden py-14 text-white [perspective:1800px] md:-mt-14 md:py-16">
+        <DataNetworkBackground variant="dark" className="opacity-70" />
+        <div className="container relative z-10 mx-auto grid gap-10 px-6 lg:grid-cols-[0.8fr_1.2fr]">
           <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }}>
             <motion.h2 variants={fadeUp} className="text-4xl font-bold">
               Let&apos;s talk about your next system
             </motion.h2>
-            <motion.p variants={fadeUp} className="mt-5 text-lg leading-8 text-gray-600">
-              Whether you need POS software, payroll compliance, ERP, mobile apps, document management, fuel industry software, IT security, or infrastructure support, we can help you define the right path.
+            <motion.p variants={fadeUp} className="mt-5 text-lg leading-8 text-white/72">
+              Whether you need POS software, payroll compliance, ERP, mobile apps, document management, fuel industry software, IT security, hardware, networks, or infrastructure support, we can help you define the right path.
             </motion.p>
 
             <div className="mt-10 space-y-4">
-              {contactCards.map((item) => {
+              {contactCards.map((item, index) => {
                 const Icon = item.icon;
 
                 return (
                   <motion.div
                     key={item.label}
                     variants={fadeUp}
-                    whileHover={{ y: -6, rotateX: 4 }}
-                    className="flex items-center gap-4 rounded-2xl border border-brand-blue/10 bg-white p-5 shadow-lg"
+                    whileHover={{ y: -6, rotateX: 4, rotateY: index % 2 === 0 ? -4 : 4 }}
+                    className="flex items-center gap-4 rounded-[1.8rem] border border-white/10 bg-white/8 p-5 shadow-[0_24px_70px_rgba(0,0,0,0.2)] backdrop-blur-xl"
                   >
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-button-blue/10 text-button-blue">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-button-blue/10 text-cyan-200">
                       <Icon size={22} />
                     </div>
                     <div>
-                      <p className="text-sm font-semibold uppercase tracking-widest text-gray-500">{item.label}</p>
-                      <p className="mt-1 font-bold">{item.value}</p>
+                      <p className="text-sm font-semibold uppercase tracking-widest text-white/50">{item.label}</p>
+                      <p className="mt-1 font-bold text-white">{item.value}</p>
                     </div>
                   </motion.div>
                 );
@@ -82,37 +82,38 @@ export default function ContactPage() {
             whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="rounded-3xl border border-brand-blue/10 bg-background p-6 shadow-2xl md:p-10"
+            className="rounded-[2rem] border border-white/10 bg-white/8 p-6 shadow-[0_30px_100px_rgba(0,0,0,0.22)] backdrop-blur-xl md:p-10"
           >
             <div className="grid gap-5 md:grid-cols-2">
               <label className="block">
-                <span className="text-sm font-bold text-gray-700">Name</span>
-                <input className="mt-2 w-full rounded-xl border border-gray-200 bg-white px-4 py-4 outline-none transition focus:border-button-blue" placeholder="Your name" />
+                <span className="text-sm font-bold text-white/75">Name</span>
+                <input className="mt-2 w-full rounded-xl border border-white/10 bg-white/10 px-4 py-4 text-white outline-none transition focus:border-cyan-300" placeholder="Your name" />
               </label>
               <label className="block">
-                <span className="text-sm font-bold text-gray-700">Company</span>
-                <input className="mt-2 w-full rounded-xl border border-gray-200 bg-white px-4 py-4 outline-none transition focus:border-button-blue" placeholder="Company name" />
+                <span className="text-sm font-bold text-white/75">Company</span>
+                <input className="mt-2 w-full rounded-xl border border-white/10 bg-white/10 px-4 py-4 text-white outline-none transition focus:border-cyan-300" placeholder="Company name" />
               </label>
               <label className="block">
-                <span className="text-sm font-bold text-gray-700">Email</span>
-                <input type="email" className="mt-2 w-full rounded-xl border border-gray-200 bg-white px-4 py-4 outline-none transition focus:border-button-blue" placeholder="you@company.com" />
+                <span className="text-sm font-bold text-white/75">Email</span>
+                <input type="email" className="mt-2 w-full rounded-xl border border-white/10 bg-white/10 px-4 py-4 text-white outline-none transition focus:border-cyan-300" placeholder="you@company.com" />
               </label>
               <label className="block">
-                <span className="text-sm font-bold text-gray-700">Solution</span>
-                <select className="mt-2 w-full rounded-xl border border-gray-200 bg-white px-4 py-4 outline-none transition focus:border-button-blue">
-                  <option>ERP</option>
-                  <option>POS</option>
-                  <option>Payroll & HRMS</option>
-                  <option>DMS</option>
-                  <option>Mobile App</option>
-                  <option>IT Security</option>
+                <span className="text-sm font-bold text-white/75">Solution</span>
+                <select className="mt-2 w-full rounded-xl border border-white/10 bg-white/10 px-4 py-4 text-white outline-none transition focus:border-cyan-300">
+                  {products.map((product) => (
+                    <option key={product.title} className="text-black">{product.title}</option>
+                  ))}
+                  <option className="text-black">Mobile Application Development</option>
+                  <option className="text-black">Web Application Development</option>
+                  <option className="text-black">Custom Software Development</option>
+                  <option className="text-black">IT Security, Hardware & Networks</option>
                 </select>
               </label>
             </div>
 
             <label className="mt-5 block">
-              <span className="text-sm font-bold text-gray-700">Message</span>
-              <textarea className="mt-2 min-h-40 w-full rounded-xl border border-gray-200 bg-white px-4 py-4 outline-none transition focus:border-button-blue" placeholder="Tell us about your workflow, problem, or project." />
+              <span className="text-sm font-bold text-white/75">Message</span>
+              <textarea className="mt-2 min-h-40 w-full rounded-xl border border-white/10 bg-white/10 px-4 py-4 text-white outline-none transition focus:border-cyan-300" placeholder="Tell us about your workflow, problem, or project." />
             </label>
 
             <button type="button" className="mt-6 inline-flex items-center gap-2 rounded-full bg-button-blue px-7 py-4 font-bold text-white transition hover:bg-hover-blue">
@@ -123,10 +124,11 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="bg-dark-header py-24 text-white">
-        <div className="container mx-auto px-6">
+      <section className="relative overflow-hidden py-24 text-white">
+        <DataNetworkBackground variant="dark" className="opacity-72" />
+        <div className="container relative z-10 mx-auto px-6">
           <div className="grid gap-6 md:grid-cols-3">
-            {responseItems.map((item) => {
+            {responseItems.map((item, index) => {
               const Icon = item.icon;
 
               return (
@@ -134,16 +136,46 @@ export default function ContactPage() {
                   key={item.title}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  whileHover={{ y: -10, rotateY: 5 }}
+                  whileHover={{ y: -10, rotateY: index % 2 === 0 ? 6 : -6, rotateX: 5 }}
                   viewport={{ once: true }}
-                  className="rounded-2xl border border-white/10 bg-white/10 p-8 backdrop-blur"
+                  className="rounded-[2rem] border border-white/10 bg-white/8 p-8 backdrop-blur-xl"
                 >
                   <Icon className="text-hover-blue" size={32} />
                   <h3 className="mt-6 text-2xl font-bold">{item.title}</h3>
-                  <p className="mt-4 leading-7 text-gray-300">{item.text}</p>
+                  <p className="mt-4 leading-7 text-white/72">{item.text}</p>
                 </motion.div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden py-28 text-white [perspective:1800px]">
+        <DataNetworkBackground variant="dark" className="opacity-70" />
+        <div className="container relative z-10 mx-auto px-6">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="font-semibold uppercase tracking-[0.3em] text-cyan-300">Connection Points</p>
+            <h2 className="mt-5 text-3xl font-bold md:text-5xl">A dynamic communication grid for starting your next project.</h2>
+          </div>
+          <div className="mt-16 grid gap-8 lg:grid-cols-3">
+            {[
+              "Tell us your goals",
+              "Share your workflow",
+              "Plan the right solution",
+            ].map((item, index) => (
+              <motion.div
+                key={item}
+                initial={{ opacity: 0, y: 30, rotateX: 12 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                whileHover={{ y: -12, rotateY: index % 2 === 0 ? -8 : 8 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.7, ease: "easeOut" }}
+                className="rounded-[2rem] border border-white/12 bg-white/8 p-8 shadow-[0_30px_100px_rgba(0,0,0,0.22)] backdrop-blur-xl"
+              >
+                <div className="text-sm font-semibold uppercase tracking-[0.35em] text-cyan-200">Step 0{index + 1}</div>
+                <h3 className="mt-6 text-2xl font-bold">{item}</h3>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

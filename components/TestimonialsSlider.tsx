@@ -4,19 +4,19 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 const testimonials = [
   {
-    name: "John Doe",
-    company: "ABC Ltd",
-    text: "Excellent software and support."
+    name: "Mission",
+    company: "Macro Solution",
+    text: "Design, create, and implement world class IT management software for productive business operations."
   },
   {
-    name: "Sarah Smith",
-    company: "XYZ Corp",
-    text: "Outstanding digital transformation partner."
+    name: "Vision",
+    company: "Macro Solution",
+    text: "Become one of the leading software and IT solutions companies in the region."
   },
   {
-    name: "Michael Lee",
-    company: "Retail Pro",
-    text: "The ERP system changed our business."
+    name: "Promise",
+    company: "Macro Solution",
+    text: "Deliver user friendly applications at affordable prices, customized around each organization's goals."
   }
 ];
 

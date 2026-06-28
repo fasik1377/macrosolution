@@ -1,41 +1,7 @@
 "use client";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-
-const products = [
-  {
-    title: "POS",
-    description: "A simple, highly customizable POS system for small and medium-sized businesses, from single stores to multi-store retail.",
-  },
-  {
-    title: "Payroll & HR Management",
-    description: "Automates payroll tasks with PAYE, CSG, NSF, customized payslips, reports, leave, time, and attendance management.",
-  },
-  {
-    title: "Optical POS",
-    description: "POS, CRM, inventory, stock keeping, and invoicing software built for optical retail stores.",
-  },
-  {
-    title: "Enterprise Resource Planning",
-    description: "End-to-end ERP applications that connect business functions and improve operational visibility.",
-  },
-  {
-    title: "Car Rental Management",
-    description: "Cloud-based software designed to automate the management of vehicle rental businesses.",
-  },
-  {
-    title: "PETROSOFT",
-    description: "Cloud-based petrol bunk management software covering the core workflows of fuel industry operations.",
-  },
-  {
-    title: "Document Management System",
-    description: "Affordable licensing, implementation, and support packages for small, medium, and large organizations.",
-  },
-  {
-    title: "Biometric Time & Attendance",
-    description: "Fingerprint-based attendance systems using recognized biometric devices and reliable attendance control.",
-  },
-];
+import { products } from "@/components/companyProfile";
 
 export default function ProductCarousel() {
   return (
@@ -67,9 +33,9 @@ export default function ProductCarousel() {
 
               <p className="mt-4 text-gray-600">{product.description}</p>
 
-              <button className="mt-auto pt-5 text-left font-semibold text-button-blue transition hover:text-hover-blue">
+              <a href="/products" className="mt-auto pt-5 text-left font-semibold text-button-blue transition hover:text-hover-blue">
                 Learn More
-              </button>
+              </a>
             </div>
           </div>
         </SwiperSlide>
