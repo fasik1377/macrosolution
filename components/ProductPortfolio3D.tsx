@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import { Blocks, Building2, BriefcaseBusiness, Cable, Layers3, ShieldCheck } from "lucide-react";
@@ -69,7 +69,7 @@ export default function ProductPortfolio3D() {
           </p>
         </div>
 
-        <div className="relative mt-10 [perspective:1800px]">
+        <div className="relative mt-12 [perspective:1800px]">
           <motion.div
             animate={{ rotateX: [0, 4, 0], rotateY: [0, -4, 0] }}
             transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
@@ -85,40 +85,37 @@ export default function ProductPortfolio3D() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.25 }}
                   transition={{ duration: 0.55, delay: index * 0.08 }}
-                  whileHover={{ y: -14, rotateX: 8, rotateY: index % 2 === 0 ? -8 : 8, scale: 1.03 }}
-                  className={`group relative min-h-[280px] overflow-hidden rounded-[2rem] border border-white/12 bg-white/8 p-6 shadow-[0_30px_90px_rgba(0,0,0,0.2)] backdrop-blur-xl [transform-style:preserve-3d] before:absolute before:inset-[1px] before:rounded-[1.85rem] before:border before:border-white/8 before:content-[''] ${item.depth}`}
+                  whileHover={{ y: -16, rotateX: 10, rotateY: index % 2 === 0 ? -10 : 10, scale: 1.035 }}
+                  className={`group relative min-h-[300px] overflow-hidden border border-white/12 bg-white/8 p-6 shadow-[0_30px_90px_rgba(0,0,0,0.2)] backdrop-blur-xl [transform-style:preserve-3d] ${item.depth}`}
                   style={{ clipPath: "polygon(0 0,90% 0,100% 12%,100% 100%,10% 100%,0 88%)" }}
                 >
                   <div className={`absolute inset-0 bg-gradient-to-br ${item.accent} opacity-70`} />
+                  <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.18),transparent_42%,rgba(255,255,255,0.04))]" />
                   <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.72),transparent)]" />
-                  <motion.div
-                    aria-hidden="true"
-                    animate={{ opacity: [0.16, 0.32, 0.16], scale: [0.94, 1.08, 0.94] }}
-                    transition={{ duration: 4.6 + index * 0.35, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute -right-8 top-8 h-24 w-24 rounded-full bg-white/10 blur-2xl"
-                  />
+                  <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-white/10 blur-2xl transition duration-500 group-hover:scale-125" />
+                  <div className="absolute -left-8 bottom-0 h-32 w-32 rounded-full bg-cyan-300/10 blur-3xl transition duration-500 group-hover:scale-125" />
 
-                  <div className="relative [transform-style:preserve-3d]">
-                    <div className="flex items-start justify-between gap-4">
-                      <span className="flex h-14 w-14 items-center justify-center rounded-[1.1rem] border border-white/16 bg-white/10 text-white shadow-[0_18px_44px_rgba(0,0,0,0.16)] [transform:translateZ(30px)]">
-                        <Icon size={26} />
-                      </span>
-                      <span className="rounded-full border border-white/10 bg-white/8 px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-cyan-200 [transform:translateZ(18px)]">
+                  <div className="relative flex h-full flex-col justify-between [transform-style:preserve-3d]">
+                    <div className="flex items-start justify-between gap-5 [transform:translateZ(26px)]">
+                      <div className="flex h-16 w-16 items-center justify-center border border-white/18 bg-white/12 text-white shadow-[0_20px_40px_rgba(0,0,0,0.2)] [clip-path:polygon(0_0,100%_0,84%_100%,0_100%)]">
+                        <Icon size={28} />
+                      </div>
+                      <span className="border border-white/14 bg-white/10 px-3 py-2 text-sm font-bold uppercase tracking-[0.36em] text-white/72 [clip-path:polygon(8%_0,100%_0,92%_100%,0_100%)]">
                         {item.number}
                       </span>
                     </div>
 
-                    <h3 className="mt-6 text-2xl font-bold [transform:translateZ(30px)]">
-                      {item.title}
-                    </h3>
-                    <p className="mt-4 text-base leading-7 text-white/76 [transform:translateZ(24px)]">
-                      {item.description}
-                    </p>
-                    <div className="mt-6 flex items-center justify-between border-t border-white/10 pt-4 [transform:translateZ(20px)]">
-                      <span className="inline-flex items-center gap-2 text-sm font-medium text-white/60">
-                        <Blocks size={16} className="text-cyan-200" />
-                        Business-ready product
-                      </span>
+                    <div className="mt-8 [transform:translateZ(34px)]">
+                      <h3 className="text-3xl font-bold text-white">{item.title}</h3>
+                      <p className="mt-4 max-w-md text-base leading-7 text-white/82">{item.description}</p>
+                    </div>
+
+                    <div className="mt-8 flex items-center justify-between border-t border-white/12 pt-5 text-sm font-semibold uppercase tracking-[0.28em] text-white/70 [transform:translateZ(22px)]">
+                      <span>Business-ready</span>
+                      <div className="flex items-center gap-3">
+                        <span className="h-px w-12 bg-white/40" />
+                        <Blocks size={18} />
+                      </div>
                     </div>
                   </div>
                 </motion.article>

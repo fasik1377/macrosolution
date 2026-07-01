@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -309,7 +309,6 @@ export default function Home() {
 
       <PrimusModules3D />
       <PrimusShowcase3D />
-      <PayrollFeatures3D />
       <ProductPortfolio3D />
       <IndustriesWeServe3D />
 

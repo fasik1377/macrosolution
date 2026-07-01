@@ -2,8 +2,22 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import { Globe, Layers3, MonitorSmartphone, Rocket, Smartphone, Sparkles } from "lucide-react";
-import { useRef } from "react";
+import {
+  Code2,
+  Globe,
+  Layers3,
+  MonitorSmartphone,
+  Rocket,
+  Smartphone,
+  Sparkles,
+  Braces,
+  FileCode2,
+  Cpu,
+  Palette,
+  AppWindow,
+  LayoutGrid,
+} from "lucide-react";
+import { useRef, useState } from "react";
 
 const featureCards = [
   {
@@ -27,30 +41,38 @@ const featureCards = [
 ];
 
 const techStacks = [
-  {
-    title: "Frontend Web",
-    icon: "??",
-    glow: "from-sky-400 via-cyan-300 to-blue-500",
-    items: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion"],
-  },
-  {
-    title: "Backend and APIs",
-    icon: "??",
-    glow: "from-blue-500 via-sky-400 to-cyan-200",
-    items: ["Node.js", "REST APIs", "Authentication", "Business Logic", "Integrations"],
-  },
-  {
-    title: "Mobile Apps",
-    icon: "??",
-    glow: "from-cyan-300 via-sky-400 to-indigo-500",
-    items: ["React Native", "Android", "iOS", "Cross-platform UI", "App Store Readiness"],
-  },
-  {
-    title: "UI/UX Systems",
-    icon: "?",
-    glow: "from-sky-300 via-white to-cyan-400",
-    items: ["Design Systems", "User Flows", "Interactive Prototypes", "Accessibility", "Conversion-first Layouts"],
-  },
+  { title: "React Native", icon: Smartphone, glow: "from-cyan-300 via-sky-400 to-blue-500" },
+  { title: "Next.js", icon: AppWindow, glow: "from-blue-500 via-sky-400 to-cyan-300" },
+  { title: "TypeScript", icon: Braces, glow: "from-violet-300 via-fuchsia-400 to-purple-500" },
+  { title: "Tailwind CSS", icon: Palette, glow: "from-emerald-300 via-teal-400 to-cyan-500" },
+  { title: "Node.js", icon: Cpu, glow: "from-amber-300 via-orange-400 to-yellow-500" },
+  { title: "Laravel", icon: FileCode2, glow: "from-rose-300 via-pink-400 to-red-500" },
+  { title: "Flutter", icon: LayoutGrid, glow: "from-indigo-300 via-blue-400 to-cyan-500" },
+  { title: "React", icon: Globe, glow: "from-sky-300 via-cyan-300 to-blue-400" },
+  { title: "JavaScript", icon: Code2, glow: "from-yellow-300 via-amber-400 to-orange-500" },
+  { title: "HTML5", icon: FileCode2, glow: "from-orange-300 via-red-400 to-rose-500" },
+  { title: "CSS3", icon: Palette, glow: "from-blue-300 via-sky-400 to-cyan-500" },
+  { title: "Vue.js", icon: LayoutGrid, glow: "from-emerald-300 via-green-400 to-teal-500" },
+  { title: "Angular", icon: AppWindow, glow: "from-rose-300 via-red-400 to-pink-500" },
+  { title: "Svelte", icon: Sparkles, glow: "from-orange-300 via-amber-400 to-yellow-500" },
+  { title: "Nuxt.js", icon: Globe, glow: "from-green-300 via-emerald-400 to-teal-500" },
+  { title: "Express.js", icon: Cpu, glow: "from-slate-300 via-zinc-400 to-gray-500" },
+  { title: "NestJS", icon: AppWindow, glow: "from-pink-300 via-rose-400 to-red-500" },
+  { title: "MongoDB", icon: LayoutGrid, glow: "from-green-300 via-lime-400 to-emerald-500" },
+  { title: "PostgreSQL", icon: Cpu, glow: "from-sky-300 via-blue-400 to-indigo-500" },
+  { title: "MySQL", icon: FileCode2, glow: "from-cyan-300 via-sky-400 to-blue-500" },
+  { title: "Firebase", icon: Sparkles, glow: "from-amber-300 via-orange-400 to-yellow-500" },
+  { title: "GraphQL", icon: Braces, glow: "from-fuchsia-300 via-pink-400 to-purple-500" },
+  { title: "Redux", icon: Layers3, glow: "from-violet-300 via-purple-400 to-indigo-500" },
+  { title: "Three.js", icon: Globe, glow: "from-slate-300 via-gray-400 to-zinc-500" },
+  { title: "GSAP", icon: Rocket, glow: "from-lime-300 via-green-400 to-emerald-500" },
+  { title: "Framer Motion", icon: Sparkles, glow: "from-fuchsia-300 via-violet-400 to-indigo-500" },
+  { title: "Django", icon: AppWindow, glow: "from-green-300 via-emerald-400 to-teal-500" },
+  { title: "Python", icon: Braces, glow: "from-blue-300 via-indigo-400 to-violet-500" },
+  { title: "PHP", icon: FileCode2, glow: "from-indigo-300 via-blue-400 to-purple-500" },
+  { title: "Swift", icon: Smartphone, glow: "from-orange-300 via-rose-400 to-red-500" },
+  { title: "Kotlin", icon: Smartphone, glow: "from-violet-300 via-fuchsia-400 to-pink-500" },
+  { title: "Dart", icon: Code2, glow: "from-cyan-300 via-sky-400 to-teal-500" },
 ];
 
 export default function WebMobileShowcase3D() {
@@ -66,10 +88,11 @@ export default function WebMobileShowcase3D() {
   const leftCardY = useTransform(scrollYProgress, [0, 0.5, 1], [100, 0, -80]);
   const rightCardY = useTransform(scrollYProgress, [0, 0.5, 1], [140, 0, -100]);
   const orbitRotate = useTransform(scrollYProgress, [0, 1], [0, 220]);
+  const [isPaused, setIsPaused] = useState(false);
 
   return (
-    <section ref={sectionRef} className="relative min-h-[240vh] overflow-hidden py-24 text-white">
-      <div className="sticky top-0 flex min-h-screen items-center overflow-hidden">
+    <section ref={sectionRef} className="relative min-h-[300vh] overflow-hidden py-24 text-white">
+      <div className="sticky top-0 flex min-h-screen items-start overflow-hidden pt-16">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_22%,rgba(77,159,255,0.18),transparent_26%),radial-gradient(circle_at_82%_74%,rgba(124,58,237,0.18),transparent_26%),linear-gradient(180deg,rgba(3,18,48,0.32),rgba(3,18,48,0.04))]" />
 
         <motion.div
@@ -78,8 +101,8 @@ export default function WebMobileShowcase3D() {
           className="absolute left-1/2 top-1/2 h-[24rem] w-[24rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10 shadow-[0_0_80px_rgba(77,159,255,0.14)] md:h-[38rem] md:w-[38rem]"
         />
 
-        <div className="container relative z-10 mx-auto grid items-center gap-14 px-6 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="max-w-xl">
+        <div className="container relative z-10 mx-auto grid items-start gap-14 px-6 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="max-w-xl pt-8">
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -97,15 +120,6 @@ export default function WebMobileShowcase3D() {
             >
               We develop websites and mobile apps with immersive digital experiences.
             </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 26 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.4 }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: 0.08 }}
-              className="mt-6 text-lg leading-8 text-white/72"
-            >
-              From business websites to feature-rich mobile applications, Macro Solution creates high-performance digital products that look modern, feel intuitive, and help brands scale faster.
-            </motion.p>
 
             <div className="mt-10 grid gap-4 sm:grid-cols-2">
               {[
@@ -201,13 +215,12 @@ export default function WebMobileShowcase3D() {
                   viewport={{ once: true, amount: 0.2 }}
                   whileHover={{ y: -12, rotateY: index % 2 === 0 ? -8 : 8, scale: 1.03 }}
                   transition={{ duration: 0.65, ease: "easeOut" }}
-                  className={`absolute z-20 w-[min(72vw,18rem)] rounded-[1.8rem] border border-white/12 bg-gradient-to-br ${card.className} p-5 shadow-[0_25px_80px_rgba(0,0,0,0.28)] [transform-style:preserve-3d] ${
-                    index === 0
-                      ? "left-0 top-10"
-                      : index === 1
-                        ? "bottom-8 right-0"
-                        : "right-10 top-6 hidden md:block"
-                  }`}
+                  className={
+                    "absolute z-20 w-[min(72vw,18rem)] rounded-[1.8rem] border border-white/12 bg-gradient-to-br " +
+                    card.className +
+                    " p-5 shadow-[0_25px_80px_rgba(0,0,0,0.28)] [transform-style:preserve-3d] " +
+                    (index === 0 ? "left-0 top-10" : index === 1 ? "bottom-8 right-0" : "right-10 top-6 hidden md:block")
+                  }
                 >
                   <Icon className="text-white" />
                   <h3 className="mt-6 text-2xl font-bold text-white">{card.title}</h3>
@@ -217,6 +230,124 @@ export default function WebMobileShowcase3D() {
             })}
           </div>
         </div>
+      </div>
+
+      <div className="relative z-20 mx-auto mt-[-8vh] w-full max-w-[1500px] px-4 pb-20 md:px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.9, ease: "easeOut" }}
+          className="overflow-hidden p-2 md:p-3"
+        >
+          <div className="relative overflow-x-auto overflow-y-hidden pb-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <button
+              type="button"
+              onClick={() => setIsPaused((current) => !current)}
+              className="absolute right-3 top-3 z-20 rounded-full border border-white/14 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-white backdrop-blur-md transition hover:bg-white/16"
+            >
+              {isPaused ? "Play" : "Pause"}
+            </button>
+            <motion.div
+              animate={isPaused ? { x: undefined } : { x: ["0%", "-50%"] }}
+              transition={{ duration: 68, repeat: Infinity, ease: "linear" }}
+              className="relative z-10 flex w-max items-center gap-4 px-2 py-4 pr-10"
+            >
+              {[...techStacks, ...techStacks].map((stack, index) => {
+                const StackIcon = stack.icon;
+                const codeSnippets = {
+                  "React Native": [
+                    { text: "import", color: "text-[#569CD6]" },
+                    { text: " ReactNative", color: "text-[#4EC9B0]" },
+                    { text: " from", color: "text-[#569CD6]" },
+                    { text: " 'app'", color: "text-[#CE9178]" },
+                  ],
+                  "Next.js": [
+                    { text: "const", color: "text-[#569CD6]" },
+                    { text: " app", color: "text-[#9CDCFE]" },
+                    { text: " =", color: "text-[#D4D4D4]" },
+                    { text: " next()", color: "text-[#DCDCAA]" },
+                  ],
+                  "TypeScript": [
+                    { text: "type", color: "text-[#569CD6]" },
+                    { text: " Stack", color: "text-[#4FC1FF]" },
+                    { text: " =", color: "text-[#D4D4D4]" },
+                    { text: " clean", color: "text-[#CE9178]" },
+                  ],
+                  "Tailwind CSS": [
+                    { text: "className", color: "text-[#9CDCFE]" },
+                    { text: "=", color: "text-[#D4D4D4]" },
+                    { text: "\"glass\"", color: "text-[#CE9178]" },
+                  ],
+                  "Node.js": [
+                    { text: "build", color: "text-[#DCDCAA]" },
+                    { text: "()", color: "text-[#D4D4D4]" },
+                    { text: " =>", color: "text-[#D4D4D4]" },
+                    { text: " fast", color: "text-[#4EC9B0]" },
+                  ],
+                  "Laravel": [
+                    { text: "Route", color: "text-[#4FC1FF]" },
+                    { text: "::", color: "text-[#D4D4D4]" },
+                    { text: "web", color: "text-[#DCDCAA]" },
+                    { text: "()", color: "text-[#D4D4D4]" },
+                  ],
+                  "Flutter": [
+                    { text: "Widget", color: "text-[#4FC1FF]" },
+                    { text: " build", color: "text-[#DCDCAA]" },
+                    { text: "()", color: "text-[#D4D4D4]" },
+                  ],
+                };
+                const snippets = codeSnippets[stack.title] || [];
+                return (
+                  <motion.article
+                    key={stack.title + "-" + index}
+                    animate={{ rotateY: [0, 140, 280, 360], rotateX: [0, 8, 0, -8, 0], y: index % 2 === 0 ? [0, -6, 0] : [0, 6, 0] }}
+                    whileHover={{ y: -16, rotateX: 14, rotateY: index % 2 === 0 ? -16 : 16, scale: 1.05 }}
+                    transition={{ duration: 8.6 + (index % 5) * 0.45, repeat: Infinity, ease: "easeInOut" }}
+                    className="group relative h-[12.5rem] w-[11.5rem] shrink-0 overflow-visible border border-white/14 text-white shadow-[0_18px_48px_rgba(0,0,0,0.24)] [transform-style:preserve-3d] md:h-[13.5rem] md:w-[12.5rem]" style={{ clipPath: "polygon(18% 0,82% 0,100% 18%,100% 82%,82% 100%,18% 100%,0 82%,0 18%)" }}
+                  >
+                    <div className={"absolute inset-0 bg-gradient-to-br " + stack.glow} style={{ clipPath: "polygon(18% 0,82% 0,100% 18%,100% 82%,82% 100%,18% 100%,0 82%,0 18%)" }} />
+                    <div className="absolute -right-3 top-[10%] h-[78%] w-4 skew-y-[-10deg] bg-[linear-gradient(180deg,rgba(255,255,255,0.22),rgba(255,255,255,0.04))] opacity-80" style={{ clipPath: "polygon(0 8%,100% 0,100% 100%,0 92%)" }} />
+                    <div className="absolute bottom-[-0.65rem] left-[10%] h-4 w-[80%] skew-x-[-12deg] bg-[linear-gradient(90deg,rgba(2,11,30,0.35),rgba(255,255,255,0.08),rgba(2,11,30,0.28))] opacity-85" style={{ clipPath: "polygon(8% 0,92% 0,100% 100%,0 100%)" }} />
+                    <div className="absolute inset-[1px] bg-[linear-gradient(180deg,rgba(3,18,48,0.12),rgba(3,18,48,0.42))]" style={{ clipPath: "polygon(18% 0,82% 0,100% 18%,100% 82%,82% 100%,18% 100%,0 82%,0 18%)" }} />
+                    <motion.div
+                      animate={{ rotate: [0, 360], scale: [1, 1.08, 1] }}
+                      transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+                      className="absolute -right-8 -top-8 h-28 w-28 rounded-full border border-white/10 bg-white/10 blur-[1px]"
+                    />
+                    <div className="absolute inset-x-3 top-2 h-10 rounded-[999px] bg-[linear-gradient(180deg,rgba(255,255,255,0.22),transparent)] opacity-70 blur-sm" />
+                    <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.14),transparent_45%,rgba(255,255,255,0.04))]" />
+                    <div className="relative flex h-full flex-col justify-between p-4">
+                      <div>
+                        <div className="flex items-center justify-between">
+                          <div className="flex h-12 w-12 items-center justify-center rounded-[1rem] border border-white/16 bg-white/12 shadow-[0_12px_30px_rgba(0,0,0,0.16)] backdrop-blur-md">
+                            <StackIcon size={24} className="text-white drop-shadow-[0_8px_18px_rgba(0,0,0,0.22)]" />
+                          </div>
+                        </div>
+                        <h4 className="mt-3 text-lg font-bold tracking-tight text-white md:text-[1.2rem]">{stack.title}</h4>
+                      </div>
+
+                      <div className="rounded-[1rem] border border-white/10 bg-[#071528]/60 p-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-sm">
+                        <div className="mb-3 flex items-center gap-2">
+                          <span className="h-2.5 w-2.5 rounded-full bg-rose-400" />
+                          <span className="h-2.5 w-2.5 rounded-full bg-amber-400" />
+                          <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
+                        </div>
+                        <div className="space-y-1.5 font-mono text-[11px] leading-4.5">
+                          {snippets.map((snippet, snippetIndex) => (
+                            <span key={stack.title + snippet.text + snippetIndex} className={snippet.color}>
+                              {snippet.text}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </motion.article>
+                );
+              })}
+            </motion.div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
