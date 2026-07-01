@@ -26,6 +26,33 @@ const featureCards = [
   },
 ];
 
+const techStacks = [
+  {
+    title: "Frontend Web",
+    icon: "??",
+    glow: "from-sky-400 via-cyan-300 to-blue-500",
+    items: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion"],
+  },
+  {
+    title: "Backend and APIs",
+    icon: "??",
+    glow: "from-blue-500 via-sky-400 to-cyan-200",
+    items: ["Node.js", "REST APIs", "Authentication", "Business Logic", "Integrations"],
+  },
+  {
+    title: "Mobile Apps",
+    icon: "??",
+    glow: "from-cyan-300 via-sky-400 to-indigo-500",
+    items: ["React Native", "Android", "iOS", "Cross-platform UI", "App Store Readiness"],
+  },
+  {
+    title: "UI/UX Systems",
+    icon: "?",
+    glow: "from-sky-300 via-white to-cyan-400",
+    items: ["Design Systems", "User Flows", "Interactive Prototypes", "Accessibility", "Conversion-first Layouts"],
+  },
+];
+
 export default function WebMobileShowcase3D() {
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({

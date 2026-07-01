@@ -26,35 +26,54 @@ export default function Navbar() {
           initial={{ opacity: 0, y: -14, scale: 0.94 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.65, ease: "easeOut" }}
-          whileHover={{ scale: 1.12 }}
+          whileHover={{ scale: 1.06 }}
           className="relative z-10 [perspective:1100px]"
         >
           <motion.div
             aria-hidden="true"
-            animate={{ opacity: [0.24, 0.55, 0.24], scale: [0.96, 1.08, 0.96] }}
-            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute inset-0 rounded-full bg-white/65 blur-2xl"
+            animate={{ opacity: [0.22, 0.5, 0.22], scale: [0.95, 1.08, 0.95] }}
+            transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute inset-0 rounded-[2rem] bg-[radial-gradient(circle,rgba(255,255,255,0.88),rgba(255,255,255,0.18),transparent_72%)] blur-2xl"
           />
           <motion.div
             aria-hidden="true"
-            animate={{ x: ["-20%", "125%"] }}
-            transition={{ duration: 3.8, repeat: Infinity, ease: "linear" }}
-            className="absolute left-1/2 top-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.98),rgba(255,255,255,0.35),transparent_72%)] blur-md md:h-28 md:w-28"
+            animate={{ rotate: [0, 180, 360], scale: [0.98, 1.04, 0.98] }}
+            transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+            className="absolute inset-1 rounded-[1.6rem] border border-white/35"
+          />
+          <motion.div
+            aria-hidden="true"
+            animate={{ x: ["-18%", "118%"], opacity: [0, 1, 0] }}
+            transition={{ duration: 3.6, repeat: Infinity, ease: "linear" }}
+            className="absolute inset-y-3 left-0 w-24 bg-[linear-gradient(105deg,transparent,rgba(255,255,255,0.92),transparent)] blur-sm"
           />
           <Link
             href="/"
-            className="relative flex h-24 w-24 items-center justify-center rounded-full border border-white/70 bg-white/96 shadow-[0_18px_50px_rgba(255,255,255,0.22)] backdrop-blur-xl transition-transform duration-300 md:h-28 md:w-28"
+            className="relative flex h-24 w-24 items-center justify-center overflow-hidden rounded-[1.8rem] border border-white/70 bg-[linear-gradient(145deg,rgba(255,255,255,0.98),rgba(236,247,255,0.92))] shadow-[0_20px_60px_rgba(255,255,255,0.2)] backdrop-blur-xl transition-transform duration-300 md:h-28 md:w-28"
             aria-label="Macro Solution home"
           >
             <motion.span
+              aria-hidden="true"
+              animate={{ rotate: [0, 360] }}
+              transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
+              className="absolute inset-[0.4rem] rounded-[1.45rem] border border-sky-200/55"
+            />
+            <div className="pointer-events-none absolute inset-x-3 top-3 flex items-center gap-1.5 rounded-full bg-[#0b5ed7]/10 px-2 py-1">
+              <span className="h-1.5 w-1.5 rounded-full bg-rose-400/90" />
+              <span className="h-1.5 w-1.5 rounded-full bg-amber-400/90" />
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400/90" />
+            </div>
+            <div className="pointer-events-none absolute bottom-3 right-3 h-6 w-10 rounded-[0.7rem] border border-sky-200/45 bg-[linear-gradient(180deg,rgba(11,94,215,0.08),rgba(255,255,255,0.45))] shadow-[inset_0_1px_0_rgba(255,255,255,0.6)]" />
+            <motion.span
               animate={{
-                rotateY: [0, -8, 0, 8, 0],
-                rotateX: [0, 3, 0, -2, 0],
+                rotateY: [0, -7, 0, 7, 0],
+                rotateX: [0, 4, 0, -3, 0],
                 y: [0, -2, 0, 2, 0],
-                scale: [1, 1.02, 1, 1.01, 1],
+                scale: [1, 1.03, 1, 1.02, 1],
               }}
               transition={{ duration: 5.6, repeat: Infinity, ease: "easeInOut" }}
-              className="block [transform-style:preserve-3d]" whileHover={{ scale: 1.08 }}
+              className="relative z-10 block [transform-style:preserve-3d]"
+              whileHover={{ scale: 1.08 }}
             >
               <Image
                 src="/logo.png"
@@ -62,7 +81,7 @@ export default function Navbar() {
                 width={260}
                 height={86}
                 priority
-                className="h-14 w-14 object-contain drop-shadow-[0_8px_24px_rgba(0,0,0,0.18)] md:h-16 md:w-16"
+                className="h-16 w-16 object-contain brightness-[0.82] contrast-[1.38] saturate-[1.12] drop-shadow-[0_10px_28px_rgba(8,59,138,0.28)] md:h-[4.5rem] md:w-[4.5rem]"
               />
             </motion.span>
           </Link>

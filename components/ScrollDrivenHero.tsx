@@ -146,17 +146,22 @@ export default function ScrollDrivenHero() {
     <section
       ref={sectionRef}
       id="hero-scroll"
-      className="relative min-h-[420vh] bg-dark-header text-white"
+      className="relative min-h-[420vh] overflow-hidden text-white"
     >
       <div className="sticky top-0 h-screen overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_16%,rgba(77,159,255,0.2),transparent_24%),radial-gradient(circle_at_80%_74%,rgba(11,94,215,0.26),transparent_30%),linear-gradient(135deg,#001329_0%,#083B8A_48%,#001B47_100%)]" />
+        <motion.div
+          aria-hidden="true"
+          animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+          transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute inset-0 bg-[radial-gradient(circle_at_18%_16%,rgba(255,255,255,0.34),transparent_22%),radial-gradient(circle_at_80%_74%,rgba(111,207,255,0.24),transparent_28%),linear-gradient(135deg,#eafaff_0%,#9bddff_24%,#0096FF_52%,#69d0ff_76%,#f3fcff_100%)] bg-[length:200%_200%]"
+        />
         <motion.div
           animate={{ backgroundPosition: ["0px 0px", "120px 120px"] }}
           transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:90px_90px] opacity-50"
+          className="absolute inset-0 bg-[linear-gradient(rgba(8,59,138,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(8,59,138,0.06)_1px,transparent_1px)] bg-[size:90px_90px] opacity-60"
         />
-        <div className="absolute left-1/2 top-[52%] h-[72vh] w-[72vw] -translate-x-1/2 -translate-y-1/2 rounded-[999px] border border-white/12 bg-white/6 blur-[1px]" />
-        <div className="absolute inset-x-0 bottom-0 h-[38vh] bg-[linear-gradient(180deg,transparent_0%,rgba(0,19,41,0.22)_62%,rgba(0,19,41,0.46)_100%)]" />
+        <div className="absolute left-1/2 top-[52%] h-[72vh] w-[72vw] -translate-x-1/2 -translate-y-1/2 rounded-[999px] border border-white/18 bg-white/12 blur-[1px]" />
+        <div className="absolute inset-x-0 bottom-0 h-[38vh] bg-[linear-gradient(180deg,transparent_0%,rgba(0,150,255,0.1)_58%,rgba(6,67,140,0.28)_100%)]" />
 
         <div aria-hidden="true" className="absolute inset-0">
           {networkLines.map((line, index) => (
@@ -164,7 +169,7 @@ export default function ScrollDrivenHero() {
               key={line}
               animate={{ opacity: [0.12, 0.4, 0.12], scaleX: [0.94, 1.06, 0.94] }}
               transition={{ duration: 4.8 + index * 0.35, repeat: Infinity, ease: "easeInOut" }}
-              className={`absolute h-px origin-left bg-[linear-gradient(90deg,transparent,rgba(125,211,252,0.7),transparent)] ${line}`}
+              className={`absolute h-px origin-left bg-[linear-gradient(90deg,transparent,rgba(56,189,248,0.88),rgba(255,255,255,0.82),transparent)] ${line}`}
             />
           ))}
 
@@ -173,7 +178,7 @@ export default function ScrollDrivenHero() {
               key={stream.className}
               animate={{ x: ["-24%", "120%"], opacity: [0, 1, 0] }}
               transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut", delay: stream.delay }}
-              className={`absolute h-px bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.06),rgba(56,189,248,0.95),rgba(255,255,255,0.06),transparent)] blur-[1px] ${stream.className}`}
+              className={`absolute h-px bg-[linear-gradient(90deg,transparent,rgba(8,59,138,0.04),rgba(56,189,248,0.98),rgba(255,255,255,0.58),transparent)] blur-[1px] ${stream.className}`}
             />
           ))}
 
@@ -182,19 +187,19 @@ export default function ScrollDrivenHero() {
               key={node}
               animate={{ y: [0, -8, 0], opacity: [0.35, 1, 0.35], scale: [1, 1.18, 1] }}
               transition={{ duration: 3.2 + index * 0.25, repeat: Infinity, ease: "easeInOut" }}
-              className={`absolute rounded-full bg-cyan-300 shadow-[0_0_24px_rgba(103,232,249,0.75)] ${node}`}
+              className={`absolute rounded-full bg-sky-400 shadow-[0_0_24px_rgba(56,189,248,0.55)] ${node}`}
             />
           ))}
 
           <motion.div
             style={{ opacity: phoneGlow }}
-            className="absolute left-1/2 top-1/2 h-[36rem] w-[36rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.16)_0%,rgba(77,159,255,0.26)_27%,rgba(11,94,215,0.22)_48%,transparent_72%)] blur-sm md:h-[52rem] md:w-[52rem]"
+            className="absolute left-1/2 top-1/2 h-[36rem] w-[36rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.22)_0%,rgba(111,207,255,0.34)_27%,rgba(0,150,255,0.24)_48%,transparent_72%)] blur-sm md:h-[52rem] md:w-[52rem]"
           />
           <motion.div
             aria-hidden="true"
             animate={{ opacity: [0.12, 0.36, 0.12], scale: [0.94, 1.04, 0.94] }}
             transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute left-1/2 top-[49%] h-[34rem] w-[34rem] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(circle,rgba(255,255,255,0.12),rgba(77,159,255,0.22)_34%,transparent_68%)] blur-2xl md:h-[44rem] md:w-[44rem]"
+            className="absolute left-1/2 top-[49%] h-[34rem] w-[34rem] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(circle,rgba(255,255,255,0.22),rgba(0,150,255,0.24)_34%,transparent_68%)] blur-2xl md:h-[44rem] md:w-[44rem]"
           />
 
           <div

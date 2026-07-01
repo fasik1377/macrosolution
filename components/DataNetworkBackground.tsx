@@ -52,6 +52,17 @@ const dataStreams = [
   { className: "left-[54%] top-[24%] h-px w-[24%] rotate-[20deg]", delay: 1.6 },
   { className: "left-[22%] top-[70%] h-px w-[30%] rotate-[6deg]", delay: 1.1 },
   { className: "left-[58%] top-[74%] h-px w-[20%] rotate-[12deg]", delay: 2.2 },
+  { className: "left-[8%] top-[48%] h-px w-[22%] rotate-[14deg]", delay: 0.5 },
+  { className: "left-[48%] top-[54%] h-px w-[26%] rotate-[-10deg]", delay: 1.9 },
+  { className: "left-[68%] top-[38%] h-px w-[18%] rotate-[52deg]", delay: 2.7 },
+];
+
+const infoPackets = [
+  { className: "left-[16%] top-[24%]", drift: [0, 48, 0], delay: 0 },
+  { className: "left-[34%] top-[42%]", drift: [0, -36, 0], delay: 0.7 },
+  { className: "left-[62%] top-[28%]", drift: [0, 42, 0], delay: 1.4 },
+  { className: "left-[74%] top-[62%]", drift: [0, -44, 0], delay: 2.1 },
+  { className: "left-[26%] top-[76%]", drift: [0, 38, 0], delay: 2.8 },
 ];
 
 export default function DataNetworkBackground({ className = "", variant = "dark" }: DataNetworkBackgroundProps) {
@@ -84,6 +95,11 @@ export default function DataNetworkBackground({ className = "", variant = "dark"
     variant === "dark"
       ? "bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.05),rgba(103,232,249,0.95),rgba(255,255,255,0.08),transparent)]"
       : "bg-[linear-gradient(90deg,transparent,rgba(8,59,138,0.04),rgba(56,189,248,0.92),rgba(8,59,138,0.08),transparent)]";
+
+  const packetClass =
+    variant === "dark"
+      ? "border-white/15 bg-[linear-gradient(135deg,rgba(255,255,255,0.2),rgba(103,232,249,0.3))]"
+      : "border-sky-200/50 bg-[linear-gradient(135deg,rgba(255,255,255,0.72),rgba(0,150,255,0.28))]";
 
   return (
     <div aria-hidden="true" className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`}>
@@ -119,6 +135,19 @@ export default function DataNetworkBackground({ className = "", variant = "dark"
           transition={{ duration: 3.4, repeat: Infinity, ease: "easeInOut", delay: stream.delay }}
           className={`absolute w-24 blur-[1px] ${streamClass} ${stream.className}`}
         />
+      ))}
+
+      {infoPackets.map((packet) => (
+        <motion.div
+          key={packet.className}
+          animate={{ y: packet.drift, opacity: [0.2, 0.95, 0.2], scale: [0.92, 1.08, 0.92] }}
+          transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: packet.delay }}
+          className={`absolute flex h-7 w-16 items-center gap-1.5 rounded-full border px-2 shadow-[0_0_28px_rgba(0,150,255,0.18)] backdrop-blur-md ${packetClass} ${packet.className}`}
+        >
+          <span className="h-1.5 w-1.5 rounded-full bg-sky-300" />
+          <span className="h-px flex-1 bg-gradient-to-r from-sky-200/20 via-sky-300/90 to-transparent" />
+          <span className="h-2 w-2 rounded-[0.35rem] border border-white/35 bg-sky-200/70" />
+        </motion.div>
       ))}
 
       {nodes.map((node, index) => (
