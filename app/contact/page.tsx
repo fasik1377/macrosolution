@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import { Clock, Mail, MapPin, Phone, Send, Settings, ShieldCheck } from "lucide-react";
@@ -36,14 +36,31 @@ const responseItems = [
 
 export default function ContactPage() {
   return (
-    <main className="relative overflow-x-hidden bg-[#031230] text-white">
-      <div className="pointer-events-none fixed inset-0 -z-20 bg-[radial-gradient(circle_at_top,rgba(10,37,84,0.92),rgba(3,18,48,1)_52%,rgba(2,11,30,1)_100%)]" />
-      <DataNetworkBackground variant="dark" className="fixed inset-0 -z-10 opacity-90" />
+    <main className="relative overflow-x-clip bg-[#0096FF] text-white">
+      <motion.div
+        aria-hidden="true"
+        animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+        className="pointer-events-none fixed inset-0 -z-20 bg-[linear-gradient(120deg,#dff5ff_0%,#8dd8ff_24%,#0096FF_52%,#6fcfff_76%,#e6f9ff_100%)] bg-[length:200%_200%]"
+      />
+      <DataNetworkBackground variant="light" className="fixed inset-0 -z-10 opacity-100" />
+      <motion.div
+        aria-hidden="true"
+        animate={{ opacity: [0.2, 0.38, 0.2], scale: [0.96, 1.04, 0.96] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="pointer-events-none fixed left-[8%] top-[12%] -z-10 h-[24rem] w-[24rem] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.34),transparent_68%)] blur-3xl"
+      />
+      <motion.div
+        aria-hidden="true"
+        animate={{ opacity: [0.12, 0.32, 0.12], scale: [0.92, 1.06, 0.92] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        className="pointer-events-none fixed bottom-[8%] right-[6%] -z-10 h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,rgba(0,150,255,0.26),transparent_68%)] blur-3xl"
+      />
       <Navbar />
       <ContactScrollHero3D />
 
       <section className="relative -mt-10 overflow-hidden py-14 text-white [perspective:1800px] md:-mt-14 md:py-16">
-        <DataNetworkBackground variant="dark" className="opacity-70" />
+        <DataNetworkBackground variant="light" className="opacity-85" />
         <div className="container relative z-10 mx-auto grid gap-10 px-6 lg:grid-cols-[0.8fr_1.2fr]">
           <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }}>
             <motion.h2 variants={fadeUp} className="text-4xl font-bold">
@@ -151,7 +168,7 @@ export default function ContactPage() {
       </section>
 
       <section className="relative overflow-hidden py-28 text-white [perspective:1800px]">
-        <DataNetworkBackground variant="dark" className="opacity-70" />
+        <DataNetworkBackground variant="light" className="opacity-85" />
         <div className="container relative z-10 mx-auto px-6">
           <div className="mx-auto max-w-3xl text-center">
             <p className="font-semibold uppercase tracking-[0.3em] text-cyan-300">Connection Points</p>
@@ -184,3 +201,4 @@ export default function ContactPage() {
     </main>
   );
 }
+

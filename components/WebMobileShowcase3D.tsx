@@ -99,6 +99,9 @@ export default function WebMobileShowcase3D() {
   const leftCardY = useTransform(scrollYProgress, [0, 0.5, 1], [100, 0, -80]);
   const rightCardY = useTransform(scrollYProgress, [0, 0.5, 1], [140, 0, -100]);
   const orbitRotate = useTransform(scrollYProgress, [0, 1], [0, 220]);
+  const deviceFloat = useTransform(scrollYProgress, [0, 0.5, 1], [18, -10, 16]);
+  const deviceRotate = useTransform(scrollYProgress, [0, 0.5, 1], [-10, 0, 10]);
+  const glowScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.9, 1.08, 0.94]);
   const [isPaused, setIsPaused] = useState(false);
 
   return (
@@ -159,7 +162,7 @@ export default function WebMobileShowcase3D() {
           <div className="relative h-[620px] [perspective:1800px]">
             <motion.div
               style={{ y: panelY, rotateX: panelRotateX, rotateY: panelRotateY }}
-              className="absolute left-1/2 top-1/2 h-[25rem] w-[min(88vw,34rem)] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[2rem] border border-white/12 bg-white/8 p-5 shadow-[0_40px_120px_rgba(0,0,0,0.28)] backdrop-blur-xl [transform-style:preserve-3d]"
+              className="absolute left-1/2 top-1/2 h-[28rem] w-[min(90vw,38rem)] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[2.4rem] border border-cyan-100/18 bg-[linear-gradient(180deg,rgba(255,255,255,0.18),rgba(255,255,255,0.06))] p-5 shadow-[0_45px_140px_rgba(0,0,0,0.34)] backdrop-blur-2xl [transform-style:preserve-3d]"
             >
               <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_45%,rgba(77,159,255,0.08))]" />
               <div className="absolute -right-14 -top-14 h-40 w-40 rounded-full bg-white/10 blur-3xl" />
@@ -366,6 +369,7 @@ export default function WebMobileShowcase3D() {
     </section>
   );
 }
+
 
 
 

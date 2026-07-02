@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import { ArrowUpRight, BarChart3, Layers3, ShieldCheck, Zap } from "lucide-react";
@@ -20,17 +20,34 @@ const productSignals = [
 
 export default function ProductsPage() {
   return (
-    <main className="relative overflow-x-hidden bg-[#031230] text-white">
-      <div className="pointer-events-none fixed inset-0 -z-20 bg-[radial-gradient(circle_at_top,rgba(10,37,84,0.92),rgba(3,18,48,1)_52%,rgba(2,11,30,1)_100%)]" />
-      <DataNetworkBackground variant="dark" className="fixed inset-0 -z-10 opacity-90" />
+    <main className="relative overflow-x-clip bg-[#0096FF] text-white">
+      <motion.div
+        aria-hidden="true"
+        animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+        className="pointer-events-none fixed inset-0 -z-20 bg-[linear-gradient(120deg,#dff5ff_0%,#8dd8ff_24%,#0096FF_52%,#6fcfff_76%,#e6f9ff_100%)] bg-[length:200%_200%]"
+      />
+      <DataNetworkBackground variant="light" className="fixed inset-0 -z-10 opacity-100" />
+      <motion.div
+        aria-hidden="true"
+        animate={{ opacity: [0.2, 0.38, 0.2], scale: [0.96, 1.04, 0.96] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="pointer-events-none fixed left-[8%] top-[12%] -z-10 h-[24rem] w-[24rem] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.34),transparent_68%)] blur-3xl"
+      />
+      <motion.div
+        aria-hidden="true"
+        animate={{ opacity: [0.12, 0.32, 0.12], scale: [0.92, 1.06, 0.92] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        className="pointer-events-none fixed bottom-[8%] right-[6%] -z-10 h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,rgba(0,150,255,0.26),transparent_68%)] blur-3xl"
+      />
       <Navbar />
       <ProductsScrollHero3D />
 
       <ProductPortfolio3D />
 
       <section className="relative overflow-hidden py-20 text-white [perspective:2000px]">
-        <DataNetworkBackground variant="dark" className="opacity-70" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_14%_18%,rgba(77,159,255,0.12),transparent_24%),radial-gradient(circle_at_86%_14%,rgba(11,94,215,0.14),transparent_28%),linear-gradient(180deg,rgba(3,18,48,0.18),rgba(3,18,48,0.06))]" />
+        <DataNetworkBackground variant="light" className="opacity-85" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_14%_18%,rgba(77,159,255,0.12),transparent_24%),radial-gradient(circle_at_86%_14%,rgba(11,94,215,0.14),transparent_28%),linear-gradient(180deg,rgba(255,255,255,0.12),rgba(3,18,48,0.08))]" />
         <div className="container relative z-10 mx-auto px-6">
           <motion.div initial="hidden" whileInView="show" variants={fadeUp} viewport={{ once: true }} className="mx-auto max-w-3xl text-center">
             <p className="font-semibold uppercase tracking-[0.28em] text-cyan-300">Product suite</p>
@@ -101,7 +118,7 @@ export default function ProductsPage() {
       </section>
 
       <section className="relative overflow-hidden py-20 text-white [perspective:1800px]">
-        <DataNetworkBackground variant="dark" className="opacity-75" />
+        <DataNetworkBackground variant="light" className="opacity-88" />
         <div className="container mx-auto grid items-center gap-10 px-6 lg:grid-cols-[0.95fr_1.05fr] relative z-10">
           <div>
             <p className="font-semibold uppercase tracking-[0.28em] text-cyan-300">Implementation</p>
@@ -117,7 +134,7 @@ export default function ProductsPage() {
       </section>
 
       <section className="relative overflow-hidden py-20 text-white [perspective:1800px]">
-        <DataNetworkBackground variant="dark" className="opacity-70" />
+        <DataNetworkBackground variant="light" className="opacity-85" />
         <div className="container relative z-10 mx-auto px-6">
           <div className="mx-auto max-w-3xl text-center">
             <p className="font-semibold uppercase tracking-[0.3em] text-cyan-300">Product Architecture</p>
@@ -151,3 +168,4 @@ export default function ProductsPage() {
     </main>
   );
 }
+
