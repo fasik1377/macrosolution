@@ -9,7 +9,6 @@ import Footer from "@/components/Footer";
 import ProductCarousel from "@/components/ProductCarousel";
 import ProductPortfolio3D from "@/components/ProductPortfolio3D";
 import PrimusModules3D from "@/components/PrimusModules3D";
-import PrimusShowcase3D from "@/components/PrimusShowcase3D";
 import TestimonialsSlider from "@/components/TestimonialsSlider";
 import DataNetworkBackground from "@/components/DataNetworkBackground";
 import IndustriesWeServe3D from "@/components/IndustriesWeServe3D";
@@ -285,30 +284,124 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden py-24 text-white [perspective:1200px]">
-        <div className="container relative z-10 mx-auto px-6">
-          <motion.div
-            animate={{ x: [0, -40, 0] }}
-            transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-            className="flex w-max gap-6 px-6 [transform-style:preserve-3d]"
-          >
-            {[...aboutStats, ...aboutStats].map((item, index) => (
-              <motion.div
-                key={`${item}-${index}`}
-                whileHover={{ y: -14, rotateX: 10, rotateY: index % 2 === 0 ? -10 : 10, scale: 1.04 }}
-                className="flex h-40 w-[min(82vw,360px)] shrink-0 items-center justify-center border border-white/18 bg-white/10 p-8 text-center shadow-[0_32px_90px_rgba(0,0,0,0.22)] backdrop-blur-xl" style={{ clipPath: index % 3 === 0 ? "polygon(6% 0,100% 0,94% 100%,0 100%)" : index % 3 === 1 ? "polygon(0 12%,100% 0,100% 88%,0 100%)" : "polygon(10% 0,100% 0,90% 100%,0 100%)" }}
-              >
-                <span className="text-2xl font-bold leading-tight md:text-3xl">
-                  {item}
-                </span>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
 
-      <PrimusModules3D />
-      <PrimusShowcase3D />
+      <section className="relative overflow-hidden py-24 text-white">
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,#031129_0%,#082a63_42%,#0b3b8a_70%,#04142f_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_24%,rgba(34,211,238,0.12),transparent_24%),radial-gradient(circle_at_80%_20%,rgba(96,165,250,0.12),transparent_24%),radial-gradient(circle_at_50%_78%,rgba(14,165,233,0.12),transparent_28%)]" />
+
+        <div className="container relative z-10 mx-auto px-6">
+          <div className="relative mx-auto min-h-[640px] overflow-hidden rounded-[2.4rem] border border-cyan-100/10 bg-[linear-gradient(145deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02)_18%,rgba(2,10,28,0.24)_52%,rgba(1,8,20,0.58)_100%)] shadow-[0_40px_140px_rgba(0,0,0,0.3)] backdrop-blur-xl">
+            <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(196,233,255,0.85),transparent)]" />
+
+            <motion.div
+              animate={{ rotate: [0, 360] }}
+              transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
+              className="absolute left-[18%] top-[20%] h-52 w-52 rounded-full border border-cyan-100/18"
+            />
+            <motion.div
+              animate={{ rotate: [360, 0] }}
+              transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+              className="absolute left-[18%] top-[20%] h-72 w-72 rounded-full border border-cyan-100/10"
+            />
+            <motion.div
+              animate={{ y: [0, -10, 0], rotateY: [0, 8, 0] }}
+              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute left-[13%] top-[16%] h-24 w-24 rounded-full bg-[radial-gradient(circle,rgba(96,165,250,0.7),rgba(11,59,138,0.18)_55%,transparent_70%)] shadow-[0_0_80px_rgba(34,211,238,0.2)]"
+            >
+              <div className="absolute inset-[10px] rounded-full border border-cyan-100/18" />
+              <div className="absolute left-[48%] top-0 h-full w-px bg-cyan-100/16" />
+              <div className="absolute top-[48%] left-0 h-px w-full bg-cyan-100/16" />
+            </motion.div>
+
+            <motion.div
+              animate={{ y: [0, -12, 0], rotate: [0, 3, 0] }}
+              transition={{ duration: 7.2, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute left-[11%] top-[52%] w-40 rounded-[1.5rem] border border-cyan-100/12 bg-[#061731]/70 p-4 shadow-[0_26px_70px_rgba(0,0,0,0.26)] backdrop-blur-md [transform:rotate(-8deg)]"
+            >
+              <div className="h-20 rounded-[1rem] border border-cyan-100/10 bg-[linear-gradient(180deg,#0c2f67,#081d42)]">
+                <div className="m-3 flex gap-1.5">
+                  <span className="h-2.5 w-2.5 rounded-full bg-rose-400" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-amber-400" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              animate={{ y: [0, 12, 0], rotate: [0, -4, 0] }}
+              transition={{ duration: 6.8, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute right-[12%] top-[50%] w-24 rounded-[1.6rem] border border-cyan-100/12 bg-[#061731]/70 p-3 shadow-[0_24px_64px_rgba(0,0,0,0.26)] backdrop-blur-md"
+            >
+              <div className="h-40 rounded-[1.2rem] border border-cyan-100/10 bg-[linear-gradient(180deg,#0e356f,#071a39)]" />
+            </motion.div>
+
+            <motion.div
+              animate={{ y: [0, -8, 0], x: [0, 6, 0] }}
+              transition={{ duration: 6.2, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute right-[15%] top-[18%] rounded-[1.8rem] border border-cyan-100/12 bg-[#061731]/72 p-5 shadow-[0_24px_70px_rgba(0,0,0,0.26)] backdrop-blur-md"
+            >
+              <div className="grid gap-2">
+                {[1,2,3].map((row) => (
+                  <div key={row} className="flex gap-2">
+                    <span className="h-4 w-8 rounded-full bg-cyan-100/16" />
+                    <span className="h-4 w-12 rounded-full bg-cyan-100/10" />
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              animate={{ y: [0, -6, 0], opacity: [0.7, 1, 0.7] }}
+              transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute left-1/2 top-1/2 z-20 flex w-full max-w-xl -translate-x-1/2 -translate-y-1/2 flex-col items-center text-center"
+            >
+              <span className="inline-flex rounded-full border border-cyan-100/14 bg-white/8 px-5 py-2 text-sm font-semibold uppercase tracking-[0.34em] text-cyan-200 backdrop-blur-md">
+                Intelligent Digital Ecosystem
+              </span>
+              <h2 className="mt-6 text-3xl font-bold leading-tight text-white md:text-5xl">
+                Connected software experiences built for modern business.
+              </h2>
+              <p className="mt-5 max-w-2xl text-base leading-8 text-white/76 md:text-lg">
+                Web, mobile, cloud, AI-assisted workflows and secure infrastructure connected in one elegant digital architecture.
+              </p>
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+                <button className="rounded-full bg-[linear-gradient(135deg,#0ea5e9,#2563eb)] px-7 py-4 font-semibold text-white shadow-[0_20px_50px_rgba(37,99,235,0.32)] transition hover:scale-[1.02]">
+                  Explore Solutions
+                </button>
+                <button className="rounded-full border border-cyan-100/16 bg-white/8 px-7 py-4 font-semibold text-cyan-100 backdrop-blur-md transition hover:bg-white/12">
+                  View Portfolio
+                </button>
+              </div>
+            </motion.div>
+
+            {[
+              { left: '24%', top: '30%', width: '20%', rotate: '12deg', delay: 0 },
+              { left: '28%', top: '58%', width: '18%', rotate: '-8deg', delay: 0.5 },
+              { left: '52%', top: '24%', width: '14%', rotate: '18deg', delay: 0.8 },
+              { left: '58%', top: '62%', width: '16%', rotate: '-14deg', delay: 1.1 },
+              { left: '68%', top: '36%', width: '14%', rotate: '10deg', delay: 1.4 },
+            ].map((trail, index) => (
+              <motion.div
+                key={index}
+                animate={{ opacity: [0.25, 0.7, 0.25], scaleX: [0.9, 1.05, 0.9] }}
+                transition={{ duration: 4.6, repeat: Infinity, ease: 'easeInOut', delay: trail.delay }}
+                className="absolute h-px bg-[linear-gradient(90deg,rgba(34,211,238,0.0),rgba(34,211,238,0.95),rgba(96,165,250,0.0))]"
+                style={{ left: trail.left, top: trail.top, width: trail.width, transform: `rotate(${trail.rotate})` }}
+              />
+            ))}
+
+            {Array.from({ length: 16 }).map((_, index) => (
+              <motion.span
+                key={index}
+                animate={{ y: [0, -18, 0], opacity: [0.18, 0.65, 0.18], scale: [0.8, 1, 0.8] }}
+                transition={{ duration: 4 + (index % 5) * 0.45, repeat: Infinity, ease: 'easeInOut', delay: index * 0.16 }}
+                className="absolute h-1.5 w-1.5 rounded-full bg-cyan-100/70"
+                style={{ left: `${8 + (index * 5.2) % 82}%`, top: `${14 + (index * 4.8) % 68}%` }}
+              />
+            ))}
+          </div>
+        </div>
+      </section>`r`n      <PrimusModules3D />
       <ProductPortfolio3D />
       <IndustriesWeServe3D />
 
@@ -334,59 +427,97 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <motion.div
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
-            className="mt-16 flex w-max gap-8 pb-6"
-          >
-            {[...leadershipTeam, ...leadershipTeam].map((leader, index) => (
-              <motion.article
-                key={`${leader.name}-${index}`}
-                initial={{ opacity: 0, y: 40, rotateX: 10 }}
-                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                whileHover={{ y: -16, rotateY: index % 2 === 0 ? -8 : 8, rotateX: 8, scale: 1.02 }}
-                transition={{ duration: 0.65, ease: "easeOut" }}
-                className="group relative h-[28rem] w-[min(86vw,30rem)] shrink-0 overflow-hidden border border-white/12 bg-white/8 p-8 shadow-[0_30px_120px_rgba(0,0,0,0.28)] backdrop-blur-xl [transform-style:preserve-3d]" style={{ clipPath: index % 2 === 0 ? "polygon(0 0,92% 0,100% 14%,100% 100%,8% 100%,0 86%)" : "polygon(8% 0,100% 0,100% 86%,92% 100%,0 100%,0 14%)" }}
-              >
-                <div className={`absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r ${leader.accent}`} />
-                <div className="absolute -right-14 top-10 h-36 w-36 rounded-full bg-white/10 blur-3xl transition duration-500 group-hover:scale-125" />
-                <div className="absolute -left-10 bottom-0 h-40 w-40 rounded-full bg-cyan-300/10 blur-3xl transition duration-500 group-hover:scale-125" />
-                <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_42%,rgba(77,159,255,0.08))] opacity-70" />
+          <div className="relative mt-16 flex flex-col items-center">
+            <div className="pointer-events-none absolute top-[6rem] bottom-[4rem] left-1/2 w-px -translate-x-1/2 bg-[linear-gradient(180deg,rgba(125,211,252,0.18),rgba(125,211,252,0.7),rgba(125,211,252,0.18))]" />
 
-                <div className="relative flex h-full flex-col justify-between [transform:translateZ(30px)]">
-                  <div className="flex items-start justify-between gap-6">
-                    <div>
-                      <div className={`flex h-20 w-20 items-center justify-center bg-gradient-to-br ${leader.accent} text-2xl font-black text-white shadow-[0_24px_60px_rgba(11,94,215,0.35)]`} style={{ clipPath: index % 2 === 0 ? "polygon(0 0,100% 0,86% 100%,0 100%)" : "polygon(14% 0,100% 0,100% 100%,0 100%)" }}>
+            <motion.div
+              animate={{ y: [0, 10, 20, 30, 40, 50] }}
+              transition={{ duration: 4.8, repeat: Infinity, ease: "linear" }}
+              className="pointer-events-none absolute left-1/2 top-[6rem] -translate-x-1/2 text-[10px] font-bold tracking-[0.28em] text-cyan-200/80"
+            >
+              0101
+            </motion.div>
+            <motion.div
+              animate={{ y: [50, 40, 30, 20, 10, 0] }}
+              transition={{ duration: 4.2, repeat: Infinity, ease: "linear" }}
+              className="pointer-events-none absolute left-1/2 top-[9rem] -translate-x-1/2 text-[10px] font-bold tracking-[0.28em] text-cyan-100/70"
+            >
+              1010
+            </motion.div>
+            <motion.div
+              animate={{ y: [120, 110, 100, 90, 80, 70] }}
+              transition={{ duration: 5.6, repeat: Infinity, ease: "linear" }}
+              className="pointer-events-none absolute left-1/2 top-[11rem] -translate-x-1/2 text-[10px] font-bold tracking-[0.28em] text-cyan-200/60"
+            >
+              0011
+            </motion.div>
+            <motion.div
+              animate={{ y: [70, 80, 90, 100, 110, 120] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
+              className="pointer-events-none absolute left-1/2 top-[15rem] -translate-x-1/2 text-[10px] font-bold tracking-[0.28em] text-cyan-100/65"
+            >
+              1100
+            </motion.div>
+
+            {leadershipTeam.map((leader, index) => (
+              <div key={leader.name} className="relative z-10 flex w-full flex-col items-center">
+                <motion.article
+                  initial={{ opacity: 0, y: 30, scale: 0.96 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true, amount: 0.25 }}
+                  whileHover={{ y: -8, rotateX: 6, scale: 1.02 }}
+                  transition={{ duration: 0.7, ease: "easeOut", delay: index * 0.08 }}
+                  className={`group relative ${index === 0 ? 'w-[min(88vw,20rem)]' : 'mt-14 w-[min(88vw,19rem)]'} overflow-hidden border border-cyan-100/12 ${index === 0 ? 'bg-[#05142f]/78 p-5 [clip-path:polygon(12%_0,88%_0,100%_14%,100%_100%,0_100%,0_14%)]' : 'bg-[#041127]/82 p-5 [clip-path:polygon(10%_0,100%_0,100%_88%,90%_100%,0_100%,0_12%)]'} shadow-[0_24px_70px_rgba(0,0,0,0.24)] backdrop-blur-xl [transform-style:preserve-3d]`}
+                >
+                  <div className={`absolute inset-0 bg-gradient-to-br ${leader.accent} ${index === 0 ? 'opacity-18' : 'opacity-16'}`} />
+                  <div className={`absolute inset-[1px] ${index === 0 ? 'bg-[linear-gradient(145deg,rgba(255,255,255,0.14),rgba(255,255,255,0.03)_22%,rgba(5,20,47,0.44)_58%,rgba(1,8,24,0.84)_100%)] [clip-path:polygon(12%_0,88%_0,100%_14%,100%_100%,0_100%,0_14%)]' : 'bg-[linear-gradient(145deg,rgba(255,255,255,0.12),rgba(255,255,255,0.03)_22%,rgba(4,17,39,0.42)_58%,rgba(1,8,24,0.86)_100%)] [clip-path:polygon(10%_0,100%_0,100%_88%,90%_100%,0_100%,0_12%)]'}`} />
+                  <div className={`absolute left-0 top-0 h-1.5 w-full bg-gradient-to-r ${leader.accent}`} />
+
+                  <div className={`relative ${index === 0 ? 'flex flex-col items-center text-center' : ''} [transform:translateZ(24px)]`}>
+                    <div className={`${index === 0 ? '' : 'flex items-start gap-4'}`}>
+                      <motion.div
+                        animate={{ y: [0, -2, 0], rotate: index === 0 ? [0, 4, 0] : [0, 2, 0] }}
+                        transition={{ duration: 4.4, repeat: Infinity, ease: 'easeInOut', delay: index * 0.14 }}
+                        className={`${index === 0 ? 'mx-auto flex h-16 w-16 items-center justify-center text-xl' : 'flex h-14 w-14 items-center justify-center text-lg'} bg-gradient-to-br ${leader.accent} font-black text-white shadow-[0_18px_34px_rgba(11,94,215,0.28)] [clip-path:polygon(14%_0,86%_0,100%_20%,100%_100%,0_100%,0_20%)]`}
+                      >
                         {leader.initials}
-                      </div>
-                      <div className="mt-6">
-                        <p className="text-sm uppercase tracking-[0.35em] text-cyan-200">{leader.role}</p>
-                        <h3 className="mt-3 text-3xl font-bold md:text-4xl">{leader.name}</h3>
+                      </motion.div>
+                      <div className={`${index === 0 ? 'mt-4 text-center' : ''}`}>
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.34em] text-cyan-200/82">{leader.role}</p>
+                        <h3 className={`${index === 0 ? 'mt-3 text-2xl' : 'mt-2 text-xl'} font-bold text-white`}>{leader.name}</h3>
                       </div>
                     </div>
-                    <div className="hidden h-24 w-24 rounded-full border border-white/10 bg-white/6 md:block" />
-                  </div>
 
-                  <div className="relative mt-8 flex-1 overflow-hidden rounded-[1.75rem] border border-white/10 bg-[#061a3d]/55 p-6 shadow-inner shadow-black/10">
-                    <motion.div
-                      animate={{ y: [0, -18, 0] }}
-                      transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
-                      className="absolute -right-8 -top-8 h-28 w-28 rounded-full bg-white/10 blur-2xl"
-                    />
-                    <motion.div
-                      animate={{ rotate: [0, 180, 360] }}
-                      transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
-                      className="absolute right-4 top-4 h-12 w-12 rounded-full border border-cyan-200/20"
-                    />
-                    <p className="relative z-10 text-xl leading-relaxed text-white/82 md:text-2xl">
-                      {leader.description}
-                    </p>
+                    <p className={`${index === 0 ? 'mt-4 text-center' : 'mt-5'} text-sm leading-6 text-white/78`}>{leader.description}</p>
+
+                    <div className="mt-5 flex items-center justify-between gap-4">
+                      <span className="rounded-full border border-cyan-100/12 bg-white/8 px-3 py-1.5 text-[9px] font-bold uppercase tracking-[0.24em] text-cyan-100">Leadership</span>
+                      <span className="text-[9px] font-bold uppercase tracking-[0.28em] text-white/52">Org Node</span>
+                    </div>
                   </div>
-                </div>
-              </motion.article>
+                </motion.article>
+
+                {index < leadershipTeam.length - 1 && (
+                  <div className="relative h-14 w-full">
+                    <motion.div
+                      animate={{ y: [0, 14, 28, 42] }}
+                      transition={{ duration: 4.4, repeat: Infinity, ease: 'linear', delay: index * 0.18 }}
+                      className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 text-[10px] font-bold tracking-[0.28em] text-cyan-200/78"
+                    >
+                      0101
+                    </motion.div>
+                    <motion.div
+                      animate={{ y: [42, 28, 14, 0] }}
+                      transition={{ duration: 4.1, repeat: Infinity, ease: 'linear', delay: index * 0.16 }}
+                      className="pointer-events-none absolute left-1/2 top-1 -translate-x-1/2 text-[10px] font-bold tracking-[0.28em] text-cyan-100/68"
+                    >
+                      1010
+                    </motion.div>
+                  </div>
+                )}
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -394,6 +525,15 @@ export default function Home() {
     </main>
   );
 }
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
@@ -41,38 +41,38 @@ const featureCards = [
 ];
 
 const techStacks = [
-  { title: "React Native", icon: Smartphone, glow: "from-cyan-300 via-sky-400 to-blue-500" },
-  { title: "Next.js", icon: AppWindow, glow: "from-blue-500 via-sky-400 to-cyan-300" },
-  { title: "TypeScript", icon: Braces, glow: "from-violet-300 via-fuchsia-400 to-purple-500" },
-  { title: "Tailwind CSS", icon: Palette, glow: "from-emerald-300 via-teal-400 to-cyan-500" },
-  { title: "Node.js", icon: Cpu, glow: "from-amber-300 via-orange-400 to-yellow-500" },
-  { title: "Laravel", icon: FileCode2, glow: "from-rose-300 via-pink-400 to-red-500" },
-  { title: "Flutter", icon: LayoutGrid, glow: "from-indigo-300 via-blue-400 to-cyan-500" },
-  { title: "React", icon: Globe, glow: "from-sky-300 via-cyan-300 to-blue-400" },
-  { title: "JavaScript", icon: Code2, glow: "from-yellow-300 via-amber-400 to-orange-500" },
-  { title: "HTML5", icon: FileCode2, glow: "from-orange-300 via-red-400 to-rose-500" },
-  { title: "CSS3", icon: Palette, glow: "from-blue-300 via-sky-400 to-cyan-500" },
-  { title: "Vue.js", icon: LayoutGrid, glow: "from-emerald-300 via-green-400 to-teal-500" },
-  { title: "Angular", icon: AppWindow, glow: "from-rose-300 via-red-400 to-pink-500" },
-  { title: "Svelte", icon: Sparkles, glow: "from-orange-300 via-amber-400 to-yellow-500" },
-  { title: "Nuxt.js", icon: Globe, glow: "from-green-300 via-emerald-400 to-teal-500" },
-  { title: "Express.js", icon: Cpu, glow: "from-slate-300 via-zinc-400 to-gray-500" },
-  { title: "NestJS", icon: AppWindow, glow: "from-pink-300 via-rose-400 to-red-500" },
-  { title: "MongoDB", icon: LayoutGrid, glow: "from-green-300 via-lime-400 to-emerald-500" },
-  { title: "PostgreSQL", icon: Cpu, glow: "from-sky-300 via-blue-400 to-indigo-500" },
-  { title: "MySQL", icon: FileCode2, glow: "from-cyan-300 via-sky-400 to-blue-500" },
-  { title: "Firebase", icon: Sparkles, glow: "from-amber-300 via-orange-400 to-yellow-500" },
-  { title: "GraphQL", icon: Braces, glow: "from-fuchsia-300 via-pink-400 to-purple-500" },
-  { title: "Redux", icon: Layers3, glow: "from-violet-300 via-purple-400 to-indigo-500" },
-  { title: "Three.js", icon: Globe, glow: "from-slate-300 via-gray-400 to-zinc-500" },
-  { title: "GSAP", icon: Rocket, glow: "from-lime-300 via-green-400 to-emerald-500" },
-  { title: "Framer Motion", icon: Sparkles, glow: "from-fuchsia-300 via-violet-400 to-indigo-500" },
-  { title: "Django", icon: AppWindow, glow: "from-green-300 via-emerald-400 to-teal-500" },
-  { title: "Python", icon: Braces, glow: "from-blue-300 via-indigo-400 to-violet-500" },
-  { title: "PHP", icon: FileCode2, glow: "from-indigo-300 via-blue-400 to-purple-500" },
-  { title: "Swift", icon: Smartphone, glow: "from-orange-300 via-rose-400 to-red-500" },
-  { title: "Kotlin", icon: Smartphone, glow: "from-violet-300 via-fuchsia-400 to-pink-500" },
-  { title: "Dart", icon: Code2, glow: "from-cyan-300 via-sky-400 to-teal-500" },
+  { title: "React Native", icon: Smartphone, glow: "from-[#03132f] via-[#082a63] to-[#0b3b8a]" },
+  { title: "Next.js", icon: AppWindow, glow: "from-[#04142f] via-[#0a3270] to-[#0f4fa8]" },
+  { title: "TypeScript", icon: Braces, glow: "from-[#051935] via-[#0a2f69] to-[#114fa6]" },
+  { title: "Tailwind CSS", icon: Palette, glow: "from-[#04152f] via-[#083064] to-[#0d4f97]" },
+  { title: "Node.js", icon: Cpu, glow: "from-[#03132d] via-[#08285e] to-[#0d438f]" },
+  { title: "Laravel", icon: FileCode2, glow: "from-[#04142f] via-[#0a2b5f] to-[#0c468f]" },
+  { title: "Flutter", icon: LayoutGrid, glow: "from-[#051733] via-[#09326e] to-[#0d4fa6]" },
+  { title: "React", icon: Globe, glow: "from-[#04132d] via-[#082b63] to-[#0f4ca4]" },
+  { title: "JavaScript", icon: Code2, glow: "from-[#05152f] via-[#0a2f68] to-[#0f4d9c]" },
+  { title: "HTML5", icon: FileCode2, glow: "from-[#04152f] via-[#082c61] to-[#0c478f]" },
+  { title: "CSS3", icon: Palette, glow: "from-[#03122b] via-[#08295c] to-[#0d4a96]" },
+  { title: "Vue.js", icon: LayoutGrid, glow: "from-[#04142d] via-[#082b5f] to-[#0e468c]" },
+  { title: "Angular", icon: AppWindow, glow: "from-[#04142f] via-[#0a2f66] to-[#104da0]" },
+  { title: "Svelte", icon: Sparkles, glow: "from-[#04142f] via-[#093162] to-[#0f4b93]" },
+  { title: "Nuxt.js", icon: Globe, glow: "from-[#04142f] via-[#082d61] to-[#0d468d]" },
+  { title: "Express.js", icon: Cpu, glow: "from-[#03112a] via-[#08295a] to-[#0b417f]" },
+  { title: "NestJS", icon: AppWindow, glow: "from-[#04142f] via-[#0a2e66] to-[#104fa2]" },
+  { title: "MongoDB", icon: LayoutGrid, glow: "from-[#04142d] via-[#082b5d] to-[#0d4488]" },
+  { title: "PostgreSQL", icon: Cpu, glow: "from-[#03132d] via-[#082b63] to-[#0f4998]" },
+  { title: "MySQL", icon: FileCode2, glow: "from-[#03132f] via-[#082a63] to-[#0b3b8a]" },
+  { title: "Firebase", icon: Sparkles, glow: "from-[#04142f] via-[#092f64] to-[#0e4a90]" },
+  { title: "GraphQL", icon: Braces, glow: "from-[#051733] via-[#0a3270] to-[#1050a8]" },
+  { title: "Redux", icon: Layers3, glow: "from-[#04142f] via-[#0a2f68] to-[#114a9b]" },
+  { title: "Three.js", icon: Globe, glow: "from-[#031129] via-[#072658] to-[#0b3d7f]" },
+  { title: "GSAP", icon: Rocket, glow: "from-[#04142d] via-[#082b5f] to-[#0d468c]" },
+  { title: "Framer Motion", icon: Sparkles, glow: "from-[#051733] via-[#0a3270] to-[#1050a8]" },
+  { title: "Django", icon: AppWindow, glow: "from-[#04142d] via-[#082b60] to-[#0d4588]" },
+  { title: "Python", icon: Braces, glow: "from-[#04142f] via-[#0a2f69] to-[#104ea0]" },
+  { title: "PHP", icon: FileCode2, glow: "from-[#051733] via-[#09316b] to-[#0f4d9f]" },
+  { title: "Swift", icon: Smartphone, glow: "from-[#04142f] via-[#0a2d63] to-[#104891]" },
+  { title: "Kotlin", icon: Smartphone, glow: "from-[#051733] via-[#0a3270] to-[#1050a8]" },
+  { title: "Dart", icon: Code2, glow: "from-[#04142f] via-[#082d61] to-[#0e478c]" },
 ];
 
 export default function WebMobileShowcase3D() {
@@ -304,30 +304,31 @@ export default function WebMobileShowcase3D() {
                     animate={{ rotateY: [0, 140, 280, 360], rotateX: [0, 8, 0, -8, 0], y: index % 2 === 0 ? [0, -6, 0] : [0, 6, 0] }}
                     whileHover={{ y: -16, rotateX: 14, rotateY: index % 2 === 0 ? -16 : 16, scale: 1.05 }}
                     transition={{ duration: 8.6 + (index % 5) * 0.45, repeat: Infinity, ease: "easeInOut" }}
-                    className="group relative h-[12.5rem] w-[11.5rem] shrink-0 overflow-visible border border-white/14 text-white shadow-[0_18px_48px_rgba(0,0,0,0.24)] [transform-style:preserve-3d] md:h-[13.5rem] md:w-[12.5rem]" style={{ clipPath: "polygon(18% 0,82% 0,100% 18%,100% 82%,82% 100%,18% 100%,0 82%,0 18%)" }}
+                    className="group relative h-[12.5rem] w-[11.5rem] shrink-0 overflow-visible border border-cyan-100/16 text-white shadow-[0_20px_54px_rgba(0,0,0,0.26)] [transform-style:preserve-3d] md:h-[13.5rem] md:w-[12.5rem]" style={{ clipPath: "polygon(22% 0%, 78% 0%, 92% 8%, 100% 22%, 100% 78%, 92% 92%, 78% 100%, 22% 100%, 8% 92%, 0% 78%, 0% 22%, 8% 8%)" }}
                   >
-                    <div className={"absolute inset-0 bg-gradient-to-br " + stack.glow} style={{ clipPath: "polygon(18% 0,82% 0,100% 18%,100% 82%,82% 100%,18% 100%,0 82%,0 18%)" }} />
-                    <div className="absolute -right-3 top-[10%] h-[78%] w-4 skew-y-[-10deg] bg-[linear-gradient(180deg,rgba(255,255,255,0.22),rgba(255,255,255,0.04))] opacity-80" style={{ clipPath: "polygon(0 8%,100% 0,100% 100%,0 92%)" }} />
-                    <div className="absolute bottom-[-0.65rem] left-[10%] h-4 w-[80%] skew-x-[-12deg] bg-[linear-gradient(90deg,rgba(2,11,30,0.35),rgba(255,255,255,0.08),rgba(2,11,30,0.28))] opacity-85" style={{ clipPath: "polygon(8% 0,92% 0,100% 100%,0 100%)" }} />
-                    <div className="absolute inset-[1px] bg-[linear-gradient(180deg,rgba(3,18,48,0.12),rgba(3,18,48,0.42))]" style={{ clipPath: "polygon(18% 0,82% 0,100% 18%,100% 82%,82% 100%,18% 100%,0 82%,0 18%)" }} />
+                    <div className={"absolute inset-0 bg-gradient-to-br " + stack.glow} style={{ clipPath: "polygon(22% 0%, 78% 0%, 92% 8%, 100% 22%, 100% 78%, 92% 92%, 78% 100%, 22% 100%, 8% 92%, 0% 78%, 0% 22%, 8% 8%)" }} />
+                    <div className="absolute -right-3 top-[10%] h-[78%] w-4 skew-y-[-10deg] bg-[linear-gradient(180deg,rgba(191,219,254,0.24),rgba(255,255,255,0.05))] opacity-85" style={{ clipPath: "polygon(0 8%,100% 0,100% 100%,0 92%)" }} />
+                    <div className="absolute bottom-[-0.65rem] left-[10%] h-4 w-[80%] skew-x-[-12deg] bg-[linear-gradient(90deg,rgba(2,11,30,0.42),rgba(191,219,254,0.12),rgba(2,11,30,0.34))] opacity-90" style={{ clipPath: "polygon(8% 0,92% 0,100% 100%,0 100%)" }} />
+                    <div className="absolute inset-[1px] bg-[linear-gradient(180deg,rgba(2,10,28,0.18),rgba(2,10,28,0.58))]" style={{ clipPath: "polygon(22% 0%, 78% 0%, 92% 8%, 100% 22%, 100% 78%, 92% 92%, 78% 100%, 22% 100%, 8% 92%, 0% 78%, 0% 22%, 8% 8%)" }} />
                     <motion.div
                       animate={{ rotate: [0, 360], scale: [1, 1.08, 1] }}
                       transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-                      className="absolute -right-8 -top-8 h-28 w-28 rounded-full border border-white/10 bg-white/10 blur-[1px]"
+                      className="absolute -right-8 -top-8 h-28 w-28 rounded-full border border-cyan-100/12 bg-cyan-100/10 blur-[1px]"
                     />
-                    <div className="absolute inset-x-3 top-2 h-10 rounded-[999px] bg-[linear-gradient(180deg,rgba(255,255,255,0.22),transparent)] opacity-70 blur-sm" />
-                    <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.14),transparent_45%,rgba(255,255,255,0.04))]" />
+                    <div className="absolute inset-x-3 top-2 h-10 rounded-[999px] bg-[linear-gradient(180deg,rgba(255,255,255,0.3),rgba(191,219,254,0.08),transparent)] opacity-90 blur-sm" />
+                    <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.16),transparent_42%,rgba(125,211,252,0.08))]" />
                     <div className="relative flex h-full flex-col justify-between p-4">
+                      <div className="pointer-events-none absolute inset-[6px] border border-cyan-100/8" style={{ clipPath: "polygon(22% 0%, 78% 0%, 92% 8%, 100% 22%, 100% 78%, 92% 92%, 78% 100%, 22% 100%, 8% 92%, 0% 78%, 0% 22%, 8% 8%)" }} />
                       <div>
                         <div className="flex items-center justify-between">
-                          <div className="flex h-12 w-12 items-center justify-center rounded-[1rem] border border-white/16 bg-white/12 shadow-[0_12px_30px_rgba(0,0,0,0.16)] backdrop-blur-md">
+                          <div className="flex h-12 w-12 items-center justify-center rounded-[1rem] border border-white/16 bg-white/10 shadow-[0_12px_30px_rgba(0,0,0,0.22)] backdrop-blur-md">
                             <StackIcon size={24} className="text-white drop-shadow-[0_8px_18px_rgba(0,0,0,0.22)]" />
                           </div>
                         </div>
                         <h4 className="mt-3 text-lg font-bold tracking-tight text-white md:text-[1.2rem]">{stack.title}</h4>
                       </div>
 
-                      <div className="rounded-[1rem] border border-white/10 bg-[#071528]/60 p-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-sm">
+                      <div className="rounded-[1rem] border border-cyan-100/10 bg-[#031126]/78 p-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-sm">
                         <div className="mb-3 flex items-center gap-2">
                           <span className="h-2.5 w-2.5 rounded-full bg-rose-400" />
                           <span className="h-2.5 w-2.5 rounded-full bg-amber-400" />
@@ -352,3 +353,7 @@ export default function WebMobileShowcase3D() {
     </section>
   );
 }
+
+
+
+

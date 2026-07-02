@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import { motion } from "framer-motion";
-import { Building2 } from "lucide-react";
+import { Building2, Sparkles } from "lucide-react";
 
 const clients = [
   {
@@ -36,9 +36,9 @@ const clients = [
   },
 ];
 
-export default function Clients3DSlider() {
-  const track = [...clients, ...clients];
+const track = [...clients, ...clients];
 
+export default function Clients3DSlider() {
   return (
     <section className="relative overflow-hidden py-36 text-white">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_22%,rgba(77,159,255,0.14),transparent_24%),radial-gradient(circle_at_82%_24%,rgba(139,92,246,0.12),transparent_22%),radial-gradient(circle_at_50%_78%,rgba(11,94,215,0.16),transparent_26%)]" />
@@ -62,77 +62,139 @@ export default function Clients3DSlider() {
           </p>
         </div>
 
-        <div className="relative mt-20 overflow-hidden [perspective:1800px]">
+        <div className="relative mt-20 overflow-hidden [perspective:2000px]">
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-20 bg-gradient-to-r from-[#0096FF] via-[#0096FF]/70 to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-20 bg-gradient-to-l from-[#0096FF] via-[#0096FF]/70 to-transparent" />
+
           <motion.div
             animate={{ x: ["0%", "-50%"] }}
-            transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
-            className="flex w-max gap-8 px-4 [transform-style:preserve-3d]"
+            transition={{ x: { duration: 26, repeat: Infinity, ease: "linear" } }}
+            className="flex w-max gap-5 px-3 py-4 [transform-style:preserve-3d]"
           >
-            {track.map((client, index) => (
-              <motion.article
-                key={`${client.name}-${index}`}
-                whileHover={{ y: -16, rotateX: 10, rotateY: index % 2 === 0 ? -12 : 12, scale: 1.03 }}
-                className="group relative flex min-h-[300px] w-[min(86vw,370px)] shrink-0 flex-col justify-between overflow-hidden border border-white/12 bg-white/8 p-7 shadow-[0_34px_110px_rgba(0,0,0,0.22)] backdrop-blur-xl [transform-style:preserve-3d]"
-                style={{ clipPath: "polygon(0 18px,18px 0,100% 0,100% calc(100% - 22px),calc(100% - 22px) 100%,0 100%,0 38%,12% 26%)" }}
-              >
-                <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(77,159,255,0.18),transparent_34%,rgba(255,255,255,0.04)_60%,rgba(77,159,255,0.12))]" />
-                <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.72),transparent)]" />
-                <div className="absolute right-0 top-0 h-16 w-16 border-r border-t border-cyan-300/22" />
-                <div className="absolute bottom-0 left-0 h-16 w-16 border-b border-l border-cyan-300/18" />
-                <div className="absolute left-5 top-5 h-10 w-10 border-l border-t border-white/14" />
-                <motion.div
-                  aria-hidden="true"
-                  animate={{ opacity: [0.14, 0.3, 0.14], scale: [0.94, 1.06, 0.94] }}
-                  transition={{ duration: 4.8 + (index % clients.length) * 0.35, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute -right-8 top-8 h-24 w-24 rounded-full bg-cyan-300/14 blur-2xl"
-                />
-                <motion.div
-                  aria-hidden="true"
-                  animate={{ x: ["-120%", "120%"], opacity: [0, 0.5, 0] }}
-                  transition={{ duration: 4.4, repeat: Infinity, ease: "easeInOut", delay: (index % clients.length) * 0.28 }}
-                  className="absolute inset-y-0 left-0 w-20 bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.16),transparent)]"
-                />
+            {track.map((client, index) => {
+              const delay = (index % clients.length) * 0.18;
 
-                <div className="relative [transform-style:preserve-3d]">
-                  <div className="flex items-start justify-between gap-4">
-                    <span
-                      className="flex h-16 w-16 items-center justify-center border border-white/16 bg-white/10 text-2xl font-black text-cyan-100 shadow-[0_18px_44px_rgba(0,0,0,0.16)] [transform:translateZ(30px)]"
-                      style={{ clipPath: "polygon(0 10px,10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%)" }}
+              return (
+                <motion.article
+                  key={`${client.name}-${index}`}
+                  animate={{
+                    rotateX: [0, 4, 0],
+                    rotateY: [0, -4, 0],
+                    scale: [0.94, 1, 0.9],
+                    opacity: [0.86, 1, 0.72],
+                    filter: ["blur(0px)", "blur(0px)", "blur(1.6px)"],
+                  }}
+                  transition={{
+                    duration: 6.4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay,
+                    times: [0, 0.62, 1],
+                  }}
+                  whileHover={{ y: -14, rotateX: 10, rotateY: index % 2 === 0 ? -12 : 12, scale: 1.03, opacity: 1 }}
+                  className="group relative flex min-h-[235px] w-[min(78vw,255px)] shrink-0 overflow-hidden rounded-[1.45rem] border border-[#9ed8ff]/18 bg-[#04142f]/78 p-4 shadow-[0_26px_90px_rgba(0,0,0,0.26)] backdrop-blur-lg [transform-style:preserve-3d]"
+                >
+                  <motion.div
+                    animate={{ opacity: [0.82, 0.96, 0.64] }}
+                    transition={{ duration: 6.4, repeat: Infinity, ease: "easeInOut", delay, times: [0, 0.62, 1] }}
+                    className="absolute inset-0 bg-[linear-gradient(145deg,#082a63_0%,#0b3b8a_26%,#06285d_58%,#03132f_100%)]"
+                  />
+                  <div className="absolute inset-[1px] rounded-[1.35rem] bg-[linear-gradient(145deg,rgba(255,255,255,0.14),rgba(255,255,255,0.03)_22%,rgba(6,23,49,0.14)_54%,rgba(1,8,20,0.52)_100%)]" />
+                  <motion.div
+                    animate={{ opacity: [0, 0.85, 0] }}
+                    transition={{ duration: 6.4, repeat: Infinity, ease: "easeInOut", delay, times: [0, 0.18, 1] }}
+                    className="absolute inset-[1px] rounded-[1.35rem] border border-cyan-100/10"
+                  />
+                  <motion.div
+                    animate={{ x: ["-135%", "35%", "130%"], opacity: [0, 0.45, 0] }}
+                    transition={{ duration: 6.4, repeat: Infinity, ease: "easeInOut", delay, times: [0, 0.22, 1] }}
+                    className="absolute inset-y-0 left-0 w-20 bg-[linear-gradient(90deg,transparent,rgba(158,216,255,0.16),transparent)]"
+                  />
+                  <motion.div
+                    animate={{ x: [0, 0, -42], y: [0, 0, -8], opacity: [0.22, 0.28, 0], scale: [0.95, 1, 0.86] }}
+                    transition={{ duration: 6.4, repeat: Infinity, ease: "easeInOut", delay, times: [0, 0.62, 1] }}
+                    className="absolute -right-8 top-4 h-24 w-24 rounded-full bg-cyan-200/14 blur-2xl"
+                  />
+                  <motion.div
+                    animate={{ x: [0, 0, -30], y: [0, 0, 4], opacity: [0.14, 0.2, 0], scale: [0.95, 1, 0.84] }}
+                    transition={{ duration: 6.4, repeat: Infinity, ease: "easeInOut", delay: delay + 0.08, times: [0, 0.62, 1] }}
+                    className="absolute bottom-4 left-4 h-20 w-20 rounded-full bg-sky-300/10 blur-2xl"
+                  />
+                  <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(196,233,255,0.8),transparent)]" />
+
+                  <div className="relative z-10 flex h-full w-full flex-col justify-between [transform-style:preserve-3d]">
+                    <div className="flex items-start justify-between gap-4">
+                      <motion.div
+                        initial={{ opacity: 0, x: 26, scale: 0.7, rotate: -16 }}
+                        animate={{ opacity: [0, 1, 0], x: [26, 0, -26], y: [8, 0, -6], scale: [0.7, 1, 0.76], rotate: [-16, 0, 12] }}
+                        transition={{ duration: 6.4, repeat: Infinity, ease: "easeInOut", delay, times: [0, 0.24, 1] }}
+                        className="relative flex h-14 w-14 items-center justify-center rounded-[0.95rem] border border-cyan-100/16 bg-white/12 shadow-[0_16px_34px_rgba(0,0,0,0.18)] [transform:translateZ(30px)]"
+                      >
+                        <div className="absolute inset-1 rounded-[0.95rem] bg-[linear-gradient(145deg,rgba(255,255,255,0.24),rgba(255,255,255,0.06))]" />
+                        <span className="relative text-xl font-black text-white drop-shadow-[0_8px_18px_rgba(15,23,42,0.26)]">
+                          {client.mark}
+                        </span>
+                      </motion.div>
+
+                      <motion.div
+                        initial={{ opacity: 0, x: 18, scale: 0.7 }}
+                        animate={{ opacity: [0, 1, 0], x: [18, 0, -22], y: [10, 0, -4], scale: [0.7, 1, 0.82] }}
+                        transition={{ duration: 6.4, repeat: Infinity, ease: "easeInOut", delay: delay + 0.07, times: [0, 0.25, 1] }}
+                        className="flex flex-col items-end gap-3 [transform:translateZ(18px)]"
+                      >
+                        <div className="rounded-full border border-cyan-100/12 bg-white/8 p-2">
+                          <Sparkles size={12} className="text-cyan-100" />
+                        </div>
+                        <Building2 size={16} className="text-white/35" />
+                      </motion.div>
+                    </div>
+
+                    <motion.div
+                      initial={{ opacity: 0, x: 40, scale: 0.86 }}
+                      animate={{ opacity: [0, 1, 0], x: [40, 0, -46], y: [14, 0, -4], scale: [0.86, 1, 0.88] }}
+                      transition={{ duration: 6.4, repeat: Infinity, ease: "easeInOut", delay: delay + 0.12, times: [0, 0.32, 1] }}
+                      className="mt-6 [transform:translateZ(30px)]"
                     >
-                      {client.mark}
-                    </span>
-                    <div className="flex flex-col items-end gap-3 [transform:translateZ(18px)]">
-                      <Building2 size={20} className="text-white/28" />
-                      <span className="h-px w-14 bg-[linear-gradient(90deg,transparent,rgba(125,211,252,0.8),transparent)]" />
+                      <h3 className="max-w-[11rem] text-lg font-bold leading-tight text-white drop-shadow-[0_10px_24px_rgba(15,23,42,0.3)] md:text-xl">
+                        {client.name}
+                      </h3>
+                      <p className="mt-5 text-xs font-semibold uppercase tracking-[0.3em] text-cyan-100/86">
+                        Trusted Partner
+                      </p>
+                    </motion.div>
+
+                    <div className="mt-6 flex items-end justify-between gap-3 [transform:translateZ(24px)]">
+                      <motion.div
+                        initial={{ opacity: 0, x: 34, scale: 0.84 }}
+                        animate={{ opacity: [0, 1, 0], x: [34, 0, -38], y: [10, 0, -4], scale: [0.84, 1, 0.84] }}
+                        transition={{ duration: 6.4, repeat: Infinity, ease: "easeInOut", delay: delay + 0.18, times: [0, 0.38, 1] }}
+                      >
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-white/66">
+                          Sector
+                        </p>
+                        <p className="mt-2 text-sm text-white/92 drop-shadow-[0_8px_18px_rgba(15,23,42,0.22)] md:text-base">
+                          {client.sector}
+                        </p>
+                      </motion.div>
+
+                      <motion.span
+                        initial={{ opacity: 0, x: 22, scale: 0.76 }}
+                        animate={{ opacity: [0, 1, 0], x: [22, 0, -28], y: [8, 0, -6], scale: [0.76, 1, 0.78], rotate: [0, 0, -8] }}
+                        transition={{ duration: 6.4, repeat: Infinity, ease: "easeInOut", delay: delay + 0.24, times: [0, 0.42, 1] }}
+                        className="rounded-full border border-cyan-100/16 bg-white/10 px-2.5 py-1.5 text-[9px] font-bold uppercase tracking-[0.2em] text-white"
+                      >
+                        Verified
+                      </motion.span>
                     </div>
                   </div>
-
-                  <h3 className="mt-8 max-w-[14rem] text-2xl font-bold leading-tight [transform:translateZ(30px)]">
-                    {client.name}
-                  </h3>
-                </div>
-
-                <div className="relative mt-10 flex items-end justify-between gap-4 [transform:translateZ(24px)]">
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.32em] text-cyan-200/82">
-                      Sector
-                    </p>
-                    <p className="mt-3 text-lg text-white/76">
-                      {client.sector}
-                    </p>
-                  </div>
-                  <span
-                    className="border border-white/10 bg-white/8 px-3 py-2 text-sm font-semibold uppercase tracking-[0.22em] text-white/46"
-                    style={{ clipPath: "polygon(0 6px,6px 0,100% 0,100% 100%,0 100%)" }}
-                  >
-                    Trusted
-                  </span>
-                </div>
-              </motion.article>
-            ))}
+                </motion.article>
+              );
+            })}
           </motion.div>
         </div>
       </div>
     </section>
   );
 }
+
+

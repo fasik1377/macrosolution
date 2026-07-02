@@ -1,55 +1,67 @@
 ﻿"use client";
 
 import { motion } from "framer-motion";
-import { Blocks, Building2, BriefcaseBusiness, Cable, Layers3, ShieldCheck } from "lucide-react";
+import { Building2, BriefcaseBusiness, Cable, Layers3, ShieldCheck } from "lucide-react";
 
 const portfolioItems = [
   {
     id: "gims",
-    number: "01",
     title: "GIMS",
-    description: "A comprehensive General Insurance Management System built to manage underwriting, claims, renewals and operational workflows with speed and control.",
+    description:
+      "A comprehensive General Insurance Management System built to manage underwriting, claims, renewals and operational workflows with speed and control.",
     icon: ShieldCheck,
-    accent: "from-cyan-300/55 via-sky-400/35 to-transparent",
-    depth: "md:translate-y-8",
+    accent: "from-[#03132f] via-[#082a63] to-[#0b3b8a]",
+    glow: "shadow-[0_30px_110px_rgba(44,125,255,0.32)]",
+    chipClass: "border-cyan-100/20 bg-white/10 text-white",
+    metrics: ["Claims", "Policies", "Control"],
   },
   {
     id: "dms",
-    number: "02",
     title: "DMS",
-    description: "A secure document management platform for indexing, retrieval, compliance and enterprise records visibility across teams.",
+    description:
+      "A secure document management platform for indexing, retrieval, compliance and enterprise records visibility across teams.",
     icon: Layers3,
-    accent: "from-violet-300/55 via-fuchsia-400/35 to-transparent",
-    depth: "md:-translate-y-2",
+    accent: "from-[#04142f] via-[#0a3270] to-[#0f4fa8]",
+    glow: "shadow-[0_30px_110px_rgba(59,130,246,0.3)]",
+    chipClass: "border-cyan-100/20 bg-white/10 text-white",
+    metrics: ["Indexing", "Archive", "Access"],
   },
   {
     id: "primus",
-    number: "03",
     title: "PRIMUS",
-    description: "An integrated HR, payroll and workforce management solution built to simplify people operations and business compliance.",
+    description:
+      "An integrated HR, payroll and workforce management solution built to simplify people operations and business compliance.",
     icon: BriefcaseBusiness,
-    accent: "from-emerald-300/55 via-teal-400/35 to-transparent",
-    depth: "md:translate-y-10",
+    accent: "from-[#051733] via-[#09316b] to-[#0f4d9f]",
+    glow: "shadow-[0_30px_110px_rgba(37,99,235,0.32)]",
+    chipClass: "border-cyan-100/20 bg-white/10 text-white",
+    metrics: ["HR Core", "Payroll", "Workforce"],
   },
   {
     id: "infra",
-    number: "04",
     title: "Infrastructure",
-    description: "Reliable IT infrastructure services covering network foundation, server environments and scalable technology support.",
+    description:
+      "Reliable IT infrastructure services covering network foundation, server environments and scalable technology support.",
     icon: Cable,
-    accent: "from-amber-300/55 via-orange-400/35 to-transparent",
-    depth: "md:translate-y-0",
+    accent: "from-[#031129] via-[#072658] to-[#0b3d7f]",
+    glow: "shadow-[0_30px_110px_rgba(14,116,255,0.28)]",
+    chipClass: "border-cyan-100/20 bg-white/10 text-white",
+    metrics: ["Network", "Servers", "Support"],
   },
   {
     id: "erp",
-    number: "05",
     title: "Enterprise Solutions",
-    description: "Tailored enterprise systems for operations, productivity and business visibility across industry-specific workflows.",
+    description:
+      "Tailored enterprise systems for operations, productivity and business visibility across industry-specific workflows.",
     icon: Building2,
-    accent: "from-blue-300/55 via-indigo-400/35 to-transparent",
-    depth: "md:-translate-y-6",
+    accent: "from-[#04142f] via-[#0a2f68] to-[#114a9b]",
+    glow: "shadow-[0_30px_110px_rgba(56,189,248,0.26)]",
+    chipClass: "border-cyan-100/20 bg-white/10 text-white",
+    metrics: ["ERP", "Insights", "Automation"],
   },
 ];
+
+const slidingItems = [...portfolioItems, ...portfolioItems];
 
 export default function ProductPortfolio3D() {
   return (
@@ -69,54 +81,113 @@ export default function ProductPortfolio3D() {
           </p>
         </div>
 
-        <div className="relative mt-12 [perspective:1800px]">
+        <div className="relative mt-12 [perspective:2200px]">
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-16 bg-gradient-to-r from-[#0096FF] to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-16 bg-gradient-to-l from-[#0096FF] to-transparent" />
+
           <motion.div
-            animate={{ rotateX: [0, 4, 0], rotateY: [0, -4, 0] }}
-            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-            className="relative mx-auto grid max-w-7xl gap-5 md:grid-cols-2 xl:grid-cols-3 [transform-style:preserve-3d]"
+            animate={{ x: ["0%", "-50%"], rotateX: [0, 5, 0], rotateY: [0, -5, 0] }}
+            transition={{
+              x: { duration: 24, repeat: Infinity, ease: "linear" },
+              rotateX: { duration: 12, repeat: Infinity, ease: "easeInOut" },
+              rotateY: { duration: 12, repeat: Infinity, ease: "easeInOut" },
+            }}
+            className="flex w-max gap-5 px-2 pb-10 pt-8 [transform-style:preserve-3d]"
           >
-            {portfolioItems.map((item, index) => {
+            {slidingItems.map((item, index) => {
               const Icon = item.icon;
+              const delay = (index % portfolioItems.length) * 0.18;
 
               return (
                 <motion.article
-                  key={item.id}
-                  initial={{ opacity: 0, y: 36 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.25 }}
-                  transition={{ duration: 0.55, delay: index * 0.08 }}
-                  whileHover={{ y: -16, rotateX: 10, rotateY: index % 2 === 0 ? -10 : 10, scale: 1.035 }}
-                  className={`group relative min-h-[300px] overflow-hidden border border-white/12 bg-white/8 p-6 shadow-[0_30px_90px_rgba(0,0,0,0.2)] backdrop-blur-xl [transform-style:preserve-3d] ${item.depth}`}
-                  style={{ clipPath: "polygon(0 0,90% 0,100% 12%,100% 100%,10% 100%,0 88%)" }}
+                  key={`${item.id}-${index}`}
+                  initial={{ opacity: 0, y: 36, scale: 0.92 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.55, delay: (index % portfolioItems.length) * 0.08 }}
+                  animate={{ y: [0, -8, 0], rotateZ: [0, 1.4, 0, -1.4, 0], scale: [1, 1.018, 1] }}
+                  whileHover={{ y: -14, rotateX: 18, rotateY: index % 2 === 0 ? -20 : 20, scale: 1.08 }}
+                  transition={{ duration: 5.4, repeat: Infinity, ease: "easeInOut", delay }}
+                  className={`group relative flex h-[220px] w-[220px] shrink-0 items-center justify-center rounded-full border border-cyan-100/18 bg-transparent backdrop-blur-0 [transform-style:preserve-3d] md:h-[240px] md:w-[240px] ${item.glow}`}
                 >
-                  <div className={`absolute inset-0 bg-gradient-to-br ${item.accent} opacity-70`} />
-                  <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.18),transparent_42%,rgba(255,255,255,0.04))]" />
-                  <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.72),transparent)]" />
-                  <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-white/10 blur-2xl transition duration-500 group-hover:scale-125" />
-                  <div className="absolute -left-8 bottom-0 h-32 w-32 rounded-full bg-cyan-300/10 blur-3xl transition duration-500 group-hover:scale-125" />
+                  <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${item.accent}`} />
+                  <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_30%_28%,rgba(255,255,255,0.82),rgba(255,255,255,0.2)_16%,rgba(255,255,255,0.05)_30%,transparent_42%)] opacity-90" />
+                  <div className="absolute inset-[2px] rounded-full bg-[radial-gradient(circle_at_70%_75%,rgba(3,10,28,0.58),rgba(3,10,28,0.16)_24%,transparent_44%)]" />
+                  <div className="absolute inset-[6px] rounded-full shadow-[inset_-28px_-34px_58px_rgba(1,8,20,0.48),inset_18px_18px_28px_rgba(255,255,255,0.1)]" />
+                  <div className="absolute inset-[16px] rounded-full border border-cyan-100/14" />
+                  <motion.div
+                    animate={{ scale: [1, 1.08, 1], opacity: [0.45, 0.8, 0.45] }}
+                    transition={{ duration: 4.6, repeat: Infinity, ease: "easeInOut", delay }}
+                    className="absolute left-[15%] top-[12%] h-16 w-16 rounded-full bg-white/35 blur-xl"
+                  />
+                  <motion.div
+                    animate={{ scale: [1, 1.18, 1], opacity: [0.6, 1, 0.6] }}
+                    transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut", delay: delay + 0.1 }}
+                    className="absolute left-[24%] top-[20%] h-6 w-6 rounded-full bg-cyan-50/80 blur-[1px]"
+                  />
+                  <motion.div
+                    animate={{ scale: [1, 1.16, 1], y: [0, -3, 0] }}
+                    transition={{ duration: 4.1, repeat: Infinity, ease: "easeInOut", delay: delay + 0.14 }}
+                    className="absolute right-[16%] top-[18%] h-8 w-8 rounded-full border border-cyan-100/18 bg-cyan-100/16"
+                  />
+                  <motion.div
+                    animate={{ scale: [1, 1.14, 1], y: [0, -2, 0] }}
+                    transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: delay + 0.22 }}
+                    className="absolute bottom-[18%] left-[20%] h-10 w-10 rounded-full border border-cyan-100/12 bg-white/10"
+                  />
+                  <div className="absolute bottom-[14%] right-[18%] h-12 w-12 rounded-full bg-[radial-gradient(circle,rgba(8,22,52,0.4),transparent_70%)] blur-md" />
+                  <motion.div
+                    animate={{ scale: [1, 1.22, 1], opacity: [0.4, 0.85, 0.4] }}
+                    transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: delay + 0.18 }}
+                    className="absolute bottom-[13%] right-[21%] h-6 w-6 rounded-full bg-cyan-100/45 blur-[2px]"
+                  />
+                  <div className="absolute inset-x-10 bottom-8 flex items-center justify-center gap-1 opacity-60">
+                    {Array.from({ length: 10 }).map((_, gridIndex) => (
+                      <motion.span
+                        key={`${item.id}-${index}-pulse-${gridIndex}`}
+                        animate={{ opacity: [0.35, 1, 0.35], y: [0, -1, 0] }}
+                        transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut", delay: gridIndex * 0.08 + delay }}
+                        className="h-1.5 w-1.5 rounded-full bg-cyan-50/90"
+                      />
+                    ))}
+                  </div>
 
-                  <div className="relative flex h-full flex-col justify-between [transform-style:preserve-3d]">
-                    <div className="flex items-start justify-between gap-5 [transform:translateZ(26px)]">
-                      <div className="flex h-16 w-16 items-center justify-center border border-white/18 bg-white/12 text-white shadow-[0_20px_40px_rgba(0,0,0,0.2)] [clip-path:polygon(0_0,100%_0,84%_100%,0_100%)]">
-                        <Icon size={28} />
-                      </div>
-                      <span className="border border-white/14 bg-white/10 px-3 py-2 text-sm font-bold uppercase tracking-[0.36em] text-white/72 [clip-path:polygon(8%_0,100%_0,92%_100%,0_100%)]">
-                        {item.number}
-                      </span>
-                    </div>
+                  <div className="relative z-10 flex h-full w-full flex-col items-center justify-center px-6 text-center [transform-style:preserve-3d]">
+                    <motion.div
+                      animate={{ y: [0, -4, 0], scale: [1, 1.06, 1], rotate: [0, 4, 0] }}
+                      transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay }}
+                      className="flex h-11 w-11 items-center justify-center rounded-full border border-cyan-100/28 bg-white/12 text-white shadow-[0_0_18px_rgba(125,211,252,0.28)] [transform:translateZ(38px)]"
+                    >
+                      <Icon size={20} />
+                    </motion.div>
 
-                    <div className="mt-8 [transform:translateZ(34px)]">
-                      <h3 className="text-3xl font-bold text-white">{item.title}</h3>
-                      <p className="mt-4 max-w-md text-base leading-7 text-white/82">{item.description}</p>
-                    </div>
+                    <motion.div
+                      animate={{ y: [0, -5, 0], opacity: [0.9, 1, 0.9] }}
+                      transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut", delay: delay + 0.1 }}
+                      className="mt-4 [transform:translateZ(48px)]"
+                    >
+                      <h3 className="text-lg font-extrabold text-white drop-shadow-[0_10px_24px_rgba(15,23,42,0.36)] md:text-xl">
+                        {item.title}
+                      </h3>
+                      <p className="mt-2 line-clamp-3 text-xs leading-5 text-white/94 drop-shadow-[0_8px_18px_rgba(15,23,42,0.28)]">
+                        {item.description}
+                      </p>
+                    </motion.div>
 
-                    <div className="mt-8 flex items-center justify-between border-t border-white/12 pt-5 text-sm font-semibold uppercase tracking-[0.28em] text-white/70 [transform:translateZ(22px)]">
-                      <span>Business-ready</span>
-                      <div className="flex items-center gap-3">
-                        <span className="h-px w-12 bg-white/40" />
-                        <Blocks size={18} />
-                      </div>
-                    </div>
+                    <motion.div
+                      animate={{ y: [0, -3, 0], scale: [1, 1.02, 1] }}
+                      transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: delay + 0.16 }}
+                      className="mt-3 flex flex-wrap items-center justify-center gap-1.5 [transform:translateZ(34px)]"
+                    >
+                      {item.metrics.map((metric) => (
+                        <span
+                          key={`${item.id}-${index}-${metric}`}
+                          className={`rounded-full border px-2 py-1 text-[9px] font-bold uppercase tracking-[0.18em] ${item.chipClass}`}
+                        >
+                          {metric}
+                        </span>
+                      ))}
+                    </motion.div>
                   </div>
                 </motion.article>
               );

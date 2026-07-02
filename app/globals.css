@@ -43,3 +43,13 @@ html {
 #products {
   scroll-margin-top: 130px;
 }
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
