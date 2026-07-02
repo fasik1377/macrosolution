@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -23,8 +23,15 @@ const contactItems = [
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-[#031230] text-white">
-      <DataNetworkBackground variant="dark" />
+    <footer className="relative overflow-hidden bg-[#0096FF] text-white">
+      <motion.div
+        aria-hidden="true"
+        animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,#0b5ed7_0%,#1273eb_24%,#0096FF_52%,#0a7fe8_76%,#083b8a_100%)] bg-[length:200%_200%]"
+      />
+      <DataNetworkBackground variant="dark" className="opacity-80" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_22%,rgba(77,159,255,0.18),transparent_24%),radial-gradient(circle_at_82%_24%,rgba(11,94,215,0.16),transparent_22%),radial-gradient(circle_at_50%_78%,rgba(0,150,255,0.18),transparent_26%)]" />
 
       <div className="container relative z-10 mx-auto px-6 py-14 md:py-16">
         <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
@@ -93,4 +100,6 @@ export default function Footer() {
     </footer>
   );
 }
+
+
 
