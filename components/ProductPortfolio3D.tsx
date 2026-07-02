@@ -104,10 +104,14 @@ export default function ProductPortfolio3D() {
                   initial={{ opacity: 0, y: 36, scale: 0.92 }}
                   whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.55, delay: (index % portfolioItems.length) * 0.08 }}
                   animate={{ y: [0, -8, 0], rotateZ: [0, 1.4, 0, -1.4, 0], scale: [1, 1.018, 1] }}
                   whileHover={{ y: -14, rotateX: 18, rotateY: index % 2 === 0 ? -20 : 20, scale: 1.08 }}
-                  transition={{ duration: 5.4, repeat: Infinity, ease: "easeInOut", delay }}
+                  transition={{
+                    opacity: { duration: 0.55, delay: (index % portfolioItems.length) * 0.08 },
+                    y: { duration: 5.4, repeat: Infinity, ease: "easeInOut", delay },
+                    rotateZ: { duration: 5.4, repeat: Infinity, ease: "easeInOut", delay },
+                    scale: { duration: 5.4, repeat: Infinity, ease: "easeInOut", delay },
+                  }}
                   className={`group relative flex h-[220px] w-[220px] shrink-0 items-center justify-center rounded-full border border-cyan-100/18 bg-transparent backdrop-blur-0 [transform-style:preserve-3d] md:h-[240px] md:w-[240px] ${item.glow}`}
                 >
                   <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${item.accent}`} />
@@ -198,3 +202,4 @@ export default function ProductPortfolio3D() {
     </section>
   );
 }
+
