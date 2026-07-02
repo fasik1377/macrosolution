@@ -131,7 +131,7 @@ export default function PrimusShowcase3D() {
               transition={{ duration: 0.7, ease: "easeOut" }}
               className="absolute right-6 top-6 z-20 rounded-[1.5rem] border border-brand-blue/10 bg-white/90 p-3 shadow-[0_22px_50px_rgba(8,59,138,0.18)] backdrop-blur-sm"
             >
-              <Image src="/PRIMUS LOGO.png" alt="Macro Solution badge" width={140} height={56} className="h-auto w-28 object-contain md:w-36" />
+              <Image src="/primus-logo.png" alt="Macro Solution badge" width={140} height={56} className="h-auto w-28 object-contain md:w-36" />
             </motion.div>
 
             <motion.div
@@ -182,6 +182,7 @@ export default function PrimusShowcase3D() {
     </section>
   );
 }
+
 
 
 

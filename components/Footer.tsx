@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -35,7 +35,7 @@ export default function Footer() {
               className="mb-6 inline-flex rounded-[1.75rem] border border-white/12 bg-white/8 p-4 backdrop-blur-md"
             >
               <Image
-                src="/PRIMUS LOGO.png"
+                src="/primus-logo.png"
                 alt="PRIMUS secondary logo"
                 width={150}
                 height={60}

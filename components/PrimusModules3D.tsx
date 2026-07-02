@@ -206,7 +206,7 @@ export default function PrimusModules3D() {
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                 className="rounded-[1.6rem] border border-white/14 bg-white/10 p-3 shadow-[0_20px_60px_rgba(0,0,0,0.22)] backdrop-blur-xl"
               >
-                <Image src="/PRIMUS LOGO VERTICAL.png" alt="PRIMUS vertical logo" width={110} height={140} className="h-auto w-20 object-contain md:w-24" />
+                <Image src="/primus-logo-vertical.png" alt="PRIMUS vertical logo" width={110} height={140} className="h-auto w-20 object-contain md:w-24" />
               </motion.div>
             </div>
           </div>
@@ -241,6 +241,7 @@ export default function PrimusModules3D() {
     </section>
   );
 }
+
 
 
 

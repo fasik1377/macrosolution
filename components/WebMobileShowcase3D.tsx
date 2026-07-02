@@ -163,7 +163,7 @@ export default function WebMobileShowcase3D() {
                   </div>
                   <div className="mt-4 overflow-hidden rounded-[1.2rem] bg-white/90 p-3">
                     <Image
-                      src="/web and mobile.jpg"
+                      src="/web-and-mobile.jpg"
                       alt="Website and mobile development preview"
                       width={700}
                       height={520}
@@ -353,6 +353,7 @@ export default function WebMobileShowcase3D() {
     </section>
   );
 }
+
 
 
 

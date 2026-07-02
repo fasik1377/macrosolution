@@ -142,7 +142,7 @@ export default function Home() {
                 transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
                 className="rounded-[1.8rem] border border-white/16 bg-white/10 p-4 shadow-[0_25px_80px_rgba(0,0,0,0.24)] backdrop-blur-xl"
               >
-                <Image src="/PRIMUS LOGO ONLY TRI.png" alt="PRIMUS symbol" width={96} height={96} className="h-auto w-20 object-contain" />
+                <Image src="/primus-logo-only-tri.png" alt="PRIMUS symbol" width={96} height={96} className="h-auto w-20 object-contain" />
               </motion.div>
             </motion.div>
           </div>
@@ -525,6 +525,7 @@ export default function Home() {
     </main>
   );
 }
+
 
 
 

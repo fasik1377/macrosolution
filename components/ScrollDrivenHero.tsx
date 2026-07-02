@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useRef } from "react";
 import { motion, type MotionValue, useScroll, useTransform } from "framer-motion";
@@ -88,7 +88,7 @@ const dataStreams = [
   { className: "left-[68%] top-[60%] w-20 rotate-[58deg]", delay: 2.1 },
 ];
 
-const heroImageStack = 'url("/web%20and%20mobile.jpg"), url("/web%20and%20mobile1.jpg"), url("/hero-web-mobile.svg")';
+const heroImageStack = 'url("/web-and-mobile.jpg"), url("/web-and-mobile1.jpg"), url("/hero-web-mobile.svg")';
 
 type SplitPanel = (typeof splitPanels)[number];
 
@@ -273,4 +273,5 @@ export default function ScrollDrivenHero() {
     </section>
   );
 }
+
 
