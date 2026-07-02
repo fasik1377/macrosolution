@@ -17,6 +17,7 @@ import {
   AppWindow,
   LayoutGrid,
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { useRef, useState } from "react";
 
 const featureCards = [
@@ -40,7 +41,17 @@ const featureCards = [
   },
 ];
 
-const techStacks = [
+type CodeSnippet = { text: string; color: string };
+
+type SnippetTitle = "React Native" | "Next.js" | "TypeScript" | "Tailwind CSS" | "Node.js" | "Laravel" | "Flutter";
+
+type TechStack = {
+  title: string;
+  icon: LucideIcon;
+  glow: string;
+};
+
+const techStacks: TechStack[] = [
   { title: "React Native", icon: Smartphone, glow: "from-[#03132f] via-[#082a63] to-[#0b3b8a]" },
   { title: "Next.js", icon: AppWindow, glow: "from-[#04142f] via-[#0a3270] to-[#0f4fa8]" },
   { title: "TypeScript", icon: Braces, glow: "from-[#051935] via-[#0a2f69] to-[#114fa6]" },
@@ -255,7 +266,7 @@ export default function WebMobileShowcase3D() {
             >
               {[...techStacks, ...techStacks].map((stack, index) => {
                 const StackIcon = stack.icon;
-                const codeSnippets = {
+                const codeSnippets: Record<SnippetTitle, CodeSnippet[]> = {
                   "React Native": [
                     { text: "import", color: "text-[#569CD6]" },
                     { text: " ReactNative", color: "text-[#4EC9B0]" },
@@ -297,7 +308,9 @@ export default function WebMobileShowcase3D() {
                     { text: "()", color: "text-[#D4D4D4]" },
                   ],
                 };
-                const snippets = codeSnippets[stack.title] || [];
+                const snippets = stack.title in codeSnippets
+                  ? codeSnippets[stack.title as SnippetTitle]
+                  : [];
                 return (
                   <motion.article
                     key={stack.title + "-" + index}
@@ -353,6 +366,8 @@ export default function WebMobileShowcase3D() {
     </section>
   );
 }
+
+
 
 
 
