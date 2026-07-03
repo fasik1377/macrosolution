@@ -1,8 +1,9 @@
-﻿"use client";
+"use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { Banknote, BadgePercent, CalendarRange, ClipboardList, CreditCard, UserRound, ShieldCheck, ChartColumn, BadgeCheck, ScanLine, CheckCircle } from "lucide-react";
+import { useRef } from "react";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -23,6 +24,17 @@ export default function Home() {
     "Enterprise Products",
     "Various Business Sectors",
   ];
+
+  const ecosystemSectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress: ecosystemScrollProgress } = useScroll({
+    target: ecosystemSectionRef,
+    offset: ["start end", "end start"],
+  });
+  const ecosystemCardScale = useTransform(ecosystemScrollProgress, [0, 0.35, 0.7, 1], [1, 1, 0.98, 0.92]);
+  const ecosystemCardRotateX = useTransform(ecosystemScrollProgress, [0, 0.45, 1], [0, 0, -10]);
+  const ecosystemCardRotateY = useTransform(ecosystemScrollProgress, [0, 0.5, 1], [0, 0, 8]);
+  const shardDistance = useTransform(ecosystemScrollProgress, [0, 0.45, 0.75, 1], [0, 0, 44, 96]);
+  const shardFade = useTransform(ecosystemScrollProgress, [0, 0.45, 0.75, 1], [1, 1, 0.96, 0.84]);
 
   const leadershipTeam = [
     {
@@ -210,7 +222,7 @@ export default function Home() {
                 ))}
               </div>
             </div>
-          </motion.div>
+            </motion.div>
 
           <div className="relative h-[700px] [perspective:1800px]">
             <motion.div
@@ -353,25 +365,64 @@ export default function Home() {
             <motion.div
               animate={{ y: [0, -6, 0], opacity: [0.7, 1, 0.7] }}
               transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute left-1/2 top-1/2 z-20 flex w-full max-w-xl -translate-x-1/2 -translate-y-1/2 flex-col items-center text-center"
+              className="absolute left-1/2 top-1/2 z-20 w-full max-w-3xl -translate-x-1/2 -translate-y-1/2 px-6"
             >
-              <span className="inline-flex rounded-full border border-cyan-100/14 bg-white/8 px-5 py-2 text-sm font-semibold uppercase tracking-[0.34em] text-cyan-200 backdrop-blur-md">
-                Intelligent Digital Ecosystem
-              </span>
-              <h2 className="mt-6 text-3xl font-bold leading-tight text-white md:text-5xl">
-                Connected software experiences built for modern business.
-              </h2>
-              <p className="mt-5 max-w-2xl text-base leading-8 text-white/76 md:text-lg">
-                Web, mobile, cloud, AI-assisted workflows and secure infrastructure connected in one elegant digital architecture.
-              </p>
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-                <button className="rounded-full bg-[linear-gradient(135deg,#0ea5e9,#2563eb)] px-7 py-4 font-semibold text-white shadow-[0_20px_50px_rgba(37,99,235,0.32)] transition hover:scale-[1.02]">
-                  Explore Solutions
-                </button>
-                <button className="rounded-full border border-cyan-100/16 bg-white/8 px-7 py-4 font-semibold text-cyan-100 backdrop-blur-md transition hover:bg-white/12">
-                  View Portfolio
-                </button>
-              </div>
+              <motion.div
+                style={{ scale: ecosystemCardScale, rotateX: ecosystemCardRotateX, rotateY: ecosystemCardRotateY, transformStyle: "preserve-3d" }}
+                className="relative rounded-[2rem] border border-cyan-100/14 bg-[linear-gradient(180deg,rgba(6,23,49,0.78),rgba(4,17,39,0.62))] p-8 text-center shadow-[0_30px_100px_rgba(0,0,0,0.28)] backdrop-blur-xl md:p-10"
+              >
+                <div className="absolute inset-0 rounded-[2rem] bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_42%,rgba(56,189,248,0.1))]" />
+                <div className="pointer-events-none absolute inset-[1px] rounded-[1.95rem] border border-white/8" />
+
+                {[
+                  { x: -1, y: -1 },
+                  { x: 0, y: -1 },
+                  { x: 1, y: -1 },
+                  { x: -1, y: 0 },
+                  { x: 1, y: 0 },
+                  { x: -1, y: 1 },
+                  { x: 0, y: 1 },
+                  { x: 1, y: 1 },
+                ].map((direction, index) => (
+                  <motion.div
+                    key={`${direction.x}-${direction.y}`}
+                    className="pointer-events-none absolute rounded-[1.25rem] border border-cyan-100/12 bg-[linear-gradient(180deg,rgba(125,211,252,0.18),rgba(14,165,233,0.04))] shadow-[0_18px_40px_rgba(0,0,0,0.12)]"
+                    initial={{ opacity: 0.4 }}
+                    animate={{ opacity: [0.22, 0.4, 0.22] }}
+                    transition={{ duration: 4 + index * 0.18, repeat: Infinity, ease: "easeInOut" }}
+                    style={{
+                      left: direction.x === -1 ? "10%" : direction.x === 0 ? "38%" : "66%",
+                      top: direction.y === -1 ? "10%" : direction.y === 0 ? "38%" : "66%",
+                      width: direction.x === 0 ? "24%" : "18%",
+                      height: direction.y === 0 ? "24%" : "18%",
+                      x: useTransform(shardDistance, (value) => direction.x * value),
+                      y: useTransform(shardDistance, (value) => direction.y * value),
+                      opacity: shardFade,
+                      rotate: useTransform(shardDistance, (value) => (direction.x + direction.y) * 0.14 * value),
+                    }}
+                  />
+                ))}
+
+                <div className="relative z-10 flex flex-col items-center text-center [transform:translateZ(36px)]">
+                  <span className="inline-flex rounded-full border border-cyan-100/14 bg-white/8 px-5 py-2 text-sm font-semibold uppercase tracking-[0.34em] text-cyan-200 backdrop-blur-md">
+                    Intelligent Digital Ecosystem
+                  </span>
+                  <h2 className="mt-6 text-3xl font-bold leading-tight text-white md:text-5xl">
+                    Connected software experiences built for modern business.
+                  </h2>
+                  <p className="mt-5 max-w-2xl text-base leading-8 text-white/76 md:text-lg">
+                    Web, mobile, cloud, AI-assisted workflows and secure infrastructure connected in one elegant digital architecture.
+                  </p>
+                  <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+                    <button className="rounded-full bg-[linear-gradient(135deg,#0ea5e9,#2563eb)] px-7 py-4 font-semibold text-white shadow-[0_20px_50px_rgba(37,99,235,0.32)] transition hover:scale-[1.02]">
+                      Explore Solutions
+                    </button>
+                    <button className="rounded-full border border-cyan-100/16 bg-white/8 px-7 py-4 font-semibold text-cyan-100 backdrop-blur-md transition hover:bg-white/12">
+                      View Portfolio
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
             </motion.div>
 
             {[
@@ -401,7 +452,8 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>`r`n      <PrimusModules3D />
+      </section>
+      <PrimusModules3D />
       <ProductPortfolio3D />
       <IndustriesWeServe3D />
 
@@ -525,6 +577,19 @@ export default function Home() {
     </main>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

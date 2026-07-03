@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
@@ -86,6 +86,45 @@ const techStacks: TechStack[] = [
   { title: "Dart", icon: Code2, glow: "from-[#04142f] via-[#082d61] to-[#0e478c]" },
 ];
 
+const stackShape = "polygon(18% 0%, 82% 0%, 100% 16%, 100% 84%, 82% 100%, 18% 100%, 0% 84%, 0% 16%)";
+
+const codeSnippets: Record<SnippetTitle, CodeSnippet[]> = {
+  "React Native": [
+    { text: "<View>", color: "text-[#61DAFB]" },
+    { text: "  <Text>Native UX</Text>", color: "text-[#D4D4D4]" },
+    { text: "</View>", color: "text-[#61DAFB]" },
+  ],
+  "Next.js": [
+    { text: "export default", color: "text-[#93C5FD]" },
+    { text: " async function", color: "text-[#D4D4D4]" },
+    { text: " Page()", color: "text-[#FCD34D]" },
+  ],
+  TypeScript: [
+    { text: "type", color: "text-[#60A5FA]" },
+    { text: " AppProps ", color: "text-[#D4D4D4]" },
+    { text: "= { ... }", color: "text-[#FCD34D]" },
+  ],
+  "Tailwind CSS": [
+    { text: "className=", color: "text-[#93C5FD]" },
+    { text: '"grid gap-4"', color: "text-[#FDE68A]" },
+  ],
+  "Node.js": [
+    { text: "app.get", color: "text-[#86EFAC]" },
+    { text: "('/api')", color: "text-[#D4D4D4]" },
+    { text: " => {}", color: "text-[#FCD34D]" },
+  ],
+  Laravel: [
+    { text: "Route::get", color: "text-[#FCA5A5]" },
+    { text: "('/home'", color: "text-[#D4D4D4]" },
+    { text: ", fn()", color: "text-[#FCD34D]" },
+  ],
+  Flutter: [
+    { text: "Widget", color: "text-[#7DD3FC]" },
+    { text: " build", color: "text-[#D4D4D4]" },
+    { text: "()", color: "text-[#FCD34D]" },
+  ],
+};
+
 export default function WebMobileShowcase3D() {
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
@@ -99,9 +138,13 @@ export default function WebMobileShowcase3D() {
   const leftCardY = useTransform(scrollYProgress, [0, 0.5, 1], [100, 0, -80]);
   const rightCardY = useTransform(scrollYProgress, [0, 0.5, 1], [140, 0, -100]);
   const orbitRotate = useTransform(scrollYProgress, [0, 1], [0, 220]);
-  const deviceFloat = useTransform(scrollYProgress, [0, 0.5, 1], [18, -10, 16]);
-  const deviceRotate = useTransform(scrollYProgress, [0, 0.5, 1], [-10, 0, 10]);
-  const glowScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.9, 1.08, 0.94]);
+  const stackWrapY = useTransform(scrollYProgress, [0, 0.5, 1], [36, 0, -40]);
+  const stackWrapRotateX = useTransform(scrollYProgress, [0, 0.5, 1], [14, 0, -14]);
+  const stackWrapRotateY = useTransform(scrollYProgress, [0, 0.5, 1], [-6, 0, 6]);
+  const stackSlideX = useTransform(scrollYProgress, [0, 1], [0, -140]);
+  const stackTiltX = useTransform(scrollYProgress, [0, 0.5, 1], [-4, 0, 6]);
+  const stackTiltY = useTransform(scrollYProgress, [0, 0.5, 1], [6, 0, -8]);
+  const stackScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.98, 1, 0.96]);
   const [isPaused, setIsPaused] = useState(false);
 
   return (
@@ -246,15 +289,50 @@ export default function WebMobileShowcase3D() {
         </div>
       </div>
 
-      <div className="relative z-20 mx-auto mt-[-8vh] w-full max-w-[1500px] px-4 pb-20 md:px-6">
+      <div className="relative z-20 mx-auto mt-[-1vh] w-full max-w-[1500px] px-4 pb-20 pt-14 md:mt-[3vh] md:px-6 md:pt-20">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.9, ease: "easeOut" }}
-          className="overflow-hidden p-2 md:p-3"
+          style={{ y: stackWrapY, rotateX: stackWrapRotateX, rotateY: stackWrapRotateY }}
+          className="overflow-hidden [perspective:2200px] [transform-style:preserve-3d]"
         >
-          <div className="relative overflow-x-auto overflow-y-hidden pb-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="mb-8 flex flex-col items-start justify-between gap-4 px-3 md:flex-row md:items-end">
+            <div>
+              <motion.p
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.4 }}
+                className="text-sm font-semibold uppercase tracking-[0.34em] text-cyan-200/80"
+              >
+                Tech Stack
+              </motion.p>
+              <motion.h3
+                initial={{ opacity: 0, y: 22 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{ duration: 0.7, ease: "easeOut", delay: 0.05 }}
+                className="mt-3 text-3xl font-bold text-white md:text-4xl"
+              >
+                Tools we use to craft fast, modern digital products.
+              </motion.h3>
+            </div>
+            <motion.p
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.4 }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
+              className="max-w-md text-sm leading-6 text-white/70 md:text-right"
+            >
+              A moving showcase of the frameworks, languages, and platforms behind our web and mobile experiences.
+            </motion.p>
+          </div>
+
+          <div className="relative overflow-x-auto overflow-y-hidden rounded-[2.4rem] border border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.12),rgba(255,255,255,0.04))] px-2 pb-6 pt-14 shadow-[0_35px_120px_rgba(0,0,0,0.28)] backdrop-blur-xl [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <div className="pointer-events-none absolute inset-0 rounded-[2.4rem] bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.18),transparent_30%),linear-gradient(135deg,rgba(255,255,255,0.08),transparent_48%,rgba(111,207,255,0.08))]" />
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-100/60 to-transparent" />
+            <div className="pointer-events-none absolute inset-[1px] rounded-[2.35rem] border border-white/8" />
             <button
               type="button"
               onClick={() => setIsPaused((current) => !current)}
@@ -264,87 +342,53 @@ export default function WebMobileShowcase3D() {
             </button>
             <motion.div
               animate={isPaused ? { x: undefined } : { x: ["0%", "-50%"] }}
+              style={{ x: stackSlideX }}
               transition={{ duration: 68, repeat: Infinity, ease: "linear" }}
-              className="relative z-10 flex w-max items-center gap-4 px-2 py-4 pr-10"
+              className="relative z-10 flex w-max items-center gap-5 px-3 py-6 pr-10 [transform-style:preserve-3d]"
             >
               {[...techStacks, ...techStacks].map((stack, index) => {
                 const StackIcon = stack.icon;
-                const codeSnippets: Record<SnippetTitle, CodeSnippet[]> = {
-                  "React Native": [
-                    { text: "import", color: "text-[#569CD6]" },
-                    { text: " ReactNative", color: "text-[#4EC9B0]" },
-                    { text: " from", color: "text-[#569CD6]" },
-                    { text: " 'app'", color: "text-[#CE9178]" },
-                  ],
-                  "Next.js": [
-                    { text: "const", color: "text-[#569CD6]" },
-                    { text: " app", color: "text-[#9CDCFE]" },
-                    { text: " =", color: "text-[#D4D4D4]" },
-                    { text: " next()", color: "text-[#DCDCAA]" },
-                  ],
-                  "TypeScript": [
-                    { text: "type", color: "text-[#569CD6]" },
-                    { text: " Stack", color: "text-[#4FC1FF]" },
-                    { text: " =", color: "text-[#D4D4D4]" },
-                    { text: " clean", color: "text-[#CE9178]" },
-                  ],
-                  "Tailwind CSS": [
-                    { text: "className", color: "text-[#9CDCFE]" },
-                    { text: "=", color: "text-[#D4D4D4]" },
-                    { text: "\"glass\"", color: "text-[#CE9178]" },
-                  ],
-                  "Node.js": [
-                    { text: "build", color: "text-[#DCDCAA]" },
-                    { text: "()", color: "text-[#D4D4D4]" },
-                    { text: " =>", color: "text-[#D4D4D4]" },
-                    { text: " fast", color: "text-[#4EC9B0]" },
-                  ],
-                  "Laravel": [
-                    { text: "Route", color: "text-[#4FC1FF]" },
-                    { text: "::", color: "text-[#D4D4D4]" },
-                    { text: "web", color: "text-[#DCDCAA]" },
-                    { text: "()", color: "text-[#D4D4D4]" },
-                  ],
-                  "Flutter": [
-                    { text: "Widget", color: "text-[#4FC1FF]" },
-                    { text: " build", color: "text-[#DCDCAA]" },
-                    { text: "()", color: "text-[#D4D4D4]" },
-                  ],
-                };
-                const snippets = stack.title in codeSnippets
-                  ? codeSnippets[stack.title as SnippetTitle]
-                  : [];
+                const snippets = stack.title in codeSnippets ? codeSnippets[stack.title as SnippetTitle] : [];
+
                 return (
                   <motion.article
                     key={stack.title + "-" + index}
-                    animate={{ rotateY: [0, 140, 280, 360], rotateX: [0, 8, 0, -8, 0], y: index % 2 === 0 ? [0, -6, 0] : [0, 6, 0] }}
-                    whileHover={{ y: -16, rotateX: 14, rotateY: index % 2 === 0 ? -16 : 16, scale: 1.05 }}
-                    transition={{ duration: 8.6 + (index % 5) * 0.45, repeat: Infinity, ease: "easeInOut" }}
-                    className="group relative h-[12.5rem] w-[11.5rem] shrink-0 overflow-visible border border-cyan-100/16 text-white shadow-[0_20px_54px_rgba(0,0,0,0.26)] [transform-style:preserve-3d] md:h-[13.5rem] md:w-[12.5rem]" style={{ clipPath: "polygon(22% 0%, 78% 0%, 92% 8%, 100% 22%, 100% 78%, 92% 92%, 78% 100%, 22% 100%, 8% 92%, 0% 78%, 0% 22%, 8% 8%)" }}
+                    animate={{
+                      rotateY: [0, 16, -10, 0],
+                      rotateX: [0, 6, -4, 0],
+                      y: index % 2 === 0 ? [0, -8, 0] : [0, 8, 0],
+                    }}
+                    whileHover={{ y: -16, rotateX: 10, rotateY: index % 2 === 0 ? -10 : 10, scale: 1.04 }}
+                    transition={{ duration: 7.4 + (index % 5) * 0.4, repeat: Infinity, ease: "easeInOut" }}
+                    style={{
+                      clipPath: stackShape,
+                      rotateX: index % 2 === 0 ? stackTiltX : stackTiltY,
+                      rotateY: index % 3 === 0 ? stackTiltY : stackTiltX,
+                      scale: stackScale,
+                    }}
+                    className="group relative h-[12.5rem] w-[11.5rem] shrink-0 overflow-hidden border border-white/14 text-white shadow-[0_24px_64px_rgba(0,0,0,0.24)] [transform-style:preserve-3d] md:h-[13.5rem] md:w-[12.5rem]"
                   >
-                    <div className={"absolute inset-0 bg-gradient-to-br " + stack.glow} style={{ clipPath: "polygon(22% 0%, 78% 0%, 92% 8%, 100% 22%, 100% 78%, 92% 92%, 78% 100%, 22% 100%, 8% 92%, 0% 78%, 0% 22%, 8% 8%)" }} />
-                    <div className="absolute -right-3 top-[10%] h-[78%] w-4 skew-y-[-10deg] bg-[linear-gradient(180deg,rgba(191,219,254,0.24),rgba(255,255,255,0.05))] opacity-85" style={{ clipPath: "polygon(0 8%,100% 0,100% 100%,0 92%)" }} />
-                    <div className="absolute bottom-[-0.65rem] left-[10%] h-4 w-[80%] skew-x-[-12deg] bg-[linear-gradient(90deg,rgba(2,11,30,0.42),rgba(191,219,254,0.12),rgba(2,11,30,0.34))] opacity-90" style={{ clipPath: "polygon(8% 0,92% 0,100% 100%,0 100%)" }} />
-                    <div className="absolute inset-[1px] bg-[linear-gradient(180deg,rgba(2,10,28,0.18),rgba(2,10,28,0.58))]" style={{ clipPath: "polygon(22% 0%, 78% 0%, 92% 8%, 100% 22%, 100% 78%, 92% 92%, 78% 100%, 22% 100%, 8% 92%, 0% 78%, 0% 22%, 8% 8%)" }} />
+                    <div aria-hidden="true" style={{ clipPath: stackShape }} className={"absolute inset-0 bg-gradient-to-br " + stack.glow} />
+                    <div aria-hidden="true" style={{ clipPath: stackShape }} className="absolute inset-[1px] bg-[linear-gradient(180deg,rgba(4,17,39,0.16),rgba(4,17,39,0.58))]" />
                     <motion.div
-                      animate={{ rotate: [0, 360], scale: [1, 1.08, 1] }}
-                      transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+                      animate={{ rotate: [0, 360], scale: [1, 1.06, 1] }}
+                      transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
                       className="absolute -right-8 -top-8 h-28 w-28 rounded-full border border-cyan-100/12 bg-cyan-100/10 blur-[1px]"
                     />
                     <div className="absolute inset-x-3 top-2 h-10 rounded-[999px] bg-[linear-gradient(180deg,rgba(255,255,255,0.3),rgba(191,219,254,0.08),transparent)] opacity-90 blur-sm" />
                     <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.16),transparent_42%,rgba(125,211,252,0.08))]" />
                     <div className="relative flex h-full flex-col justify-between p-4">
-                      <div className="pointer-events-none absolute inset-[6px] border border-cyan-100/8" style={{ clipPath: "polygon(22% 0%, 78% 0%, 92% 8%, 100% 22%, 100% 78%, 92% 92%, 78% 100%, 22% 100%, 8% 92%, 0% 78%, 0% 22%, 8% 8%)" }} />
+                      <div aria-hidden="true" style={{ clipPath: stackShape }} className="pointer-events-none absolute inset-[6px] border border-cyan-100/10" />
                       <div>
                         <div className="flex items-center justify-between">
-                          <div className="flex h-12 w-12 items-center justify-center rounded-[1rem] border border-white/16 bg-white/10 shadow-[0_12px_30px_rgba(0,0,0,0.22)] backdrop-blur-md">
+                          <div className="flex h-12 w-12 items-center justify-center rounded-[1rem] border border-white/16 bg-white/10 shadow-[0_12px_30px_rgba(0,0,0,0.22)] backdrop-blur-md transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
                             <StackIcon size={24} className="text-white drop-shadow-[0_8px_18px_rgba(0,0,0,0.22)]" />
                           </div>
                         </div>
                         <h4 className="mt-3 text-lg font-bold tracking-tight text-white md:text-[1.2rem]">{stack.title}</h4>
                       </div>
 
-                      <div className="rounded-[1rem] border border-cyan-100/10 bg-[#031126]/78 p-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-sm">
+                      <div className="rounded-[1rem] border border-cyan-100/10 bg-[#031126]/78 p-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-sm transition duration-500 group-hover:bg-[#071a3d]/86">
                         <div className="mb-3 flex items-center gap-2">
                           <span className="h-2.5 w-2.5 rounded-full bg-rose-400" />
                           <span className="h-2.5 w-2.5 rounded-full bg-amber-400" />
@@ -369,11 +413,3 @@ export default function WebMobileShowcase3D() {
     </section>
   );
 }
-
-
-
-
-
-
-
-

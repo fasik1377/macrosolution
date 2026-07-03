@@ -1,6 +1,6 @@
-﻿"use client";
+"use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion, type MotionValue, useScroll, useTransform } from "framer-motion";
 import {
@@ -97,9 +97,10 @@ function ModuleCard({
   const wrappedDistance = ((distance + modules.length + modules.length / 2) % modules.length) - modules.length / 2;
   const center = (index + 0.5) / modules.length;
   const end = (index + 1) / modules.length;
+  const isActive = index === activeIndex;
   const x = wrappedDistance * 190;
   const y = Math.abs(wrappedDistance) * 18;
-  const rotateY = wrappedDistance * -16;
+  const rotateY = wrappedDistance * -16 + (isActive ? 0 : wrappedDistance > 0 ? 10 : -10);
   const rotateX = Math.abs(wrappedDistance) * 4;
   const scale = Math.max(0.72, 1 - Math.abs(wrappedDistance) * 0.12);
   const opacity = Math.max(0.18, 1 - Math.abs(wrappedDistance) * 0.22);
@@ -107,7 +108,17 @@ function ModuleCard({
 
   return (
     <motion.article
-      style={{ x, y, rotateY, rotateX, scale, opacity, zIndex: modules.length - Math.abs(wrappedDistance) }}
+      initial={{ rotateY: 90, opacity: 0, scale: 0.88 }}
+      animate={{
+        rotateY,
+        rotateX,
+        x,
+        y,
+        scale,
+        opacity,
+      }}
+      transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+      style={{ zIndex: modules.length - Math.abs(wrappedDistance) }}
       className="absolute left-1/2 top-1/2 flex h-[280px] w-[min(88vw,440px)] -translate-x-1/2 -translate-y-1/2 flex-col justify-between overflow-hidden rounded-[2rem] border border-white/18 bg-white/12 p-7 text-white shadow-[0_34px_100px_rgba(0,0,0,0.24)] backdrop-blur-xl [transform-style:preserve-3d]"
     >
       <span className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-white/70 to-transparent" />
@@ -136,6 +147,14 @@ export default function PrimusModules3D() {
   });
   const orbitRotate = useTransform(scrollYProgress, [0, 1], [0, 300]);
   const railX = useTransform(scrollYProgress, [0, 1], ["0%", "-52%"]);
+
+  useEffect(() => {
+    return scrollYProgress.on("change", (value) => {
+      const rawIndex = Math.floor(value * modules.length);
+      const nextIndex = Math.min(modules.length - 1, Math.max(0, rawIndex));
+      setActiveIndex((current) => (current === nextIndex ? current : nextIndex));
+    });
+  }, [scrollYProgress]);
 
   return (
     <section id="services" ref={sectionRef} className="relative min-h-[220vh] overflow-hidden text-white">
@@ -213,27 +232,19 @@ export default function PrimusModules3D() {
 
           <div className="relative h-[700px] [perspective:1500px]">
             {modules.map((module, index) => (
-              <ModuleCard key={module.title} module={module} index={index} progress={scrollYProgress} activeIndex={activeIndex} />
+              <ModuleCard key={`${module.title}-${activeIndex === index ? "active" : "idle"}`} module={module} index={index} progress={scrollYProgress} activeIndex={activeIndex} />
             ))}
 
             <div className="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 items-center gap-3">
-              <button
-                type="button"
-                onClick={() => setActiveIndex((current) => (current - 1 + modules.length) % modules.length)}
-                className="rounded-full border border-white/16 bg-white/12 px-5 py-3 text-sm font-semibold uppercase tracking-[0.24em] text-white shadow-[0_14px_36px_rgba(0,0,0,0.18)] backdrop-blur-md transition hover:bg-white/18"
-              >
-                Prev
-              </button>
+              <div className="rounded-full border border-white/16 bg-white/12 px-5 py-3 text-sm font-semibold uppercase tracking-[0.24em] text-white shadow-[0_14px_36px_rgba(0,0,0,0.18)] backdrop-blur-md">
+                Scroll Up
+              </div>
               <div className="rounded-full border border-white/16 bg-white/12 px-4 py-2 text-xs font-bold uppercase tracking-[0.28em] text-white/80 backdrop-blur-md">
                 {activeIndex + 1} / {modules.length}
               </div>
-              <button
-                type="button"
-                onClick={() => setActiveIndex((current) => (current + 1) % modules.length)}
-                className="rounded-full border border-white/16 bg-white/12 px-5 py-3 text-sm font-semibold uppercase tracking-[0.24em] text-white shadow-[0_14px_36px_rgba(0,0,0,0.18)] backdrop-blur-md transition hover:bg-white/18"
-              >
-                Next
-              </button>
+              <div className="rounded-full border border-white/16 bg-white/12 px-5 py-3 text-sm font-semibold uppercase tracking-[0.24em] text-white shadow-[0_14px_36px_rgba(0,0,0,0.18)] backdrop-blur-md">
+                Scroll Down
+              </div>
             </div>
           </div>
         </div>
@@ -241,6 +252,11 @@ export default function PrimusModules3D() {
     </section>
   );
 }
+
+
+
+
+
 
 
 
