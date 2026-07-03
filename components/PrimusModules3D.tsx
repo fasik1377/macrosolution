@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { motion, type MotionValue, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import {
   BellRing,
   BriefcaseBusiness,
@@ -85,18 +85,14 @@ const modules = [
 function ModuleCard({
   module,
   index,
-  progress,
   activeIndex,
 }: {
   module: (typeof modules)[number];
   index: number;
-  progress: MotionValue<number>;
   activeIndex: number;
 }) {
   const distance = index - activeIndex;
   const wrappedDistance = ((distance + modules.length + modules.length / 2) % modules.length) - modules.length / 2;
-  const center = (index + 0.5) / modules.length;
-  const end = (index + 1) / modules.length;
   const isActive = index === activeIndex;
   const x = wrappedDistance * 190;
   const y = Math.abs(wrappedDistance) * 18;
@@ -104,20 +100,28 @@ function ModuleCard({
   const rotateX = Math.abs(wrappedDistance) * 4;
   const scale = Math.max(0.72, 1 - Math.abs(wrappedDistance) * 0.12);
   const opacity = Math.max(0.18, 1 - Math.abs(wrappedDistance) * 0.22);
+  const flipDelay = index * 0.55;
   const Icon = module.icon;
 
   return (
     <motion.article
       initial={{ rotateY: 90, opacity: 0, scale: 0.88 }}
       animate={{
-        rotateY,
+        rotateY: [rotateY, rotateY + 180, rotateY + 360],
         rotateX,
         x,
         y,
         scale,
         opacity,
       }}
-      transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+      transition={{
+        rotateY: { duration: 18, repeat: Infinity, ease: "easeInOut", delay: flipDelay },
+        rotateX: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
+        x: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
+        y: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
+        scale: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
+        opacity: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
+      }}
       style={{ zIndex: modules.length - Math.abs(wrappedDistance) }}
       className="absolute left-1/2 top-1/2 flex h-[280px] w-[min(88vw,440px)] -translate-x-1/2 -translate-y-1/2 flex-col justify-between overflow-hidden rounded-[2rem] border border-white/18 bg-white/12 p-7 text-white shadow-[0_34px_100px_rgba(0,0,0,0.24)] backdrop-blur-xl [transform-style:preserve-3d]"
     >
@@ -232,7 +236,7 @@ export default function PrimusModules3D() {
 
           <div className="relative h-[700px] [perspective:1500px]">
             {modules.map((module, index) => (
-              <ModuleCard key={`${module.title}-${activeIndex === index ? "active" : "idle"}`} module={module} index={index} progress={scrollYProgress} activeIndex={activeIndex} />
+              <ModuleCard key={`${module.title}-${activeIndex === index ? "active" : "idle"}`} module={module} index={index} activeIndex={activeIndex} />
             ))}
 
             <div className="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 items-center gap-3">

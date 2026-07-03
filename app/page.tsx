@@ -365,8 +365,25 @@ export default function Home() {
 
 
       <section className="relative overflow-hidden py-24 text-white">
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,#031129_0%,#082a63_42%,#0b3b8a_70%,#04142f_100%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_24%,rgba(34,211,238,0.12),transparent_24%),radial-gradient(circle_at_80%_20%,rgba(96,165,250,0.12),transparent_24%),radial-gradient(circle_at_50%_78%,rgba(14,165,233,0.12),transparent_28%)]" />
+        <motion.div
+          aria-hidden="true"
+          animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute inset-0 bg-[linear-gradient(120deg,#dff5ff_0%,#8dd8ff_24%,#0096FF_52%,#6fcfff_76%,#e6f9ff_100%)] bg-[length:220%_220%]"
+        />
+        <motion.div
+          aria-hidden="true"
+          animate={{ opacity: [0.22, 0.42, 0.22], scale: [0.96, 1.06, 0.96] }}
+          transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute left-[10%] top-[8%] h-[24rem] w-[24rem] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.42),transparent_68%)] blur-3xl"
+        />
+        <motion.div
+          aria-hidden="true"
+          animate={{ opacity: [0.16, 0.36, 0.16], scale: [0.94, 1.08, 0.94] }}
+          transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-[6%] right-[8%] h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,rgba(0,150,255,0.34),transparent_68%)] blur-3xl"
+        />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_24%,rgba(255,255,255,0.18),transparent_24%),radial-gradient(circle_at_80%_20%,rgba(111,207,255,0.2),transparent_24%),radial-gradient(circle_at_50%_78%,rgba(0,150,255,0.18),transparent_28%)]" />
 
         <div className="container relative z-10 mx-auto px-6">
           <div className="relative mx-auto min-h-[640px] overflow-hidden rounded-[2.4rem] border border-cyan-100/10 bg-[linear-gradient(145deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02)_18%,rgba(2,10,28,0.24)_52%,rgba(1,8,20,0.58)_100%)] shadow-[0_40px_140px_rgba(0,0,0,0.3)] backdrop-blur-xl">

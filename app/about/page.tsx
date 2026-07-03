@@ -1,6 +1,6 @@
-﻿"use client";
+"use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { CheckCircle, Goal, Lightbulb, ShieldCheck, Sparkles, Target, Users } from "lucide-react";
 
 import Footer from "@/components/Footer";
@@ -32,11 +32,21 @@ const highlights = [`Mission: ${company.mission}`, `Vision: ${company.vision}`, 
 
 const motionStats = [
   { label: "Years of Experience", value: "18+", icon: Sparkles },
-  { label: "Enterprise Mindset", value: "360ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â°", icon: Target },
+  { label: "Enterprise Mindset", value: "360Ãƒâ€šÃ‚Â°", icon: Target },
   { label: "Client Partnership", value: "Trusted", icon: Users },
 ];
 
 export default function AboutPage() {
+  const { scrollYProgress } = useScroll();
+  const statsSectionY = useTransform(scrollYProgress, [0.08, 0.2, 0.32], [42, 0, -28]);
+  const statsSectionRotateX = useTransform(scrollYProgress, [0.08, 0.2, 0.32], [12, 0, -10]);
+  const statsSectionRotateY = useTransform(scrollYProgress, [0.08, 0.2, 0.32], [-8, 0, 8]);
+  const overviewCardY = useTransform(scrollYProgress, [0.18, 0.34, 0.5], [56, 0, -34]);
+  const valuesSectionY = useTransform(scrollYProgress, [0.34, 0.5, 0.66], [44, 0, -30]);
+  const valuesSectionRotateX = useTransform(scrollYProgress, [0.34, 0.5, 0.66], [10, 0, -12]);
+  const trustSectionY = useTransform(scrollYProgress, [0.58, 0.74, 0.9], [38, 0, -26]);
+  const trustSectionRotateY = useTransform(scrollYProgress, [0.58, 0.74, 0.9], [-8, 0, 8]);
+
   return (
     <main className="relative overflow-x-clip bg-[#0096FF] text-white">
       <motion.div
@@ -81,7 +91,8 @@ export default function AboutPage() {
             whileInView="show"
             viewport={{ once: true, amount: 0.2 }}
             variants={stagger}
-            className="grid gap-6 md:grid-cols-3"
+            style={{ y: statsSectionY, rotateX: statsSectionRotateX, rotateY: statsSectionRotateY }}
+            className="grid gap-6 md:grid-cols-3 [transform-style:preserve-3d]"
           >
             {motionStats.map((item, index) => {
               const Icon = item.icon;
@@ -89,8 +100,10 @@ export default function AboutPage() {
                 <motion.div
                   key={item.label}
                   variants={fadeUp}
-                  whileHover={{ y: -12, rotateY: index % 2 === 0 ? -8 : 8, rotateX: 8, scale: 1.03 }}
-                  className="relative overflow-hidden rounded-[2rem] border border-white/12 bg-white/8 p-6 shadow-[0_30px_90px_rgba(0,0,0,0.22)] backdrop-blur-xl [transform-style:preserve-3d]"
+                  animate={{ y: index % 2 === 0 ? [0, -10, 0] : [0, 10, 0], rotateX: [0, 5, 0], rotateY: index % 2 === 0 ? [0, -6, 0] : [0, 6, 0] }}
+                  whileHover={{ y: -18, rotateY: index % 2 === 0 ? -12 : 12, rotateX: 12, scale: 1.05 }}
+                  transition={{ duration: 6 + index * 0.4, repeat: Infinity, ease: "easeInOut" }}
+                  className="relative overflow-hidden rounded-[2rem] border border-white/12 bg-white/[0.08] p-6 shadow-[0_30px_90px_rgba(0,0,0,0.22)] backdrop-blur-xl [transform-style:preserve-3d]"
                 >
                   <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(77,159,255,0.12),transparent_38%,rgba(255,255,255,0.04),rgba(77,159,255,0.08))]" />
                   <div className="relative flex items-center justify-between [transform:translateZ(24px)]">
@@ -131,7 +144,9 @@ export default function AboutPage() {
           <motion.div
             initial={{ opacity: 0, y: 36, rotateX: 6 }}
             whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-            whileHover={{ y: -12, rotateY: -8, rotateX: 4, scale: 1.025 }}
+            animate={{ y: [0, -10, 0], rotateX: [0, 5, 0], rotateY: [0, -6, 0] }}
+            whileHover={{ y: -18, rotateY: -12, rotateX: 8, scale: 1.04 }}
+            transition={{ duration: 6.4, repeat: Infinity, ease: "easeInOut" }}
             viewport={{ once: true }}
             className="group relative overflow-hidden border border-white/16 bg-gradient-to-br from-dark-header via-brand-blue to-button-blue p-8 text-white shadow-[0_38px_110px_rgba(0,40,104,0.28)] [transform-style:preserve-3d] [clip-path:polygon(0_0,100%_0,100%_88%,90%_100%,0_100%)]"
           >
@@ -173,7 +188,8 @@ export default function AboutPage() {
             whileInView="show"
             viewport={{ once: true }}
             variants={stagger}
-            className="grid gap-8 md:grid-cols-3"
+            style={{ y: valuesSectionY, rotateX: valuesSectionRotateX }}
+            className="grid gap-8 md:grid-cols-3 [transform-style:preserve-3d]"
           >
             {values.map((value, index) => {
               const Icon = value.icon;
@@ -182,8 +198,10 @@ export default function AboutPage() {
                 <motion.article
                   key={value.title}
                   variants={fadeUp}
-                  whileHover={{ y: -14, rotateX: 8, rotateY: index % 2 === 0 ? 8 : -8, scale: 1.03 }}
-                  className="relative overflow-hidden border border-white/12 bg-white/8 p-7 shadow-[0_28px_90px_rgba(0,0,0,0.2)] backdrop-blur-xl [transform-style:preserve-3d] [clip-path:polygon(0_0,100%_0,100%_84%,88%_100%,0_100%)]"
+                  animate={{ y: index % 2 === 0 ? [0, -12, 0] : [0, 12, 0], rotateX: [0, 6, 0], rotateY: index % 2 === 0 ? [0, 8, 0] : [0, -8, 0] }}
+                  whileHover={{ y: -20, rotateX: 12, rotateY: index % 2 === 0 ? 12 : -12, scale: 1.05 }}
+                  transition={{ duration: 6.6 + index * 0.35, repeat: Infinity, ease: "easeInOut" }}
+                  className="relative overflow-hidden border border-white/12 bg-white/[0.08] p-7 shadow-[0_28px_90px_rgba(0,0,0,0.2)] backdrop-blur-xl [transform-style:preserve-3d] [clip-path:polygon(0_0,100%_0,100%_84%,88%_100%,0_100%)]"
                 >
                   <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(77,159,255,0.16),transparent_34%,rgba(255,255,255,0.04)_60%,rgba(77,159,255,0.12))]" />
                   <div className="relative [transform:translateZ(24px)]">
@@ -222,7 +240,7 @@ export default function AboutPage() {
               A partnership model built on clarity, quality, and long-term value.
             </motion.h2>
           </div>
-          <div className="mt-16 grid gap-8 lg:grid-cols-3">
+          <motion.div style={{ y: trustSectionY, rotateY: trustSectionRotateY }} className="mt-16 grid gap-8 lg:grid-cols-3 [transform-style:preserve-3d]">
             {[
               ["Business Understanding", "We translate business workflows into practical digital systems."],
               ["Delivery Confidence", "Projects stay focused on usability, quality, and long-term maintainability."],
@@ -232,10 +250,11 @@ export default function AboutPage() {
                 key={title}
                 initial={{ opacity: 0, y: 30, rotateX: 12 }}
                 whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-                whileHover={{ y: -14, rotateY: index % 2 === 0 ? -8 : 8, scale: 1.03 }}
+                animate={{ y: index % 2 === 0 ? [0, -12, 0] : [0, 12, 0], rotateX: [0, 6, 0], rotateY: index % 2 === 0 ? [0, -8, 0] : [0, 8, 0] }}
+                whileHover={{ y: -20, rotateY: index % 2 === 0 ? -12 : 12, rotateX: 10, scale: 1.05 }}
                 viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.7, ease: "easeOut" }}
-                className="rounded-[2rem] border border-white/12 bg-white/8 p-8 shadow-[0_30px_100px_rgba(0,0,0,0.24)] backdrop-blur-xl [transform-style:preserve-3d]"
+                transition={{ duration: 6.2 + index * 0.3, repeat: Infinity, ease: "easeInOut" }}
+                className="rounded-[2rem] border border-white/12 bg-white/[0.08] p-8 shadow-[0_30px_100px_rgba(0,0,0,0.24)] backdrop-blur-xl [transform-style:preserve-3d]"
               >
                 <motion.div
                   animate={{ y: [0, -8, 0], rotate: [0, 4, 0, -4, 0] }}
@@ -246,7 +265,7 @@ export default function AboutPage() {
                 <p className="mt-4 leading-7 text-white/72">{text}</p>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -254,4 +273,5 @@ export default function AboutPage() {
     </main>
   );
 }
+
 
