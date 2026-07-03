@@ -111,17 +111,17 @@ export default function MissionVision3D() {
                   initial={{ opacity: 0, y: 46, rotateY: index === 0 ? -16 : 16 }}
                   whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
                   viewport={{ once: true, amount: 0.25 }}
-                  whileHover={{ y: -10, rotateX: 9, rotateY: index === 0 ? -10 : 10, scale: 1.02 }}
+                  whileHover={{ y: -16, rotateX: 12, rotateY: index === 0 ? -14 : 14, scale: 1.04 }}
                   transition={{ duration: 0.85, ease: "easeOut", delay: index * 0.12 }}
                   style={cardMotion}
-                  className={`group relative mx-auto w-full max-w-[22rem] overflow-hidden rounded-[1.7rem] border border-cyan-100/16 bg-[#04142f]/76 p-6 shadow-[0_24px_70px_rgba(0,0,0,0.26)] backdrop-blur-xl [transform-style:preserve-3d] md:max-w-[24rem] md:p-7 ${index === 1 ? "lg:col-start-3" : ""}`}
+                  className={`group relative mx-auto w-full max-w-[22rem] overflow-hidden rounded-[1.7rem] border border-cyan-100/14 bg-white/[0.04] p-6 shadow-[0_24px_70px_rgba(0,0,0,0.22)] backdrop-blur-xl [transform-style:preserve-3d] md:max-w-[24rem] md:p-7 ${index === 1 ? "lg:col-start-3" : ""}`}
                 >
-                  <div className={`absolute -right-14 -top-14 h-36 w-36 rounded-full ${glow} blur-3xl transition duration-500 group-hover:scale-125`} />
+                  <div className={`absolute -right-14 -top-14 h-36 w-36 rounded-full ${glow} opacity-70 blur-3xl transition duration-500 group-hover:scale-125`} />
                   <div className={`absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r ${accent}`} />
-                  <div className="absolute inset-[1px] rounded-[1.6rem] bg-[linear-gradient(145deg,rgba(255,255,255,0.14),rgba(255,255,255,0.03)_28%,rgba(1,8,24,0.42)_100%)]" />
+                  <div className="absolute inset-[1px] rounded-[1.6rem] bg-[linear-gradient(145deg,rgba(255,255,255,0.1),rgba(255,255,255,0.02)_28%,rgba(1,8,24,0.22)_100%)]" />
                   <motion.div
                     aria-hidden="true"
-                    animate={{ x: ["-130%", "130%"], opacity: [0, 0.45, 0] }}
+                    animate={{ x: ["-130%", "130%"], opacity: [0, 0.45, 0], skewX: [0, -10, 0] }}
                     transition={{ duration: 4.6, repeat: Infinity, ease: "easeInOut", delay: index * 0.45 }}
                     className="absolute inset-y-0 w-1/2 skew-x-[-18deg] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.22),transparent)]"
                   />
@@ -129,7 +129,7 @@ export default function MissionVision3D() {
                   <div className="relative z-10 [transform:translateZ(34px)]">
                     <div className="flex items-start justify-between gap-4">
                       <motion.div
-                        animate={{ y: [0, -5, 0], rotate: index === 0 ? [0, -5, 0] : [0, 5, 0] }}
+                        animate={{ y: [0, -8, 0], rotate: index === 0 ? [0, -7, 0] : [0, 7, 0], scale: [1, 1.08, 1] }}
                         transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: index * 0.2 }}
                         className={`flex h-14 w-14 items-center justify-center rounded-[1.1rem] bg-gradient-to-br ${accent} shadow-[0_20px_45px_rgba(11,94,215,0.3)]`}
                       >
@@ -188,3 +188,5 @@ export default function MissionVision3D() {
     </section>
   );
 }
+
+

@@ -151,12 +151,12 @@ export default function WebMobileShowcase3D() {
   return (
     <section ref={sectionRef} className="relative min-h-[300vh] overflow-hidden py-24 text-white">
       <div className="sticky top-0 flex min-h-screen items-start overflow-hidden pt-16">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_22%,rgba(77,159,255,0.18),transparent_26%),radial-gradient(circle_at_82%_74%,rgba(124,58,237,0.18),transparent_26%),linear-gradient(180deg,rgba(3,18,48,0.32),rgba(3,18,48,0.04))]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_22%,rgba(77,159,255,0.1),transparent_26%),radial-gradient(circle_at_82%_74%,rgba(124,58,237,0.1),transparent_26%),linear-gradient(180deg,rgba(3,18,48,0.16),rgba(3,18,48,0.02))]" />
 
         <motion.div
           aria-hidden="true"
           style={{ rotate: orbitRotate }}
-          className="absolute left-1/2 top-1/2 h-[24rem] w-[24rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10 shadow-[0_0_80px_rgba(77,159,255,0.14)] md:h-[38rem] md:w-[38rem]"
+          className="absolute left-1/2 top-1/2 h-[24rem] w-[24rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/8 shadow-[0_0_80px_rgba(77,159,255,0.1)] md:h-[38rem] md:w-[38rem]"
         />
 
         <div className="container relative z-10 mx-auto grid items-start gap-14 px-6 lg:grid-cols-[0.9fr_1.1fr]">
@@ -191,7 +191,7 @@ export default function WebMobileShowcase3D() {
                   <motion.div
                     key={item.label}
                     whileHover={{ y: -6, scale: 1.02 }}
-                    className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/8 px-4 py-4 backdrop-blur-md"
+                    className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.06] px-4 py-4 backdrop-blur-md"
                   >
                     <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-cyan-300/12 text-cyan-200">
                       <Icon size={20} />
@@ -206,20 +206,20 @@ export default function WebMobileShowcase3D() {
           <div className="relative h-[620px] [perspective:1800px]">
             <motion.div
               style={{ y: panelY, rotateX: panelRotateX, rotateY: panelRotateY }}
-              className="absolute left-1/2 top-1/2 h-[28rem] w-[min(90vw,38rem)] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[2.4rem] border border-cyan-100/18 bg-[linear-gradient(180deg,rgba(255,255,255,0.18),rgba(255,255,255,0.06))] p-5 shadow-[0_45px_140px_rgba(0,0,0,0.34)] backdrop-blur-2xl [transform-style:preserve-3d]"
+              className="absolute left-1/2 top-1/2 h-[28rem] w-[min(90vw,38rem)] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[2.4rem] border border-cyan-100/14 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03))] p-5 shadow-[0_45px_140px_rgba(0,0,0,0.28)] backdrop-blur-2xl [transform-style:preserve-3d]"
             >
-              <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_45%,rgba(77,159,255,0.08))]" />
-              <div className="absolute -right-14 -top-14 h-40 w-40 rounded-full bg-white/10 blur-3xl" />
-              <div className="absolute -left-14 bottom-0 h-44 w-44 rounded-full bg-cyan-300/10 blur-3xl" />
+              <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.05),transparent_45%,rgba(77,159,255,0.05))]" />
+              <div className="absolute -right-14 -top-14 h-40 w-40 rounded-full bg-white/6 blur-3xl" />
+              <div className="absolute -left-14 bottom-0 h-44 w-44 rounded-full bg-cyan-300/8 blur-3xl" />
 
               <div className="relative grid h-full grid-cols-[1.1fr_0.9fr] gap-4 [transform:translateZ(32px)]">
-                <div className="overflow-hidden rounded-[1.6rem] border border-white/10 bg-[#061a3d]/60 p-4">
+                <motion.div animate={{ y: [0, -12, 0], rotateX: [0, 5, 0], rotateY: [0, -4, 0] }} transition={{ duration: 6.8, repeat: Infinity, ease: "easeInOut" }} className="overflow-hidden rounded-[1.6rem] border border-white/10 bg-[#061a3d]/34 p-4 backdrop-blur-md">
                   <div className="flex items-center gap-2">
                     <span className="h-3 w-3 rounded-full bg-red-400" />
                     <span className="h-3 w-3 rounded-full bg-yellow-400" />
                     <span className="h-3 w-3 rounded-full bg-green-400" />
                   </div>
-                  <div className="mt-4 overflow-hidden rounded-[1.2rem] bg-white/90 p-3">
+                  <motion.div animate={{ y: [0, -8, 0], scale: [1, 1.02, 1] }} transition={{ duration: 6.6, repeat: Infinity, ease: "easeInOut" }} className="mt-4 overflow-hidden rounded-[1.2rem] bg-white/86 p-3">
                     <Image
                       src="/web-and-mobile.jpg"
                       alt="Website and mobile development preview"
@@ -227,13 +227,13 @@ export default function WebMobileShowcase3D() {
                       height={520}
                       className="h-[17rem] w-full rounded-[1rem] object-cover"
                     />
-                  </div>
-                </div>
+                  </motion.div>
+                </motion.div>
 
-                <div className="flex flex-col gap-4">
+                <motion.div animate={{ y: [0, 10, 0], rotateX: [0, -4, 0], rotateY: [0, 4, 0] }} transition={{ duration: 7.2, repeat: Infinity, ease: "easeInOut", delay: 0.24 }} className="flex flex-col gap-4">
                   <motion.div
                     style={{ y: leftCardY }}
-                    className="rounded-[1.6rem] border border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.14),rgba(255,255,255,0.06))] p-5"
+                    className="rounded-[1.6rem] border border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.1),rgba(255,255,255,0.03))] p-5 backdrop-blur-md"
                   >
                     <MonitorSmartphone className="text-cyan-200" />
                     <p className="mt-6 text-sm uppercase tracking-[0.3em] text-cyan-200">Digital Build</p>
@@ -245,7 +245,7 @@ export default function WebMobileShowcase3D() {
 
                   <motion.div
                     style={{ y: rightCardY }}
-                    className="rounded-[1.6rem] border border-white/12 bg-[#071c42]/85 p-5"
+                    className="rounded-[1.6rem] border border-white/12 bg-white/[0.05] p-5 backdrop-blur-md"
                   >
                     <div className="flex items-center justify-between">
                       <p className="text-sm uppercase tracking-[0.3em] text-cyan-200">Performance</p>
@@ -253,13 +253,13 @@ export default function WebMobileShowcase3D() {
                     </div>
                     <div className="mt-5 space-y-3">
                       {["Responsive UI", "Smooth Motion", "Clean Architecture"].map((item) => (
-                        <div key={item} className="rounded-xl border border-white/10 bg-white/6 px-4 py-3 text-sm font-medium text-white/85">
+                        <div key={item} className="rounded-xl border border-white/10 bg-white/[0.06] px-4 py-3 text-sm font-medium text-white/85">
                           {item}
                         </div>
                       ))}
                     </div>
                   </motion.div>
-                </div>
+                </motion.div>
               </div>
             </motion.div>
 
