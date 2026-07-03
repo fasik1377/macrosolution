@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
@@ -362,9 +362,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-
-      <section className="relative overflow-hidden py-24 text-white">
+<section className="relative overflow-hidden pt-24 pb-4 text-white">
         <motion.div
           aria-hidden="true"
           animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}

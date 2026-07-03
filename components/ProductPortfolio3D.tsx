@@ -76,7 +76,7 @@ export default function ProductPortfolio3D() {
   const carouselScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.93, 1, 0.95]);
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden py-16 text-white">
+    <section ref={sectionRef} className="relative overflow-hidden py-4 text-white">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_24%,rgba(77,159,255,0.14),transparent_24%),radial-gradient(circle_at_80%_20%,rgba(167,139,250,0.14),transparent_24%),radial-gradient(circle_at_50%_78%,rgba(11,94,215,0.16),transparent_26%)]" />
 
       <div className="container relative z-10 mx-auto px-6">
@@ -92,7 +92,7 @@ export default function ProductPortfolio3D() {
           </p>
         </div>
 
-        <div className="relative mt-12 [perspective:2200px]">
+        <div className="relative mt-4 [perspective:2200px]">
           <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-16 bg-gradient-to-r from-[#0096FF] to-transparent" />
           <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-16 bg-gradient-to-l from-[#0096FF] to-transparent" />
 
@@ -104,7 +104,7 @@ export default function ProductPortfolio3D() {
               rotateY: { duration: 14, repeat: Infinity, ease: "easeInOut" },
             }}
             style={{ y: carouselDepth, rotateX: carouselRotateX, rotateY: carouselRotateY, scale: carouselScale }}
-            className="flex w-max gap-6 px-2 pb-12 pt-10 [transform-style:preserve-3d]"
+            className="flex w-max gap-6 px-2 pb-12 pt-2 [transform-style:preserve-3d]"
           >
             {slidingItems.map((item, index) => {
               const Icon = item.icon;
