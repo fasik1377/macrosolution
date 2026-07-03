@@ -146,6 +146,7 @@ export default function WebMobileShowcase3D() {
   const stackTiltY = useTransform(scrollYProgress, [0, 0.5, 1], [6, 0, -8]);
   const stackScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.98, 1, 0.96]);
   const [isPaused, setIsPaused] = useState(false);
+  const marqueeDuration = 68;
 
   return (
     <section ref={sectionRef} className="relative min-h-[300vh] overflow-hidden py-24 text-white">
@@ -330,7 +331,7 @@ export default function WebMobileShowcase3D() {
           </div>
 
           <div className="relative overflow-x-auto overflow-y-hidden rounded-[2.4rem] border border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.12),rgba(255,255,255,0.04))] px-2 pb-6 pt-14 shadow-[0_35px_120px_rgba(0,0,0,0.28)] backdrop-blur-xl [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            <div className="pointer-events-none absolute inset-0 rounded-[2.4rem] bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.18),transparent_30%),linear-gradient(135deg,rgba(255,255,255,0.08),transparent_48%,rgba(111,207,255,0.08))]" />
+            <div className="pointer-events-none absolute inset-0 rounded-[2.4rem] bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.14),transparent_30%),linear-gradient(135deg,rgba(255,255,255,0.06),transparent_48%,rgba(111,207,255,0.06))]" />
             <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-100/60 to-transparent" />
             <div className="pointer-events-none absolute inset-[1px] rounded-[2.35rem] border border-white/8" />
             <button
@@ -343,7 +344,7 @@ export default function WebMobileShowcase3D() {
             <motion.div
               animate={isPaused ? { x: undefined } : { x: ["0%", "-50%"] }}
               style={{ x: stackSlideX }}
-              transition={{ duration: 68, repeat: Infinity, ease: "linear" }}
+              transition={{ duration: marqueeDuration, repeat: Infinity, ease: "linear" }}
               className="relative z-10 flex w-max items-center gap-5 px-3 py-6 pr-10 [transform-style:preserve-3d]"
             >
               {[...techStacks, ...techStacks].map((stack, index) => {
@@ -354,29 +355,36 @@ export default function WebMobileShowcase3D() {
                   <motion.article
                     key={stack.title + "-" + index}
                     animate={{
-                      rotateY: [0, 16, -10, 0],
-                      rotateX: [0, 6, -4, 0],
-                      y: index % 2 === 0 ? [0, -8, 0] : [0, 8, 0],
+                      rotateY: [0, 14, -8, 0],
+                      rotateX: [0, 5, -3, 0],
+                      y: index % 2 === 0 ? [0, -10, 0] : [0, 10, 0],
+                      scale: [1, 1.02, 1],
+                      opacity: [0.86, 1, 0.9],
                     }}
-                    whileHover={{ y: -16, rotateX: 10, rotateY: index % 2 === 0 ? -10 : 10, scale: 1.04 }}
-                    transition={{ duration: 7.4 + (index % 5) * 0.4, repeat: Infinity, ease: "easeInOut" }}
+                    whileHover={{ y: -18, rotateX: 12, rotateY: index % 2 === 0 ? -12 : 12, scale: 1.05 }}
+                    transition={{ duration: 6.8 + (index % 5) * 0.45, repeat: Infinity, ease: "easeInOut", delay: (index % techStacks.length) * 0.08 }}
                     style={{
                       clipPath: stackShape,
                       rotateX: index % 2 === 0 ? stackTiltX : stackTiltY,
                       rotateY: index % 3 === 0 ? stackTiltY : stackTiltX,
                       scale: stackScale,
                     }}
-                    className="group relative h-[12.5rem] w-[11.5rem] shrink-0 overflow-hidden border border-white/14 text-white shadow-[0_24px_64px_rgba(0,0,0,0.24)] [transform-style:preserve-3d] md:h-[13.5rem] md:w-[12.5rem]"
+                    className="group relative h-[12.5rem] w-[11.5rem] shrink-0 overflow-hidden border border-white/12 text-white shadow-[0_24px_64px_rgba(0,0,0,0.22)] [transform-style:preserve-3d] md:h-[13.5rem] md:w-[12.5rem]"
                   >
-                    <div aria-hidden="true" style={{ clipPath: stackShape }} className={"absolute inset-0 bg-gradient-to-br " + stack.glow} />
-                    <div aria-hidden="true" style={{ clipPath: stackShape }} className="absolute inset-[1px] bg-[linear-gradient(180deg,rgba(4,17,39,0.16),rgba(4,17,39,0.58))]" />
+                    <div aria-hidden="true" style={{ clipPath: stackShape }} className={"absolute inset-0 bg-gradient-to-br opacity-70 " + stack.glow} />
+                    <div aria-hidden="true" style={{ clipPath: stackShape }} className="absolute inset-[1px] bg-[linear-gradient(180deg,rgba(4,17,39,0.10),rgba(4,17,39,0.44))]" />
                     <motion.div
-                      animate={{ rotate: [0, 360], scale: [1, 1.06, 1] }}
-                      transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
-                      className="absolute -right-8 -top-8 h-28 w-28 rounded-full border border-cyan-100/12 bg-cyan-100/10 blur-[1px]"
+                      animate={{ rotate: [0, 360], scale: [1, 1.07, 1], opacity: [0.22, 0.42, 0.22] }}
+                      transition={{ duration: 14, repeat: Infinity, ease: "linear", delay: index * 0.12 }}
+                      className="absolute -right-8 -top-8 h-28 w-28 rounded-full border border-cyan-100/10 bg-cyan-100/8 blur-[1px]"
                     />
-                    <div className="absolute inset-x-3 top-2 h-10 rounded-[999px] bg-[linear-gradient(180deg,rgba(255,255,255,0.3),rgba(191,219,254,0.08),transparent)] opacity-90 blur-sm" />
-                    <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.16),transparent_42%,rgba(125,211,252,0.08))]" />
+                    <motion.div
+                      animate={isPaused ? { x: undefined } : { x: ["-130%", "140%"] }}
+                      transition={{ duration: marqueeDuration / 3.8, repeat: Infinity, ease: "linear", delay: (index % techStacks.length) * 0.22 }}
+                      className="absolute inset-y-3 w-16 skew-x-[-18deg] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent)] blur-md"
+                    />
+                    <div className="absolute inset-x-3 top-2 h-10 rounded-[999px] bg-[linear-gradient(180deg,rgba(255,255,255,0.22),rgba(191,219,254,0.06),transparent)] opacity-80 blur-sm" />
+                    <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.12),transparent_42%,rgba(125,211,252,0.06))]" />
                     <div className="relative flex h-full flex-col justify-between p-4">
                       <div aria-hidden="true" style={{ clipPath: stackShape }} className="pointer-events-none absolute inset-[6px] border border-cyan-100/10" />
                       <div>
@@ -388,7 +396,7 @@ export default function WebMobileShowcase3D() {
                         <h4 className="mt-3 text-lg font-bold tracking-tight text-white md:text-[1.2rem]">{stack.title}</h4>
                       </div>
 
-                      <div className="rounded-[1rem] border border-cyan-100/10 bg-[#031126]/78 p-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-sm transition duration-500 group-hover:bg-[#071a3d]/86">
+                      <div className="rounded-[1rem] border border-cyan-100/10 bg-[#031126]/58 p-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-sm transition duration-500 group-hover:bg-[#071a3d]/72">
                         <div className="mb-3 flex items-center gap-2">
                           <span className="h-2.5 w-2.5 rounded-full bg-rose-400" />
                           <span className="h-2.5 w-2.5 rounded-full bg-amber-400" />
@@ -413,3 +421,6 @@ export default function WebMobileShowcase3D() {
     </section>
   );
 }
+
+
+

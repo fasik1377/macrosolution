@@ -15,8 +15,10 @@ import DataNetworkBackground from "@/components/DataNetworkBackground";
 import IndustriesWeServe3D from "@/components/IndustriesWeServe3D";
 import ProfessionalServices3D from "@/components/ProfessionalServices3D";
 import Clients3DSlider from "@/components/Clients3DSlider";
+import MissionVision3D from "@/components/MissionVision3D";
 import PayrollFeatures3D from "@/components/PayrollFeatures3D";
 import WebMobileShowcase3D from "@/components/WebMobileShowcase3D";
+import HeroSoftwareBackground3D from "@/components/HeroSoftwareBackground3D";
 
 export default function Home() {
   const aboutStats = [
@@ -54,6 +56,70 @@ export default function Home() {
       accent: "from-[#7c3aed] via-[#0b5ed7] to-[#4d9fff]",
     },
   ];
+  const renderLeadershipCard = (leader: (typeof leadershipTeam)[number], index: number) => (
+    <motion.article
+      key={leader.name}
+      initial={{ opacity: 0, y: 32, rotateY: index === 0 ? -14 : 14, scale: 0.96 }}
+      whileInView={{ opacity: 1, y: 0, rotateY: 0, scale: 1 }}
+      viewport={{ once: true, amount: 0.25 }}
+      whileHover={{ y: -14, rotateX: index === 0 ? 8 : 10, rotateY: index === 0 ? -10 : 10, scale: 1.03 }}
+      transition={{ duration: 0.7, ease: "easeOut", delay: index * 0.08 }}
+      className={`group relative mx-auto w-full max-w-[19rem] overflow-hidden border border-cyan-100/14 bg-white/[0.05] p-5 shadow-[0_28px_80px_rgba(0,0,0,0.22)] backdrop-blur-xl [transform-style:preserve-3d] ${index === 0 ? "[clip-path:polygon(12%_0,100%_0,100%_78%,88%_100%,0_100%,0_16%)]" : "[clip-path:polygon(0_0,88%_0,100%_18%,100%_100%,12%_100%,0_82%)]"}`}
+    >
+      <motion.div
+        animate={{ opacity: [0.08, 0.18, 0.08] }}
+        transition={{ duration: 4.4, repeat: Infinity, ease: "easeInOut", delay: index * 0.18 }}
+        className={`absolute inset-0 bg-gradient-to-br ${leader.accent}`}
+      />
+      <div className={`absolute inset-[1px] bg-[linear-gradient(145deg,rgba(255,255,255,0.14),rgba(255,255,255,0.03)_24%,rgba(3,15,37,0.22)_56%,rgba(1,8,24,0.38)_100%)] ${index === 0 ? "[clip-path:polygon(12%_0,100%_0,100%_78%,88%_100%,0_100%,0_16%)]" : "[clip-path:polygon(0_0,88%_0,100%_18%,100%_100%,12%_100%,0_82%)]"}`} />
+      <div className={`absolute inset-x-0 top-0 h-px bg-gradient-to-r ${leader.accent}`} />
+      <div className="absolute inset-y-5 left-4 w-px bg-[linear-gradient(180deg,transparent,rgba(196,233,255,0.7),transparent)]" />
+      <div className="absolute inset-x-5 bottom-4 h-px bg-[linear-gradient(90deg,transparent,rgba(196,233,255,0.4),transparent)]" />
+      <motion.div
+        animate={{ x: ["-115%", "125%"] }}
+        transition={{ duration: 4.8, repeat: Infinity, ease: "linear", delay: index * 0.32 }}
+        className="absolute inset-y-0 w-20 skew-x-[-20deg] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.16),transparent)] blur-md"
+      />
+
+      <div className="relative z-10 [transform:translateZ(26px)]">
+        <div className="flex items-start justify-between gap-3">
+          <motion.div
+            animate={{ y: [0, -3, 0], rotate: index === 0 ? [0, 5, 0] : [0, 3, 0], scale: [1, 1.04, 1] }}
+            transition={{ duration: 4.4, repeat: Infinity, ease: "easeInOut", delay: index * 0.14 }}
+            className={`relative flex h-14 w-14 items-center justify-center bg-gradient-to-br ${leader.accent} text-base font-black text-white shadow-[0_18px_34px_rgba(11,94,215,0.26)] ${index === 0 ? "[clip-path:polygon(16%_0,100%_0,100%_82%,84%_100%,0_100%,0_18%)]" : "[clip-path:polygon(0_0,84%_0,100%_18%,100%_100%,16%_100%,0_82%)]"}`}
+          >
+            <div className="absolute inset-[1px] bg-[radial-gradient(circle_at_35%_30%,rgba(255,255,255,0.34),transparent_48%)]" />
+            <span className="relative">{leader.initials}</span>
+          </motion.div>
+          <motion.span
+            animate={{ opacity: [0.62, 1, 0.62], y: [0, -2, 0] }}
+            transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut", delay: index * 0.2 }}
+            className="rounded-full border border-cyan-100/12 bg-white/8 px-3 py-1 text-[8px] font-bold uppercase tracking-[0.24em] text-cyan-100"
+          >
+            Org Node
+          </motion.span>
+        </div>
+
+        <div className="mt-5">
+          <p className="text-[9px] font-semibold uppercase tracking-[0.34em] text-cyan-200/82">{leader.role}</p>
+          <h3 className="mt-2 text-xl font-bold text-white">{leader.name}</h3>
+        </div>
+
+        <p className="mt-4 text-sm leading-6 text-white/76">{leader.description}</p>
+
+        <div className="mt-5 flex items-center justify-between gap-3">
+          <span className="rounded-full border border-cyan-100/12 bg-white/6 px-3 py-1 text-[8px] font-bold uppercase tracking-[0.24em] text-cyan-100">Leadership</span>
+          <motion.span
+            animate={{ opacity: [0.48, 1, 0.48] }}
+            transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut", delay: index * 0.2 }}
+            className="text-[8px] font-bold uppercase tracking-[0.28em] text-white/56"
+          >
+            Active
+          </motion.span>
+        </div>
+      </div>
+    </motion.article>
+  );
 
   return (
     <main className="relative overflow-x-clip bg-[#0096FF] text-white">
@@ -80,6 +146,7 @@ export default function Home() {
       <Navbar />
 
       <section className="relative overflow-hidden pt-16 pb-28 text-white">
+        <HeroSoftwareBackground3D />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_22%,rgba(255,255,255,0.18),transparent_24%),radial-gradient(circle_at_82%_24%,rgba(111,207,255,0.18),transparent_22%),radial-gradient(circle_at_50%_78%,rgba(0,150,255,0.18),transparent_26%)]" />
         <motion.div
           aria-hidden="true"
@@ -459,6 +526,7 @@ export default function Home() {
 
       <ProfessionalServices3D />
       <Clients3DSlider />
+      <MissionVision3D />
 
       <section className="relative overflow-hidden py-32 text-white [perspective:2000px]">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(77,159,255,0.12),transparent_42%),radial-gradient(circle_at_bottom_right,rgba(11,94,215,0.16),transparent_36%)]" />
@@ -479,96 +547,55 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="relative mt-16 flex flex-col items-center">
-            <div className="pointer-events-none absolute top-[6rem] bottom-[4rem] left-1/2 w-px -translate-x-1/2 bg-[linear-gradient(180deg,rgba(125,211,252,0.18),rgba(125,211,252,0.7),rgba(125,211,252,0.18))]" />
+          <div className="relative mx-auto mt-16 flex max-w-6xl justify-center">
+            <div className="relative grid w-full max-w-5xl items-center justify-center gap-8 lg:grid-cols-[minmax(18rem,19rem)_minmax(8rem,12rem)_minmax(18rem,19rem)]">
+              {renderLeadershipCard(leadershipTeam[0], 0)}
 
-            <motion.div
-              animate={{ y: [0, 10, 20, 30, 40, 50] }}
-              transition={{ duration: 4.8, repeat: Infinity, ease: "linear" }}
-              className="pointer-events-none absolute left-1/2 top-[6rem] -translate-x-1/2 text-[10px] font-bold tracking-[0.28em] text-cyan-200/80"
-            >
-              0101
-            </motion.div>
-            <motion.div
-              animate={{ y: [50, 40, 30, 20, 10, 0] }}
-              transition={{ duration: 4.2, repeat: Infinity, ease: "linear" }}
-              className="pointer-events-none absolute left-1/2 top-[9rem] -translate-x-1/2 text-[10px] font-bold tracking-[0.28em] text-cyan-100/70"
-            >
-              1010
-            </motion.div>
-            <motion.div
-              animate={{ y: [120, 110, 100, 90, 80, 70] }}
-              transition={{ duration: 5.6, repeat: Infinity, ease: "linear" }}
-              className="pointer-events-none absolute left-1/2 top-[11rem] -translate-x-1/2 text-[10px] font-bold tracking-[0.28em] text-cyan-200/60"
-            >
-              0011
-            </motion.div>
-            <motion.div
-              animate={{ y: [70, 80, 90, 100, 110, 120] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-              className="pointer-events-none absolute left-1/2 top-[15rem] -translate-x-1/2 text-[10px] font-bold tracking-[0.28em] text-cyan-100/65"
-            >
-              1100
-            </motion.div>
-
-            {leadershipTeam.map((leader, index) => (
-              <div key={leader.name} className="relative z-10 flex w-full flex-col items-center">
-                <motion.article
-                  initial={{ opacity: 0, y: 30, scale: 0.96 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  viewport={{ once: true, amount: 0.25 }}
-                  whileHover={{ y: -8, rotateX: 6, scale: 1.02 }}
-                  transition={{ duration: 0.7, ease: "easeOut", delay: index * 0.08 }}
-                  className={`group relative ${index === 0 ? 'w-[min(88vw,20rem)]' : 'mt-14 w-[min(88vw,19rem)]'} overflow-hidden border border-cyan-100/12 ${index === 0 ? 'bg-[#05142f]/78 p-5 [clip-path:polygon(12%_0,88%_0,100%_14%,100%_100%,0_100%,0_14%)]' : 'bg-[#041127]/82 p-5 [clip-path:polygon(10%_0,100%_0,100%_88%,90%_100%,0_100%,0_12%)]'} shadow-[0_24px_70px_rgba(0,0,0,0.24)] backdrop-blur-xl [transform-style:preserve-3d]`}
+              <div className="pointer-events-none relative mx-auto flex h-24 w-44 items-center justify-center lg:h-full lg:w-full">
+                <motion.div
+                  animate={{ opacity: [0.18, 0.48, 0.18], scaleX: [0.92, 1.06, 0.92] }}
+                  transition={{ duration: 3.4, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute left-1/2 top-1/2 h-14 w-full -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(125,211,252,0.18),transparent_68%)] blur-xl"
+                />
+                <div className="absolute left-0 right-0 top-1/2 h-px -translate-y-1/2 bg-[linear-gradient(90deg,rgba(125,211,252,0.08),rgba(125,211,252,0.85),rgba(125,211,252,0.08))]" />
+                <motion.div
+                  animate={{ x: ["-42%", "42%", "-42%"] }}
+                  transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute left-1/2 top-1/2 h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-200 shadow-[0_0_22px_rgba(125,211,252,0.8)]"
+                />
+                <motion.div
+                  animate={{ x: ["42%", "-42%", "42%"] }}
+                  transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: 0.38 }}
+                  className="absolute left-1/2 top-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white shadow-[0_0_20px_rgba(255,255,255,0.82)]"
+                />
+                <motion.div
+                  animate={{ x: [-64, 64], opacity: [0, 1, 0] }}
+                  transition={{ duration: 2.8, repeat: Infinity, ease: "linear" }}
+                  className="absolute left-1/2 top-[calc(50%-1rem)] -translate-x-1/2 text-[10px] font-bold tracking-[0.32em] text-cyan-200/82"
                 >
-                  <div className={`absolute inset-0 bg-gradient-to-br ${leader.accent} ${index === 0 ? 'opacity-18' : 'opacity-16'}`} />
-                  <div className={`absolute inset-[1px] ${index === 0 ? 'bg-[linear-gradient(145deg,rgba(255,255,255,0.14),rgba(255,255,255,0.03)_22%,rgba(5,20,47,0.44)_58%,rgba(1,8,24,0.84)_100%)] [clip-path:polygon(12%_0,88%_0,100%_14%,100%_100%,0_100%,0_14%)]' : 'bg-[linear-gradient(145deg,rgba(255,255,255,0.12),rgba(255,255,255,0.03)_22%,rgba(4,17,39,0.42)_58%,rgba(1,8,24,0.86)_100%)] [clip-path:polygon(10%_0,100%_0,100%_88%,90%_100%,0_100%,0_12%)]'}`} />
-                  <div className={`absolute left-0 top-0 h-1.5 w-full bg-gradient-to-r ${leader.accent}`} />
-
-                  <div className={`relative ${index === 0 ? 'flex flex-col items-center text-center' : ''} [transform:translateZ(24px)]`}>
-                    <div className={`${index === 0 ? '' : 'flex items-start gap-4'}`}>
-                      <motion.div
-                        animate={{ y: [0, -2, 0], rotate: index === 0 ? [0, 4, 0] : [0, 2, 0] }}
-                        transition={{ duration: 4.4, repeat: Infinity, ease: 'easeInOut', delay: index * 0.14 }}
-                        className={`${index === 0 ? 'mx-auto flex h-16 w-16 items-center justify-center text-xl' : 'flex h-14 w-14 items-center justify-center text-lg'} bg-gradient-to-br ${leader.accent} font-black text-white shadow-[0_18px_34px_rgba(11,94,215,0.28)] [clip-path:polygon(14%_0,86%_0,100%_20%,100%_100%,0_100%,0_20%)]`}
-                      >
-                        {leader.initials}
-                      </motion.div>
-                      <div className={`${index === 0 ? 'mt-4 text-center' : ''}`}>
-                        <p className="text-[10px] font-semibold uppercase tracking-[0.34em] text-cyan-200/82">{leader.role}</p>
-                        <h3 className={`${index === 0 ? 'mt-3 text-2xl' : 'mt-2 text-xl'} font-bold text-white`}>{leader.name}</h3>
-                      </div>
-                    </div>
-
-                    <p className={`${index === 0 ? 'mt-4 text-center' : 'mt-5'} text-sm leading-6 text-white/78`}>{leader.description}</p>
-
-                    <div className="mt-5 flex items-center justify-between gap-4">
-                      <span className="rounded-full border border-cyan-100/12 bg-white/8 px-3 py-1.5 text-[9px] font-bold uppercase tracking-[0.24em] text-cyan-100">Leadership</span>
-                      <span className="text-[9px] font-bold uppercase tracking-[0.28em] text-white/52">Org Node</span>
-                    </div>
-                  </div>
-                </motion.article>
-
-                {index < leadershipTeam.length - 1 && (
-                  <div className="relative h-14 w-full">
-                    <motion.div
-                      animate={{ y: [0, 14, 28, 42] }}
-                      transition={{ duration: 4.4, repeat: Infinity, ease: 'linear', delay: index * 0.18 }}
-                      className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 text-[10px] font-bold tracking-[0.28em] text-cyan-200/78"
-                    >
-                      0101
-                    </motion.div>
-                    <motion.div
-                      animate={{ y: [42, 28, 14, 0] }}
-                      transition={{ duration: 4.1, repeat: Infinity, ease: 'linear', delay: index * 0.16 }}
-                      className="pointer-events-none absolute left-1/2 top-1 -translate-x-1/2 text-[10px] font-bold tracking-[0.28em] text-cyan-100/68"
-                    >
-                      1010
-                    </motion.div>
-                  </div>
-                )}
+                  0101
+                </motion.div>
+                <motion.div
+                  animate={{ x: [64, -64], opacity: [0, 1, 0] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "linear", delay: 0.24 }}
+                  className="absolute left-1/2 top-[calc(50%+0.55rem)] -translate-x-1/2 text-[10px] font-bold tracking-[0.32em] text-cyan-100/72"
+                >
+                  DATA
+                </motion.div>
+                <motion.div
+                  animate={{ opacity: [0.24, 1, 0.24], scale: [0.88, 1.12, 0.88] }}
+                  transition={{ duration: 2.7, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute left-1/2 top-1/2 h-9 w-9 -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-100/18"
+                />
+                <motion.div
+                  animate={{ rotate: [0, 180, 360] }}
+                  transition={{ duration: 7.5, repeat: Infinity, ease: "linear" }}
+                  className="absolute left-1/2 top-1/2 h-16 w-16 -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-cyan-100/16"
+                />
               </div>
-            ))}
+
+              {renderLeadershipCard(leadershipTeam[1], 1)}
+            </div>
           </div>
         </div>
       </section>
@@ -577,6 +604,14 @@ export default function Home() {
     </main>
   );
 }
+
+
+
+
+
+
+
+
 
 
 

@@ -1,7 +1,8 @@
-﻿"use client";
+"use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Building2, BriefcaseBusiness, Cable, Layers3, ShieldCheck } from "lucide-react";
+import { useRef } from "react";
 
 const portfolioItems = [
   {
@@ -64,8 +65,18 @@ const portfolioItems = [
 const slidingItems = [...portfolioItems, ...portfolioItems];
 
 export default function ProductPortfolio3D() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const carouselDepth = useTransform(scrollYProgress, [0, 0.5, 1], [48, 0, -70]);
+  const carouselRotateX = useTransform(scrollYProgress, [0, 0.5, 1], [18, 0, -16]);
+  const carouselRotateY = useTransform(scrollYProgress, [0, 0.5, 1], [-12, 0, 12]);
+  const carouselScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.93, 1, 0.95]);
+
   return (
-    <section className="relative overflow-hidden py-16 text-white">
+    <section ref={sectionRef} className="relative overflow-hidden py-16 text-white">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_24%,rgba(77,159,255,0.14),transparent_24%),radial-gradient(circle_at_80%_20%,rgba(167,139,250,0.14),transparent_24%),radial-gradient(circle_at_50%_78%,rgba(11,94,215,0.16),transparent_26%)]" />
 
       <div className="container relative z-10 mx-auto px-6">
@@ -86,13 +97,14 @@ export default function ProductPortfolio3D() {
           <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-16 bg-gradient-to-l from-[#0096FF] to-transparent" />
 
           <motion.div
-            animate={{ x: ["0%", "-50%"], rotateX: [0, 5, 0], rotateY: [0, -5, 0] }}
+            animate={{ x: ["0%", "-50%"], rotateX: [0, 6, -3, 0], rotateY: [0, -6, 5, 0] }}
             transition={{
-              x: { duration: 24, repeat: Infinity, ease: "linear" },
-              rotateX: { duration: 12, repeat: Infinity, ease: "easeInOut" },
-              rotateY: { duration: 12, repeat: Infinity, ease: "easeInOut" },
+              x: { duration: 28, repeat: Infinity, ease: "linear" },
+              rotateX: { duration: 14, repeat: Infinity, ease: "easeInOut" },
+              rotateY: { duration: 14, repeat: Infinity, ease: "easeInOut" },
             }}
-            className="flex w-max gap-5 px-2 pb-10 pt-8 [transform-style:preserve-3d]"
+            style={{ y: carouselDepth, rotateX: carouselRotateX, rotateY: carouselRotateY, scale: carouselScale }}
+            className="flex w-max gap-6 px-2 pb-12 pt-10 [transform-style:preserve-3d]"
           >
             {slidingItems.map((item, index) => {
               const Icon = item.icon;
@@ -104,48 +116,65 @@ export default function ProductPortfolio3D() {
                   initial={{ opacity: 0, y: 36, scale: 0.92 }}
                   whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: true, amount: 0.2 }}
-                  animate={{ y: [0, -8, 0], rotateZ: [0, 1.4, 0, -1.4, 0], scale: [1, 1.018, 1] }}
-                  whileHover={{ y: -14, rotateX: 18, rotateY: index % 2 === 0 ? -20 : 20, scale: 1.08 }}
+                  animate={{ y: [0, -16, 0], rotateZ: [0, 1.2, 0, -1.2, 0], rotateX: [0, 10, -5, 0], rotateY: index % 2 === 0 ? [0, -12, 8, 0] : [0, 12, -8, 0], scale: [1, 1.03, 1] }}
+                  whileHover={{ y: -24, rotateX: 24, rotateY: index % 2 === 0 ? -28 : 28, scale: 1.1 }}
                   transition={{
                     opacity: { duration: 0.55, delay: (index % portfolioItems.length) * 0.08 },
-                    y: { duration: 5.4, repeat: Infinity, ease: "easeInOut", delay },
-                    rotateZ: { duration: 5.4, repeat: Infinity, ease: "easeInOut", delay },
-                    scale: { duration: 5.4, repeat: Infinity, ease: "easeInOut", delay },
+                    y: { duration: 6.2, repeat: Infinity, ease: "easeInOut", delay },
+                    rotateZ: { duration: 6.2, repeat: Infinity, ease: "easeInOut", delay },
+                    rotateX: { duration: 7.2, repeat: Infinity, ease: "easeInOut", delay: delay + 0.05 },
+                    rotateY: { duration: 7.2, repeat: Infinity, ease: "easeInOut", delay: delay + 0.08 },
+                    scale: { duration: 6.2, repeat: Infinity, ease: "easeInOut", delay },
                   }}
-                  className={`group relative flex h-[220px] w-[220px] shrink-0 items-center justify-center rounded-full border border-cyan-100/18 bg-transparent backdrop-blur-0 [transform-style:preserve-3d] md:h-[240px] md:w-[240px] ${item.glow}`}
+                  className={`group relative flex h-[220px] w-[220px] shrink-0 items-center justify-center rounded-full border border-cyan-100/16 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.08),rgba(255,255,255,0.02)_34%,rgba(3,10,28,0.12)_76%)] backdrop-blur-md [transform-style:preserve-3d] md:h-[240px] md:w-[240px] ${item.glow}`}
                 >
-                  <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${item.accent}`} />
-                  <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_30%_28%,rgba(255,255,255,0.82),rgba(255,255,255,0.2)_16%,rgba(255,255,255,0.05)_30%,transparent_42%)] opacity-90" />
-                  <div className="absolute inset-[2px] rounded-full bg-[radial-gradient(circle_at_70%_75%,rgba(3,10,28,0.58),rgba(3,10,28,0.16)_24%,transparent_44%)]" />
-                  <div className="absolute inset-[6px] rounded-full shadow-[inset_-28px_-34px_58px_rgba(1,8,20,0.48),inset_18px_18px_28px_rgba(255,255,255,0.1)]" />
-                  <div className="absolute inset-[16px] rounded-full border border-cyan-100/14" />
+                  <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${item.accent} opacity-72`} />
+                  <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_30%_28%,rgba(255,255,255,0.44),rgba(255,255,255,0.12)_16%,rgba(255,255,255,0.03)_30%,transparent_42%)] opacity-72" />
+                  <div className="absolute inset-[2px] rounded-full bg-[radial-gradient(circle_at_70%_75%,rgba(3,10,28,0.24),rgba(3,10,28,0.08)_24%,transparent_44%)]" />
+                  <div className="absolute inset-[6px] rounded-full shadow-[inset_-18px_-24px_40px_rgba(1,8,20,0.24),inset_18px_18px_24px_rgba(255,255,255,0.07)]" />
+                  <div className="absolute inset-[16px] rounded-full border border-cyan-100/18" />
                   <motion.div
                     animate={{ scale: [1, 1.08, 1], opacity: [0.45, 0.8, 0.45] }}
                     transition={{ duration: 4.6, repeat: Infinity, ease: "easeInOut", delay }}
-                    className="absolute left-[15%] top-[12%] h-16 w-16 rounded-full bg-white/35 blur-xl"
+                    className="absolute left-[15%] top-[12%] h-16 w-16 rounded-full bg-white/24 blur-xl"
                   />
                   <motion.div
                     animate={{ scale: [1, 1.18, 1], opacity: [0.6, 1, 0.6] }}
                     transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut", delay: delay + 0.1 }}
-                    className="absolute left-[24%] top-[20%] h-6 w-6 rounded-full bg-cyan-50/80 blur-[1px]"
+                    className="absolute left-[24%] top-[20%] h-6 w-6 rounded-full bg-cyan-50/58 blur-[1px]"
                   />
                   <motion.div
                     animate={{ scale: [1, 1.16, 1], y: [0, -3, 0] }}
                     transition={{ duration: 4.1, repeat: Infinity, ease: "easeInOut", delay: delay + 0.14 }}
-                    className="absolute right-[16%] top-[18%] h-8 w-8 rounded-full border border-cyan-100/18 bg-cyan-100/16"
+                    className="absolute right-[16%] top-[18%] h-8 w-8 rounded-full border border-cyan-100/16 bg-cyan-100/10"
                   />
                   <motion.div
                     animate={{ scale: [1, 1.14, 1], y: [0, -2, 0] }}
                     transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: delay + 0.22 }}
-                    className="absolute bottom-[18%] left-[20%] h-10 w-10 rounded-full border border-cyan-100/12 bg-white/10"
+                    className="absolute bottom-[18%] left-[20%] h-10 w-10 rounded-full border border-cyan-100/10 bg-white/6"
                   />
                   <div className="absolute bottom-[14%] right-[18%] h-12 w-12 rounded-full bg-[radial-gradient(circle,rgba(8,22,52,0.4),transparent_70%)] blur-md" />
                   <motion.div
                     animate={{ scale: [1, 1.22, 1], opacity: [0.4, 0.85, 0.4] }}
                     transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: delay + 0.18 }}
-                    className="absolute bottom-[13%] right-[21%] h-6 w-6 rounded-full bg-cyan-100/45 blur-[2px]"
+                    className="absolute bottom-[13%] right-[21%] h-6 w-6 rounded-full bg-cyan-100/34 blur-[2px]"
                   />
-                  <div className="absolute inset-x-10 bottom-8 flex items-center justify-center gap-1 opacity-60">
+                  <motion.div
+                    animate={{ rotate: [0, 360], opacity: [0.18, 0.34, 0.18] }}
+                    transition={{ duration: 9.5, repeat: Infinity, ease: "linear", delay }}
+                    className="absolute inset-[28px] rounded-full border border-dashed border-cyan-100/16"
+                  />
+                  <motion.div
+                    animate={{ rotate: [360, 0], scale: [0.94, 1.04, 0.94] }}
+                    transition={{ duration: 7.8, repeat: Infinity, ease: "linear", delay: delay + 0.12 }}
+                    className="absolute inset-[42px] rounded-full border border-cyan-100/10"
+                  />
+                  <motion.div
+                    animate={{ x: ["-130%", "130%"], opacity: [0, 0.8, 0] }}
+                    transition={{ duration: 3.2, repeat: Infinity, ease: "linear", delay: delay + 0.2 }}
+                    className="absolute top-1/2 h-px w-24 -translate-y-1/2 bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.9),transparent)]"
+                  />
+                  <div className="absolute inset-x-10 bottom-8 flex items-center justify-center gap-1 opacity-50">
                     {Array.from({ length: 10 }).map((_, gridIndex) => (
                       <motion.span
                         key={`${item.id}-${index}-pulse-${gridIndex}`}
@@ -158,7 +187,7 @@ export default function ProductPortfolio3D() {
 
                   <div className="relative z-10 flex h-full w-full flex-col items-center justify-center px-6 text-center [transform-style:preserve-3d]">
                     <motion.div
-                      animate={{ y: [0, -4, 0], scale: [1, 1.06, 1], rotate: [0, 4, 0] }}
+                      animate={{ y: [0, -6, 0], scale: [1, 1.08, 1], rotate: [0, 6, 0] }}
                       transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay }}
                       className="flex h-11 w-11 items-center justify-center rounded-full border border-cyan-100/28 bg-white/12 text-white shadow-[0_0_18px_rgba(125,211,252,0.28)] [transform:translateZ(38px)]"
                     >
@@ -166,7 +195,7 @@ export default function ProductPortfolio3D() {
                     </motion.div>
 
                     <motion.div
-                      animate={{ y: [0, -5, 0], opacity: [0.9, 1, 0.9] }}
+                      animate={{ y: [0, -8, 0], opacity: [0.88, 1, 0.88], rotateX: [0, 4, 0] }}
                       transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut", delay: delay + 0.1 }}
                       className="mt-4 [transform:translateZ(48px)]"
                     >
@@ -179,7 +208,7 @@ export default function ProductPortfolio3D() {
                     </motion.div>
 
                     <motion.div
-                      animate={{ y: [0, -3, 0], scale: [1, 1.02, 1] }}
+                      animate={{ y: [0, -5, 0], scale: [1, 1.03, 1], rotateZ: [0, 1.2, 0] }}
                       transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: delay + 0.16 }}
                       className="mt-3 flex flex-wrap items-center justify-center gap-1.5 [transform:translateZ(34px)]"
                     >
@@ -202,4 +231,7 @@ export default function ProductPortfolio3D() {
     </section>
   );
 }
+
+
+
 
