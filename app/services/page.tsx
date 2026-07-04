@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { motion } from "framer-motion";
 import { ArrowRight, Cpu, Layers3, Radar, Settings2, Workflow } from "lucide-react";
@@ -201,6 +201,7 @@ export default function ServicesPage() {
     </main>
   );
 }
+
 
 
 
