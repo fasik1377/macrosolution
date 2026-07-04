@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import AboutScrollHero3D from "@/components/AboutScrollHero3D";
 import DataNetworkBackground from "@/components/DataNetworkBackground";
+import TechPageBackground from "@/components/TechPageBackground";
 import { company, profileHighlights, services, valueCards } from "@/components/companyProfile";
 import { fadeUp, stagger } from "@/components/motion";
 
@@ -49,37 +50,7 @@ export default function AboutPage() {
 
   return (
     <main className="relative overflow-x-clip bg-[#0096FF] text-white">
-      <motion.div
-        aria-hidden="true"
-        animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
-        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
-        className="pointer-events-none fixed inset-0 -z-20 bg-[linear-gradient(120deg,#dff5ff_0%,#8dd8ff_24%,#0096FF_52%,#6fcfff_76%,#e6f9ff_100%)] bg-[length:200%_200%]"
-      />
-      <DataNetworkBackground variant="light" className="fixed inset-0 -z-10 opacity-100" />
-      <motion.div
-        aria-hidden="true"
-        animate={{ opacity: [0.2, 0.38, 0.2], scale: [0.96, 1.04, 0.96] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="pointer-events-none fixed left-[8%] top-[12%] -z-10 h-[24rem] w-[24rem] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.34),transparent_68%)] blur-3xl"
-      />
-      <motion.div
-        aria-hidden="true"
-        animate={{ opacity: [0.12, 0.32, 0.12], scale: [0.92, 1.06, 0.92] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        className="pointer-events-none fixed bottom-[8%] right-[6%] -z-10 h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,rgba(0,150,255,0.26),transparent_68%)] blur-3xl"
-      />
-      <motion.div
-        aria-hidden="true"
-        animate={{ opacity: [0.16, 0.34, 0.16], scale: [0.94, 1.06, 0.94] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="pointer-events-none fixed left-[10%] top-[18%] -z-10 h-[20rem] w-[20rem] rounded-full bg-[radial-gradient(circle,rgba(77,159,255,0.16),transparent_68%)] blur-3xl"
-      />
-      <motion.div
-        aria-hidden="true"
-        animate={{ opacity: [0.1, 0.28, 0.1], scale: [0.92, 1.04, 0.92] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        className="pointer-events-none fixed bottom-[10%] right-[8%] -z-10 h-[24rem] w-[24rem] rounded-full bg-[radial-gradient(circle,rgba(11,94,215,0.18),transparent_68%)] blur-3xl"
-      />
+      <TechPageBackground />
 
       <Navbar />
       <AboutScrollHero3D title={`${company.tagline}.`} description={company.intro} />
@@ -144,22 +115,36 @@ export default function AboutPage() {
           <motion.div
             initial={{ opacity: 0, y: 36, rotateX: 6 }}
             whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-            animate={{ y: [0, -10, 0], rotateX: [0, 5, 0], rotateY: [0, -6, 0] }}
-            whileHover={{ y: -18, rotateY: -12, rotateX: 8, scale: 1.04 }}
-            transition={{ duration: 6.4, repeat: Infinity, ease: "easeInOut" }}
+            animate={{ y: [0, -16, 0], x: [0, 8, 0, -8, 0], rotateX: [0, 6, 0], rotateY: [0, -10, 0, 10, 0] }}
+            whileHover={{ y: -22, rotateY: -14, rotateX: 10, scale: 1.05 }}
+            transition={{ duration: 7.2, repeat: Infinity, ease: "easeInOut" }}
             viewport={{ once: true }}
-            className="group relative overflow-hidden border border-white/16 bg-gradient-to-br from-dark-header via-brand-blue to-button-blue p-8 text-white shadow-[0_38px_110px_rgba(0,40,104,0.28)] [transform-style:preserve-3d] [clip-path:polygon(0_0,100%_0,100%_88%,90%_100%,0_100%)]"
+            className="group relative overflow-hidden border border-sky-100/80 bg-[linear-gradient(145deg,rgba(240,250,255,0.96),rgba(212,241,255,0.92),rgba(191,233,255,0.9))] p-8 text-slate-900 shadow-[0_40px_120px_rgba(44,126,201,0.22)] backdrop-blur-xl [transform-style:preserve-3d] [clip-path:polygon(0_0,100%_0,100%_88%,90%_100%,0_100%)]"
           >
-            <div className="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-hover-blue/25 blur-3xl transition duration-500 group-hover:scale-125" />
-            <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-white/70 to-transparent" />
             <motion.div
-              animate={{ rotateY: [0, 14, 0, -14, 0], y: [0, -5, 0, 5, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="flex h-16 w-16 items-center justify-center border border-white/25 bg-white/15 shadow-2xl backdrop-blur [transform:translateZ(36px)] [clip-path:polygon(0_0,100%_0,82%_100%,0_100%)]"
+              aria-hidden="true"
+              animate={{ scale: [1, 1.14, 1], opacity: [0.3, 0.5, 0.3] }}
+              transition={{ duration: 6.4, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute -right-12 -top-12 h-44 w-44 rounded-full bg-sky-300/40 blur-3xl transition duration-500 group-hover:scale-125"
+            />
+            <motion.div
+              aria-hidden="true"
+              animate={{ x: ["-20%", "115%"], opacity: [0, 1, 0] }}
+              transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute inset-y-10 left-[-30%] w-1/2 bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.55),transparent)] skew-x-[-18deg]"
+            />
+            <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-sky-500/70 to-transparent" />
+            <motion.div
+              animate={{ rotateY: [0, 16, 0, -16, 0], y: [0, -8, 0, 8, 0], rotateX: [0, 8, 0] }}
+              transition={{ duration: 6.2, repeat: Infinity, ease: "easeInOut" }}
+              className="flex h-16 w-16 items-center justify-center border border-sky-200/80 bg-white/55 text-sky-600 shadow-[0_20px_50px_rgba(0,150,255,0.18)] backdrop-blur [transform:translateZ(36px)] [clip-path:polygon(0_0,100%_0,82%_100%,0_100%)]"
             >
               <Users size={34} />
             </motion.div>
-            <h3 className="mt-8 text-3xl font-bold [transform:translateZ(28px)]">Built around business flow</h3>
+            <h3 className="mt-8 text-3xl font-bold text-slate-900 [transform:translateZ(28px)]">Built around business flow</h3>
+            <p className="mt-4 max-w-xl text-base leading-7 text-slate-600 [transform:translateZ(24px)]">
+              A light, modern workflow card with a floating motion language that feels active, smooth, and business-ready.
+            </p>
             <div className="mt-8 space-y-4">
               {highlights.map((item, index) => (
                 <motion.div
@@ -168,11 +153,12 @@ export default function AboutPage() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{ duration: 0.55, delay: index * 0.08, ease: "easeOut" }}
-                  whileHover={{ x: 8, scale: 1.01 }}
-                  className="flex items-start gap-3 border border-white/10 bg-white/10 p-4 backdrop-blur [transform:translateZ(20px)] [clip-path:polygon(0_0,100%_0,96%_100%,0_100%)]"
+                  whileHover={{ x: 10, y: -4, scale: 1.02 }}
+                  animate={{ y: index % 2 === 0 ? [0, -4, 0] : [0, 4, 0] }}
+                  className="flex items-start gap-3 border border-sky-100/80 bg-white/55 p-4 shadow-[0_16px_40px_rgba(91,169,230,0.12)] backdrop-blur [transform:translateZ(20px)] [clip-path:polygon(0_0,100%_0,96%_100%,0_100%)]"
                 >
-                  <CheckCircle className="mt-1 shrink-0 text-hover-blue" size={20} />
-                  <p className="leading-7 text-blue-50">{item}</p>
+                  <CheckCircle className="mt-1 shrink-0 text-[#0096FF]" size={20} />
+                  <p className="leading-7 text-slate-700">{item}</p>
                 </motion.div>
               ))}
             </div>
@@ -273,5 +259,9 @@ export default function AboutPage() {
     </main>
   );
 }
+
+
+
+
 
 
