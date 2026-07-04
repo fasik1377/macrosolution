@@ -23,19 +23,19 @@ export default function ServicesScrollHero3D() {
 
   return (
     <section ref={sectionRef} className="relative min-h-[260vh] overflow-hidden text-white">
-      <div className="sticky top-0 flex min-h-screen items-center overflow-hidden bg-dark-header pt-28">
-        <DataNetworkBackground variant="dark" className="absolute inset-0 opacity-90" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_16%,rgba(77,159,255,0.2),transparent_24%),radial-gradient(circle_at_80%_74%,rgba(11,94,215,0.26),transparent_30%),linear-gradient(135deg,#001329_0%,#083B8A_48%,#001B47_100%)]" />
+      <div className="sticky top-0 flex min-h-screen items-center overflow-hidden bg-[#0096FF] pt-28">
+        <DataNetworkBackground variant="light" className="absolute inset-0 opacity-76" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_16%,rgba(255,255,255,0.16),transparent_24%),radial-gradient(circle_at_80%_18%,rgba(125,211,252,0.22),transparent_22%),radial-gradient(circle_at_80%_74%,rgba(14,165,233,0.18),transparent_30%),linear-gradient(135deg,#4dbdff_0%,#0096FF_42%,#0b8fe9_70%,#64c8ff_100%)]" />
         <motion.div
           aria-hidden="true"
           style={{ rotate: orbitRotate }}
-          className="absolute left-1/2 top-1/2 h-[26rem] w-[26rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/12 shadow-[0_0_90px_rgba(77,159,255,0.18)] md:h-[42rem] md:w-[42rem]"
+          className="absolute left-1/2 top-1/2 h-[26rem] w-[26rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/22 shadow-[0_0_90px_rgba(255,255,255,0.14)] md:h-[42rem] md:w-[42rem]"
         />
         <motion.div
           aria-hidden="true"
           animate={{ opacity: [0.16, 0.36, 0.16], scale: [0.94, 1.04, 0.94] }}
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute left-1/2 top-1/2 h-[24rem] w-[24rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/12 bg-white/6 blur-3xl"
+          className="absolute left-1/2 top-1/2 h-[24rem] w-[24rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/14 bg-white/8 blur-3xl"
         />
 
         <div className="container relative z-10 mx-auto grid min-h-[620px] items-center gap-12 px-6 lg:grid-cols-[0.9fr_1.1fr]">
@@ -52,6 +52,12 @@ export default function ServicesScrollHero3D() {
               Macro Solution delivers ERP, POS, payroll, HRMS, mobile, web, cloud, document management, security, hardware, networks, and custom development services shaped to improve daily operations.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
+              <motion.div
+                aria-hidden="true"
+                animate={{ x: ["-18%", "118%"], opacity: [0, 1, 0] }}
+                transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut" }}
+                className="pointer-events-none absolute left-0 top-[22%] h-px w-48 bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.78),rgba(186,230,253,0.42),transparent)] blur-[1px]"
+              />
               {[
                 { icon: Radar, label: "Business Discovery" },
                 { icon: Workflow, label: "Delivery Workflow" },
@@ -153,3 +159,4 @@ export default function ServicesScrollHero3D() {
     </section>
   );
 }
+
