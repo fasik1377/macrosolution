@@ -87,28 +87,28 @@ export default function ProfessionalServices3D() {
           </p>
         </div>
 
-        <div className="relative mt-20 h-[980px] [perspective:2200px] md:h-[860px]">
+        <div className="relative mt-12 [perspective:2200px] md:mt-20 md:h-[860px]">
           <motion.div
             animate={{ rotateX: [0, 6, 0], rotateY: [0, -5, 0] }}
             transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute inset-0 [transform-style:preserve-3d]"
+            className="relative grid gap-5 [transform-style:preserve-3d] md:absolute md:inset-0 md:block"
           >
-            <div className="absolute left-1/2 top-1/2 h-[32rem] w-[32rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/8 shadow-[0_0_120px_rgba(77,159,255,0.08)] md:h-[38rem] md:w-[38rem]" />
-            <div className="absolute left-1/2 top-1/2 h-[22rem] w-[22rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-300/12 md:h-[26rem] md:w-[26rem]" />
+            <div className="pointer-events-none absolute left-1/2 top-1/2 hidden h-[32rem] w-[32rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/8 shadow-[0_0_120px_rgba(77,159,255,0.08)] md:block md:h-[38rem] md:w-[38rem]" />
+            <div className="pointer-events-none absolute left-1/2 top-1/2 hidden h-[22rem] w-[22rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-300/12 md:block md:h-[26rem] md:w-[26rem]" />
 
             {connectors.map((connector, index) => (
               <motion.span
                 key={connector}
                 animate={{ opacity: [0.18, 0.44, 0.18], scaleX: [0.94, 1.04, 0.94] }}
                 transition={{ duration: 4.6 + index * 0.4, repeat: Infinity, ease: "easeInOut" }}
-                className={`absolute origin-left bg-[linear-gradient(90deg,transparent,rgba(125,211,252,0.7),transparent)] ${connector} ${connector.includes("w-px") ? "h-[22%]" : "h-px"}`}
+                className={`absolute hidden origin-left bg-[linear-gradient(90deg,transparent,rgba(125,211,252,0.7),transparent)] md:block ${connector} ${connector.includes("w-px") ? "h-[22%]" : "h-px"}`}
               />
             ))}
 
             <motion.div
               animate={{ y: [0, -10, 0], scale: [0.98, 1.02, 0.98] }}
               transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute left-1/2 top-1/2 h-[10rem] w-[10rem] -translate-x-1/2 -translate-y-1/2 border border-cyan-300/18 bg-[linear-gradient(145deg,rgba(255,255,255,0.14),rgba(77,159,255,0.1))] shadow-[0_26px_100px_rgba(0,0,0,0.22)] backdrop-blur-xl [clip-path:polygon(18%_0,82%_0,100%_18%,100%_82%,82%_100%,18%_100%,0_82%,0_18%)]"
+              className="relative mx-auto h-[8rem] w-full max-w-[18rem] border border-cyan-300/18 bg-[linear-gradient(145deg,rgba(255,255,255,0.14),rgba(77,159,255,0.1))] shadow-[0_26px_100px_rgba(0,0,0,0.22)] backdrop-blur-xl [clip-path:polygon(18%_0,82%_0,100%_18%,100%_82%,82%_100%,18%_100%,0_82%,0_18%)] md:absolute md:left-1/2 md:top-1/2 md:h-[10rem] md:w-[10rem] md:-translate-x-1/2 md:-translate-y-1/2"
             >
               <div className="flex h-full w-full items-center justify-center text-center text-sm font-semibold uppercase tracking-[0.3em] text-cyan-100">
                 Service Core
@@ -126,7 +126,7 @@ export default function ProfessionalServices3D() {
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{ duration: 0.55, delay: index * 0.08 }}
                   whileHover={{ y: -14, rotateX: 8, rotateY: index % 2 === 0 ? -8 : 8, scale: 1.02 }}
-                  className={`absolute ${service.orbit} ${service.card} ${service.size} -translate-y-1/2 overflow-hidden border border-white/14 bg-white/8 p-7 shadow-[0_34px_110px_rgba(0,0,0,0.22)] backdrop-blur-xl [clip-path:polygon(0_0,100%_0,100%_86%,88%_100%,0_100%)] [transform-style:preserve-3d]`}
+                  className={`relative w-full overflow-hidden border border-white/14 bg-white/8 p-5 shadow-[0_34px_110px_rgba(0,0,0,0.22)] backdrop-blur-xl [clip-path:polygon(0_0,100%_0,100%_86%,88%_100%,0_100%)] [transform-style:preserve-3d] sm:p-7 md:absolute md:-translate-y-1/2 ${service.orbit} ${service.card} ${service.size}`}
                 >
                   <div className={`absolute inset-0 bg-gradient-to-br ${service.accent} opacity-70`} />
                   <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.72),transparent)]" />
