@@ -125,7 +125,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden py-24 text-white">
+      <section className="relative overflow-hidden py-14 text-white md:py-20">
         <DataNetworkBackground variant="dark" className="opacity-72" />
         <div className="container relative z-10 mx-auto px-6">
           <div className="grid gap-6 md:grid-cols-3">
@@ -151,14 +151,14 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden py-28 text-white [perspective:1800px]">
+      <section className="relative overflow-hidden py-16 text-white [perspective:1800px] md:py-20">
         <DataNetworkBackground variant="light" className="opacity-85" />
         <div className="container relative z-10 mx-auto px-6">
           <div className="mx-auto max-w-3xl text-center">
             <p className="font-semibold uppercase tracking-[0.3em] text-cyan-300">Connection Points</p>
             <h2 className="mt-5 text-3xl font-bold md:text-5xl">A dynamic communication grid for starting your next project.</h2>
           </div>
-          <div className="mt-16 grid gap-8 lg:grid-cols-3">
+          <div className="mt-10 grid gap-8 md:mt-12 lg:grid-cols-3">
             {[
               "Tell us your goals",
               "Share your workflow",

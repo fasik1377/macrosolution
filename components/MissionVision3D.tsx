@@ -50,7 +50,7 @@ export default function MissionVision3D() {
   const visionScale = useTransform(scrollYProgress, [0, 0.44, 1], [0.86, 1, 0.94]);
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden py-32 text-white [perspective:2200px] md:py-40">
+    <section ref={sectionRef} className="relative overflow-hidden py-16 text-white [perspective:2200px] md:py-24">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_18%,rgba(196,233,255,0.2),transparent_24%),radial-gradient(circle_at_78%_22%,rgba(139,92,246,0.16),transparent_24%),linear-gradient(180deg,rgba(0,150,255,0.08),rgba(3,15,37,0.2),rgba(0,150,255,0.08))]" />
       <motion.div
         aria-hidden="true"
@@ -83,7 +83,7 @@ export default function MissionVision3D() {
           </p>
         </motion.div>
 
-        <div className="relative mx-auto mt-20 max-w-5xl">
+        <div className="relative mx-auto mt-12 max-w-5xl md:mt-16">
           <motion.div
             aria-hidden="true"
             style={{ rotate: ringRotate }}

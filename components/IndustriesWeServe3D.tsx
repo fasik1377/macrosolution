@@ -56,7 +56,7 @@ const slotPositions = [
 
 export default function IndustriesWeServe3D() {
   return (
-    <section className="relative overflow-hidden py-36 text-white">
+    <section className="relative overflow-hidden py-16 text-white md:py-24">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_26%,rgba(77,159,255,0.16),transparent_24%),radial-gradient(circle_at_78%_24%,rgba(56,189,248,0.14),transparent_22%),radial-gradient(circle_at_50%_82%,rgba(11,94,215,0.16),transparent_26%)]" />
       <motion.div
         aria-hidden="true"
@@ -84,7 +84,7 @@ export default function IndustriesWeServe3D() {
           </p>
         </div>
 
-        <div className="relative mt-20 [perspective:2200px]">
+        <div className="relative mt-12 [perspective:2200px] md:mt-16">
           <div className="absolute left-1/2 top-1/2 h-[18rem] w-[72%] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(circle,rgba(77,159,255,0.16),transparent_68%)] blur-3xl" />
 
           <div className="relative mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-8 [transform-style:preserve-3d]">

@@ -68,7 +68,7 @@ const features = [
 
 export default function PayrollFeatures3D() {
   return (
-    <section className="relative overflow-hidden py-40 text-white">
+    <section className="relative overflow-hidden py-16 text-white md:py-24">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_22%,rgba(77,159,255,0.14),transparent_24%),radial-gradient(circle_at_82%_24%,rgba(139,92,246,0.12),transparent_22%),radial-gradient(circle_at_50%_78%,rgba(11,94,215,0.16),transparent_26%)]" />
       <motion.div
         aria-hidden="true"
@@ -96,7 +96,7 @@ export default function PayrollFeatures3D() {
           </p>
         </div>
 
-        <div className="relative mt-20 h-[1040px] md:h-[920px]">
+        <div className="relative mt-12 h-[980px] md:mt-16 md:h-[860px]">
           <div className="absolute left-1/2 top-1/2 h-[34rem] w-[34rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10 md:h-[46rem] md:w-[46rem]" />
           <div className="absolute left-1/2 top-1/2 h-[40rem] w-[40rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-300/12 md:h-[54rem] md:w-[54rem]" />
 

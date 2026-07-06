@@ -9,7 +9,7 @@ const services = [
     description:
       "We design tailor-made software solutions that address the unique requirements of businesses across various industries. Our custom-built applications streamline operations, improve efficiency, enhance productivity and support long-term business growth through innovative scalable technology.",
     icon: MonitorCog,
-    orbit: "left-[50%] top-[50%] md:left-[50%] md:top-[20%]",
+    orbit: "md:left-[50%] md:top-[20%]",
     card: "md:-translate-x-1/2",
     accent: "from-cyan-300/55 via-sky-400/35 to-transparent",
     glow: "bg-cyan-300/16",
@@ -20,7 +20,7 @@ const services = [
     description:
       "Vulnerability assessments, firewall management and security policy implementation.",
     icon: ShieldCheck,
-    orbit: "left-[16%] top-[56%] md:left-[12%] md:top-[56%]",
+    orbit: "md:left-[12%] md:top-[56%]",
     card: "",
     accent: "from-violet-300/55 via-fuchsia-400/35 to-transparent",
     glow: "bg-violet-300/16",
@@ -31,7 +31,7 @@ const services = [
     description:
       "Network setup, server configuration, cloud migration and hardware procurement & support.",
     icon: Boxes,
-    orbit: "left-[50%] top-[78%] md:left-[50%] md:top-[82%]",
+    orbit: "md:left-[50%] md:top-[82%]",
     card: "md:-translate-x-1/2",
     accent: "from-emerald-300/55 via-teal-400/35 to-transparent",
     glow: "bg-emerald-300/16",
@@ -42,7 +42,7 @@ const services = [
     description:
       "Ongoing IT support, monitoring and maintenance ensuring maximum uptime and performance.",
     icon: Wrench,
-    orbit: "left-[84%] top-[56%] md:left-[88%] md:top-[56%]",
+    orbit: "md:left-[88%] md:top-[56%]",
     card: "md:-translate-x-full",
     accent: "from-amber-300/55 via-orange-400/35 to-transparent",
     glow: "bg-amber-300/16",
@@ -59,7 +59,7 @@ const connectors = [
 
 export default function ProfessionalServices3D() {
   return (
-    <section className="relative overflow-hidden py-36 text-white">
+    <section className="relative overflow-hidden py-16 text-white md:py-24">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_22%,rgba(77,159,255,0.14),transparent_24%),radial-gradient(circle_at_82%_24%,rgba(139,92,246,0.12),transparent_22%),radial-gradient(circle_at_50%_78%,rgba(11,94,215,0.16),transparent_26%)]" />
       <motion.div
         aria-hidden="true"
@@ -87,7 +87,7 @@ export default function ProfessionalServices3D() {
           </p>
         </div>
 
-        <div className="relative mt-12 [perspective:2200px] md:mt-20 md:h-[860px]">
+        <div className="relative mt-10 [perspective:2200px] md:mt-16 md:h-[760px]">
           <motion.div
             animate={{ rotateX: [0, 6, 0], rotateY: [0, -5, 0] }}
             transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
@@ -126,7 +126,7 @@ export default function ProfessionalServices3D() {
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{ duration: 0.55, delay: index * 0.08 }}
                   whileHover={{ y: -14, rotateX: 8, rotateY: index % 2 === 0 ? -8 : 8, scale: 1.02 }}
-                  className={`relative w-full overflow-hidden border border-white/14 bg-white/8 p-5 shadow-[0_34px_110px_rgba(0,0,0,0.22)] backdrop-blur-xl [clip-path:polygon(0_0,100%_0,100%_86%,88%_100%,0_100%)] [transform-style:preserve-3d] sm:p-7 md:absolute md:-translate-y-1/2 ${service.orbit} ${service.card} ${service.size}`}
+                  className={`relative mx-auto w-full overflow-hidden border border-white/14 bg-white/8 p-5 shadow-[0_34px_110px_rgba(0,0,0,0.22)] backdrop-blur-xl [clip-path:polygon(0_0,100%_0,100%_86%,88%_100%,0_100%)] [transform-style:preserve-3d] sm:p-7 md:absolute md:mx-0 md:-translate-y-1/2 ${service.orbit} ${service.card} ${service.size}`}
                 >
                   <div className={`absolute inset-0 bg-gradient-to-br ${service.accent} opacity-70`} />
                   <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.72),transparent)]" />

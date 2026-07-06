@@ -185,7 +185,7 @@ export default function Home() {
 
       <Navbar />
 
-      <section className="relative overflow-hidden pb-20 pt-24 text-white sm:pt-16 md:pb-28">
+      <section className="relative overflow-hidden pb-14 pt-24 text-white sm:pt-16 md:pb-20">
         <HeroSoftwareBackground3D />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_22%,rgba(255,255,255,0.18),transparent_24%),radial-gradient(circle_at_82%_24%,rgba(111,207,255,0.18),transparent_22%),radial-gradient(circle_at_50%_78%,rgba(0,150,255,0.18),transparent_26%)]" />
         <motion.div
@@ -270,7 +270,7 @@ export default function Home() {
 
       <WebMobileShowcase3D />
 
-      <section id="about" className="relative overflow-hidden py-24 text-white [perspective:2200px] md:py-40">
+      <section id="about" className="relative overflow-hidden py-16 text-white [perspective:2200px] md:py-24">
         <DataNetworkBackground variant="dark" className="opacity-75" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_20%,rgba(77,159,255,0.12),transparent_24%),radial-gradient(circle_at_84%_72%,rgba(11,94,215,0.14),transparent_28%),linear-gradient(180deg,rgba(3,18,48,0.18),rgba(3,18,48,0.06))]" />
         <motion.div
@@ -402,7 +402,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-<section className="relative overflow-hidden pt-24 pb-4 text-white">
+<section className="relative overflow-hidden pb-4 pt-14 text-white md:pt-20">
         <motion.div
           aria-hidden="true"
           animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
@@ -573,7 +573,7 @@ export default function Home() {
       <Clients3DSlider />
       <MissionVision3D />
 
-      <section className="relative overflow-hidden py-32 text-white [perspective:2000px]">
+      <section className="relative overflow-hidden py-16 text-white [perspective:2000px] md:py-24">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(77,159,255,0.12),transparent_42%),radial-gradient(circle_at_bottom_right,rgba(11,94,215,0.16),transparent_36%)]" />
         <div className="container relative z-10 mx-auto px-6">
           <motion.div
@@ -592,7 +592,7 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="relative mx-auto mt-16 flex max-w-6xl justify-center">
+          <div className="relative mx-auto mt-10 flex max-w-6xl justify-center md:mt-12">
             <div className="relative grid w-full max-w-5xl items-center justify-center gap-8 lg:grid-cols-[minmax(18rem,19rem)_minmax(8rem,12rem)_minmax(18rem,19rem)]">
               {renderLeadershipCard(leadershipTeam[0], 0)}
 

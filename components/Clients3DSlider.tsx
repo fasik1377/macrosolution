@@ -51,7 +51,7 @@ export default function Clients3DSlider() {
   const trackScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.95, 1, 0.96]);
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden py-36 text-white">
+    <section ref={sectionRef} className="relative overflow-hidden py-16 text-white md:py-24">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_22%,rgba(77,159,255,0.14),transparent_24%),radial-gradient(circle_at_82%_24%,rgba(139,92,246,0.12),transparent_22%),radial-gradient(circle_at_50%_78%,rgba(11,94,215,0.16),transparent_26%)]" />
       <motion.div
         aria-hidden="true"
@@ -73,7 +73,7 @@ export default function Clients3DSlider() {
           </p>
         </div>
 
-        <div className="relative mt-20 overflow-hidden [perspective:2000px]">
+        <div className="relative mt-12 overflow-hidden [perspective:2000px] md:mt-16">
           <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-20 bg-gradient-to-r from-[#0096FF] via-[#0096FF]/70 to-transparent" />
           <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-20 bg-gradient-to-l from-[#0096FF] via-[#0096FF]/70 to-transparent" />
 

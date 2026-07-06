@@ -61,7 +61,7 @@ export default function ServicesPage() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-4"
+            className="mt-10 grid gap-6 md:mt-12 md:grid-cols-2 xl:grid-cols-4"
           >
             {services.map((service, index) => {
               const Icon = service.icon;
@@ -92,7 +92,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden py-28 text-white [perspective:2200px]">
+      <section className="relative overflow-hidden py-16 text-white [perspective:2200px] md:py-20">
         <DataNetworkBackground variant="light" className="opacity-88" />
         <div className="container relative z-10 mx-auto grid items-center gap-12 px-6 lg:grid-cols-[0.92fr_1.08fr]">
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
@@ -132,7 +132,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden py-28 text-white [perspective:2200px]">
+      <section className="relative overflow-hidden py-16 text-white [perspective:2200px] md:py-20">
         <DataNetworkBackground variant="light" className="opacity-85" />
         <div className="container relative z-10 mx-auto px-6">
           <div className="mx-auto max-w-3xl text-center">
@@ -155,7 +155,7 @@ export default function ServicesPage() {
             </motion.h2>
           </div>
 
-          <div className="relative mt-20 h-[42rem]">
+          <div className="relative mt-12 h-[38rem] md:mt-16">
             {deliveryLayers.map((layer, index) => {
               const Icon = layer.icon;
               return (
