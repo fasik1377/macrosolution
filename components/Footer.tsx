@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Globe2, Mail, Phone } from "lucide-react";
+import { useEffect, useState } from "react";
 import DataNetworkBackground from "@/components/DataNetworkBackground";
 
 const navLinks = [
@@ -22,12 +23,24 @@ const contactItems = [
 ];
 
 export default function Footer() {
+  const [isMobile, setIsMobile] = useState(true);
+
+  useEffect(() => {
+    const mobileQuery = window.matchMedia("(max-width: 767px)");
+    const updateIsMobile = () => setIsMobile(mobileQuery.matches);
+
+    updateIsMobile();
+    mobileQuery.addEventListener("change", updateIsMobile);
+
+    return () => mobileQuery.removeEventListener("change", updateIsMobile);
+  }, []);
+
   return (
     <footer className="relative overflow-hidden bg-[#0096FF] text-white">
       <motion.div
         aria-hidden="true"
-        animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
-        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+        animate={isMobile ? undefined : { backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+        transition={isMobile ? undefined : { duration: 16, repeat: Infinity, ease: "easeInOut" }}
         className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,#0b5ed7_0%,#1273eb_24%,#0096FF_52%,#0a7fe8_76%,#083b8a_100%)] bg-[length:200%_200%]"
       />
       <DataNetworkBackground variant="dark" className="opacity-80" />
@@ -37,9 +50,9 @@ export default function Footer() {
         <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
           <div>
             <motion.div
-              animate={{ y: [0, -8, 0], rotate: [0, 2, 0, -2, 0] }}
-              transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }}
-              className="mb-6 inline-flex rounded-[1.75rem] border border-white/12 bg-white/8 p-4 backdrop-blur-md"
+              animate={isMobile ? undefined : { y: [0, -8, 0], rotate: [0, 2, 0, -2, 0] }}
+              transition={isMobile ? undefined : { duration: 6.5, repeat: Infinity, ease: "easeInOut" }}
+              className="mb-6 inline-flex rounded-[1.75rem] border border-white/12 bg-white/8 p-4 [backface-visibility:hidden] [transform:translateZ(0)] md:backdrop-blur-md"
             >
               <Image
                 src="/primus-logo.png"

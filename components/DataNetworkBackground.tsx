@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 type DataNetworkBackgroundProps = {
   className?: string;
@@ -66,6 +67,18 @@ const infoPackets = [
 ];
 
 export default function DataNetworkBackground({ className = "", variant = "dark" }: DataNetworkBackgroundProps) {
+  const [isMobile, setIsMobile] = useState(true);
+
+  useEffect(() => {
+    const mobileQuery = window.matchMedia("(max-width: 767px)");
+    const updateIsMobile = () => setIsMobile(mobileQuery.matches);
+
+    updateIsMobile();
+    mobileQuery.addEventListener("change", updateIsMobile);
+
+    return () => mobileQuery.removeEventListener("change", updateIsMobile);
+  }, []);
+
   const overlayClass =
     variant === "dark"
       ? "bg-[radial-gradient(circle_at_20%_20%,rgba(77,159,255,0.18),transparent_24%),radial-gradient(circle_at_80%_24%,rgba(255,255,255,0.08),transparent_20%),radial-gradient(circle_at_70%_78%,rgba(11,94,215,0.16),transparent_24%)]"
@@ -105,12 +118,12 @@ export default function DataNetworkBackground({ className = "", variant = "dark"
     <div aria-hidden="true" className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`}>
       <div className={`absolute inset-0 ${overlayClass}`} />
       <motion.div
-        animate={{ backgroundPosition: ["0px 0px", "120px 120px"] }}
-        transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+        animate={isMobile ? undefined : { backgroundPosition: ["0px 0px", "120px 120px"] }}
+        transition={isMobile ? undefined : { duration: 18, repeat: Infinity, ease: "linear" }}
         className={`absolute inset-0 bg-[size:90px_90px] opacity-60 ${gridClass}`}
       />
 
-      {pulses.map((pulse, index) => (
+      {!isMobile && pulses.map((pulse, index) => (
         <motion.div
           key={pulse}
           animate={{ opacity: [0.12, 0.34, 0.12], scale: [0.86, 1.14, 0.86] }}
@@ -122,13 +135,13 @@ export default function DataNetworkBackground({ className = "", variant = "dark"
       {lines.map((line, index) => (
         <motion.span
           key={line}
-          animate={{ opacity: [0.12, 0.45, 0.12], scaleX: [0.92, 1.06, 0.92] }}
-          transition={{ duration: 5 + index * 0.4, repeat: Infinity, ease: "easeInOut" }}
+          animate={isMobile ? undefined : { opacity: [0.12, 0.45, 0.12], scaleX: [0.92, 1.06, 0.92] }}
+          transition={isMobile ? undefined : { duration: 5 + index * 0.4, repeat: Infinity, ease: "easeInOut" }}
           className={`absolute h-px origin-left ${lineClass} ${line}`}
         />
       ))}
 
-      {dataStreams.map((stream) => (
+      {!isMobile && dataStreams.map((stream) => (
         <motion.span
           key={stream.className}
           animate={{ x: ["-18%", "118%"], opacity: [0, 1, 0] }}
@@ -137,7 +150,7 @@ export default function DataNetworkBackground({ className = "", variant = "dark"
         />
       ))}
 
-      {infoPackets.map((packet) => (
+      {!isMobile && infoPackets.map((packet) => (
         <motion.div
           key={packet.className}
           animate={{ y: packet.drift, opacity: [0.2, 0.95, 0.2], scale: [0.92, 1.08, 0.92] }}
@@ -153,8 +166,8 @@ export default function DataNetworkBackground({ className = "", variant = "dark"
       {nodes.map((node, index) => (
         <motion.span
           key={node.className}
-          animate={{ y: [0, -8, 0], opacity: [0.35, 1, 0.35], scale: [1, 1.18, 1] }}
-          transition={{ duration: 3.2 + index * 0.25, repeat: Infinity, ease: "easeInOut" }}
+          animate={isMobile ? undefined : { y: [0, -8, 0], opacity: [0.35, 1, 0.35], scale: [1, 1.18, 1] }}
+          transition={isMobile ? undefined : { duration: 3.2 + index * 0.25, repeat: Infinity, ease: "easeInOut" }}
           className={`absolute rounded-full ${nodeClass} ${node.className}`}
         />
       ))}
