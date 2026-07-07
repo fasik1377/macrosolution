@@ -270,7 +270,7 @@ export default function Home() {
 
       <WebMobileShowcase3D />
 
-      <section id="about" className="relative overflow-hidden py-16 text-white [perspective:2200px] md:py-24">
+      <section id="about" className="relative overflow-hidden pb-14 pt-8 text-white [perspective:2200px] md:pb-20 md:pt-12">
         <DataNetworkBackground variant="dark" className="opacity-75" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_20%,rgba(77,159,255,0.12),transparent_24%),radial-gradient(circle_at_84%_72%,rgba(11,94,215,0.14),transparent_28%),linear-gradient(180deg,rgba(3,18,48,0.18),rgba(3,18,48,0.06))]" />
         <motion.div

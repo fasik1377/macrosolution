@@ -149,8 +149,8 @@ export default function WebMobileShowcase3D() {
   const marqueeDuration = 68;
 
   return (
-    <section ref={sectionRef} className="relative min-h-[300vh] overflow-hidden py-24 text-white">
-      <div className="sticky top-0 flex min-h-screen items-start overflow-hidden pt-16">
+    <section ref={sectionRef} className="relative min-h-[150vh] overflow-hidden py-10 text-white md:min-h-[180vh] md:py-14">
+      <div className="sticky top-0 flex min-h-[90vh] items-start overflow-hidden pt-10 md:min-h-screen md:pt-16">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_22%,rgba(77,159,255,0.1),transparent_26%),radial-gradient(circle_at_82%_74%,rgba(124,58,237,0.1),transparent_26%),linear-gradient(180deg,rgba(3,18,48,0.16),rgba(3,18,48,0.02))]" />
 
         <motion.div
@@ -290,7 +290,7 @@ export default function WebMobileShowcase3D() {
         </div>
       </div>
 
-      <div className="relative z-20 mx-auto mt-[-1vh] w-full max-w-[1500px] px-4 pb-20 pt-14 md:mt-[3vh] md:px-6 md:pt-20">
+      <div className="relative z-20 mx-auto mt-[-1vh] w-full max-w-[1500px] px-4 pb-8 pt-8 md:mt-[1vh] md:px-6 md:pb-10 md:pt-12">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
