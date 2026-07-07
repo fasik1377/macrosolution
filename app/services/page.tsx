@@ -1,15 +1,20 @@
 "use client";
 
 import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
 import { ArrowRight, Cpu, Layers3, Radar, Settings2, Workflow } from "lucide-react";
 
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import ServicesScrollHero3D from "@/components/ServicesScrollHero3D";
 import DataNetworkBackground from "@/components/DataNetworkBackground";
 import TechPageBackground from "@/components/TechPageBackground";
 import { services } from "@/components/companyProfile";
 import { fadeUp, stagger } from "@/components/motion";
+
+const ServicesScrollHero3D = dynamic(() => import("@/components/ServicesScrollHero3D"), {
+  ssr: false,
+  loading: () => <div aria-hidden="true" className="min-h-[34rem] md:min-h-[42rem]" />,
+});
 
 const approach = [
   "Discovery sessions that clarify your business vision, workflows, users, and technical priorities.",

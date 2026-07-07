@@ -119,7 +119,7 @@ export default function DataNetworkBackground({ className = "", variant = "dark"
       <div className={`absolute inset-0 ${overlayClass}`} />
       <motion.div
         animate={isMobile ? undefined : { backgroundPosition: ["0px 0px", "120px 120px"] }}
-        transition={isMobile ? undefined : { duration: 18, repeat: Infinity, ease: "linear" }}
+        transition={isMobile ? undefined : { duration: 9, repeat: Infinity, ease: "linear" }}
         className={`absolute inset-0 bg-[size:90px_90px] opacity-60 ${gridClass}`}
       />
 
@@ -127,7 +127,7 @@ export default function DataNetworkBackground({ className = "", variant = "dark"
         <motion.div
           key={pulse}
           animate={{ opacity: [0.12, 0.34, 0.12], scale: [0.86, 1.14, 0.86] }}
-          transition={{ duration: 6 + index * 0.8, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 3 + index * 0.35, repeat: Infinity, ease: "easeInOut" }}
           className={`absolute rounded-full blur-3xl ${pulseClass} ${pulse}`}
         />
       ))}
@@ -136,7 +136,7 @@ export default function DataNetworkBackground({ className = "", variant = "dark"
         <motion.span
           key={line}
           animate={isMobile ? undefined : { opacity: [0.12, 0.45, 0.12], scaleX: [0.92, 1.06, 0.92] }}
-          transition={isMobile ? undefined : { duration: 5 + index * 0.4, repeat: Infinity, ease: "easeInOut" }}
+          transition={isMobile ? undefined : { duration: 2.8 + index * 0.2, repeat: Infinity, ease: "easeInOut" }}
           className={`absolute h-px origin-left ${lineClass} ${line}`}
         />
       ))}
@@ -145,7 +145,7 @@ export default function DataNetworkBackground({ className = "", variant = "dark"
         <motion.span
           key={stream.className}
           animate={{ x: ["-18%", "118%"], opacity: [0, 1, 0] }}
-          transition={{ duration: 3.4, repeat: Infinity, ease: "easeInOut", delay: stream.delay }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut", delay: stream.delay * 0.5 }}
           className={`absolute w-24 blur-[1px] ${streamClass} ${stream.className}`}
         />
       ))}
@@ -154,7 +154,7 @@ export default function DataNetworkBackground({ className = "", variant = "dark"
         <motion.div
           key={packet.className}
           animate={{ y: packet.drift, opacity: [0.2, 0.95, 0.2], scale: [0.92, 1.08, 0.92] }}
-          transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: packet.delay }}
+          transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut", delay: packet.delay * 0.5 }}
           className={`absolute flex h-7 w-16 items-center gap-1.5 rounded-full border px-2 shadow-[0_0_28px_rgba(0,150,255,0.18)] backdrop-blur-md ${packetClass} ${packet.className}`}
         >
           <span className="h-1.5 w-1.5 rounded-full bg-sky-300" />
@@ -167,7 +167,7 @@ export default function DataNetworkBackground({ className = "", variant = "dark"
         <motion.span
           key={node.className}
           animate={isMobile ? undefined : { y: [0, -8, 0], opacity: [0.35, 1, 0.35], scale: [1, 1.18, 1] }}
-          transition={isMobile ? undefined : { duration: 3.2 + index * 0.25, repeat: Infinity, ease: "easeInOut" }}
+          transition={isMobile ? undefined : { duration: 1.8 + index * 0.12, repeat: Infinity, ease: "easeInOut" }}
           className={`absolute rounded-full ${nodeClass} ${node.className}`}
         />
       ))}

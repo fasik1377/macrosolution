@@ -1,15 +1,20 @@
 ﻿"use client";
 
 import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
 import { Clock, Mail, MapPin, Phone, Send, Settings, ShieldCheck } from "lucide-react";
 
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import ContactScrollHero3D from "@/components/ContactScrollHero3D";
 import DataNetworkBackground from "@/components/DataNetworkBackground";
 import TechPageBackground from "@/components/TechPageBackground";
 import { company, products } from "@/components/companyProfile";
 import { fadeUp, stagger } from "@/components/motion";
+
+const ContactScrollHero3D = dynamic(() => import("@/components/ContactScrollHero3D"), {
+  ssr: false,
+  loading: () => <div aria-hidden="true" className="min-h-[34rem] md:min-h-[42rem]" />,
+});
 
 const contactCards = [
   {

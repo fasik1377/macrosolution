@@ -1,15 +1,20 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
+import dynamic from "next/dynamic";
 import { CheckCircle, Goal, Lightbulb, ShieldCheck, Sparkles, Target, Users } from "lucide-react";
 
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import AboutScrollHero3D from "@/components/AboutScrollHero3D";
 import DataNetworkBackground from "@/components/DataNetworkBackground";
 import TechPageBackground from "@/components/TechPageBackground";
 import { company, profileHighlights, services, valueCards } from "@/components/companyProfile";
 import { fadeUp, stagger } from "@/components/motion";
+
+const AboutScrollHero3D = dynamic(() => import("@/components/AboutScrollHero3D"), {
+  ssr: false,
+  loading: () => <div aria-hidden="true" className="min-h-[34rem] md:min-h-[42rem]" />,
+});
 
 const values = [
   {
@@ -42,7 +47,6 @@ export default function AboutPage() {
   const statsSectionY = useTransform(scrollYProgress, [0.08, 0.2, 0.32], [42, 0, -28]);
   const statsSectionRotateX = useTransform(scrollYProgress, [0.08, 0.2, 0.32], [12, 0, -10]);
   const statsSectionRotateY = useTransform(scrollYProgress, [0.08, 0.2, 0.32], [-8, 0, 8]);
-  const overviewCardY = useTransform(scrollYProgress, [0.18, 0.34, 0.5], [56, 0, -34]);
   const valuesSectionY = useTransform(scrollYProgress, [0.34, 0.5, 0.66], [44, 0, -30]);
   const valuesSectionRotateX = useTransform(scrollYProgress, [0.34, 0.5, 0.66], [10, 0, -12]);
   const trustSectionY = useTransform(scrollYProgress, [0.58, 0.74, 0.9], [38, 0, -26]);

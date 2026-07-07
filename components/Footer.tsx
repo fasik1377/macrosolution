@@ -40,7 +40,7 @@ export default function Footer() {
       <motion.div
         aria-hidden="true"
         animate={isMobile ? undefined : { backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
-        transition={isMobile ? undefined : { duration: 16, repeat: Infinity, ease: "easeInOut" }}
+        transition={isMobile ? undefined : { duration: 8, repeat: Infinity, ease: "easeInOut" }}
         className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,#0b5ed7_0%,#1273eb_24%,#0096FF_52%,#0a7fe8_76%,#083b8a_100%)] bg-[length:200%_200%]"
       />
       <DataNetworkBackground variant="dark" className="opacity-80" />
@@ -51,7 +51,7 @@ export default function Footer() {
           <div>
             <motion.div
               animate={isMobile ? undefined : { y: [0, -8, 0], rotate: [0, 2, 0, -2, 0] }}
-              transition={isMobile ? undefined : { duration: 6.5, repeat: Infinity, ease: "easeInOut" }}
+              transition={isMobile ? undefined : { duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
               className="mb-6 inline-flex rounded-[1.75rem] border border-white/12 bg-white/8 p-4 [backface-visibility:hidden] [transform:translateZ(0)] md:backdrop-blur-md"
             >
               <Image

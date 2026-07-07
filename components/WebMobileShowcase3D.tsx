@@ -141,12 +141,8 @@ export default function WebMobileShowcase3D() {
   const stackWrapY = useTransform(scrollYProgress, [0, 0.5, 1], [36, 0, -40]);
   const stackWrapRotateX = useTransform(scrollYProgress, [0, 0.5, 1], [14, 0, -14]);
   const stackWrapRotateY = useTransform(scrollYProgress, [0, 0.5, 1], [-6, 0, 6]);
-  const stackSlideX = useTransform(scrollYProgress, [0, 1], [0, -140]);
-  const stackTiltX = useTransform(scrollYProgress, [0, 0.5, 1], [-4, 0, 6]);
-  const stackTiltY = useTransform(scrollYProgress, [0, 0.5, 1], [6, 0, -8]);
-  const stackScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.98, 1, 0.96]);
   const [isPaused, setIsPaused] = useState(false);
-  const marqueeDuration = 68;
+  const marqueeDuration = 28;
 
   return (
     <section ref={sectionRef} className="relative min-h-[150vh] overflow-hidden py-10 text-white md:min-h-[180vh] md:py-14">
@@ -173,7 +169,7 @@ export default function WebMobileShowcase3D() {
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.4 }}
-              transition={{ duration: 0.75, ease: "easeOut" }}
+              transition={{ duration: 0.45, ease: "easeOut" }}
               className="mt-6 text-4xl font-bold leading-tight md:text-6xl"
             >
               We develop websites and mobile apps with immersive digital experiences.
@@ -213,13 +209,13 @@ export default function WebMobileShowcase3D() {
               <div className="absolute -left-14 bottom-0 h-44 w-44 rounded-full bg-cyan-300/8 blur-3xl" />
 
               <div className="relative grid h-full grid-cols-[1.1fr_0.9fr] gap-4 [transform:translateZ(32px)]">
-                <motion.div animate={{ y: [0, -12, 0], rotateX: [0, 5, 0], rotateY: [0, -4, 0] }} transition={{ duration: 6.8, repeat: Infinity, ease: "easeInOut" }} className="overflow-hidden rounded-[1.6rem] border border-white/10 bg-[#061a3d]/34 p-4 backdrop-blur-md">
+                <motion.div animate={{ y: [0, -12, 0], rotateX: [0, 5, 0], rotateY: [0, -4, 0] }} transition={{ duration: 3.4, repeat: Infinity, ease: "easeInOut" }} className="overflow-hidden rounded-[1.6rem] border border-white/10 bg-[#061a3d]/34 p-4 backdrop-blur-md">
                   <div className="flex items-center gap-2">
                     <span className="h-3 w-3 rounded-full bg-red-400" />
                     <span className="h-3 w-3 rounded-full bg-yellow-400" />
                     <span className="h-3 w-3 rounded-full bg-green-400" />
                   </div>
-                  <motion.div animate={{ y: [0, -8, 0], scale: [1, 1.02, 1] }} transition={{ duration: 6.6, repeat: Infinity, ease: "easeInOut" }} className="mt-4 overflow-hidden rounded-[1.2rem] bg-white/86 p-3">
+                  <motion.div animate={{ y: [0, -8, 0], scale: [1, 1.02, 1] }} transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }} className="mt-4 overflow-hidden rounded-[1.2rem] bg-white/86 p-3">
                     <Image
                       src="/web-and-mobile.jpg"
                       alt="Website and mobile development preview"
@@ -230,7 +226,7 @@ export default function WebMobileShowcase3D() {
                   </motion.div>
                 </motion.div>
 
-                <motion.div animate={{ y: [0, 10, 0], rotateX: [0, -4, 0], rotateY: [0, 4, 0] }} transition={{ duration: 7.2, repeat: Infinity, ease: "easeInOut", delay: 0.24 }} className="flex flex-col gap-4">
+                <motion.div animate={{ y: [0, 10, 0], rotateX: [0, -4, 0], rotateY: [0, 4, 0] }} transition={{ duration: 3.6, repeat: Infinity, ease: "easeInOut", delay: 0.12 }} className="flex flex-col gap-4">
                   <motion.div
                     style={{ y: leftCardY }}
                     className="rounded-[1.6rem] border border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.1),rgba(255,255,255,0.03))] p-5 backdrop-blur-md"
@@ -272,7 +268,7 @@ export default function WebMobileShowcase3D() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true, amount: 0.2 }}
                   whileHover={{ y: -12, rotateY: index % 2 === 0 ? -8 : 8, scale: 1.03 }}
-                  transition={{ duration: 0.65, ease: "easeOut" }}
+                  transition={{ duration: 0.4, ease: "easeOut" }}
                   className={
                     "absolute z-20 w-[min(72vw,18rem)] rounded-[1.8rem] border border-white/12 bg-gradient-to-br " +
                     card.className +
@@ -295,7 +291,7 @@ export default function WebMobileShowcase3D() {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.9, ease: "easeOut" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           style={{ y: stackWrapY, rotateX: stackWrapRotateX, rotateY: stackWrapRotateY }}
           className="overflow-hidden [perspective:2200px] [transform-style:preserve-3d]"
         >
@@ -313,7 +309,7 @@ export default function WebMobileShowcase3D() {
                 initial={{ opacity: 0, y: 22 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.4 }}
-                transition={{ duration: 0.7, ease: "easeOut", delay: 0.05 }}
+                transition={{ duration: 0.42, ease: "easeOut", delay: 0.03 }}
                 className="mt-3 text-3xl font-bold text-white md:text-4xl"
               >
                 Tools we use to craft fast, modern digital products.
@@ -323,7 +319,7 @@ export default function WebMobileShowcase3D() {
               initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.4 }}
-              transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
+              transition={{ duration: 0.42, ease: "easeOut", delay: 0.06 }}
               className="max-w-md text-sm leading-6 text-white/70 md:text-right"
             >
               A moving showcase of the frameworks, languages, and platforms behind our web and mobile experiences.
@@ -343,7 +339,6 @@ export default function WebMobileShowcase3D() {
             </button>
             <motion.div
               animate={isPaused ? { x: undefined } : { x: ["0%", "-50%"] }}
-              style={{ x: stackSlideX }}
               transition={{ duration: marqueeDuration, repeat: Infinity, ease: "linear" }}
               className="relative z-10 flex w-max items-center gap-5 px-3 py-6 pr-10 [transform-style:preserve-3d]"
             >
@@ -362,12 +357,9 @@ export default function WebMobileShowcase3D() {
                       opacity: [0.86, 1, 0.9],
                     }}
                     whileHover={{ y: -18, rotateX: 12, rotateY: index % 2 === 0 ? -12 : 12, scale: 1.05 }}
-                    transition={{ duration: 6.8 + (index % 5) * 0.45, repeat: Infinity, ease: "easeInOut", delay: (index % techStacks.length) * 0.08 }}
+                    transition={{ duration: 3.2 + (index % 5) * 0.18, repeat: Infinity, ease: "easeInOut", delay: (index % techStacks.length) * 0.04 }}
                     style={{
                       clipPath: stackShape,
-                      rotateX: index % 2 === 0 ? stackTiltX : stackTiltY,
-                      rotateY: index % 3 === 0 ? stackTiltY : stackTiltX,
-                      scale: stackScale,
                     }}
                     className="group relative h-[12.5rem] w-[11.5rem] shrink-0 overflow-hidden border border-white/12 text-white shadow-[0_24px_64px_rgba(0,0,0,0.22)] [transform-style:preserve-3d] md:h-[13.5rem] md:w-[12.5rem]"
                   >
@@ -375,12 +367,12 @@ export default function WebMobileShowcase3D() {
                     <div aria-hidden="true" style={{ clipPath: stackShape }} className="absolute inset-[1px] bg-[linear-gradient(180deg,rgba(4,17,39,0.10),rgba(4,17,39,0.44))]" />
                     <motion.div
                       animate={{ rotate: [0, 360], scale: [1, 1.07, 1], opacity: [0.22, 0.42, 0.22] }}
-                      transition={{ duration: 14, repeat: Infinity, ease: "linear", delay: index * 0.12 }}
+                      transition={{ duration: 6, repeat: Infinity, ease: "linear", delay: index * 0.06 }}
                       className="absolute -right-8 -top-8 h-28 w-28 rounded-full border border-cyan-100/10 bg-cyan-100/8 blur-[1px]"
                     />
                     <motion.div
                       animate={isPaused ? { x: undefined } : { x: ["-130%", "140%"] }}
-                      transition={{ duration: marqueeDuration / 3.8, repeat: Infinity, ease: "linear", delay: (index % techStacks.length) * 0.22 }}
+                      transition={{ duration: marqueeDuration / 4, repeat: Infinity, ease: "linear", delay: (index % techStacks.length) * 0.1 }}
                       className="absolute inset-y-3 w-16 skew-x-[-18deg] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent)] blur-md"
                     />
                     <div className="absolute inset-x-3 top-2 h-10 rounded-[999px] bg-[linear-gradient(180deg,rgba(255,255,255,0.22),rgba(191,219,254,0.06),transparent)] opacity-80 blur-sm" />

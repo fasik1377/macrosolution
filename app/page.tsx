@@ -2,23 +2,57 @@
 
 import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { Banknote, BadgePercent, CalendarRange, ClipboardList, CreditCard, UserRound, ShieldCheck, ChartColumn, BadgeCheck, ScanLine, CheckCircle } from "lucide-react";
 import { useRef } from "react";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import ProductCarousel from "@/components/ProductCarousel";
-import ProductPortfolio3D from "@/components/ProductPortfolio3D";
-import PrimusModules3D from "@/components/PrimusModules3D";
-import TestimonialsSlider from "@/components/TestimonialsSlider";
 import DataNetworkBackground from "@/components/DataNetworkBackground";
-import IndustriesWeServe3D from "@/components/IndustriesWeServe3D";
-import ProfessionalServices3D from "@/components/ProfessionalServices3D";
-import Clients3DSlider from "@/components/Clients3DSlider";
-import MissionVision3D from "@/components/MissionVision3D";
-import PayrollFeatures3D from "@/components/PayrollFeatures3D";
-import WebMobileShowcase3D from "@/components/WebMobileShowcase3D";
-import HeroSoftwareBackground3D from "@/components/HeroSoftwareBackground3D";
+
+function SectionLoader({ className = "min-h-[24rem]" }: { className?: string }) {
+  return <div aria-hidden="true" className={className} />;
+}
+
+const HeroSoftwareBackground3D = dynamic(() => import("@/components/HeroSoftwareBackground3D"), {
+  ssr: false,
+  loading: () => null,
+});
+
+const WebMobileShowcase3D = dynamic(() => import("@/components/WebMobileShowcase3D"), {
+  ssr: false,
+  loading: () => <SectionLoader className="min-h-[36rem] md:min-h-[44rem]" />,
+});
+
+const PrimusModules3D = dynamic(() => import("@/components/PrimusModules3D"), {
+  ssr: false,
+  loading: () => <SectionLoader />,
+});
+
+const ProductPortfolio3D = dynamic(() => import("@/components/ProductPortfolio3D"), {
+  ssr: false,
+  loading: () => <SectionLoader />,
+});
+
+const IndustriesWeServe3D = dynamic(() => import("@/components/IndustriesWeServe3D"), {
+  ssr: false,
+  loading: () => <SectionLoader />,
+});
+
+const ProfessionalServices3D = dynamic(() => import("@/components/ProfessionalServices3D"), {
+  ssr: false,
+  loading: () => <SectionLoader />,
+});
+
+const Clients3DSlider = dynamic(() => import("@/components/Clients3DSlider"), {
+  ssr: false,
+  loading: () => <SectionLoader className="min-h-[30rem]" />,
+});
+
+const MissionVision3D = dynamic(() => import("@/components/MissionVision3D"), {
+  ssr: false,
+  loading: () => <SectionLoader />,
+});
 
 type ShardDirection = {
   x: -1 | 0 | 1;
@@ -61,12 +95,6 @@ function EcosystemShard({
 }
 
 export default function Home() {
-  const aboutStats = [
-    "18+ Years of Experience",
-    "Enterprise Products",
-    "Various Business Sectors",
-  ];
-
   const ecosystemSectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress: ecosystemScrollProgress } = useScroll({
     target: ecosystemSectionRef,
@@ -166,20 +194,20 @@ export default function Home() {
       <motion.div
         aria-hidden="true"
         animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
-        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         className="pointer-events-none absolute inset-0 -z-20 bg-[linear-gradient(120deg,#dff5ff_0%,#8dd8ff_24%,#0096FF_52%,#6fcfff_76%,#e6f9ff_100%)] bg-[length:200%_200%] md:fixed"
       />
       <DataNetworkBackground variant="light" className="absolute inset-0 -z-10 opacity-100 md:fixed" />
       <motion.div
         aria-hidden="true"
         animate={{ opacity: [0.2, 0.38, 0.2], scale: [0.96, 1.04, 0.96] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
         className="pointer-events-none absolute left-[8%] top-[12%] -z-10 hidden h-[24rem] w-[24rem] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.34),transparent_68%)] blur-3xl md:fixed md:block"
       />
       <motion.div
         aria-hidden="true"
         animate={{ opacity: [0.12, 0.32, 0.12], scale: [0.92, 1.06, 0.92] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
         className="pointer-events-none absolute bottom-[8%] right-[6%] -z-10 hidden h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,rgba(0,150,255,0.26),transparent_68%)] blur-3xl md:fixed md:block"
       />
 
@@ -191,13 +219,13 @@ export default function Home() {
         <motion.div
           aria-hidden="true"
           animate={{ rotate: [0, 360] }}
-          transition={{ duration: 36, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 16, repeat: Infinity, ease: "linear" }}
           className="absolute left-1/2 top-1/2 h-[58rem] w-[58rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10"
         />
         <motion.div
           aria-hidden="true"
           animate={{ rotate: [360, 0] }}
-          transition={{ duration: 26, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
           className="absolute left-1/2 top-1/2 h-[38rem] w-[38rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-sky-300/20"
         />
 
@@ -208,7 +236,7 @@ export default function Home() {
 
             <motion.div
               animate={{ rotate: [0, 360] }}
-              transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+              transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
               className="absolute left-1/2 top-1/2 h-[23rem] w-[23rem] -translate-x-1/2 -translate-y-1/2 sm:h-[34rem] sm:w-[34rem] md:h-[46rem] md:w-[46rem]"
             >
               {[
@@ -258,7 +286,7 @@ export default function Home() {
             >
               <motion.div
                 animate={{ y: [0, -16, 0], rotate: [0, 6, 0, -6, 0] }}
-                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+                transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
                 className="rounded-[1.8rem] border border-white/16 bg-white/10 p-4 shadow-[0_25px_80px_rgba(0,0,0,0.24)] backdrop-blur-xl"
               >
                 <Image src="/primus-logo-only-tri.png" alt="PRIMUS symbol" width={96} height={96} className="h-auto w-20 object-contain" />
@@ -276,7 +304,7 @@ export default function Home() {
         <motion.div
           aria-hidden="true"
           animate={{ rotate: [0, 180, 360], scale: [0.96, 1.04, 0.96] }}
-          transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
           className="absolute left-1/2 top-1/2 h-[24rem] w-[24rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/8 shadow-[0_0_80px_rgba(77,159,255,0.12)] md:h-[42rem] md:w-[42rem]"
         />
 

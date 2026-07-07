@@ -45,19 +45,19 @@ export default function Navbar() {
               <motion.div
                 aria-hidden="true"
                 animate={{ opacity: [0.22, 0.5, 0.22], scale: [0.95, 1.08, 0.95] }}
-                transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut" }}
+                transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute inset-0 rounded-[2rem] bg-[radial-gradient(circle,rgba(255,255,255,0.88),rgba(255,255,255,0.18),transparent_72%)] blur-2xl"
               />
               <motion.div
                 aria-hidden="true"
                 animate={{ rotate: [0, 180, 360], scale: [0.98, 1.04, 0.98] }}
-                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
                 className="absolute inset-1 rounded-[1.6rem] border border-white/35"
               />
               <motion.div
                 aria-hidden="true"
                 animate={{ x: ["-18%", "118%"], opacity: [0, 1, 0] }}
-                transition={{ duration: 3.6, repeat: Infinity, ease: "linear" }}
+                transition={{ duration: 1.8, repeat: Infinity, ease: "linear" }}
                 className="absolute inset-y-3 left-0 w-24 bg-[linear-gradient(105deg,transparent,rgba(255,255,255,0.92),transparent)] blur-sm"
               />
             </>
@@ -71,7 +71,7 @@ export default function Navbar() {
               <motion.span
                 aria-hidden="true"
                 animate={{ rotate: [0, 360] }}
-                transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
+                transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
                 className="absolute inset-[0.4rem] rounded-[1.45rem] border border-sky-200/55"
               />
             )}
@@ -92,7 +92,7 @@ export default function Navbar() {
                       scale: [1, 1.03, 1, 1.02, 1],
                     }
               }
-              transition={isMobile ? undefined : { duration: 5.6, repeat: Infinity, ease: "easeInOut" }}
+              transition={isMobile ? undefined : { duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
               className="relative z-10 block [backface-visibility:hidden] [transform-style:preserve-3d]"
               whileHover={isMobile ? undefined : { scale: 1.08 }}
             >

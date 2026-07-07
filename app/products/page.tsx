@@ -1,16 +1,25 @@
 ﻿"use client";
 
 import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
 import { ArrowUpRight, BarChart3, Layers3, ShieldCheck, Zap } from "lucide-react";
 
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import ProductsScrollHero3D from "@/components/ProductsScrollHero3D";
 import DataNetworkBackground from "@/components/DataNetworkBackground";
 import TechPageBackground from "@/components/TechPageBackground";
-import ProductPortfolio3D from "@/components/ProductPortfolio3D";
 import { products } from "@/components/companyProfile";
 import { fadeUp, stagger } from "@/components/motion";
+
+const ProductsScrollHero3D = dynamic(() => import("@/components/ProductsScrollHero3D"), {
+  ssr: false,
+  loading: () => <div aria-hidden="true" className="min-h-[34rem] md:min-h-[42rem]" />,
+});
+
+const ProductPortfolio3D = dynamic(() => import("@/components/ProductPortfolio3D"), {
+  ssr: false,
+  loading: () => <div aria-hidden="true" className="min-h-[24rem]" />,
+});
 
 const productSignals = [
   { icon: Layers3, label: "Layered Workflows" },
