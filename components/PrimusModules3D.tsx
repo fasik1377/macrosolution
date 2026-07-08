@@ -186,7 +186,7 @@ export default function PrimusModules3D() {
   }, [scrollYProgress]);
 
   return (
-    <section id="services" ref={sectionRef} className="relative min-h-[190vh] overflow-hidden text-white md:min-h-[220vh]">
+    <section id="services" ref={sectionRef} className="relative min-h-[150vh] overflow-hidden text-white md:min-h-[165vh]">
       <div className="sticky top-0 min-h-[100svh] overflow-hidden [perspective:1500px]">
         <motion.div
           aria-hidden="true"
