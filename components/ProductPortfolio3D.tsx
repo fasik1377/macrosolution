@@ -3,7 +3,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Building2, BriefcaseBusiness, Cable, Layers3, ShieldCheck } from "lucide-react";
 import { useRef } from "react";
-import HomeTechBackground from "@/components/HomeTechBackground";
 
 const portfolioItems = [
   {
@@ -78,8 +77,6 @@ export default function ProductPortfolio3D() {
 
   return (
     <section ref={sectionRef} className="relative overflow-hidden py-4 text-white">
-      <HomeTechBackground />
-
       <div className="container relative z-10 mx-auto px-6">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-sm font-semibold uppercase tracking-[0.34em] text-cyan-300">

@@ -19,7 +19,6 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { useRef, useState } from "react";
-import HomeTechBackground from "@/components/HomeTechBackground";
 
 const featureCards = [
   {
@@ -148,8 +147,6 @@ export default function WebMobileShowcase3D() {
   return (
     <section ref={sectionRef} className="relative min-h-[150vh] overflow-hidden py-10 text-white md:min-h-[180vh] md:py-14">
       <div className="sticky top-0 flex min-h-[90vh] items-start overflow-hidden pt-10 md:min-h-screen md:pt-16">
-        <HomeTechBackground />
-
         <motion.div
           aria-hidden="true"
           style={{ rotate: orbitRotate }}

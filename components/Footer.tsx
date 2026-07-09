@@ -22,7 +22,11 @@ const contactItems = [
   { icon: Globe2, label: "www.macrosolution.mu", href: "https://www.macrosolution.mu" },
 ];
 
-export default function Footer() {
+type FooterProps = {
+  background?: boolean;
+};
+
+export default function Footer({ background = true }: FooterProps) {
   const [isMobile, setIsMobile] = useState(true);
 
   useEffect(() => {
@@ -36,8 +40,8 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="relative overflow-hidden bg-[#0096FF] text-white">
-      <HomeTechBackground />
+    <footer className={`relative overflow-hidden text-white ${background ? "bg-[#0096FF]" : ""}`}>
+      {background ? <HomeTechBackground /> : null}
 
       <div className="container relative z-10 mx-auto px-6 py-14 md:py-16">
         <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">

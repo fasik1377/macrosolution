@@ -8,7 +8,6 @@ import { useRef } from "react";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import DataNetworkBackground from "@/components/DataNetworkBackground";
 import HomeTechBackground from "@/components/HomeTechBackground";
 
 function SectionLoader({ className = "min-h-[24rem]" }: { className?: string }) {
@@ -192,30 +191,11 @@ export default function Home() {
 
   return (
     <main className="relative overflow-x-clip bg-[#0096FF] text-white">
-      <motion.div
-        aria-hidden="true"
-        animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="pointer-events-none absolute inset-0 -z-20 bg-[linear-gradient(120deg,#dff5ff_0%,#8dd8ff_24%,#0096FF_52%,#6fcfff_76%,#e6f9ff_100%)] bg-[length:200%_200%] md:fixed"
-      />
-      <DataNetworkBackground variant="light" className="absolute inset-0 -z-10 opacity-100 md:fixed" />
-      <motion.div
-        aria-hidden="true"
-        animate={{ opacity: [0.2, 0.38, 0.2], scale: [0.96, 1.04, 0.96] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        className="pointer-events-none absolute left-[8%] top-[12%] -z-10 hidden h-[24rem] w-[24rem] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.34),transparent_68%)] blur-3xl md:fixed md:block"
-      />
-      <motion.div
-        aria-hidden="true"
-        animate={{ opacity: [0.12, 0.32, 0.12], scale: [0.92, 1.06, 0.92] }}
-        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-        className="pointer-events-none absolute bottom-[8%] right-[6%] -z-10 hidden h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,rgba(0,150,255,0.26),transparent_68%)] blur-3xl md:fixed md:block"
-      />
+      <HomeTechBackground fixed className="z-0" />
 
       <Navbar />
 
       <section className="relative overflow-hidden pb-14 pt-24 text-white sm:pt-16 md:pb-20">
-        <HomeTechBackground />
         <HeroSoftwareBackground3D />
         <motion.div
           aria-hidden="true"
@@ -300,7 +280,6 @@ export default function Home() {
       <WebMobileShowcase3D />
 
       <section id="about" className="relative overflow-hidden pb-14 pt-8 text-white [perspective:2200px] md:pb-20 md:pt-12">
-        <HomeTechBackground />
         <motion.div
           aria-hidden="true"
           animate={{ rotate: [0, 180, 360], scale: [0.96, 1.04, 0.96] }}
@@ -431,8 +410,6 @@ export default function Home() {
         </div>
       </section>
 <section className="relative overflow-hidden pb-4 pt-14 text-white md:pt-20">
-        <HomeTechBackground />
-
         <div className="container relative z-10 mx-auto px-6">
           <div className="relative mx-auto min-h-[640px] overflow-hidden rounded-[2.4rem] border border-cyan-100/10 bg-[linear-gradient(145deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02)_18%,rgba(2,10,28,0.24)_52%,rgba(1,8,20,0.58)_100%)] shadow-[0_40px_140px_rgba(0,0,0,0.3)] backdrop-blur-xl">
             <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(196,233,255,0.85),transparent)]" />
@@ -584,7 +561,6 @@ export default function Home() {
       <MissionVision3D />
 
       <section className="relative overflow-hidden py-16 text-white [perspective:2000px] md:py-24">
-        <HomeTechBackground />
         <div className="container relative z-10 mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -655,7 +631,7 @@ export default function Home() {
         </div>
       </section>
 
-      <Footer />
+      <Footer background={false} />
     </main>
   );
 }

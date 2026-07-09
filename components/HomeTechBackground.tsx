@@ -5,11 +5,14 @@ import DataNetworkBackground from "@/components/DataNetworkBackground";
 
 type HomeTechBackgroundProps = {
   className?: string;
+  fixed?: boolean;
 };
 
-export default function HomeTechBackground({ className = "" }: HomeTechBackgroundProps) {
+export default function HomeTechBackground({ className = "", fixed = false }: HomeTechBackgroundProps) {
+  const frameClass = fixed ? "fixed inset-0" : "absolute -inset-x-6 -inset-y-24";
+
   return (
-    <div aria-hidden="true" className={`pointer-events-none absolute -inset-x-6 -inset-y-24 overflow-hidden ${className}`}>
+    <div aria-hidden="true" className={`pointer-events-none ${frameClass} overflow-hidden ${className}`}>
       <motion.div
         animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
         transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}

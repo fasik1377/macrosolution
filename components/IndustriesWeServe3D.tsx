@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { Factory, GraduationCap, Landmark, ShieldCheck, Store } from "lucide-react";
-import HomeTechBackground from "@/components/HomeTechBackground";
 
 const industries = [
   {
@@ -58,7 +57,6 @@ const slotPositions = [
 export default function IndustriesWeServe3D() {
   return (
     <section className="relative overflow-hidden py-16 text-white md:py-24">
-      <HomeTechBackground />
       <motion.div
         aria-hidden="true"
         animate={{ rotate: [0, 360] }}

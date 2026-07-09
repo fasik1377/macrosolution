@@ -17,7 +17,6 @@ import {
   Star,
   UserCog,
 } from "lucide-react";
-import HomeTechBackground from "@/components/HomeTechBackground";
 
 function useViewportWidth() {
   const [width, setWidth] = useState(1024);
@@ -189,7 +188,6 @@ export default function PrimusModules3D() {
   return (
     <section id="services" ref={sectionRef} className="relative min-h-[150vh] overflow-hidden text-white md:min-h-[165vh]">
       <div className="sticky top-0 min-h-[100svh] overflow-hidden [perspective:1500px]">
-        <HomeTechBackground />
         <motion.div
           aria-hidden="true"
           style={{ rotate: orbitRotate }}

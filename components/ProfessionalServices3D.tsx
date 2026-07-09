@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { Boxes, MonitorCog, ShieldCheck, Wrench } from "lucide-react";
-import HomeTechBackground from "@/components/HomeTechBackground";
 
 const services = [
   {
@@ -61,7 +60,6 @@ const connectors = [
 export default function ProfessionalServices3D() {
   return (
     <section className="relative overflow-hidden py-16 text-white md:py-24">
-      <HomeTechBackground />
       <motion.div
         aria-hidden="true"
         animate={{ rotate: [0, 360] }}

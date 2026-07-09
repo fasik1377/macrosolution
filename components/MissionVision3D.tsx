@@ -3,7 +3,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Eye, Orbit, Sparkles, Target, Zap } from "lucide-react";
 import { useRef } from "react";
-import HomeTechBackground from "@/components/HomeTechBackground";
 
 const principles = ["Innovate", "Scale", "Deliver", "Transform"];
 
@@ -52,7 +51,6 @@ export default function MissionVision3D() {
 
   return (
     <section ref={sectionRef} className="relative overflow-hidden py-16 text-white [perspective:2200px] md:py-24">
-      <HomeTechBackground />
       <motion.div
         aria-hidden="true"
         style={{ y: orbY }}
