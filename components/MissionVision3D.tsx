@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Eye, Orbit, Sparkles, Target, Zap } from "lucide-react";
 import { useRef } from "react";
+import HomeTechBackground from "@/components/HomeTechBackground";
 
 const principles = ["Innovate", "Scale", "Deliver", "Transform"];
 
@@ -51,7 +52,7 @@ export default function MissionVision3D() {
 
   return (
     <section ref={sectionRef} className="relative overflow-hidden py-16 text-white [perspective:2200px] md:py-24">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_18%,rgba(196,233,255,0.2),transparent_24%),radial-gradient(circle_at_78%_22%,rgba(139,92,246,0.16),transparent_24%),linear-gradient(180deg,rgba(0,150,255,0.08),rgba(3,15,37,0.2),rgba(0,150,255,0.08))]" />
+      <HomeTechBackground />
       <motion.div
         aria-hidden="true"
         style={{ y: orbY }}

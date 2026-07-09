@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Boxes, MonitorCog, ShieldCheck, Wrench } from "lucide-react";
+import HomeTechBackground from "@/components/HomeTechBackground";
 
 const services = [
   {
@@ -60,7 +61,7 @@ const connectors = [
 export default function ProfessionalServices3D() {
   return (
     <section className="relative overflow-hidden py-16 text-white md:py-24">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_22%,rgba(77,159,255,0.14),transparent_24%),radial-gradient(circle_at_82%_24%,rgba(139,92,246,0.12),transparent_22%),radial-gradient(circle_at_50%_78%,rgba(11,94,215,0.16),transparent_26%)]" />
+      <HomeTechBackground />
       <motion.div
         aria-hidden="true"
         animate={{ rotate: [0, 360] }}

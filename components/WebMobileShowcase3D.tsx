@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { useRef, useState } from "react";
+import HomeTechBackground from "@/components/HomeTechBackground";
 
 const featureCards = [
   {
@@ -147,7 +148,7 @@ export default function WebMobileShowcase3D() {
   return (
     <section ref={sectionRef} className="relative min-h-[150vh] overflow-hidden py-10 text-white md:min-h-[180vh] md:py-14">
       <div className="sticky top-0 flex min-h-[90vh] items-start overflow-hidden pt-10 md:min-h-screen md:pt-16">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_22%,rgba(77,159,255,0.1),transparent_26%),radial-gradient(circle_at_82%_74%,rgba(124,58,237,0.1),transparent_26%),linear-gradient(180deg,rgba(3,18,48,0.16),rgba(3,18,48,0.02))]" />
+        <HomeTechBackground />
 
         <motion.div
           aria-hidden="true"

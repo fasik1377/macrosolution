@@ -9,6 +9,7 @@ import { useRef } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import DataNetworkBackground from "@/components/DataNetworkBackground";
+import HomeTechBackground from "@/components/HomeTechBackground";
 
 function SectionLoader({ className = "min-h-[24rem]" }: { className?: string }) {
   return <div aria-hidden="true" className={className} />;
@@ -214,8 +215,8 @@ export default function Home() {
       <Navbar />
 
       <section className="relative overflow-hidden pb-14 pt-24 text-white sm:pt-16 md:pb-20">
+        <HomeTechBackground />
         <HeroSoftwareBackground3D />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_22%,rgba(255,255,255,0.18),transparent_24%),radial-gradient(circle_at_82%_24%,rgba(111,207,255,0.18),transparent_22%),radial-gradient(circle_at_50%_78%,rgba(0,150,255,0.18),transparent_26%)]" />
         <motion.div
           aria-hidden="true"
           animate={{ rotate: [0, 360] }}
@@ -240,25 +241,25 @@ export default function Home() {
               className="absolute left-1/2 top-1/2 h-[23rem] w-[23rem] -translate-x-1/2 -translate-y-1/2 sm:h-[34rem] sm:w-[34rem] md:h-[46rem] md:w-[46rem]"
             >
               {[
-                { label: "Bank transfer statements", icon: Banknote, className: "left-1/2 top-0 -translate-x-1/2", color: "from-cyan-300 via-sky-400 to-blue-500" },
-                { label: "Tax calculating & filing (PAYE)", icon: BadgePercent, className: "right-[14%] top-[8%]", color: "from-violet-300 via-fuchsia-400 to-purple-500" },
-                { label: "Multiple payroll period support", icon: CalendarRange, className: "right-0 top-[28%]", color: "from-emerald-300 via-teal-400 to-green-500" },
-                { label: "MNS / CNP compatibility", icon: ClipboardList, className: "right-0 top-[56%]", color: "from-amber-300 via-orange-400 to-yellow-500" },
-                { label: "Customisable pay-slips", icon: CreditCard, className: "right-[14%] bottom-[8%]", color: "from-rose-300 via-pink-400 to-red-500" },
-                { label: "Employee Self-Service portal", icon: UserRound, className: "left-1/2 bottom-0 -translate-x-1/2", color: "from-indigo-300 via-blue-400 to-cyan-500" },
-                { label: "Role-based user profiles", icon: ShieldCheck, className: "left-[14%] bottom-[8%]", color: "from-lime-300 via-emerald-400 to-teal-500" },
-                { label: "Management dashboards & reports", icon: ChartColumn, className: "left-0 top-[56%]", color: "from-sky-300 via-blue-400 to-indigo-500" },
-                { label: "Payroll compliance & audit", icon: BadgeCheck, className: "left-0 top-[28%]", color: "from-orange-300 via-amber-400 to-yellow-500" },
-                { label: "Biometric device integration", icon: ScanLine, className: "left-[14%] top-[8%]", color: "from-fuchsia-300 via-violet-400 to-indigo-500" },
+                { label: "Bank transfer statements", icon: Banknote, className: "left-1/2 top-0 -translate-x-1/2", color: "from-sky-100 via-sky-300 to-blue-500" },
+                { label: "Tax calculating & filing (PAYE)", icon: BadgePercent, className: "right-[14%] top-[8%]", color: "from-cyan-200 via-sky-500 to-blue-700" },
+                { label: "Multiple payroll period support", icon: CalendarRange, className: "right-0 top-[28%]", color: "from-blue-200 via-blue-500 to-indigo-800" },
+                { label: "MNS / CNP compatibility", icon: ClipboardList, className: "right-0 top-[56%]", color: "from-sky-300 via-blue-600 to-[#063b8c]" },
+                { label: "Customisable pay-slips", icon: CreditCard, className: "right-[14%] bottom-[8%]", color: "from-cyan-100 via-cyan-500 to-blue-800" },
+                { label: "Employee Self-Service portal", icon: UserRound, className: "left-1/2 bottom-0 -translate-x-1/2", color: "from-blue-100 via-sky-500 to-[#082f7a]" },
+                { label: "Role-based user profiles", icon: ShieldCheck, className: "left-[14%] bottom-[8%]", color: "from-sky-200 via-blue-500 to-blue-950" },
+                { label: "Management dashboards & reports", icon: ChartColumn, className: "left-0 top-[56%]", color: "from-cyan-200 via-sky-600 to-indigo-900" },
+                { label: "Payroll compliance & audit", icon: BadgeCheck, className: "left-0 top-[28%]", color: "from-blue-200 via-[#0096FF] to-[#06418f]" },
+                { label: "Biometric device integration", icon: ScanLine, className: "left-[14%] top-[8%]", color: "from-sky-100 via-blue-400 to-[#0b3b8a]" },
               ].map((item) => {
                 const Icon = item.icon;
                 return (
                   <motion.div
                     key={item.label}
                     whileHover={{ scale: 1.08, y: -8 }}
-                    className={`absolute flex h-24 w-24 items-center justify-center rounded-full border border-white/14 p-2 text-center text-[9px] font-semibold text-white shadow-[0_24px_70px_rgba(0,0,0,0.22)] backdrop-blur-xl sm:h-32 sm:w-32 sm:p-3 sm:text-xs md:h-40 md:w-40 md:p-4 md:text-sm ${item.className}`}
+                    className={`absolute flex h-24 w-24 items-center justify-center rounded-full border border-white/18 p-2 text-center text-[9px] font-semibold text-white shadow-[0_24px_70px_rgba(8,59,138,0.34)] backdrop-blur-xl sm:h-32 sm:w-32 sm:p-3 sm:text-xs md:h-40 md:w-40 md:p-4 md:text-sm ${item.className}`}
                   >
-                    <div className={`absolute inset-2 rounded-full bg-gradient-to-br ${item.color} opacity-90`} />
+                    <div className={`absolute inset-2 rounded-full bg-gradient-to-br ${item.color} opacity-95`} />
                     <div className="absolute inset-[1px] rounded-full border border-white/24" />
                     <div className="absolute inset-[18%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.34),transparent_68%)]" />
                     <div className="relative z-10 flex flex-col items-center gap-1 leading-4 sm:gap-2 sm:leading-5">
@@ -299,8 +300,7 @@ export default function Home() {
       <WebMobileShowcase3D />
 
       <section id="about" className="relative overflow-hidden pb-14 pt-8 text-white [perspective:2200px] md:pb-20 md:pt-12">
-        <DataNetworkBackground variant="dark" className="opacity-75" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_20%,rgba(77,159,255,0.12),transparent_24%),radial-gradient(circle_at_84%_72%,rgba(11,94,215,0.14),transparent_28%),linear-gradient(180deg,rgba(3,18,48,0.18),rgba(3,18,48,0.06))]" />
+        <HomeTechBackground />
         <motion.div
           aria-hidden="true"
           animate={{ rotate: [0, 180, 360], scale: [0.96, 1.04, 0.96] }}
@@ -414,7 +414,7 @@ export default function Home() {
             <motion.div
               animate={{ y: [0, 12, 0], rotate: [0, -3, 0, 3, 0] }}
               transition={{ duration: 6.2, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute bottom-12 right-0 rounded-[1.6rem] border border-white/12 bg-[linear-gradient(135deg,rgba(124,58,237,0.85),rgba(11,94,215,0.72))] p-5 shadow-[0_26px_80px_rgba(0,0,0,0.24)] md:right-4"
+              className="absolute bottom-12 right-0 rounded-[1.6rem] border border-white/12 bg-[linear-gradient(135deg,rgba(125,211,252,0.9),rgba(0,150,255,0.82),rgba(6,67,140,0.78))] p-5 shadow-[0_26px_80px_rgba(8,59,138,0.28)] md:right-4"
             >
               <p className="text-sm uppercase tracking-[0.35em] text-white/75">Multi-Sector</p>
               <p className="mt-3 text-3xl font-bold">Business Impact</p>
@@ -431,25 +431,7 @@ export default function Home() {
         </div>
       </section>
 <section className="relative overflow-hidden pb-4 pt-14 text-white md:pt-20">
-        <motion.div
-          aria-hidden="true"
-          animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
-          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute inset-0 bg-[linear-gradient(120deg,#dff5ff_0%,#8dd8ff_24%,#0096FF_52%,#6fcfff_76%,#e6f9ff_100%)] bg-[length:220%_220%]"
-        />
-        <motion.div
-          aria-hidden="true"
-          animate={{ opacity: [0.22, 0.42, 0.22], scale: [0.96, 1.06, 0.96] }}
-          transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute left-[10%] top-[8%] h-[24rem] w-[24rem] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.42),transparent_68%)] blur-3xl"
-        />
-        <motion.div
-          aria-hidden="true"
-          animate={{ opacity: [0.16, 0.36, 0.16], scale: [0.94, 1.08, 0.94] }}
-          transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-[6%] right-[8%] h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,rgba(0,150,255,0.34),transparent_68%)] blur-3xl"
-        />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_24%,rgba(255,255,255,0.18),transparent_24%),radial-gradient(circle_at_80%_20%,rgba(111,207,255,0.2),transparent_24%),radial-gradient(circle_at_50%_78%,rgba(0,150,255,0.18),transparent_28%)]" />
+        <HomeTechBackground />
 
         <div className="container relative z-10 mx-auto px-6">
           <div className="relative mx-auto min-h-[640px] overflow-hidden rounded-[2.4rem] border border-cyan-100/10 bg-[linear-gradient(145deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02)_18%,rgba(2,10,28,0.24)_52%,rgba(1,8,20,0.58)_100%)] shadow-[0_40px_140px_rgba(0,0,0,0.3)] backdrop-blur-xl">
@@ -602,7 +584,7 @@ export default function Home() {
       <MissionVision3D />
 
       <section className="relative overflow-hidden py-16 text-white [perspective:2000px] md:py-24">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(77,159,255,0.12),transparent_42%),radial-gradient(circle_at_bottom_right,rgba(11,94,215,0.16),transparent_36%)]" />
+        <HomeTechBackground />
         <div className="container relative z-10 mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

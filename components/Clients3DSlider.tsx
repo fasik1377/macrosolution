@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Building2, Sparkles } from "lucide-react";
 import { useRef } from "react";
+import HomeTechBackground from "@/components/HomeTechBackground";
 
 const clients = [
   {
@@ -52,7 +53,7 @@ export default function Clients3DSlider() {
 
   return (
     <section ref={sectionRef} className="relative overflow-hidden py-16 text-white md:py-24">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_22%,rgba(77,159,255,0.14),transparent_24%),radial-gradient(circle_at_82%_24%,rgba(139,92,246,0.12),transparent_22%),radial-gradient(circle_at_50%_78%,rgba(11,94,215,0.16),transparent_26%)]" />
+      <HomeTechBackground />
       <motion.div
         aria-hidden="true"
         animate={{ rotate: [0, 360] }}

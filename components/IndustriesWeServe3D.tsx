@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Factory, GraduationCap, Landmark, ShieldCheck, Store } from "lucide-react";
+import HomeTechBackground from "@/components/HomeTechBackground";
 
 const industries = [
   {
@@ -57,7 +58,7 @@ const slotPositions = [
 export default function IndustriesWeServe3D() {
   return (
     <section className="relative overflow-hidden py-16 text-white md:py-24">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_26%,rgba(77,159,255,0.16),transparent_24%),radial-gradient(circle_at_78%_24%,rgba(56,189,248,0.14),transparent_22%),radial-gradient(circle_at_50%_82%,rgba(11,94,215,0.16),transparent_26%)]" />
+      <HomeTechBackground />
       <motion.div
         aria-hidden="true"
         animate={{ rotate: [0, 360] }}

@@ -17,6 +17,7 @@ import {
   Star,
   UserCog,
 } from "lucide-react";
+import HomeTechBackground from "@/components/HomeTechBackground";
 
 function useViewportWidth() {
   const [width, setWidth] = useState(1024);
@@ -188,30 +189,12 @@ export default function PrimusModules3D() {
   return (
     <section id="services" ref={sectionRef} className="relative min-h-[150vh] overflow-hidden text-white md:min-h-[165vh]">
       <div className="sticky top-0 min-h-[100svh] overflow-hidden [perspective:1500px]">
-        <motion.div
-          aria-hidden="true"
-          animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
-          transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute inset-0 bg-[radial-gradient(circle_at_18%_16%,rgba(255,255,255,0.34),transparent_22%),radial-gradient(circle_at_80%_74%,rgba(111,207,255,0.24),transparent_28%),linear-gradient(135deg,#eafaff_0%,#9bddff_24%,#0096FF_52%,#69d0ff_76%,#f3fcff_100%)] bg-[length:200%_200%]"
-        />
+        <HomeTechBackground />
         <motion.div
           aria-hidden="true"
           style={{ rotate: orbitRotate }}
           className="absolute left-1/2 top-1/2 h-[36rem] w-[36rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/18 shadow-[0_0_90px_rgba(77,159,255,0.16)] md:h-[48rem] md:w-[48rem]"
         />
-        <motion.div
-          aria-hidden="true"
-          animate={{ opacity: [0.12, 0.34, 0.12], scale: [0.94, 1.06, 0.94] }}
-          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute left-[8%] top-[12%] h-36 w-36 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.24),transparent_68%)] blur-3xl md:h-56 md:w-56"
-        />
-        <motion.div
-          aria-hidden="true"
-          animate={{ opacity: [0.12, 0.28, 0.12], scale: [0.92, 1.08, 0.92] }}
-          transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-[10%] right-[8%] h-40 w-40 rounded-full bg-[radial-gradient(circle,rgba(0,150,255,0.24),transparent_68%)] blur-3xl md:h-64 md:w-64"
-        />
-
         {["UI", "API", "DB", "HR", "PAY", "ERP"].map((label, index) => (
           <motion.div
             key={label}
