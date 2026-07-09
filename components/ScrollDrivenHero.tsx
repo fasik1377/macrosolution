@@ -5,10 +5,30 @@ import { motion, type MotionValue, useScroll, useTransform } from "framer-motion
 import { ChevronDown, Code2, Globe2, Layers3, Smartphone } from "lucide-react";
 
 const floatingModules = [
-  { label: "Design", icon: Layers3, className: "left-[3%] top-[19%] md:left-[9%]" },
-  { label: "Website", icon: Globe2, className: "right-[4%] top-[22%] md:right-[11%]" },
-  { label: "App", icon: Smartphone, className: "left-[5%] bottom-[24%] md:left-[13%]" },
-  { label: "Code", icon: Code2, className: "right-[4%] bottom-[26%] md:right-[12%]" },
+  {
+    label: "Design",
+    icon: Layers3,
+    className: "left-[3%] top-[19%] md:left-[9%]",
+    gradient: "bg-[linear-gradient(135deg,#e0f7ff_0%,#7dd3fc_45%,#0ea5e9_100%)]",
+  },
+  {
+    label: "Website",
+    icon: Globe2,
+    className: "right-[4%] top-[22%] md:right-[11%]",
+    gradient: "bg-[linear-gradient(135deg,#bae6fd_0%,#38bdf8_38%,#0369a1_100%)]",
+  },
+  {
+    label: "App",
+    icon: Smartphone,
+    className: "left-[5%] bottom-[24%] md:left-[13%]",
+    gradient: "bg-[linear-gradient(135deg,#93c5fd_0%,#2563eb_44%,#0f3f93_100%)]",
+  },
+  {
+    label: "Code",
+    icon: Code2,
+    className: "right-[4%] bottom-[26%] md:right-[12%]",
+    gradient: "bg-[linear-gradient(135deg,#60a5fa_0%,#1d4ed8_42%,#082f7a_100%)]",
+  },
 ];
 
 const splitPanels = [
@@ -239,15 +259,15 @@ export default function ScrollDrivenHero() {
             style={{ scale: orbitScale, opacity: orbitOpacity }}
             className="absolute left-1/2 top-1/2 h-[20rem] w-[20rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10 md:h-[34rem] md:w-[34rem]"
           >
-            {floatingModules.map(({ label, icon: Icon, className }, index) => (
+            {floatingModules.map(({ label, icon: Icon, className, gradient }, index) => (
               <motion.div
                 key={label}
                 animate={{ y: [0, index % 2 === 0 ? -14 : 14, 0], rotate: [0, index % 2 === 0 ? 2 : -2, 0] }}
                 transition={{ duration: 5.2 + index * 0.35, repeat: Infinity, ease: "easeInOut" }}
-                className={`absolute flex items-center gap-2 border border-sky-200/70 bg-[linear-gradient(135deg,rgba(240,249,255,0.96)_0%,rgba(186,230,253,0.92)_42%,rgba(125,211,252,0.88)_100%)] px-4 py-3 text-sm font-bold text-sky-950 shadow-[0_18px_54px_rgba(14,165,233,0.28)] backdrop-blur-md ${className}`}
+                className={`absolute flex items-center gap-2 border border-white/28 px-4 py-3 text-sm font-bold text-white shadow-[0_18px_54px_rgba(8,47,122,0.34)] backdrop-blur-md ${gradient} ${className}`}
                 style={{ clipPath: "polygon(0 0,100% 0,92% 100%,0 100%,8% 50%)" }}
               >
-                <Icon size={18} className="text-sky-600" />
+                <Icon size={18} className="text-white" />
                 {label}
               </motion.div>
             ))}
