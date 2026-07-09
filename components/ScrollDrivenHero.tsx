@@ -244,10 +244,10 @@ export default function ScrollDrivenHero() {
                 key={label}
                 animate={{ y: [0, index % 2 === 0 ? -14 : 14, 0], rotate: [0, index % 2 === 0 ? 2 : -2, 0] }}
                 transition={{ duration: 5.2 + index * 0.35, repeat: Infinity, ease: "easeInOut" }}
-                className={`absolute flex items-center gap-2 border border-white/18 bg-white/10 px-4 py-3 text-sm font-bold text-white shadow-[0_18px_54px_rgba(0,0,0,0.22)] backdrop-blur-md ${className}`}
+                className={`absolute flex items-center gap-2 border border-sky-200/70 bg-[linear-gradient(135deg,rgba(240,249,255,0.96)_0%,rgba(186,230,253,0.92)_42%,rgba(125,211,252,0.88)_100%)] px-4 py-3 text-sm font-bold text-sky-950 shadow-[0_18px_54px_rgba(14,165,233,0.28)] backdrop-blur-md ${className}`}
                 style={{ clipPath: "polygon(0 0,100% 0,92% 100%,0 100%,8% 50%)" }}
               >
-                <Icon size={18} className="text-cyan-300" />
+                <Icon size={18} className="text-sky-600" />
                 {label}
               </motion.div>
             ))}
