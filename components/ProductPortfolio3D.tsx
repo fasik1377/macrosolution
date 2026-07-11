@@ -69,7 +69,6 @@ export default function ProductPortfolio3D() {
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
-    layoutEffect: false,
   });
   const carouselDepth = useTransform(scrollYProgress, [0, 0.5, 1], [48, 0, -70]);
   const carouselRotateX = useTransform(scrollYProgress, [0, 0.5, 1], [18, 0, -16]);
