@@ -38,7 +38,7 @@ const highlights = [`Mission: ${company.mission}`, `Vision: ${company.vision}`, 
 
 const motionStats = [
   { label: "Years of Experience", value: "18+", icon: Sparkles },
-  { label: "Enterprise Mindset", value: "360Ãƒâ€šÃ‚Â°", icon: Target },
+  { label: "Enterprise Mindset", value: "Product", icon: Target },
   { label: "Client Partnership", value: "Trusted", icon: Users },
 ];
 

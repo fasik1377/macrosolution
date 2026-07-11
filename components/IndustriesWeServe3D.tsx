@@ -8,40 +8,40 @@ const industries = [
     title: "Insurance",
     subtitle: "GIMS & Surveyor Portal",
     icon: ShieldCheck,
-    accent: "from-[#03132f] via-[#082a63] to-[#0b3b8a]",
-    glow: "shadow-[0_30px_110px_rgba(44,125,255,0.32)]",
+    accent: "from-[#063b2f] via-[#12a46f] to-[#8fffd2]",
+    glow: "shadow-[0_30px_110px_rgba(31,209,142,0.34)]",
     chipClass: "border-cyan-100/40 bg-white/16 text-white",
   },
   {
     title: "Banking",
     subtitle: "DMS",
     icon: Landmark,
-    accent: "from-[#04142f] via-[#0a3270] to-[#0f4fa8]",
-    glow: "shadow-[0_30px_110px_rgba(59,130,246,0.3)]",
+    accent: "from-[#201052] via-[#7b2cff] to-[#e4c6ff]",
+    glow: "shadow-[0_30px_110px_rgba(148,90,255,0.36)]",
     chipClass: "border-cyan-100/40 bg-white/16 text-white",
   },
   {
     title: "Retail",
     subtitle: "M-POS & e-Invoicing",
     icon: Store,
-    accent: "from-[#051733] via-[#09316b] to-[#0f4d9f]",
-    glow: "shadow-[0_30px_110px_rgba(37,99,235,0.32)]",
+    accent: "from-[#05325d] via-[#22b8ff] to-[#d9fbff]",
+    glow: "shadow-[0_30px_110px_rgba(34,184,255,0.34)]",
     chipClass: "border-cyan-100/40 bg-white/16 text-white",
   },
   {
     title: "Education",
     subtitle: "Time Attendance",
     icon: GraduationCap,
-    accent: "from-[#04142d] via-[#082b5f] to-[#0d468c]",
-    glow: "shadow-[0_30px_110px_rgba(56,189,248,0.28)]",
+    accent: "from-[#031129] via-[#0b3b8a] to-[#42a5ff]",
+    glow: "shadow-[0_30px_110px_rgba(66,165,255,0.34)]",
     chipClass: "border-cyan-100/40 bg-white/16 text-white",
   },
   {
     title: "Manufacturing",
     subtitle: "PRIMUS Workforce Management",
     icon: Factory,
-    accent: "from-[#031129] via-[#072658] to-[#0b3d7f]",
-    glow: "shadow-[0_30px_110px_rgba(14,116,255,0.28)]",
+    accent: "from-[#082f49] via-[#2563eb] to-[#2dd4bf]",
+    glow: "shadow-[0_30px_110px_rgba(45,212,191,0.3)]",
     chipClass: "border-cyan-100/40 bg-white/10 text-white",
   },
 ];
@@ -94,27 +94,23 @@ export default function IndustriesWeServe3D() {
               return (
                 <motion.article
                   key={industry.title}
-                  initial={{ opacity: 0, x: 260, scale: 0.88 }}
-                  whileInView={{ opacity: 1 }}
+                  initial={{ opacity: 0, y: 38, scale: 0.9, rotateY: 12 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1, rotateY: 0 }}
                   viewport={{ once: true, amount: 0.2 }}
                   animate={{
-                    x: [260, -10, 0, 0],
-                    y: [0, 0, -12, 0],
-                    scale: [0.88, 1.04, 1, 1],
-                    opacity: [0, 1, 1, 1],
-                    rotateY: [16, -8, 0, 0],
+                    y: [0, -12, 0],
+                    scale: [1, 1.035, 1],
+                    rotateY: index % 2 === 0 ? [0, -7, 0] : [0, 7, 0],
                   }}
                   transition={{
-                    duration: 4.8,
-                    repeat: Infinity,
-                    ease: [0.22, 1, 0.36, 1],
-                    delay,
-                    times: [0, 0.46, 0.72, 1],
-                    repeatDelay: 0.35,
+                    opacity: { duration: 0.55, delay: index * 0.08 },
+                    y: { duration: 6.2, repeat: Infinity, ease: "easeInOut", delay },
+                    scale: { duration: 6.2, repeat: Infinity, ease: "easeInOut", delay },
+                    rotateY: { duration: 7.2, repeat: Infinity, ease: "easeInOut", delay: delay + 0.08 },
                   }}
                   whileHover={{ y: -18, rotateX: 18, rotateY: index % 2 === 0 ? -18 : 18, scale: 1.08 }}
                   whileTap={{ scale: 0.97 }}
-                  className={`group relative flex h-[220px] w-[220px] shrink-0 cursor-pointer items-center justify-center rounded-full border border-white/26 bg-transparent backdrop-blur-0 [transform-style:preserve-3d] md:h-[240px] md:w-[240px] ${industry.glow} ${slotPositions[index] ?? ""}`}
+                  className={`group relative flex h-[220px] w-[220px] shrink-0 transform-gpu cursor-pointer items-center justify-center rounded-full border border-white/26 bg-transparent backdrop-blur-0 [backface-visibility:hidden] [transform-style:preserve-3d] [will-change:transform] md:h-[240px] md:w-[240px] ${industry.glow} ${slotPositions[index] ?? ""}`}
                 >
                   <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${industry.accent}`} />
                   <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_30%_28%,rgba(255,255,255,0.95),rgba(255,255,255,0.35)_16%,rgba(255,255,255,0.12)_30%,transparent_42%)] opacity-95" />
