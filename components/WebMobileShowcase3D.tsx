@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import {
   Code2,
@@ -52,38 +52,38 @@ type TechStack = {
 };
 
 const techStacks: TechStack[] = [
-  { title: "React Native", icon: Smartphone, glow: "from-[#03132f] via-[#082a63] to-[#0b3b8a]" },
-  { title: "Next.js", icon: AppWindow, glow: "from-[#04142f] via-[#0a3270] to-[#0f4fa8]" },
-  { title: "TypeScript", icon: Braces, glow: "from-[#051935] via-[#0a2f69] to-[#114fa6]" },
-  { title: "Tailwind CSS", icon: Palette, glow: "from-[#04152f] via-[#083064] to-[#0d4f97]" },
-  { title: "Node.js", icon: Cpu, glow: "from-[#03132d] via-[#08285e] to-[#0d438f]" },
-  { title: "Laravel", icon: FileCode2, glow: "from-[#04142f] via-[#0a2b5f] to-[#0c468f]" },
-  { title: "Flutter", icon: LayoutGrid, glow: "from-[#051733] via-[#09326e] to-[#0d4fa6]" },
-  { title: "React", icon: Globe, glow: "from-[#04132d] via-[#082b63] to-[#0f4ca4]" },
-  { title: "JavaScript", icon: Code2, glow: "from-[#05152f] via-[#0a2f68] to-[#0f4d9c]" },
-  { title: "HTML5", icon: FileCode2, glow: "from-[#04152f] via-[#082c61] to-[#0c478f]" },
-  { title: "CSS3", icon: Palette, glow: "from-[#03122b] via-[#08295c] to-[#0d4a96]" },
-  { title: "Vue.js", icon: LayoutGrid, glow: "from-[#04142d] via-[#082b5f] to-[#0e468c]" },
-  { title: "Angular", icon: AppWindow, glow: "from-[#04142f] via-[#0a2f66] to-[#104da0]" },
-  { title: "Svelte", icon: Sparkles, glow: "from-[#04142f] via-[#093162] to-[#0f4b93]" },
-  { title: "Nuxt.js", icon: Globe, glow: "from-[#04142f] via-[#082d61] to-[#0d468d]" },
-  { title: "Express.js", icon: Cpu, glow: "from-[#03112a] via-[#08295a] to-[#0b417f]" },
-  { title: "NestJS", icon: AppWindow, glow: "from-[#04142f] via-[#0a2e66] to-[#104fa2]" },
-  { title: "MongoDB", icon: LayoutGrid, glow: "from-[#04142d] via-[#082b5d] to-[#0d4488]" },
-  { title: "PostgreSQL", icon: Cpu, glow: "from-[#03132d] via-[#082b63] to-[#0f4998]" },
-  { title: "MySQL", icon: FileCode2, glow: "from-[#03132f] via-[#082a63] to-[#0b3b8a]" },
-  { title: "Firebase", icon: Sparkles, glow: "from-[#04142f] via-[#092f64] to-[#0e4a90]" },
-  { title: "GraphQL", icon: Braces, glow: "from-[#051733] via-[#0a3270] to-[#1050a8]" },
-  { title: "Redux", icon: Layers3, glow: "from-[#04142f] via-[#0a2f68] to-[#114a9b]" },
-  { title: "Three.js", icon: Globe, glow: "from-[#031129] via-[#072658] to-[#0b3d7f]" },
-  { title: "GSAP", icon: Rocket, glow: "from-[#04142d] via-[#082b5f] to-[#0d468c]" },
-  { title: "Framer Motion", icon: Sparkles, glow: "from-[#051733] via-[#0a3270] to-[#1050a8]" },
-  { title: "Django", icon: AppWindow, glow: "from-[#04142d] via-[#082b60] to-[#0d4588]" },
-  { title: "Python", icon: Braces, glow: "from-[#04142f] via-[#0a2f69] to-[#104ea0]" },
-  { title: "PHP", icon: FileCode2, glow: "from-[#051733] via-[#09316b] to-[#0f4d9f]" },
-  { title: "Swift", icon: Smartphone, glow: "from-[#04142f] via-[#0a2d63] to-[#104891]" },
-  { title: "Kotlin", icon: Smartphone, glow: "from-[#051733] via-[#0a3270] to-[#1050a8]" },
-  { title: "Dart", icon: Code2, glow: "from-[#04142f] via-[#082d61] to-[#0e478c]" },
+  { title: "React Native", icon: Smartphone, glow: "from-[#0f766e] via-[#14b8a6] to-[#99f6e4]" },
+  { title: "Next.js", icon: AppWindow, glow: "from-[#172554] via-[#2563eb] to-[#93c5fd]" },
+  { title: "TypeScript", icon: Braces, glow: "from-[#1e3a8a] via-[#38bdf8] to-[#dff7ff]" },
+  { title: "Tailwind CSS", icon: Palette, glow: "from-[#075985] via-[#22d3ee] to-[#cffafe]" },
+  { title: "Node.js", icon: Cpu, glow: "from-[#14532d] via-[#22c55e] to-[#bbf7d0]" },
+  { title: "Laravel", icon: FileCode2, glow: "from-[#581c87] via-[#a855f7] to-[#f0abfc]" },
+  { title: "Flutter", icon: LayoutGrid, glow: "from-[#0c4a6e] via-[#38bdf8] to-[#bae6fd]" },
+  { title: "React", icon: Globe, glow: "from-[#1d4ed8] via-[#60a5fa] to-[#dbeafe]" },
+  { title: "JavaScript", icon: Code2, glow: "from-[#365314] via-[#84cc16] to-[#ecfccb]" },
+  { title: "HTML5", icon: FileCode2, glow: "from-[#312e81] via-[#6366f1] to-[#c4b5fd]" },
+  { title: "CSS3", icon: Palette, glow: "from-[#083344] via-[#06b6d4] to-[#a5f3fc]" },
+  { title: "Vue.js", icon: LayoutGrid, glow: "from-[#064e3b] via-[#10b981] to-[#a7f3d0]" },
+  { title: "Angular", icon: AppWindow, glow: "from-[#1e1b4b] via-[#7c3aed] to-[#ddd6fe]" },
+  { title: "Svelte", icon: Sparkles, glow: "from-[#0f172a] via-[#1d4ed8] to-[#7dd3fc]" },
+  { title: "Nuxt.js", icon: Globe, glow: "from-[#064e3b] via-[#22c55e] to-[#dcfce7]" },
+  { title: "Express.js", icon: Cpu, glow: "from-[#111827] via-[#334155] to-[#93c5fd]" },
+  { title: "NestJS", icon: AppWindow, glow: "from-[#4c1d95] via-[#8b5cf6] to-[#e9d5ff]" },
+  { title: "MongoDB", icon: LayoutGrid, glow: "from-[#14532d] via-[#16a34a] to-[#bbf7d0]" },
+  { title: "PostgreSQL", icon: Cpu, glow: "from-[#1e3a8a] via-[#2563eb] to-[#bfdbfe]" },
+  { title: "MySQL", icon: FileCode2, glow: "from-[#0c4a6e] via-[#0284c7] to-[#bae6fd]" },
+  { title: "Firebase", icon: Sparkles, glow: "from-[#365314] via-[#a3e635] to-[#f7fee7]" },
+  { title: "GraphQL", icon: Braces, glow: "from-[#581c87] via-[#c084fc] to-[#fae8ff]" },
+  { title: "Redux", icon: Layers3, glow: "from-[#312e81] via-[#818cf8] to-[#e0e7ff]" },
+  { title: "Three.js", icon: Globe, glow: "from-[#0f172a] via-[#1e40af] to-[#60a5fa]" },
+  { title: "GSAP", icon: Rocket, glow: "from-[#052e16] via-[#22c55e] to-[#86efac]" },
+  { title: "Framer Motion", icon: Sparkles, glow: "from-[#4c1d95] via-[#a78bfa] to-[#ede9fe]" },
+  { title: "Django", icon: AppWindow, glow: "from-[#064e3b] via-[#0d9488] to-[#99f6e4]" },
+  { title: "Python", icon: Braces, glow: "from-[#172554] via-[#38bdf8] to-[#e0f2fe]" },
+  { title: "PHP", icon: FileCode2, glow: "from-[#312e81] via-[#7c3aed] to-[#ddd6fe]" },
+  { title: "Swift", icon: Smartphone, glow: "from-[#082f49] via-[#0ea5e9] to-[#bae6fd]" },
+  { title: "Kotlin", icon: Smartphone, glow: "from-[#581c87] via-[#8b5cf6] to-[#c4b5fd]" },
+  { title: "Dart", icon: Code2, glow: "from-[#0f766e] via-[#2dd4bf] to-[#ccfbf1]" },
 ];
 
 const stackShape = "polygon(18% 0%, 82% 0%, 100% 16%, 100% 84%, 82% 100%, 18% 100%, 0% 84%, 0% 16%)";
@@ -127,6 +127,7 @@ const codeSnippets: Record<SnippetTitle, CodeSnippet[]> = {
 
 export default function WebMobileShowcase3D() {
   const sectionRef = useRef<HTMLElement>(null);
+  const shouldReduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
@@ -138,11 +139,9 @@ export default function WebMobileShowcase3D() {
   const leftCardY = useTransform(scrollYProgress, [0, 0.5, 1], [100, 0, -80]);
   const rightCardY = useTransform(scrollYProgress, [0, 0.5, 1], [140, 0, -100]);
   const orbitRotate = useTransform(scrollYProgress, [0, 1], [0, 220]);
-  const stackWrapY = useTransform(scrollYProgress, [0, 0.5, 1], [36, 0, -40]);
-  const stackWrapRotateX = useTransform(scrollYProgress, [0, 0.5, 1], [14, 0, -14]);
-  const stackWrapRotateY = useTransform(scrollYProgress, [0, 0.5, 1], [-6, 0, 6]);
+  const stackWrapY = useTransform(scrollYProgress, [0, 0.5, 1], [18, 0, -18]);
   const [isPaused, setIsPaused] = useState(false);
-  const marqueeDuration = 28;
+  const marqueeDuration = 46;
 
   return (
     <section ref={sectionRef} className="relative min-h-[150vh] overflow-hidden py-10 text-white md:min-h-[180vh] md:py-14">
@@ -290,8 +289,8 @@ export default function WebMobileShowcase3D() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          style={{ y: stackWrapY, rotateX: stackWrapRotateX, rotateY: stackWrapRotateY }}
-          className="overflow-hidden [perspective:2200px] [transform-style:preserve-3d]"
+          style={{ y: stackWrapY }}
+          className="overflow-hidden"
         >
           <div className="mb-8 flex flex-col items-start justify-between gap-4 px-3 md:flex-row md:items-end">
             <div>
@@ -324,21 +323,21 @@ export default function WebMobileShowcase3D() {
             </motion.p>
           </div>
 
-          <div className="relative overflow-x-auto overflow-y-hidden rounded-[2.4rem] border border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.12),rgba(255,255,255,0.04))] px-2 pb-6 pt-14 shadow-[0_35px_120px_rgba(0,0,0,0.28)] backdrop-blur-xl [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            <div className="pointer-events-none absolute inset-0 rounded-[2.4rem] bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.14),transparent_30%),linear-gradient(135deg,rgba(255,255,255,0.06),transparent_48%,rgba(111,207,255,0.06))]" />
+          <div className="relative overflow-x-auto overflow-y-hidden rounded-[1.4rem] border border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.12),rgba(255,255,255,0.04))] px-2 pb-5 pt-12 shadow-[0_24px_80px_rgba(0,0,0,0.22)] backdrop-blur-xl [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <div className="pointer-events-none absolute inset-0 rounded-[1.4rem] bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.14),transparent_30%),linear-gradient(135deg,rgba(255,255,255,0.06),transparent_48%,rgba(111,207,255,0.06))]" />
             <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-100/60 to-transparent" />
-            <div className="pointer-events-none absolute inset-[1px] rounded-[2.35rem] border border-white/8" />
+            <div className="pointer-events-none absolute inset-[1px] rounded-[1.35rem] border border-white/8" />
             <button
               type="button"
               onClick={() => setIsPaused((current) => !current)}
-              className="absolute right-3 top-3 z-20 rounded-full border border-white/14 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-white backdrop-blur-md transition hover:bg-white/16"
+              className="absolute right-3 top-3 z-20 rounded-full border border-white/14 bg-white/10 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-white backdrop-blur-md transition hover:bg-white/16"
             >
               {isPaused ? "Play" : "Pause"}
             </button>
             <motion.div
-              animate={isPaused ? { x: undefined } : { x: ["0%", "-50%"] }}
+              animate={isPaused || shouldReduceMotion ? { x: undefined } : { x: ["0%", "-50%"] }}
               transition={{ duration: marqueeDuration, repeat: Infinity, ease: "linear" }}
-              className="relative z-10 flex w-max items-center gap-5 px-3 py-6 pr-10 [transform-style:preserve-3d]"
+              className="relative z-10 flex w-max items-center gap-4 px-3 py-4 pr-10 will-change-transform"
             >
               {[...techStacks, ...techStacks].map((stack, index) => {
                 const StackIcon = stack.icon;
@@ -347,52 +346,53 @@ export default function WebMobileShowcase3D() {
                 return (
                   <motion.article
                     key={stack.title + "-" + index}
-                    animate={{
-                      rotateY: [0, 14, -8, 0],
-                      rotateX: [0, 5, -3, 0],
-                      y: index % 2 === 0 ? [0, -10, 0] : [0, 10, 0],
-                      scale: [1, 1.02, 1],
-                      opacity: [0.86, 1, 0.9],
-                    }}
-                    whileHover={{ y: -18, rotateX: 12, rotateY: index % 2 === 0 ? -12 : 12, scale: 1.05 }}
-                    transition={{ duration: 3.2 + (index % 5) * 0.18, repeat: Infinity, ease: "easeInOut", delay: (index % techStacks.length) * 0.04 }}
+                    animate={
+                      shouldReduceMotion
+                        ? { opacity: 1 }
+                        : {
+                            y: index % 2 === 0 ? [0, -5, 0] : [0, 5, 0],
+                            opacity: [0.92, 1, 0.94],
+                          }
+                    }
+                    whileHover={{ y: -8, scale: 1.025 }}
+                    transition={{ duration: 5.8 + (index % 4) * 0.25, repeat: Infinity, ease: "easeInOut", delay: (index % techStacks.length) * 0.03 }}
                     style={{
                       clipPath: stackShape,
                     }}
-                    className="group relative h-[12.5rem] w-[11.5rem] shrink-0 overflow-hidden border border-white/12 text-white shadow-[0_24px_64px_rgba(0,0,0,0.22)] [transform-style:preserve-3d] md:h-[13.5rem] md:w-[12.5rem]"
+                    className="group relative h-[10rem] w-[9.25rem] shrink-0 overflow-hidden border border-white/14 text-white shadow-[0_16px_42px_rgba(0,0,0,0.18)] will-change-transform md:h-[10.75rem] md:w-[10rem]"
                   >
-                    <div aria-hidden="true" style={{ clipPath: stackShape }} className={"absolute inset-0 bg-gradient-to-br opacity-70 " + stack.glow} />
-                    <div aria-hidden="true" style={{ clipPath: stackShape }} className="absolute inset-[1px] bg-[linear-gradient(180deg,rgba(4,17,39,0.10),rgba(4,17,39,0.44))]" />
+                    <div aria-hidden="true" style={{ clipPath: stackShape }} className={"absolute inset-0 bg-gradient-to-br " + stack.glow} />
+                    <div aria-hidden="true" style={{ clipPath: stackShape }} className="absolute inset-[1px] bg-[linear-gradient(180deg,rgba(4,17,39,0.02),rgba(4,17,39,0.36))]" />
                     <motion.div
-                      animate={{ rotate: [0, 360], scale: [1, 1.07, 1], opacity: [0.22, 0.42, 0.22] }}
-                      transition={{ duration: 6, repeat: Infinity, ease: "linear", delay: index * 0.06 }}
-                      className="absolute -right-8 -top-8 h-28 w-28 rounded-full border border-cyan-100/10 bg-cyan-100/8 blur-[1px]"
+                      animate={shouldReduceMotion ? { opacity: 0.22 } : { opacity: [0.16, 0.32, 0.16] }}
+                      transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: index * 0.04 }}
+                      className="absolute -right-8 -top-8 h-24 w-24 rounded-full border border-white/14 bg-white/10 blur-[1px]"
                     />
                     <motion.div
-                      animate={isPaused ? { x: undefined } : { x: ["-130%", "140%"] }}
-                      transition={{ duration: marqueeDuration / 4, repeat: Infinity, ease: "linear", delay: (index % techStacks.length) * 0.1 }}
-                      className="absolute inset-y-3 w-16 skew-x-[-18deg] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent)] blur-md"
+                      animate={isPaused || shouldReduceMotion ? { x: undefined } : { x: ["-130%", "140%"] }}
+                      transition={{ duration: marqueeDuration / 3, repeat: Infinity, ease: "linear", delay: (index % techStacks.length) * 0.12 }}
+                      className="absolute inset-y-3 w-12 skew-x-[-18deg] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.16),transparent)] blur-md"
                     />
-                    <div className="absolute inset-x-3 top-2 h-10 rounded-[999px] bg-[linear-gradient(180deg,rgba(255,255,255,0.22),rgba(191,219,254,0.06),transparent)] opacity-80 blur-sm" />
+                    <div className="absolute inset-x-3 top-2 h-8 rounded-[999px] bg-[linear-gradient(180deg,rgba(255,255,255,0.22),rgba(191,219,254,0.06),transparent)] opacity-80 blur-sm" />
                     <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.12),transparent_42%,rgba(125,211,252,0.06))]" />
-                    <div className="relative flex h-full flex-col justify-between p-4">
+                    <div className="relative flex h-full flex-col justify-between p-3.5">
                       <div aria-hidden="true" style={{ clipPath: stackShape }} className="pointer-events-none absolute inset-[6px] border border-cyan-100/10" />
                       <div>
                         <div className="flex items-center justify-between">
-                          <div className="flex h-12 w-12 items-center justify-center rounded-[1rem] border border-white/16 bg-white/10 shadow-[0_12px_30px_rgba(0,0,0,0.22)] backdrop-blur-md transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
-                            <StackIcon size={24} className="text-white drop-shadow-[0_8px_18px_rgba(0,0,0,0.22)]" />
+                          <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/16 bg-white/14 shadow-[0_10px_24px_rgba(0,0,0,0.18)] backdrop-blur-md transition-transform duration-500 group-hover:scale-105">
+                            <StackIcon size={21} className="text-white drop-shadow-[0_8px_18px_rgba(0,0,0,0.22)]" />
                           </div>
                         </div>
-                        <h4 className="mt-3 text-lg font-bold tracking-tight text-white md:text-[1.2rem]">{stack.title}</h4>
+                        <h4 className="mt-2.5 text-base font-bold tracking-tight text-white md:text-lg">{stack.title}</h4>
                       </div>
 
-                      <div className="rounded-[1rem] border border-cyan-100/10 bg-[#031126]/58 p-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-sm transition duration-500 group-hover:bg-[#071a3d]/72">
-                        <div className="mb-3 flex items-center gap-2">
-                          <span className="h-2.5 w-2.5 rounded-full bg-rose-400" />
-                          <span className="h-2.5 w-2.5 rounded-full bg-amber-400" />
-                          <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
+                      <div className="rounded-xl border border-white/12 bg-[#031126]/50 p-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-sm transition duration-500 group-hover:bg-[#071a3d]/64">
+                        <div className="mb-2 flex items-center gap-1.5">
+                          <span className="h-2 w-2 rounded-full bg-rose-400" />
+                          <span className="h-2 w-2 rounded-full bg-amber-400" />
+                          <span className="h-2 w-2 rounded-full bg-emerald-400" />
                         </div>
-                        <div className="space-y-1.5 font-mono text-[11px] leading-4.5">
+                        <div className="space-y-1 font-mono text-[10px] leading-4">
                           {snippets.map((snippet, snippetIndex) => (
                             <span key={stack.title + snippet.text + snippetIndex} className={snippet.color}>
                               {snippet.text}
