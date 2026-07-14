@@ -9,31 +9,37 @@ const clients = [
     name: "The New India Assurance",
     mark: "N",
     sector: "Insurance",
+    accent: "from-[#0b5ed7] via-[#2563eb] to-[#38bdf8]",
   },
   {
     name: "Pearle Beach Resort & Spa",
     mark: "P",
     sector: "Resort & Spa",
+    accent: "from-[#0f766e] via-[#14b8a6] to-[#67e8f9]",
   },
   {
     name: "SICOM",
     mark: "S",
     sector: "Insurance",
+    accent: "from-[#7c3aed] via-[#2563eb] to-[#93c5fd]",
   },
   {
     name: "SBI Mauritius",
     mark: "S",
     sector: "Banking",
+    accent: "from-[#075985] via-[#0284c7] to-[#7dd3fc]",
   },
   {
     name: "Ace Scaffolding",
     mark: "A",
     sector: "Framework & Scaffoldings",
+    accent: "from-[#14532d] via-[#16a34a] to-[#86efac]",
   },
   {
     name: "C Sky Financial Services",
     mark: "C",
     sector: "Accounting Firm",
+    accent: "from-[#581c87] via-[#9333ea] to-[#d8b4fe]",
   },
 ];
 
@@ -77,8 +83,8 @@ export default function Clients3DSlider() {
           <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-20 bg-gradient-to-l from-[#0096FF] via-[#0096FF]/70 to-transparent" />
 
           <motion.div
-            animate={{ x: ["0%", "-50%"], rotateX: [0, 5, -3, 0], rotateY: [0, -5, 4, 0] }}
-            transition={{ x: { duration: 26, repeat: Infinity, ease: "linear" }, rotateX: { duration: 10, repeat: Infinity, ease: "easeInOut" }, rotateY: { duration: 10, repeat: Infinity, ease: "easeInOut" } }}
+            animate={{ x: ["0%", "-50%"], rotateX: [0, 3, -2, 0], rotateY: [0, -3, 2, 0] }}
+            transition={{ x: { duration: 48, repeat: Infinity, ease: "linear" }, rotateX: { duration: 18, repeat: Infinity, ease: "easeInOut" }, rotateY: { duration: 18, repeat: Infinity, ease: "easeInOut" } }}
             style={{ y: trackY, rotateX: trackRotateX, rotateY: trackRotateY, scale: trackScale }}
             className="flex w-max gap-5 px-3 py-6 [transform-style:preserve-3d]"
           >
@@ -89,38 +95,37 @@ export default function Clients3DSlider() {
                 <motion.article
                   key={`${client.name}-${index}`}
                   animate={{
-                    y: [0, -22, 0, -12, 0],
-                    rotateX: [0, 10, -5, 0],
-                    rotateY: index % 2 === 0 ? [0, -12, 7, 0] : [0, 12, -7, 0],
-                    rotateZ: [0, 1.6, 0, -1.6, 0],
-                    scale: [0.92, 1.04, 0.94, 1, 0.92],
-                    opacity: [0.82, 1, 0.84, 1, 0.78],
-                    filter: ["blur(0px)", "blur(0px)", "blur(0.4px)", "blur(0px)", "blur(1.2px)"],
+                    y: [0, -12, 0, -7, 0],
+                    rotateX: [0, 5, -3, 0],
+                    rotateY: index % 2 === 0 ? [0, -6, 4, 0] : [0, 6, -4, 0],
+                    rotateZ: [0, 1, 0, -1, 0],
+                    scale: [0.98, 1.02, 0.99, 1.01, 0.98],
+                    opacity: 1,
                   }}
                   transition={{
-                    duration: 4.8,
+                    duration: 11.5,
                     repeat: Infinity,
                     ease: "easeInOut",
                     delay,
                     times: [0, 0.24, 0.5, 0.76, 1],
                   }}
                   whileHover={{ y: -22, rotateX: 16, rotateY: index % 2 === 0 ? -18 : 18, scale: 1.06, opacity: 1 }}
-                  className="group relative flex min-h-[235px] w-[min(78vw,255px)] shrink-0 overflow-hidden rounded-[1.45rem] border border-[#9ed8ff]/16 bg-white/[0.04] p-4 shadow-[0_26px_90px_rgba(0,0,0,0.24)] backdrop-blur-lg [transform-style:preserve-3d]"
+                  className={`group relative flex min-h-[235px] w-[min(78vw,255px)] shrink-0 overflow-hidden rounded-[1.45rem] border border-white/22 bg-gradient-to-br ${client.accent} p-4 shadow-[0_26px_90px_rgba(0,0,0,0.24)] backdrop-blur-lg [transform-style:preserve-3d]`}
                 >
                   <motion.div
-                    animate={{ opacity: [0.82, 0.96, 0.64] }}
-                    transition={{ duration: 6.4, repeat: Infinity, ease: "easeInOut", delay, times: [0, 0.62, 1] }}
-                    className="absolute inset-0 bg-[linear-gradient(145deg,rgba(8,42,99,0.62)_0%,rgba(11,59,138,0.56)_26%,rgba(6,40,93,0.4)_58%,rgba(3,19,47,0.32)_100%)]"
+                    animate={{ opacity: [0.24, 0.36, 0.24] }}
+                    transition={{ duration: 12.4, repeat: Infinity, ease: "easeInOut", delay, times: [0, 0.62, 1] }}
+                    className="absolute inset-0 bg-[radial-gradient(circle_at_24%_18%,rgba(255,255,255,0.34),transparent_36%),radial-gradient(circle_at_82%_78%,rgba(255,255,255,0.16),transparent_42%)]"
                   />
-                  <div className="absolute inset-[1px] rounded-[1.35rem] bg-[linear-gradient(145deg,rgba(255,255,255,0.12),rgba(255,255,255,0.025)_22%,rgba(6,23,49,0.1)_54%,rgba(1,8,20,0.28)_100%)]" />
+                  <div className="absolute inset-[1px] rounded-[1.35rem] bg-[linear-gradient(145deg,rgba(255,255,255,0.18),rgba(255,255,255,0.035)_28%,rgba(1,8,20,0.2)_100%)]" />
                   <motion.div
-                    animate={{ opacity: [0, 0.85, 0], scale: [0.96, 1, 0.96] }}
-                    transition={{ duration: 6.4, repeat: Infinity, ease: "easeInOut", delay, times: [0, 0.18, 1] }}
+                    animate={{ opacity: [0.22, 0.5, 0.22], scale: [0.98, 1.01, 0.98] }}
+                    transition={{ duration: 12.4, repeat: Infinity, ease: "easeInOut", delay, times: [0, 0.18, 1] }}
                     className="absolute inset-[1px] rounded-[1.35rem] border border-cyan-100/10"
                   />
                   <motion.div
-                    animate={{ x: ["-135%", "35%", "130%"], opacity: [0, 0.45, 0], skewX: [0, -8, 0] }}
-                    transition={{ duration: 6.4, repeat: Infinity, ease: "easeInOut", delay, times: [0, 0.22, 1] }}
+                    animate={{ x: ["-135%", "35%", "130%"], opacity: [0, 0.24, 0], skewX: [0, -8, 0] }}
+                    transition={{ duration: 14, repeat: Infinity, ease: "easeInOut", delay, times: [0, 0.22, 1] }}
                     className="absolute inset-y-0 left-0 w-20 bg-[linear-gradient(90deg,transparent,rgba(158,216,255,0.16),transparent)]"
                   />
                   <motion.div
@@ -139,8 +144,8 @@ export default function Clients3DSlider() {
                     <div className="flex items-start justify-between gap-4">
                       <motion.div
                         initial={{ opacity: 0, x: 26, scale: 0.7, rotate: -16 }}
-                        animate={{ opacity: [0, 1, 0.8, 1, 0], x: [26, 0, -10, 0, -26], y: [18, -10, 0, -6, -12], scale: [0.64, 1.12, 0.94, 1.04, 0.76], rotate: [-16, 8, 0, 10, 12] }}
-                        transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay, times: [0, 0.24, 0.5, 0.76, 1] }}
+                        animate={{ opacity: 1, x: [10, 0, -4, 0, -8], y: [7, -4, 0, -3, -5], scale: [0.92, 1.04, 0.98, 1.02, 0.94], rotate: [-6, 3, 0, 4, 5] }}
+                        transition={{ duration: 11.5, repeat: Infinity, ease: "easeInOut", delay, times: [0, 0.24, 0.5, 0.76, 1] }}
                         className="relative flex h-14 w-14 items-center justify-center rounded-[0.95rem] border border-cyan-100/16 bg-white/12 shadow-[0_16px_34px_rgba(0,0,0,0.18)] [transform:translateZ(30px)]"
                       >
                         <div className="absolute inset-1 rounded-[0.95rem] bg-[linear-gradient(145deg,rgba(255,255,255,0.24),rgba(255,255,255,0.06))]" />
@@ -151,8 +156,8 @@ export default function Clients3DSlider() {
 
                       <motion.div
                         initial={{ opacity: 0, x: 18, scale: 0.7 }}
-                        animate={{ opacity: [0, 1, 0.82, 1, 0], x: [18, 0, -8, 0, -22], y: [16, -8, 0, -4, -10], scale: [0.66, 1.08, 0.9, 1.02, 0.82] }}
-                        transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: delay + 0.07, times: [0, 0.25, 0.52, 0.78, 1] }}
+                        animate={{ opacity: 1, x: [7, 0, -3, 0, -7], y: [6, -3, 0, -2, -4], scale: [0.92, 1.03, 0.97, 1.01, 0.94] }}
+                        transition={{ duration: 11.5, repeat: Infinity, ease: "easeInOut", delay: delay + 0.07, times: [0, 0.25, 0.52, 0.78, 1] }}
                         className="flex flex-col items-end gap-3 [transform:translateZ(18px)]"
                       >
                         <div className="rounded-full border border-cyan-100/12 bg-white/8 p-2">
@@ -164,8 +169,8 @@ export default function Clients3DSlider() {
 
                     <motion.div
                       initial={{ opacity: 0, x: 40, scale: 0.86 }}
-                      animate={{ opacity: [0, 1, 0.84, 1, 0], x: [40, 0, -12, 0, -46], y: [22, -10, 0, -4, -12], scale: [0.8, 1.08, 0.94, 1.02, 0.88], rotateX: [0, 6, 0, 4, 0] }}
-                      transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: delay + 0.12, times: [0, 0.32, 0.56, 0.8, 1] }}
+                      animate={{ opacity: 1, x: [10, 0, -4, 0, -10], y: [8, -4, 0, -2, -5], scale: [0.96, 1.03, 0.98, 1.01, 0.97], rotateX: [0, 3, 0, 2, 0] }}
+                      transition={{ duration: 11.5, repeat: Infinity, ease: "easeInOut", delay: delay + 0.12, times: [0, 0.32, 0.56, 0.8, 1] }}
                       className="mt-6 [transform:translateZ(30px)]"
                     >
                       <h3 className="max-w-[11rem] text-lg font-bold leading-tight text-white drop-shadow-[0_10px_24px_rgba(15,23,42,0.3)] md:text-xl">
@@ -179,8 +184,8 @@ export default function Clients3DSlider() {
                     <div className="mt-6 flex items-end justify-between gap-3 [transform:translateZ(24px)]">
                       <motion.div
                         initial={{ opacity: 0, x: 34, scale: 0.84 }}
-                        animate={{ opacity: [0, 1, 0.82, 1, 0], x: [34, 0, -12, 0, -38], y: [18, -8, 0, -4, -10], scale: [0.78, 1.08, 0.92, 1.02, 0.84] }}
-                        transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: delay + 0.18, times: [0, 0.38, 0.6, 0.84, 1] }}
+                        animate={{ opacity: 1, x: [8, 0, -4, 0, -8], y: [7, -3, 0, -2, -4], scale: [0.96, 1.03, 0.98, 1.01, 0.96] }}
+                        transition={{ duration: 11.5, repeat: Infinity, ease: "easeInOut", delay: delay + 0.18, times: [0, 0.38, 0.6, 0.84, 1] }}
                       >
                         <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-white/66">
                           Sector
@@ -192,8 +197,8 @@ export default function Clients3DSlider() {
 
                       <motion.span
                         initial={{ opacity: 0, x: 22, scale: 0.76 }}
-                        animate={{ opacity: [0, 1, 0.8, 1, 0], x: [22, 0, -10, 0, -28], y: [16, -8, 0, -6, -12], scale: [0.72, 1.08, 0.9, 1.02, 0.78], rotate: [0, 6, 0, -4, -8] }}
-                        transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: delay + 0.24, times: [0, 0.42, 0.64, 0.86, 1] }}
+                        animate={{ opacity: 1, x: [6, 0, -3, 0, -6], y: [6, -3, 0, -2, -4], scale: [0.94, 1.03, 0.98, 1.01, 0.95], rotate: [0, 3, 0, -2, -3] }}
+                        transition={{ duration: 11.5, repeat: Infinity, ease: "easeInOut", delay: delay + 0.24, times: [0, 0.42, 0.64, 0.86, 1] }}
                         className="rounded-full border border-cyan-100/16 bg-white/10 px-2.5 py-1.5 text-[9px] font-bold uppercase tracking-[0.2em] text-white"
                       >
                         Verified

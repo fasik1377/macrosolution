@@ -196,13 +196,13 @@ export default function Home() {
         <motion.div
           aria-hidden="true"
           animate={{ rotate: [0, 360] }}
-          transition={{ duration: 16, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 52, repeat: Infinity, ease: "linear" }}
           className="absolute left-1/2 top-1/2 h-[58rem] w-[58rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10"
         />
         <motion.div
           aria-hidden="true"
           animate={{ rotate: [360, 0] }}
-          transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 46, repeat: Infinity, ease: "linear" }}
           className="absolute left-1/2 top-1/2 h-[38rem] w-[38rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-sky-300/20"
         />
 
@@ -213,7 +213,7 @@ export default function Home() {
 
             <motion.div
               animate={{ rotate: [0, 360] }}
-              transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
+              transition={{ duration: 54, repeat: Infinity, ease: "linear" }}
               className="absolute left-1/2 top-1/2 h-[23rem] w-[23rem] -translate-x-1/2 -translate-y-1/2 sm:h-[34rem] sm:w-[34rem] md:h-[46rem] md:w-[46rem]"
             >
               {[
@@ -279,7 +279,7 @@ export default function Home() {
         <motion.div
           aria-hidden="true"
           animate={{ rotate: [0, 180, 360], scale: [0.96, 1.04, 0.96] }}
-          transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 34, repeat: Infinity, ease: "linear" }}
           className="absolute left-1/2 top-1/2 h-[24rem] w-[24rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/8 shadow-[0_0_80px_rgba(77,159,255,0.12)] md:h-[42rem] md:w-[42rem]"
         />
 
