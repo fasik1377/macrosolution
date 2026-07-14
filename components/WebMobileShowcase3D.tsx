@@ -18,7 +18,7 @@ import {
   LayoutGrid,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 const featureCards = [
   {
@@ -140,8 +140,7 @@ export default function WebMobileShowcase3D() {
   const rightCardY = useTransform(scrollYProgress, [0, 0.5, 1], [140, 0, -100]);
   const orbitRotate = useTransform(scrollYProgress, [0, 1], [0, 220]);
   const stackWrapY = useTransform(scrollYProgress, [0, 0.5, 1], [18, 0, -18]);
-  const [isPaused, setIsPaused] = useState(false);
-  const marqueeDuration = 46;
+  const marqueeDuration = 82;
 
   return (
     <section ref={sectionRef} className="relative min-h-[150vh] overflow-hidden py-10 text-white md:min-h-[180vh] md:py-14">
@@ -206,13 +205,13 @@ export default function WebMobileShowcase3D() {
               <div className="absolute -left-14 bottom-0 h-44 w-44 rounded-full bg-cyan-300/8 blur-3xl" />
 
               <div className="relative grid h-full grid-cols-[1.1fr_0.9fr] gap-4 [transform:translateZ(32px)]">
-                <motion.div animate={{ y: [0, -12, 0], rotateX: [0, 5, 0], rotateY: [0, -4, 0] }} transition={{ duration: 3.4, repeat: Infinity, ease: "easeInOut" }} className="overflow-hidden rounded-[1.6rem] border border-white/10 bg-[#061a3d]/34 p-4 backdrop-blur-md">
+                <motion.div animate={{ y: [0, -8, 0], rotateX: [0, 3, 0], rotateY: [0, -3, 0] }} transition={{ duration: 8.4, repeat: Infinity, ease: "easeInOut" }} className="overflow-hidden rounded-[1.6rem] border border-white/10 bg-[#061a3d]/34 p-4 backdrop-blur-md">
                   <div className="flex items-center gap-2">
                     <span className="h-3 w-3 rounded-full bg-red-400" />
                     <span className="h-3 w-3 rounded-full bg-yellow-400" />
                     <span className="h-3 w-3 rounded-full bg-green-400" />
                   </div>
-                  <motion.div animate={{ y: [0, -8, 0], scale: [1, 1.02, 1] }} transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }} className="mt-4 overflow-hidden rounded-[1.2rem] bg-white/86 p-3">
+                  <motion.div animate={{ y: [0, -5, 0], scale: [1, 1.015, 1] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }} className="mt-4 overflow-hidden rounded-[1.2rem] bg-white/86 p-3">
                     <Image
                       src="/web-and-mobile.jpg"
                       alt="Website and mobile development preview"
@@ -223,7 +222,7 @@ export default function WebMobileShowcase3D() {
                   </motion.div>
                 </motion.div>
 
-                <motion.div animate={{ y: [0, 10, 0], rotateX: [0, -4, 0], rotateY: [0, 4, 0] }} transition={{ duration: 3.6, repeat: Infinity, ease: "easeInOut", delay: 0.12 }} className="flex flex-col gap-4">
+                <motion.div animate={{ y: [0, 7, 0], rotateX: [0, -3, 0], rotateY: [0, 3, 0] }} transition={{ duration: 8.8, repeat: Infinity, ease: "easeInOut", delay: 0.12 }} className="flex flex-col gap-4">
                   <motion.div
                     style={{ y: leftCardY }}
                     className="rounded-[1.6rem] border border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.1),rgba(255,255,255,0.03))] p-5 backdrop-blur-md"
@@ -327,15 +326,8 @@ export default function WebMobileShowcase3D() {
             <div className="pointer-events-none absolute inset-0 rounded-[1.4rem] bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.14),transparent_30%),linear-gradient(135deg,rgba(255,255,255,0.06),transparent_48%,rgba(111,207,255,0.06))]" />
             <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-100/60 to-transparent" />
             <div className="pointer-events-none absolute inset-[1px] rounded-[1.35rem] border border-white/8" />
-            <button
-              type="button"
-              onClick={() => setIsPaused((current) => !current)}
-              className="absolute right-3 top-3 z-20 rounded-full border border-white/14 bg-white/10 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-white backdrop-blur-md transition hover:bg-white/16"
-            >
-              {isPaused ? "Play" : "Pause"}
-            </button>
             <motion.div
-              animate={isPaused || shouldReduceMotion ? { x: undefined } : { x: ["0%", "-50%"] }}
+              animate={{ x: ["0%", "-50%"] }}
               transition={{ duration: marqueeDuration, repeat: Infinity, ease: "linear" }}
               className="relative z-10 flex w-max items-center gap-4 px-3 py-4 pr-10 will-change-transform"
             >
@@ -355,7 +347,7 @@ export default function WebMobileShowcase3D() {
                           }
                     }
                     whileHover={{ y: -8, scale: 1.025 }}
-                    transition={{ duration: 5.8 + (index % 4) * 0.25, repeat: Infinity, ease: "easeInOut", delay: (index % techStacks.length) * 0.03 }}
+                    transition={{ duration: 9.8 + (index % 4) * 0.35, repeat: Infinity, ease: "easeInOut", delay: (index % techStacks.length) * 0.03 }}
                     style={{
                       clipPath: stackShape,
                     }}
@@ -369,8 +361,8 @@ export default function WebMobileShowcase3D() {
                       className="absolute -right-8 -top-8 h-24 w-24 rounded-full border border-white/14 bg-white/10 blur-[1px]"
                     />
                     <motion.div
-                      animate={isPaused || shouldReduceMotion ? { x: undefined } : { x: ["-130%", "140%"] }}
-                      transition={{ duration: marqueeDuration / 3, repeat: Infinity, ease: "linear", delay: (index % techStacks.length) * 0.12 }}
+                      animate={shouldReduceMotion ? { opacity: 0.12 } : { x: ["-130%", "140%"] }}
+                      transition={{ duration: marqueeDuration / 2.4, repeat: Infinity, ease: "linear", delay: (index % techStacks.length) * 0.12 }}
                       className="absolute inset-y-3 w-12 skew-x-[-18deg] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.16),transparent)] blur-md"
                     />
                     <div className="absolute inset-x-3 top-2 h-8 rounded-[999px] bg-[linear-gradient(180deg,rgba(255,255,255,0.22),rgba(191,219,254,0.06),transparent)] opacity-80 blur-sm" />

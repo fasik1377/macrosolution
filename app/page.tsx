@@ -130,60 +130,56 @@ export default function Home() {
       initial={{ opacity: 0, y: 32, rotateY: index === 0 ? -14 : 14, scale: 0.96 }}
       whileInView={{ opacity: 1, y: 0, rotateY: 0, scale: 1 }}
       viewport={{ once: true, amount: 0.25 }}
-      whileHover={{ y: -14, rotateX: index === 0 ? 8 : 10, rotateY: index === 0 ? -10 : 10, scale: 1.03 }}
-      transition={{ duration: 0.7, ease: "easeOut", delay: index * 0.08 }}
-      className={`group relative mx-auto w-full max-w-[19rem] overflow-hidden border border-cyan-100/14 bg-white/[0.05] p-5 shadow-[0_28px_80px_rgba(0,0,0,0.22)] backdrop-blur-xl [transform-style:preserve-3d] ${index === 0 ? "[clip-path:polygon(12%_0,100%_0,100%_78%,88%_100%,0_100%,0_16%)]" : "[clip-path:polygon(0_0,88%_0,100%_18%,100%_100%,12%_100%,0_82%)]"}`}
+      whileHover={{ y: -10, rotateX: index === 0 ? 5 : 6, rotateY: index === 0 ? -6 : 6, scale: 1.02 }}
+      transition={{ duration: 1.05, ease: "easeOut", delay: index * 0.08 }}
+      className={`group relative mx-auto w-full max-w-[19rem] overflow-hidden border border-white/24 bg-gradient-to-br ${leader.accent} p-5 shadow-[0_28px_80px_rgba(0,0,0,0.24)] backdrop-blur-xl [transform-style:preserve-3d] ${index === 0 ? "[clip-path:polygon(12%_0,100%_0,100%_78%,88%_100%,0_100%,0_16%)]" : "[clip-path:polygon(0_0,88%_0,100%_18%,100%_100%,12%_100%,0_82%)]"}`}
     >
       <motion.div
-        animate={{ opacity: [0.08, 0.18, 0.08] }}
-        transition={{ duration: 4.4, repeat: Infinity, ease: "easeInOut", delay: index * 0.18 }}
-        className={`absolute inset-0 bg-gradient-to-br ${leader.accent}`}
+        animate={{ opacity: [0.2, 0.34, 0.2] }}
+        transition={{ duration: 9.6, repeat: Infinity, ease: "easeInOut", delay: index * 0.28 }}
+        className="absolute inset-0 bg-[radial-gradient(circle_at_25%_20%,rgba(255,255,255,0.34),transparent_38%),radial-gradient(circle_at_78%_82%,rgba(255,255,255,0.18),transparent_42%)]"
       />
-      <div className={`absolute inset-[1px] bg-[linear-gradient(145deg,rgba(255,255,255,0.14),rgba(255,255,255,0.03)_24%,rgba(3,15,37,0.22)_56%,rgba(1,8,24,0.38)_100%)] ${index === 0 ? "[clip-path:polygon(12%_0,100%_0,100%_78%,88%_100%,0_100%,0_16%)]" : "[clip-path:polygon(0_0,88%_0,100%_18%,100%_100%,12%_100%,0_82%)]"}`} />
+      <div className={`absolute inset-[1px] bg-[linear-gradient(145deg,rgba(255,255,255,0.2),rgba(255,255,255,0.04)_28%,rgba(2,8,24,0.18)_100%)] ${index === 0 ? "[clip-path:polygon(12%_0,100%_0,100%_78%,88%_100%,0_100%,0_16%)]" : "[clip-path:polygon(0_0,88%_0,100%_18%,100%_100%,12%_100%,0_82%)]"}`} />
       <div className={`absolute inset-x-0 top-0 h-px bg-gradient-to-r ${leader.accent}`} />
       <div className="absolute inset-y-5 left-4 w-px bg-[linear-gradient(180deg,transparent,rgba(196,233,255,0.7),transparent)]" />
       <div className="absolute inset-x-5 bottom-4 h-px bg-[linear-gradient(90deg,transparent,rgba(196,233,255,0.4),transparent)]" />
       <motion.div
         animate={{ x: ["-115%", "125%"] }}
-        transition={{ duration: 4.8, repeat: Infinity, ease: "linear", delay: index * 0.32 }}
-        className="absolute inset-y-0 w-20 skew-x-[-20deg] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.16),transparent)] blur-md"
+        transition={{ duration: 12.5, repeat: Infinity, ease: "linear", delay: index * 0.55 }}
+        className="absolute inset-y-0 w-20 skew-x-[-20deg] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.14),transparent)] blur-md"
       />
 
       <div className="relative z-10 [transform:translateZ(26px)]">
         <div className="flex items-start justify-between gap-3">
           <motion.div
             animate={{ y: [0, -3, 0], rotate: index === 0 ? [0, 5, 0] : [0, 3, 0], scale: [1, 1.04, 1] }}
-            transition={{ duration: 4.4, repeat: Infinity, ease: "easeInOut", delay: index * 0.14 }}
-            className={`relative flex h-14 w-14 items-center justify-center bg-gradient-to-br ${leader.accent} text-base font-black text-white shadow-[0_18px_34px_rgba(11,94,215,0.26)] ${index === 0 ? "[clip-path:polygon(16%_0,100%_0,100%_82%,84%_100%,0_100%,0_18%)]" : "[clip-path:polygon(0_0,84%_0,100%_18%,100%_100%,16%_100%,0_82%)]"}`}
+            transition={{ duration: 9.4, repeat: Infinity, ease: "easeInOut", delay: index * 0.2 }}
+            className={`relative flex h-14 w-14 items-center justify-center border border-white/24 bg-white/18 text-base font-black text-white shadow-[0_18px_34px_rgba(11,94,215,0.24)] backdrop-blur-md ${index === 0 ? "[clip-path:polygon(16%_0,100%_0,100%_82%,84%_100%,0_100%,0_18%)]" : "[clip-path:polygon(0_0,84%_0,100%_18%,100%_100%,16%_100%,0_82%)]"}`}
           >
             <div className="absolute inset-[1px] bg-[radial-gradient(circle_at_35%_30%,rgba(255,255,255,0.34),transparent_48%)]" />
             <span className="relative">{leader.initials}</span>
           </motion.div>
-          <motion.span
-            animate={{ opacity: [0.62, 1, 0.62], y: [0, -2, 0] }}
-            transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut", delay: index * 0.2 }}
-            className="rounded-full border border-cyan-100/12 bg-white/8 px-3 py-1 text-[8px] font-bold uppercase tracking-[0.24em] text-cyan-100"
+          <span
+            className="rounded-full border border-white/24 bg-white/16 px-3 py-1 text-[8px] font-bold uppercase tracking-[0.24em] text-white"
           >
             Org Node
-          </motion.span>
+          </span>
         </div>
 
         <div className="mt-5">
-          <p className="text-[9px] font-semibold uppercase tracking-[0.34em] text-cyan-200/82">{leader.role}</p>
+          <p className="text-[9px] font-semibold uppercase tracking-[0.34em] text-cyan-100">{leader.role}</p>
           <h3 className="mt-2 text-xl font-bold text-white">{leader.name}</h3>
         </div>
 
-        <p className="mt-4 text-sm leading-6 text-white/76">{leader.description}</p>
+        <p className="mt-4 text-sm leading-6 text-white/90">{leader.description}</p>
 
         <div className="mt-5 flex items-center justify-between gap-3">
-          <span className="rounded-full border border-cyan-100/12 bg-white/6 px-3 py-1 text-[8px] font-bold uppercase tracking-[0.24em] text-cyan-100">Leadership</span>
-          <motion.span
-            animate={{ opacity: [0.48, 1, 0.48] }}
-            transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut", delay: index * 0.2 }}
-            className="text-[8px] font-bold uppercase tracking-[0.28em] text-white/56"
+          <span className="rounded-full border border-white/24 bg-white/16 px-3 py-1 text-[8px] font-bold uppercase tracking-[0.24em] text-white">Leadership</span>
+          <span
+            className="text-[8px] font-bold uppercase tracking-[0.28em] text-white/80"
           >
             Active
-          </motion.span>
+          </span>
         </div>
       </div>
     </motion.article>
@@ -262,12 +258,12 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, scale: 0.8, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 0.9, ease: "easeOut", delay: 0.35 }}
+              transition={{ duration: 1.1, ease: "easeOut", delay: 0.35 }}
               className="pointer-events-none absolute right-6 top-10 z-20 hidden md:block"
             >
               <motion.div
-                animate={{ y: [0, -16, 0], rotate: [0, 6, 0, -6, 0] }}
-                transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+                animate={{ y: [0, -10, 0], rotate: [0, 4, 0, -4, 0] }}
+                transition={{ duration: 8.5, repeat: Infinity, ease: "easeInOut" }}
                 className="rounded-[1.8rem] border border-white/16 bg-white/10 p-4 shadow-[0_25px_80px_rgba(0,0,0,0.24)] backdrop-blur-xl"
               >
                 <Image src="/primus-logo-only-tri.png" alt="PRIMUS symbol" width={96} height={96} className="h-auto w-20 object-contain" />
@@ -370,8 +366,8 @@ export default function Home() {
                   ].map((item, index) => (
                     <motion.div
                       key={item}
-                      animate={{ y: index % 2 === 0 ? [0, -8, 0] : [0, 8, 0] }}
-                      transition={{ duration: 4.8 + index * 0.35, repeat: Infinity, ease: "easeInOut" }}
+                      animate={{ y: index % 2 === 0 ? [0, -5, 0] : [0, 5, 0] }}
+                      transition={{ duration: 9.6 + index * 0.45, repeat: Infinity, ease: "easeInOut" }}
                       className="rounded-[1.2rem] border border-white/10 bg-white/8 px-4 py-4 text-sm font-semibold text-white/88 shadow-[0_16px_40px_rgba(0,0,0,0.12)]"
                     >
                       {item}
@@ -534,7 +530,7 @@ export default function Home() {
               <motion.div
                 key={index}
                 animate={{ opacity: [0.25, 0.7, 0.25], scaleX: [0.9, 1.05, 0.9] }}
-                transition={{ duration: 4.6, repeat: Infinity, ease: 'easeInOut', delay: trail.delay }}
+                transition={{ duration: 10.2, repeat: Infinity, ease: 'easeInOut', delay: trail.delay }}
                 className="absolute h-px bg-[linear-gradient(90deg,rgba(34,211,238,0.0),rgba(34,211,238,0.95),rgba(96,165,250,0.0))]"
                 style={{ left: trail.left, top: trail.top, width: trail.width, transform: `rotate(${trail.rotate})` }}
               />
@@ -585,30 +581,30 @@ export default function Home() {
               <div className="pointer-events-none relative mx-auto flex h-24 w-44 items-center justify-center lg:h-full lg:w-full">
                 <motion.div
                   animate={{ opacity: [0.18, 0.48, 0.18], scaleX: [0.92, 1.06, 0.92] }}
-                  transition={{ duration: 3.4, repeat: Infinity, ease: "easeInOut" }}
+                  transition={{ duration: 9.4, repeat: Infinity, ease: "easeInOut" }}
                   className="absolute left-1/2 top-1/2 h-14 w-full -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(125,211,252,0.18),transparent_68%)] blur-xl"
                 />
                 <div className="absolute left-0 right-0 top-1/2 h-px -translate-y-1/2 bg-[linear-gradient(90deg,rgba(125,211,252,0.08),rgba(125,211,252,0.85),rgba(125,211,252,0.08))]" />
                 <motion.div
                   animate={{ x: ["-42%", "42%", "-42%"] }}
-                  transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut" }}
+                  transition={{ duration: 10.2, repeat: Infinity, ease: "easeInOut" }}
                   className="absolute left-1/2 top-1/2 h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-200 shadow-[0_0_22px_rgba(125,211,252,0.8)]"
                 />
                 <motion.div
                   animate={{ x: ["42%", "-42%", "42%"] }}
-                  transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: 0.38 }}
+                  transition={{ duration: 10.2, repeat: Infinity, ease: "easeInOut", delay: 0.38 }}
                   className="absolute left-1/2 top-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white shadow-[0_0_20px_rgba(255,255,255,0.82)]"
                 />
                 <motion.div
                   animate={{ x: [-64, 64], opacity: [0, 1, 0] }}
-                  transition={{ duration: 2.8, repeat: Infinity, ease: "linear" }}
+                  transition={{ duration: 8.8, repeat: Infinity, ease: "linear" }}
                   className="absolute left-1/2 top-[calc(50%-1rem)] -translate-x-1/2 text-[10px] font-bold tracking-[0.32em] text-cyan-200/82"
                 >
                   0101
                 </motion.div>
                 <motion.div
                   animate={{ x: [64, -64], opacity: [0, 1, 0] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "linear", delay: 0.24 }}
+                  transition={{ duration: 9, repeat: Infinity, ease: "linear", delay: 0.24 }}
                   className="absolute left-1/2 top-[calc(50%+0.55rem)] -translate-x-1/2 text-[10px] font-bold tracking-[0.32em] text-cyan-100/72"
                 >
                   DATA
