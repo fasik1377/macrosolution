@@ -1,7 +1,6 @@
 ﻿"use client";
 
 import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
-import Image from "next/image";
 import dynamic from "next/dynamic";
 import { Banknote, BadgePercent, CalendarRange, ClipboardList, CreditCard, UserRound, ShieldCheck, ChartColumn, BadgeCheck, ScanLine, CheckCircle } from "lucide-react";
 import { useRef } from "react";
@@ -191,7 +190,7 @@ export default function Home() {
 
       <Navbar />
 
-      <section className="relative overflow-hidden pb-14 pt-24 text-white sm:pt-16 md:pb-20">
+      <section className="relative overflow-hidden pb-14 pt-16 text-white md:pb-20">
         <HeroSoftwareBackground3D />
         <motion.div
           aria-hidden="true"
@@ -207,7 +206,7 @@ export default function Home() {
         />
 
         <div className="container relative z-10 mx-auto px-4 sm:px-6">
-          <div className="relative mt-4 h-[760px] sm:h-[880px] md:mt-8 md:h-[980px]">
+          <div className="relative h-[680px] sm:mt-4 sm:h-[880px] md:mt-8 md:h-[980px]">
             <div className="absolute left-1/2 top-1/2 h-[23rem] w-[23rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/14 sm:h-[34rem] sm:w-[34rem] md:h-[46rem] md:w-[46rem]" />
             <div className="absolute left-1/2 top-1/2 h-[27rem] w-[27rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-sky-300/20 sm:h-[40rem] sm:w-[40rem] md:h-[54rem] md:w-[54rem]" />
 
@@ -254,21 +253,6 @@ export default function Home() {
                 Advanced payroll automation with compliance, reports, employee access, and seamless payroll operations in one intelligent system.
               </p>
             </div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 1.1, ease: "easeOut", delay: 0.35 }}
-              className="pointer-events-none absolute right-6 top-10 z-20 hidden md:block"
-            >
-              <motion.div
-                animate={{ y: [0, -10, 0], rotate: [0, 4, 0, -4, 0] }}
-                transition={{ duration: 8.5, repeat: Infinity, ease: "easeInOut" }}
-                className="rounded-[1.8rem] border border-white/16 bg-white/10 p-4 shadow-[0_25px_80px_rgba(0,0,0,0.24)] backdrop-blur-xl"
-              >
-                <Image src="/primus-logo-only-tri.png" alt="PRIMUS symbol" width={96} height={96} className="h-auto w-20 object-contain" />
-              </motion.div>
-            </motion.div>
           </div>
         </div>
       </section>

@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Globe2, Mail, Phone } from "lucide-react";
-import { useEffect, useState } from "react";
 import HomeTechBackground from "@/components/HomeTechBackground";
 
 const navLinks = [
@@ -27,85 +26,74 @@ type FooterProps = {
 };
 
 export default function Footer({ background = true }: FooterProps) {
-  const [isMobile, setIsMobile] = useState(true);
-
-  useEffect(() => {
-    const mobileQuery = window.matchMedia("(max-width: 767px)");
-    const updateIsMobile = () => setIsMobile(mobileQuery.matches);
-
-    updateIsMobile();
-    mobileQuery.addEventListener("change", updateIsMobile);
-
-    return () => mobileQuery.removeEventListener("change", updateIsMobile);
-  }, []);
-
   return (
     <footer className={`relative overflow-hidden text-white ${background ? "bg-[#0096FF]" : ""}`}>
       {background ? <HomeTechBackground /> : null}
 
-      <div className="container relative z-10 mx-auto px-6 py-14 md:py-16">
-        <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+      <div className="relative z-10 mx-auto w-full max-w-[1500px] px-6 py-12 md:px-8 md:py-14">
+        <div className="flex flex-col gap-7 border-b border-white/14 pb-8 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <motion.div
-              animate={isMobile ? undefined : { y: [0, -8, 0], rotate: [0, 2, 0, -2, 0] }}
-              transition={isMobile ? undefined : { duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
-              className="mb-6 inline-flex rounded-[1.75rem] border border-white/12 bg-white/8 p-4 [backface-visibility:hidden] [transform:translateZ(0)] md:backdrop-blur-md"
-            >
-              <Image
-                src="/primus-logo.png"
-                alt="PRIMUS secondary logo"
-                width={150}
-                height={60}
-                className="h-auto w-32 object-contain"
-              />
-            </motion.div>
-
-            <p className="text-sm font-semibold uppercase tracking-[0.35em] text-white/65">
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-cyan-100">
               Let&apos;s Build the Future Together
             </p>
-            <h2 className="mt-4 max-w-2xl text-3xl font-bold leading-tight md:text-5xl">
-              Macro Solution Ltd - Your Technology Partner in Mauritius
+            <h2 className="mt-3 text-3xl font-bold uppercase leading-none text-white md:text-5xl">
+              Macro Solution Ltd
             </h2>
-
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              {contactItems.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <motion.a
-                    key={item.label}
-                    href={item.href}
-                    target={item.href.startsWith("http") ? "_blank" : undefined}
-                    rel={item.href.startsWith("http") ? "noreferrer" : undefined}
-                    whileHover={{ y: -3, scale: 1.01 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/6 px-4 py-4 backdrop-blur-sm transition hover:border-white/20 hover:bg-white/10"
-                  >
-                    <Icon size={18} className="shrink-0 text-cyan-300" />
-                    <span className="text-sm text-white/90">{item.label}</span>
-                  </motion.a>
-                );
-              })}
-            </div>
-          </div>
-
-          <div className="rounded-3xl border border-white/10 bg-white/6 p-7 backdrop-blur-md">
-            <div className="flex flex-wrap gap-3">
-              {navLinks.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="rounded-full border border-white/10 px-4 py-2 text-sm text-white/85 transition hover:border-white/20 hover:bg-white/10 hover:text-white"
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-
-            <p className="mt-8 text-sm leading-7 text-white/65">
-              Copyright 2026 Macro Solution. All rights reserved.
+            <p className="mt-3 text-sm font-semibold uppercase tracking-[0.2em] text-white/72 md:text-lg">
+              Your Technology Partner in Mauritius
             </p>
           </div>
+
+          <div className="inline-flex w-fit border border-white/14 bg-white/8 p-3 backdrop-blur-sm">
+            <Image
+              src="/primus-logo.png"
+              alt="PRIMUS secondary logo"
+              width={150}
+              height={60}
+              className="h-auto w-28 object-contain md:w-32"
+            />
+          </div>
         </div>
+
+        <div className="flex flex-col gap-7 border-b border-white/14 py-8 xl:flex-row xl:items-center xl:justify-between xl:gap-10">
+          <div className="grid gap-x-7 gap-y-4 sm:grid-cols-2 lg:grid-cols-4 xl:flex xl:flex-nowrap xl:items-center">
+            {contactItems.map((item) => {
+              const Icon = item.icon;
+              return (
+                <motion.a
+                  key={item.label}
+                  href={item.href}
+                  target={item.href.startsWith("http") ? "_blank" : undefined}
+                  rel={item.href.startsWith("http") ? "noreferrer" : undefined}
+                  whileHover={{ y: -3, scale: 1.01 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="group flex items-center gap-2.5 whitespace-nowrap text-sm text-white/88 transition hover:text-white"
+                >
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center border border-white/14 bg-white/8 transition group-hover:border-cyan-200/50 group-hover:bg-white/12">
+                    <Icon size={15} className="text-cyan-200" />
+                  </span>
+                  <span>{item.label}</span>
+                </motion.a>
+              );
+            })}
+          </div>
+
+          <nav aria-label="Footer navigation" className="flex flex-wrap items-center gap-x-6 gap-y-3 xl:flex-nowrap">
+            {navLinks.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="whitespace-nowrap text-xs font-bold uppercase tracking-[0.16em] text-white/72 transition hover:text-cyan-100"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
+
+        <p className="pt-6 text-center text-sm text-white/68">
+          Copyright 2026 Macro Solution. All rights reserved.
+        </p>
       </div>
     </footer>
   );
