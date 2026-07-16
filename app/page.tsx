@@ -186,7 +186,7 @@ export default function Home() {
   );
 
   return (
-    <main className="relative overflow-x-clip bg-[#436E9B] text-white">
+    <main className="relative overflow-x-clip bg-[#0000FF] text-white">
       <HomeTechBackground fixed className="z-0" />
 
       <Navbar />
