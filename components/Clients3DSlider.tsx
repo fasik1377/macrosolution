@@ -143,8 +143,8 @@ export default function Clients3DSlider() {
                   <div className="relative z-10 flex h-full w-full flex-col justify-between [transform-style:preserve-3d]">
                     <div className="flex items-start justify-between gap-4">
                       <motion.div
-                        initial={{ opacity: 0, x: 26, scale: 0.7, rotate: -16 }}
-                        animate={{ opacity: 1, x: [10, 0, -4, 0, -8], y: [7, -4, 0, -3, -5], scale: [0.92, 1.04, 0.98, 1.02, 0.94], rotate: [-6, 3, 0, 4, 5] }}
+                        initial={{ x: 26, scale: 0.7, rotate: -16 }}
+                        animate={{ x: [10, 0, -4, 0, -8], y: [7, -4, 0, -3, -5], scale: [0.92, 1.04, 0.98, 1.02, 0.94], rotate: [-6, 3, 0, 4, 5] }}
                         transition={{ duration: 11.5, repeat: Infinity, ease: "easeInOut", delay, times: [0, 0.24, 0.5, 0.76, 1] }}
                         className="relative flex h-14 w-14 items-center justify-center rounded-[0.95rem] border border-cyan-100/16 bg-white/12 shadow-[0_16px_34px_rgba(0,0,0,0.18)] [transform:translateZ(30px)]"
                       >
@@ -155,8 +155,8 @@ export default function Clients3DSlider() {
                       </motion.div>
 
                       <motion.div
-                        initial={{ opacity: 0, x: 18, scale: 0.7 }}
-                        animate={{ opacity: 1, x: [7, 0, -3, 0, -7], y: [6, -3, 0, -2, -4], scale: [0.92, 1.03, 0.97, 1.01, 0.94] }}
+                        initial={{ x: 18, scale: 0.7 }}
+                        animate={{ x: [7, 0, -3, 0, -7], y: [6, -3, 0, -2, -4], scale: [0.92, 1.03, 0.97, 1.01, 0.94] }}
                         transition={{ duration: 11.5, repeat: Infinity, ease: "easeInOut", delay: delay + 0.07, times: [0, 0.25, 0.52, 0.78, 1] }}
                         className="flex flex-col items-end gap-3 [transform:translateZ(18px)]"
                       >
@@ -168,8 +168,8 @@ export default function Clients3DSlider() {
                     </div>
 
                     <motion.div
-                      initial={{ opacity: 0, x: 40, scale: 0.86 }}
-                      animate={{ opacity: 1, x: [10, 0, -4, 0, -10], y: [8, -4, 0, -2, -5], scale: [0.96, 1.03, 0.98, 1.01, 0.97], rotateX: [0, 3, 0, 2, 0] }}
+                      initial={{ x: 40, scale: 0.86 }}
+                      animate={{ x: [10, 0, -4, 0, -10], y: [8, -4, 0, -2, -5], scale: [0.96, 1.03, 0.98, 1.01, 0.97], rotateX: [0, 3, 0, 2, 0] }}
                       transition={{ duration: 11.5, repeat: Infinity, ease: "easeInOut", delay: delay + 0.12, times: [0, 0.32, 0.56, 0.8, 1] }}
                       className="mt-6 [transform:translateZ(30px)]"
                     >
@@ -183,8 +183,8 @@ export default function Clients3DSlider() {
 
                     <div className="mt-6 flex items-end justify-between gap-3 [transform:translateZ(24px)]">
                       <motion.div
-                        initial={{ opacity: 0, x: 34, scale: 0.84 }}
-                        animate={{ opacity: 1, x: [8, 0, -4, 0, -8], y: [7, -3, 0, -2, -4], scale: [0.96, 1.03, 0.98, 1.01, 0.96] }}
+                        initial={{ x: 34, scale: 0.84 }}
+                        animate={{ x: [8, 0, -4, 0, -8], y: [7, -3, 0, -2, -4], scale: [0.96, 1.03, 0.98, 1.01, 0.96] }}
                         transition={{ duration: 11.5, repeat: Infinity, ease: "easeInOut", delay: delay + 0.18, times: [0, 0.38, 0.6, 0.84, 1] }}
                       >
                         <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-white/66">
@@ -196,8 +196,8 @@ export default function Clients3DSlider() {
                       </motion.div>
 
                       <motion.span
-                        initial={{ opacity: 0, x: 22, scale: 0.76 }}
-                        animate={{ opacity: 1, x: [6, 0, -3, 0, -6], y: [6, -3, 0, -2, -4], scale: [0.94, 1.03, 0.98, 1.01, 0.95], rotate: [0, 3, 0, -2, -3] }}
+                        initial={{ x: 22, scale: 0.76 }}
+                        animate={{ x: [6, 0, -3, 0, -6], y: [6, -3, 0, -2, -4], scale: [0.94, 1.03, 0.98, 1.01, 0.95], rotate: [0, 3, 0, -2, -3] }}
                         transition={{ duration: 11.5, repeat: Infinity, ease: "easeInOut", delay: delay + 0.24, times: [0, 0.42, 0.64, 0.86, 1] }}
                         className="rounded-full border border-cyan-100/16 bg-white/10 px-2.5 py-1.5 text-[9px] font-bold uppercase tracking-[0.2em] text-white"
                       >
