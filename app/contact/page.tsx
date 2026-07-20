@@ -42,8 +42,8 @@ const responseItems = [
 
 export default function ContactPage() {
   return (
-    <main className="relative overflow-x-clip bg-[#0096FF] text-white">
-      <TechPageBackground />
+    <main className="relative isolate overflow-x-clip bg-[#0000FF] text-white">
+      <TechPageBackground variant="ecosystem" />
 
       <Navbar />
       <ContactScrollHero3D />
