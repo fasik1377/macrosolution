@@ -20,7 +20,7 @@ const floatingDots = [
   "left-1/2 top-[18%] h-2 w-2",
 ];
 
-export default function AboutScrollHero3D({ title, description }: { title: string; description: string }) {
+export default function AboutScrollHero3D() {
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -94,16 +94,8 @@ export default function AboutScrollHero3D({ title, description }: { title: strin
           />
         </motion.div>
 
-        <div className="container relative z-10 mx-auto grid min-h-[620px] items-center gap-12 px-6 lg:grid-cols-[0.9fr_1.1fr]">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <p className="font-semibold uppercase tracking-[0.28em] text-cyan-100">About Macro Solution</p>
-            <h1 className="mt-6 text-3xl font-bold leading-[1.08] text-white md:text-5xl lg:text-6xl">{title}</h1>
-            <p className="mt-7 max-w-2xl border border-white/18 bg-white/10 p-5 text-base font-medium leading-8 text-white/88 shadow-[0_18px_45px_rgba(0,0,0,0.12)] backdrop-blur md:text-lg [clip-path:polygon(0_0,100%_0,96%_100%,0_100%,4%_50%)]">
-              {description}
-            </p>
-          </motion.div>
-
-          <div className="relative h-[620px] [perspective:1800px]">
+        <div className="container relative z-10 mx-auto flex min-h-[620px] items-center justify-center px-6">
+          <div className="relative h-[620px] w-full max-w-4xl [perspective:1800px]">
             <motion.div
               style={{ y: panelY, rotateX: panelRotateX, rotateY: panelRotateY, scale: panelScale }}
               animate={{ y: [0, -14, 0], rotateX: [0, 3, 0], rotateY: [0, -5, 0] }}

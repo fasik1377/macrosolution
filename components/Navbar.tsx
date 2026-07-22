@@ -31,7 +31,7 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="fixed left-0 top-0 z-50 w-full bg-[#0000FF] shadow-[0_12px_36px_rgba(0,0,0,0.12)]">
+    <header className="fixed left-0 top-0 z-50 w-full bg-[linear-gradient(125deg,#0000FF_0%,#06174d_24%,#0018a8_48%,#083b8a_72%,#0000FF_100%)] shadow-[0_12px_36px_rgba(0,0,0,0.12)]">
       <div className="relative mx-auto flex w-full max-w-[1600px] items-center justify-between px-4 py-4 md:px-6">
         <motion.div
           initial={isMobile ? false : { opacity: 0, y: -14, scale: 0.94 }}

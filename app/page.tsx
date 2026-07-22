@@ -261,8 +261,6 @@ export default function Home() {
         </div>
       </section>
 
-      <WebMobileShowcase3D />
-
       <section id="about" className="relative overflow-hidden pb-14 pt-8 text-white [perspective:2200px] md:pb-20 md:pt-12">
         <motion.div
           aria-hidden="true"
@@ -393,6 +391,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <WebMobileShowcase3D />
+
 <section className="relative overflow-hidden pb-4 pt-14 text-white md:pt-20">
         <div className="container relative z-10 mx-auto px-6">
           <div className="relative mx-auto min-h-[640px] overflow-hidden rounded-[2.4rem] border border-cyan-100/10 bg-[linear-gradient(145deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02)_18%,rgba(2,10,28,0.24)_52%,rgba(1,8,20,0.58)_100%)] shadow-[0_40px_140px_rgba(0,0,0,0.3)] backdrop-blur-xl">

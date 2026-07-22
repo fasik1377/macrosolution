@@ -57,9 +57,27 @@ export default function AboutPage() {
       <TechPageBackground />
 
       <Navbar />
-      <AboutScrollHero3D title={`${company.tagline}.`} description={company.intro} />
+      <AboutScrollHero3D />
 
-      <section className="relative -mt-10 overflow-hidden py-10 text-white md:-mt-14 md:py-12">
+      <section className="relative overflow-hidden py-16 text-white md:py-20">
+        <div className="container relative z-10 mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="mx-auto max-w-4xl text-center"
+          >
+            <p className="font-semibold uppercase tracking-[0.28em] text-cyan-100">About Macro Solution</p>
+            <h1 className="mt-6 text-3xl font-bold leading-[1.08] text-white md:text-5xl lg:text-6xl">{company.tagline}.</h1>
+            <p className="mx-auto mt-7 max-w-3xl border border-white/18 bg-white/10 p-6 text-base font-medium leading-8 text-white/88 shadow-[0_18px_45px_rgba(0,0,0,0.12)] backdrop-blur md:text-lg">
+              {company.intro}
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden py-10 text-white md:py-12">
         <div className="container relative z-10 mx-auto px-6">
           <motion.div
             initial="hidden"
