@@ -9,7 +9,7 @@ type TechPageBackgroundProps = {
   variant?: "light" | "ecosystem";
 };
 
-export default function TechPageBackground({ className = "", variant = "light" }: TechPageBackgroundProps) {
+export default function TechPageBackground({ className = "", variant = "ecosystem" }: TechPageBackgroundProps) {
   const isEcosystem = variant === "ecosystem";
 
   return (

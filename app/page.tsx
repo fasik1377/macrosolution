@@ -237,10 +237,14 @@ export default function Home() {
                     <div className={`absolute inset-2 rounded-full bg-gradient-to-br ${item.color} opacity-95`} />
                     <div className="absolute inset-[1px] rounded-full border border-white/24" />
                     <div className="absolute inset-[18%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.34),transparent_68%)]" />
-                    <div className="relative z-10 flex flex-col items-center gap-1 leading-4 sm:gap-2 sm:leading-5">
+                    <motion.div
+                      animate={{ rotate: [0, -360] }}
+                      transition={{ duration: 54, repeat: Infinity, ease: "linear" }}
+                      className="relative z-10 flex flex-col items-center gap-1 leading-4 sm:gap-2 sm:leading-5"
+                    >
                       <Icon size={18} className="text-white drop-shadow-[0_6px_12px_rgba(0,0,0,0.22)]" />
                       <span>{item.label}</span>
-                    </div>
+                    </motion.div>
                   </motion.div>
                 );
               })}
@@ -611,7 +615,7 @@ export default function Home() {
         </div>
       </section>
 
-      <Footer background={false} />
+      <Footer />
     </main>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { animate as animateValue, motion, useMotionValue, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import {
   Code2,
@@ -18,7 +18,7 @@ import {
   LayoutGrid,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 const featureCards = [
   {
@@ -126,6 +126,8 @@ const codeSnippets: Record<SnippetTitle, CodeSnippet[]> = {
 };
 
 export default function WebMobileShowcase3D() {
+  const marqueeX = useMotionValue("0%");
+  const marqueeAnimation = useRef<ReturnType<typeof animateValue> | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const shouldReduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
@@ -141,6 +143,18 @@ export default function WebMobileShowcase3D() {
   const orbitRotate = useTransform(scrollYProgress, [0, 1], [0, 220]);
   const stackWrapY = useTransform(scrollYProgress, [0, 0.5, 1], [18, 0, -18]);
   const marqueeDuration = 82;
+
+  useEffect(() => {
+    if (shouldReduceMotion) return;
+
+    marqueeAnimation.current = animateValue(marqueeX, ["0%", "-50%"], {
+      duration: marqueeDuration,
+      repeat: Infinity,
+      ease: "linear",
+    });
+
+    return () => marqueeAnimation.current?.stop();
+  }, [marqueeX, shouldReduceMotion]);
 
   return (
     <section ref={sectionRef} className="relative min-h-[150vh] overflow-hidden py-10 text-white md:min-h-[180vh] md:py-14">
@@ -322,13 +336,16 @@ export default function WebMobileShowcase3D() {
             </motion.p>
           </div>
 
-          <div className="relative overflow-x-auto overflow-y-hidden rounded-[1.4rem] border border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.12),rgba(255,255,255,0.04))] px-2 pb-5 pt-12 shadow-[0_24px_80px_rgba(0,0,0,0.22)] backdrop-blur-xl [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div
+            className="relative overflow-x-auto overflow-y-hidden rounded-[1.4rem] border border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.12),rgba(255,255,255,0.04))] px-2 pb-5 pt-12 shadow-[0_24px_80px_rgba(0,0,0,0.22)] backdrop-blur-xl [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            onMouseEnter={() => marqueeAnimation.current?.pause()}
+            onMouseLeave={() => marqueeAnimation.current?.play()}
+          >
             <div className="pointer-events-none absolute inset-0 rounded-[1.4rem] bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.14),transparent_30%),linear-gradient(135deg,rgba(255,255,255,0.06),transparent_48%,rgba(111,207,255,0.06))]" />
             <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-100/60 to-transparent" />
             <div className="pointer-events-none absolute inset-[1px] rounded-[1.35rem] border border-white/8" />
             <motion.div
-              animate={{ x: ["0%", "-50%"] }}
-              transition={{ duration: marqueeDuration, repeat: Infinity, ease: "linear" }}
+              style={{ x: marqueeX }}
               className="relative z-10 flex w-max items-center gap-4 px-3 py-4 pr-10 will-change-transform"
             >
               {[...techStacks, ...techStacks].map((stack, index) => {
@@ -346,7 +363,7 @@ export default function WebMobileShowcase3D() {
                             opacity: [0.92, 1, 0.94],
                           }
                     }
-                    whileHover={{ y: -8, scale: 1.025 }}
+                    whileHover={{ y: -8, scale: 1.1 }}
                     transition={{ duration: 9.8 + (index % 4) * 0.35, repeat: Infinity, ease: "easeInOut", delay: (index % techStacks.length) * 0.03 }}
                     style={{
                       clipPath: stackShape,

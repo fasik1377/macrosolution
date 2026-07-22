@@ -53,7 +53,7 @@ export default function AboutPage() {
   const trustSectionRotateY = useTransform(scrollYProgress, [0.58, 0.74, 0.9], [-8, 0, 8]);
 
   return (
-    <main className="relative overflow-x-clip bg-[#0096FF] text-white">
+    <main className="relative isolate overflow-x-clip bg-[#0000FF] text-white">
       <TechPageBackground />
 
       <Navbar />

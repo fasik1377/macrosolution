@@ -27,7 +27,7 @@ type FooterProps = {
 
 export default function Footer({ background = true }: FooterProps) {
   return (
-    <footer className={`relative overflow-hidden text-white ${background ? "bg-[#0096FF]" : ""}`}>
+    <footer className={`relative overflow-hidden text-white ${background ? "bg-[#0000FF]" : ""}`}>
       {background ? <HomeTechBackground /> : null}
 
       <div className="relative z-10 mx-auto w-full max-w-[1500px] px-6 py-12 md:px-8 md:py-14">

@@ -23,9 +23,9 @@ export default function ServicesScrollHero3D() {
 
   return (
     <section ref={sectionRef} className="relative min-h-[260vh] overflow-hidden text-white">
-      <div className="sticky top-0 flex min-h-screen items-center overflow-hidden bg-[#0096FF] pt-28">
+      <div className="sticky top-0 flex min-h-screen items-center overflow-hidden bg-[#0000FF] pt-28">
         <DataNetworkBackground variant="light" className="absolute inset-0 opacity-76" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_16%,rgba(255,255,255,0.16),transparent_24%),radial-gradient(circle_at_80%_18%,rgba(125,211,252,0.22),transparent_22%),radial-gradient(circle_at_80%_74%,rgba(14,165,233,0.18),transparent_30%),linear-gradient(135deg,#4dbdff_0%,#0096FF_42%,#0b8fe9_70%,#64c8ff_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_16%,rgba(34,211,238,0.2),transparent_24%),radial-gradient(circle_at_80%_18%,rgba(96,165,250,0.26),transparent_22%),radial-gradient(circle_at_80%_74%,rgba(14,165,233,0.18),transparent_30%),linear-gradient(135deg,#0000FF_0%,#06174d_38%,#0018a8_68%,#083b8a_100%)] bg-[length:180%_180%]" />
         <motion.div
           aria-hidden="true"
           style={{ rotate: orbitRotate }}

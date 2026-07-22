@@ -1,8 +1,8 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { animate as animateValue, motion, useMotionValue, useScroll, useTransform } from "framer-motion";
 import { Building2, BriefcaseBusiness, Cable, Layers3, ShieldCheck } from "lucide-react";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 const portfolioItems = [
   {
@@ -66,6 +66,8 @@ const slidingItems = [...portfolioItems, ...portfolioItems];
 
 export default function ProductPortfolio3D() {
   const sectionRef = useRef<HTMLElement>(null);
+  const trackX = useMotionValue("0%");
+  const trackAnimation = useRef<ReturnType<typeof animateValue> | null>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
@@ -74,6 +76,16 @@ export default function ProductPortfolio3D() {
   const carouselRotateX = useTransform(scrollYProgress, [0, 0.5, 1], [18, 0, -16]);
   const carouselRotateY = useTransform(scrollYProgress, [0, 0.5, 1], [-12, 0, 12]);
   const carouselScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.93, 1, 0.95]);
+
+  useEffect(() => {
+    trackAnimation.current = animateValue(trackX, ["0%", "-50%"], {
+      duration: 28,
+      repeat: Infinity,
+      ease: "linear",
+    });
+
+    return () => trackAnimation.current?.stop();
+  }, [trackX]);
 
   return (
     <section ref={sectionRef} className="relative overflow-hidden py-4 text-white">
@@ -90,18 +102,21 @@ export default function ProductPortfolio3D() {
           </p>
         </div>
 
-        <div className="relative mt-4 [perspective:2200px]">
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-16 bg-gradient-to-r from-[#0096FF] to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-16 bg-gradient-to-l from-[#0096FF] to-transparent" />
+        <div
+          className="relative mt-4 [perspective:2200px]"
+          onMouseEnter={() => trackAnimation.current?.pause()}
+          onMouseLeave={() => trackAnimation.current?.play()}
+        >
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-16 bg-gradient-to-r from-[#0000FF] to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-16 bg-gradient-to-l from-[#0000FF] to-transparent" />
 
           <motion.div
-            animate={{ x: ["0%", "-50%"], rotateX: [0, 6, -3, 0], rotateY: [0, -6, 5, 0] }}
+            animate={{ rotateX: [0, 6, -3, 0], rotateY: [0, -6, 5, 0] }}
             transition={{
-              x: { duration: 28, repeat: Infinity, ease: "linear" },
               rotateX: { duration: 14, repeat: Infinity, ease: "easeInOut" },
               rotateY: { duration: 14, repeat: Infinity, ease: "easeInOut" },
             }}
-            style={{ y: carouselDepth, rotateX: carouselRotateX, rotateY: carouselRotateY, scale: carouselScale }}
+            style={{ x: trackX, y: carouselDepth, rotateX: carouselRotateX, rotateY: carouselRotateY, scale: carouselScale }}
             className="flex w-max transform-gpu gap-6 px-2 pb-12 pt-2 [transform-style:preserve-3d] [will-change:transform]"
           >
             {slidingItems.map((item, index) => {

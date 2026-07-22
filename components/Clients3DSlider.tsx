@@ -1,8 +1,8 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { animate as animateValue, motion, useMotionValue, useScroll, useTransform } from "framer-motion";
 import { Building2, Sparkles } from "lucide-react";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 const clients = [
   {
@@ -47,6 +47,8 @@ const track = [...clients, ...clients];
 
 export default function Clients3DSlider() {
   const sectionRef = useRef<HTMLElement>(null);
+  const trackX = useMotionValue("0%");
+  const trackAnimation = useRef<ReturnType<typeof animateValue> | null>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
@@ -55,6 +57,16 @@ export default function Clients3DSlider() {
   const trackRotateX = useTransform(scrollYProgress, [0, 0.5, 1], [14, 0, -14]);
   const trackRotateY = useTransform(scrollYProgress, [0, 0.5, 1], [-10, 0, 10]);
   const trackScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.95, 1, 0.96]);
+
+  useEffect(() => {
+    trackAnimation.current = animateValue(trackX, ["0%", "-50%"], {
+      duration: 48,
+      repeat: Infinity,
+      ease: "linear",
+    });
+
+    return () => trackAnimation.current?.stop();
+  }, [trackX]);
 
   return (
     <section ref={sectionRef} className="relative overflow-hidden py-16 text-white md:py-24">
@@ -78,14 +90,18 @@ export default function Clients3DSlider() {
           </p>
         </div>
 
-        <div className="relative mt-12 overflow-hidden [perspective:2000px] md:mt-16">
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-20 bg-gradient-to-r from-[#0096FF] via-[#0096FF]/70 to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-20 bg-gradient-to-l from-[#0096FF] via-[#0096FF]/70 to-transparent" />
+        <div
+          className="relative mt-12 overflow-hidden [perspective:2000px] md:mt-16"
+          onMouseEnter={() => trackAnimation.current?.pause()}
+          onMouseLeave={() => trackAnimation.current?.play()}
+        >
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-20 bg-gradient-to-r from-[#0000FF] via-[#0000FF]/70 to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-20 bg-gradient-to-l from-[#0000FF] via-[#0000FF]/70 to-transparent" />
 
           <motion.div
-            animate={{ x: ["0%", "-50%"], rotateX: [0, 3, -2, 0], rotateY: [0, -3, 2, 0] }}
-            transition={{ x: { duration: 48, repeat: Infinity, ease: "linear" }, rotateX: { duration: 18, repeat: Infinity, ease: "easeInOut" }, rotateY: { duration: 18, repeat: Infinity, ease: "easeInOut" } }}
-            style={{ y: trackY, rotateX: trackRotateX, rotateY: trackRotateY, scale: trackScale }}
+            animate={{ rotateX: [0, 3, -2, 0], rotateY: [0, -3, 2, 0] }}
+            transition={{ rotateX: { duration: 18, repeat: Infinity, ease: "easeInOut" }, rotateY: { duration: 18, repeat: Infinity, ease: "easeInOut" } }}
+            style={{ x: trackX, y: trackY, rotateX: trackRotateX, rotateY: trackRotateY, scale: trackScale }}
             className="flex w-max gap-5 px-3 py-6 [transform-style:preserve-3d]"
           >
             {track.map((client, index) => {
@@ -109,7 +125,7 @@ export default function Clients3DSlider() {
                     delay,
                     times: [0, 0.24, 0.5, 0.76, 1],
                   }}
-                  whileHover={{ y: -22, rotateX: 16, rotateY: index % 2 === 0 ? -18 : 18, scale: 1.06, opacity: 1 }}
+                  whileHover={{ y: -22, rotateX: 16, rotateY: index % 2 === 0 ? -18 : 18, scale: 1.1, opacity: 1 }}
                   className={`group relative flex min-h-[235px] w-[min(78vw,255px)] shrink-0 overflow-hidden rounded-[1.45rem] border border-white/22 bg-gradient-to-br ${client.accent} p-4 shadow-[0_26px_90px_rgba(0,0,0,0.24)] backdrop-blur-lg [transform-style:preserve-3d]`}
                 >
                   <motion.div

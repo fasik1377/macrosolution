@@ -31,7 +31,7 @@ const deliveryLayers = [
 
 export default function ServicesPage() {
   return (
-    <main className="relative overflow-x-clip bg-[#0096FF] text-white">
+    <main className="relative isolate overflow-x-clip bg-[#0000FF] text-white">
       <TechPageBackground />
 
       <Navbar />

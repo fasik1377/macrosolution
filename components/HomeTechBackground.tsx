@@ -44,7 +44,7 @@ export default function HomeTechBackground({ className = "", fixed = false }: Ho
                 times: [0, 0.38, 0.7, 1],
               }
         }
-        className="absolute -inset-[8%] bg-[linear-gradient(125deg,#0000FF_0%,#0000FF_42%,#0000FF_68%,#003DFF_84%,#0096FF_100%)] bg-[length:220%_220%] will-change-transform"
+        className="absolute -inset-[8%] bg-[linear-gradient(125deg,#0000FF_0%,#06174d_24%,#0018a8_48%,#083b8a_72%,#0000FF_100%)] bg-[length:220%_220%] will-change-transform"
       />
       <motion.div
         animate={

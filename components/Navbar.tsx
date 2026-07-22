@@ -31,7 +31,7 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="fixed left-0 top-0 z-50 w-full">
+    <header className="fixed left-0 top-0 z-50 w-full bg-[#0000FF] shadow-[0_12px_36px_rgba(0,0,0,0.12)]">
       <div className="relative mx-auto flex w-full max-w-[1600px] items-center justify-between px-4 py-4 md:px-6">
         <motion.div
           initial={isMobile ? false : { opacity: 0, y: -14, scale: 0.94 }}
@@ -75,11 +75,6 @@ export default function Navbar() {
                 className="absolute inset-[0.4rem] rounded-[1.45rem] border border-sky-200/55"
               />
             )}
-            <div className="pointer-events-none absolute inset-x-3 top-3 flex items-center gap-1.5 rounded-full bg-[#0b5ed7]/10 px-2 py-1">
-              <span className="h-1.5 w-1.5 rounded-full bg-rose-400/90" />
-              <span className="h-1.5 w-1.5 rounded-full bg-amber-400/90" />
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400/90" />
-            </div>
             <div className="pointer-events-none absolute bottom-3 right-3 h-6 w-10 rounded-[0.7rem] border border-sky-200/45 bg-[linear-gradient(180deg,rgba(11,94,215,0.08),rgba(255,255,255,0.45))] shadow-[inset_0_1px_0_rgba(255,255,255,0.6)]" />
             <motion.span
               animate={
