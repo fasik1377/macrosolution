@@ -232,18 +232,19 @@ export default function Home() {
                   <motion.div
                     key={item.label}
                     whileHover={{ scale: 1.08, y: -8 }}
-                    className={`absolute flex h-24 w-24 items-center justify-center rounded-full border border-white/18 p-2 text-center text-[9px] font-semibold text-white shadow-[0_24px_70px_rgba(8,59,138,0.34)] backdrop-blur-xl sm:h-32 sm:w-32 sm:p-3 sm:text-xs md:h-40 md:w-40 md:p-4 md:text-sm ${item.className}`}
+                    className={`absolute flex h-24 w-24 items-center justify-center rounded-full border border-white/30 p-2 text-center text-[9px] font-bold text-white shadow-[0_24px_70px_rgba(8,59,138,0.42)] backdrop-blur-xl sm:h-32 sm:w-32 sm:p-3 sm:text-[13px] md:h-40 md:w-40 md:p-4 md:text-[15px] ${item.className}`}
                   >
                     <div className={`absolute inset-2 rounded-full bg-gradient-to-br ${item.color} opacity-95`} />
+                    <div className="absolute inset-2 rounded-full bg-[linear-gradient(180deg,rgba(3,16,48,0.1),rgba(3,16,48,0.46))]" />
                     <div className="absolute inset-[1px] rounded-full border border-white/24" />
                     <div className="absolute inset-[18%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.34),transparent_68%)]" />
                     <motion.div
                       animate={{ rotate: [0, -360] }}
                       transition={{ duration: 54, repeat: Infinity, ease: "linear" }}
-                      className="relative z-10 flex flex-col items-center gap-1 leading-4 sm:gap-2 sm:leading-5"
+                      className="relative z-10 flex flex-col items-center gap-1 leading-4 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] sm:gap-2 sm:leading-5"
                     >
-                      <Icon size={18} className="text-white drop-shadow-[0_6px_12px_rgba(0,0,0,0.22)]" />
-                      <span>{item.label}</span>
+                      <Icon size={20} strokeWidth={2.4} className="text-white drop-shadow-[0_6px_12px_rgba(0,0,0,0.38)] sm:h-6 sm:w-6" />
+                      <span className="max-w-[8.5rem]">{item.label}</span>
                     </motion.div>
                   </motion.div>
                 );
@@ -423,13 +424,7 @@ export default function Home() {
               transition={{ duration: 7.2, repeat: Infinity, ease: "easeInOut" }}
               className="absolute left-[11%] top-[52%] w-40 rounded-[1.5rem] border border-cyan-100/12 bg-[#061731]/70 p-4 shadow-[0_26px_70px_rgba(0,0,0,0.26)] backdrop-blur-md [transform:rotate(-8deg)]"
             >
-              <div className="h-20 rounded-[1rem] border border-cyan-100/10 bg-[linear-gradient(180deg,#0c2f67,#081d42)]">
-                <div className="m-3 flex gap-1.5">
-                  <span className="h-2.5 w-2.5 rounded-full bg-rose-400" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-amber-400" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
-                </div>
-              </div>
+              <div className="h-20 rounded-[1rem] border border-cyan-100/10 bg-[linear-gradient(180deg,#0c2f67,#081d42)]" />
             </motion.div>
 
             <motion.div

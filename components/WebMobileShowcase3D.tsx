@@ -142,7 +142,7 @@ export default function WebMobileShowcase3D() {
   const rightCardY = useTransform(scrollYProgress, [0, 0.5, 1], [140, 0, -100]);
   const orbitRotate = useTransform(scrollYProgress, [0, 1], [0, 220]);
   const stackWrapY = useTransform(scrollYProgress, [0, 0.5, 1], [18, 0, -18]);
-  const marqueeDuration = 82;
+  const marqueeDuration = 160;
 
   useEffect(() => {
     if (shouldReduceMotion) return;

@@ -50,12 +50,6 @@ export default function Navbar() {
               />
               <motion.div
                 aria-hidden="true"
-                animate={{ rotate: [0, 180, 360], scale: [0.98, 1.04, 0.98] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-1 rounded-[1.6rem] border border-white/35"
-              />
-              <motion.div
-                aria-hidden="true"
                 animate={{ x: ["-18%", "118%"], opacity: [0, 1, 0] }}
                 transition={{ duration: 1.8, repeat: Infinity, ease: "linear" }}
                 className="absolute inset-y-3 left-0 w-24 bg-[linear-gradient(105deg,transparent,rgba(255,255,255,0.92),transparent)] blur-sm"
@@ -67,14 +61,6 @@ export default function Navbar() {
             className="relative flex h-20 w-20 items-center justify-center overflow-hidden rounded-[1.35rem] border border-white/70 bg-[linear-gradient(145deg,rgba(255,255,255,0.98),rgba(236,247,255,0.92))] shadow-[0_14px_36px_rgba(255,255,255,0.18)] [backface-visibility:hidden] [transform:translateZ(0)] md:h-28 md:w-28 md:rounded-[1.8rem] md:shadow-[0_20px_60px_rgba(255,255,255,0.2)] md:backdrop-blur-xl"
             aria-label="Macro Solution home"
           >
-            {!isMobile && (
-              <motion.span
-                aria-hidden="true"
-                animate={{ rotate: [0, 360] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-[0.4rem] rounded-[1.45rem] border border-sky-200/55"
-              />
-            )}
             <div className="pointer-events-none absolute bottom-3 right-3 h-6 w-10 rounded-[0.7rem] border border-sky-200/45 bg-[linear-gradient(180deg,rgba(11,94,215,0.08),rgba(255,255,255,0.45))] shadow-[inset_0_1px_0_rgba(255,255,255,0.6)]" />
             <motion.span
               animate={

@@ -46,9 +46,8 @@ export default function ContactPage() {
       <TechPageBackground variant="ecosystem" />
 
       <Navbar />
-      <ContactScrollHero3D />
 
-      <section className="relative -mt-10 overflow-hidden py-14 text-white [perspective:1800px] md:-mt-14 md:py-16">
+      <section className="relative overflow-hidden pb-14 pt-40 text-white [perspective:1800px] md:pb-16 md:pt-48">
         <DataNetworkBackground variant="light" className="opacity-85" />
         <div className="container relative z-10 mx-auto grid gap-10 px-6 lg:grid-cols-[0.8fr_1.2fr]">
           <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }}>
@@ -129,6 +128,8 @@ export default function ContactPage() {
           </motion.form>
         </div>
       </section>
+
+      <ContactScrollHero3D />
 
       <section className="relative overflow-hidden py-14 text-white md:py-20">
         <DataNetworkBackground variant="dark" className="opacity-72" />

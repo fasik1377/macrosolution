@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { animate as animateValue, motion, useMotionValue, useReducedMotion } from "framer-motion";
+import { useEffect, useRef } from "react";
 import {
   BellRing,
   BriefcaseBusiness,
@@ -34,6 +35,25 @@ const modules = [
 const slidingModules = [...modules, ...modules];
 
 export default function PrimusModules3D() {
+  const sliderX = useMotionValue("0%");
+  const sliderAnimation = useRef<ReturnType<typeof animateValue> | null>(null);
+  const shouldReduceMotion = useReducedMotion();
+
+  useEffect(() => {
+    if (shouldReduceMotion) {
+      sliderX.set("0%");
+      return;
+    }
+
+    sliderAnimation.current = animateValue(sliderX, ["0%", "-50%"], {
+      duration: 58,
+      repeat: Infinity,
+      ease: "linear",
+    });
+
+    return () => sliderAnimation.current?.stop();
+  }, [shouldReduceMotion, sliderX]);
+
   return (
     <section id="services" className="relative overflow-hidden py-16 text-white md:py-24">
       <motion.div
@@ -52,14 +72,17 @@ export default function PrimusModules3D() {
           </p>
         </div>
 
-        <div className="group relative mt-12 overflow-hidden [perspective:1800px] md:mt-16">
+        <div
+          className="group relative mt-12 overflow-hidden [perspective:1800px] md:mt-16"
+          onMouseEnter={() => sliderAnimation.current?.pause()}
+          onMouseLeave={() => sliderAnimation.current?.play()}
+        >
           <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-16 bg-gradient-to-r from-[#0000FF] to-transparent" />
           <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-16 bg-gradient-to-l from-[#0000FF] to-transparent" />
 
           <motion.div
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{ duration: 58, repeat: Infinity, ease: "linear" }}
-            className="flex w-max gap-6 px-3 py-8 group-hover:[animation-play-state:paused]"
+            style={{ x: sliderX }}
+            className="flex w-max gap-6 px-3 py-8"
           >
             {slidingModules.map((module, index) => {
               const Icon = module.icon;
