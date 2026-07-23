@@ -84,7 +84,7 @@ canvas {
 
 .payroll-orbit {
   --orbit-radius: min(9rem, calc(50vw - 2.25rem));
-  animation: payroll-orbit-spin 54s linear infinite;
+  animation: payroll-orbit-spin 28s linear infinite;
   animation-play-state: running;
   will-change: transform;
 }
@@ -98,7 +98,7 @@ canvas {
 }
 
 .payroll-orbit-content {
-  animation: payroll-orbit-counter-spin 54s linear infinite;
+  animation: payroll-orbit-counter-spin 28s linear infinite;
   animation-play-state: running;
   will-change: transform;
 }
@@ -117,12 +117,5 @@ canvas {
 @media (min-width: 768px) {
   .payroll-orbit {
     --orbit-radius: 23rem;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .payroll-orbit,
-  .payroll-orbit-content {
-    animation-play-state: paused;
   }
 }
