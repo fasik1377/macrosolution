@@ -64,3 +64,65 @@ canvas {
   display: none;
 }
 
+@keyframes payroll-orbit-spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes payroll-orbit-counter-spin {
+  from {
+    transform: rotate(calc(-1 * var(--orbit-angle)));
+  }
+  to {
+    transform: rotate(calc(-1 * var(--orbit-angle) - 360deg));
+  }
+}
+
+.payroll-orbit {
+  --orbit-radius: min(9rem, calc(50vw - 2.25rem));
+  animation: payroll-orbit-spin 54s linear infinite;
+  animation-play-state: running;
+  will-change: transform;
+}
+
+.payroll-orbit-position {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(var(--orbit-angle))
+    translateY(calc(-1 * var(--orbit-radius)));
+}
+
+.payroll-orbit-content {
+  animation: payroll-orbit-counter-spin 54s linear infinite;
+  animation-play-state: running;
+  will-change: transform;
+}
+
+.payroll-orbit:has(.payroll-orbit-card:hover),
+.payroll-orbit:has(.payroll-orbit-card:hover) .payroll-orbit-content {
+  animation-play-state: paused;
+}
+
+@media (min-width: 640px) {
+  .payroll-orbit {
+    --orbit-radius: 17rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .payroll-orbit {
+    --orbit-radius: 23rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .payroll-orbit,
+  .payroll-orbit-content {
+    animation-play-state: paused;
+  }
+}

@@ -20,7 +20,7 @@ export const company = {
   tagline: "User friendly applications at affordable prices",
   location: "Mauritius",
   email: "info@macrosolution.mu",
-  phone: "+230 589 006 07",
+  phone: "+230 57680 610 / +230 5763 2872",
   intro:
     "Macro Solution is a company registered under the laws of Mauritius. We help organizations realize their business visions and goals through innovative, high quality, customized IT solutions.",
   mission:

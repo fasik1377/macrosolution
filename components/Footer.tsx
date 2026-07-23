@@ -16,8 +16,7 @@ const navLinks = [
 
 const contactItems = [
   { icon: Mail, label: "info@macrosolution.mu", href: "mailto:info@macrosolution.mu" },
-  { icon: Phone, label: "+230 5768 0610", href: "tel:+23057680610" },
-  { icon: Phone, label: "+230 5763 2872", href: "tel:+23057632872" },
+  { icon: Phone, label: "+230 57680 610 / +230 5763 2872", href: "tel:+23057680610" },
   { icon: Globe2, label: "www.macrosolution.mu", href: "https://www.macrosolution.mu" },
 ];
 

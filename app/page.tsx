@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
 import dynamic from "next/dynamic";
 import { Banknote, BadgePercent, CalendarRange, ClipboardList, CreditCard, UserRound, ShieldCheck, ChartColumn, BadgeCheck, ScanLine, CheckCircle } from "lucide-react";
-import { useRef } from "react";
+import { useRef, type CSSProperties } from "react";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -207,54 +207,53 @@ export default function Home() {
 
         <div className="container relative z-10 mx-auto px-4 sm:px-6">
           <div className="relative h-[680px] sm:mt-4 sm:h-[880px] md:mt-8 md:h-[980px]">
-            <div className="absolute left-1/2 top-1/2 h-[23rem] w-[23rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/14 sm:h-[34rem] sm:w-[34rem] md:h-[46rem] md:w-[46rem]" />
-            <div className="absolute left-1/2 top-1/2 h-[27rem] w-[27rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-sky-300/20 sm:h-[40rem] sm:w-[40rem] md:h-[54rem] md:w-[54rem]" />
+            <div className="absolute left-1/2 top-1/2 h-[18rem] w-[18rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/14 sm:h-[34rem] sm:w-[34rem] md:h-[46rem] md:w-[46rem]" />
+            <div className="absolute left-1/2 top-1/2 h-[20rem] w-[20rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-sky-300/20 sm:h-[40rem] sm:w-[40rem] md:h-[54rem] md:w-[54rem]" />
 
-            <motion.div
-              animate={{ rotate: [0, 360] }}
-              transition={{ duration: 54, repeat: Infinity, ease: "linear" }}
-              className="absolute left-1/2 top-1/2 h-[23rem] w-[23rem] -translate-x-1/2 -translate-y-1/2 sm:h-[34rem] sm:w-[34rem] md:h-[46rem] md:w-[46rem]"
+            <div
+              className="payroll-orbit absolute left-1/2 top-1/2 h-[18rem] w-[18rem] sm:h-[34rem] sm:w-[34rem] md:h-[46rem] md:w-[46rem]"
             >
               {[
-                { label: "Bank transfer statements", icon: Banknote, className: "left-1/2 top-0 -translate-x-1/2", color: "from-sky-100 via-sky-300 to-blue-500" },
-                { label: "Tax calculating & filing (PAYE)", icon: BadgePercent, className: "right-[14%] top-[8%]", color: "from-cyan-200 via-sky-500 to-blue-700" },
-                { label: "Multiple payroll period support", icon: CalendarRange, className: "right-0 top-[28%]", color: "from-blue-200 via-blue-500 to-indigo-800" },
-                { label: "MNS / CNP compatibility", icon: ClipboardList, className: "right-0 top-[56%]", color: "from-sky-300 via-blue-600 to-[#063b8c]" },
-                { label: "Customisable pay-slips", icon: CreditCard, className: "right-[14%] bottom-[8%]", color: "from-cyan-100 via-cyan-500 to-blue-800" },
-                { label: "Employee Self-Service portal", icon: UserRound, className: "left-1/2 bottom-0 -translate-x-1/2", color: "from-blue-100 via-sky-500 to-[#082f7a]" },
-                { label: "Role-based user profiles", icon: ShieldCheck, className: "left-[14%] bottom-[8%]", color: "from-sky-200 via-blue-500 to-blue-950" },
-                { label: "Management dashboards & reports", icon: ChartColumn, className: "left-0 top-[56%]", color: "from-cyan-200 via-sky-600 to-indigo-900" },
-                { label: "Payroll compliance & audit", icon: BadgeCheck, className: "left-0 top-[28%]", color: "from-blue-200 via-[#0096FF] to-[#06418f]" },
-                { label: "Biometric device integration", icon: ScanLine, className: "left-[14%] top-[8%]", color: "from-sky-100 via-blue-400 to-[#0b3b8a]" },
-              ].map((item) => {
+                { label: "Bank transfer statements", icon: Banknote, color: "from-sky-100 via-sky-300 to-blue-500" },
+                { label: "Tax calculating & filing (PAYE)", icon: BadgePercent, color: "from-cyan-200 via-sky-500 to-blue-700" },
+                { label: "Multiple payroll period support", icon: CalendarRange, color: "from-blue-200 via-blue-500 to-indigo-800" },
+                { label: "MNS / CNP compatibility", icon: ClipboardList, color: "from-sky-300 via-blue-600 to-[#063b8c]" },
+                { label: "Customisable pay-slips", icon: CreditCard, color: "from-cyan-100 via-cyan-500 to-blue-800" },
+                { label: "Employee Self-Service portal", icon: UserRound, color: "from-blue-100 via-sky-500 to-[#082f7a]" },
+                { label: "Role-based user profiles", icon: ShieldCheck, color: "from-sky-200 via-blue-500 to-blue-950" },
+                { label: "Management dashboards & reports", icon: ChartColumn, color: "from-cyan-200 via-sky-600 to-indigo-900" },
+                { label: "Payroll compliance & audit", icon: BadgeCheck, color: "from-blue-200 via-[#0096FF] to-[#06418f]" },
+                { label: "Biometric device integration", icon: ScanLine, color: "from-sky-100 via-blue-400 to-[#0b3b8a]" },
+              ].map((item, index) => {
                 const Icon = item.icon;
                 return (
-                  <motion.div
+                  <div
                     key={item.label}
-                    whileHover={{ scale: 1.08, y: -8 }}
-                    className={`absolute flex h-24 w-24 items-center justify-center rounded-full border border-white/30 p-2 text-center text-[9px] font-bold text-white shadow-[0_24px_70px_rgba(8,59,138,0.42)] backdrop-blur-xl sm:h-32 sm:w-32 sm:p-3 sm:text-[13px] md:h-40 md:w-40 md:p-4 md:text-[15px] ${item.className}`}
+                    className="payroll-orbit-position"
+                    style={{ "--orbit-angle": `${index * 36}deg` } as CSSProperties}
                   >
-                    <div className={`absolute inset-2 rounded-full bg-gradient-to-br ${item.color} opacity-95`} />
-                    <div className="absolute inset-2 rounded-full bg-[linear-gradient(180deg,rgba(3,16,48,0.1),rgba(3,16,48,0.46))]" />
-                    <div className="absolute inset-[1px] rounded-full border border-white/24" />
-                    <div className="absolute inset-[18%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.34),transparent_68%)]" />
                     <motion.div
-                      animate={{ rotate: [0, -360] }}
-                      transition={{ duration: 54, repeat: Infinity, ease: "linear" }}
-                      className="relative z-10 flex flex-col items-center gap-1 leading-4 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] sm:gap-2 sm:leading-5"
+                      whileHover={{ scale: 1.06 }}
+                      className="payroll-orbit-card relative flex h-16 w-16 items-center justify-center rounded-full border border-white/30 p-1.5 text-center text-[7px] font-bold text-white shadow-[0_18px_50px_rgba(8,59,138,0.38)] backdrop-blur-xl sm:h-28 sm:w-28 sm:p-3 sm:text-[11px] md:h-36 md:w-36 md:p-4 md:text-[13px]"
                     >
-                      <Icon size={20} strokeWidth={2.4} className="text-white drop-shadow-[0_6px_12px_rgba(0,0,0,0.38)] sm:h-6 sm:w-6" />
-                      <span className="max-w-[8.5rem]">{item.label}</span>
+                      <div className={`absolute inset-2 rounded-full bg-gradient-to-br ${item.color} opacity-95`} />
+                      <div className="absolute inset-2 rounded-full bg-[linear-gradient(180deg,rgba(3,16,48,0.1),rgba(3,16,48,0.46))]" />
+                      <div className="absolute inset-[1px] rounded-full border border-white/24" />
+                      <div className="absolute inset-[18%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.34),transparent_68%)]" />
+                      <div className="payroll-orbit-content relative z-10 flex flex-col items-center gap-1 leading-4 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] sm:gap-2 sm:leading-5">
+                        <Icon size={14} strokeWidth={2.4} className="text-white drop-shadow-[0_6px_12px_rgba(0,0,0,0.38)] sm:h-6 sm:w-6" />
+                        <span className="max-w-[7.5rem]">{item.label}</span>
+                      </div>
                     </motion.div>
-                  </motion.div>
+                  </div>
                 );
               })}
-            </motion.div>
+            </div>
 
-            <div className="absolute left-1/2 top-1/2 z-10 w-[min(82vw,22rem)] -translate-x-1/2 -translate-y-1/2 rounded-[1.35rem] border border-white/16 bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.08))] p-5 text-center shadow-[0_40px_120px_rgba(0,0,0,0.22)] backdrop-blur-xl sm:w-[min(86vw,28rem)] sm:rounded-[2rem] sm:p-8">
-              <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-cyan-100 sm:text-sm sm:tracking-[0.35em]">Payroll Processing Engine</p>
-              <h2 className="mt-3 text-2xl font-bold sm:mt-4 sm:text-3xl md:text-4xl">PRIMUS Payroll</h2>
-              <p className="mt-4 text-sm leading-6 text-white/78 sm:mt-5 sm:text-base">
+            <div className="absolute left-1/2 top-1/2 z-10 w-[9.5rem] -translate-x-1/2 -translate-y-1/2 rounded-[1rem] border border-white/16 bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.08))] p-3 text-center shadow-[0_30px_90px_rgba(0,0,0,0.22)] backdrop-blur-xl sm:w-[22rem] sm:rounded-[2rem] sm:p-7 md:w-[28rem] md:p-8">
+              <p className="text-[7px] font-semibold uppercase tracking-[0.16em] text-cyan-100 sm:text-sm sm:tracking-[0.35em]">Payroll Processing Engine</p>
+              <h2 className="mt-2 text-lg font-bold sm:mt-4 sm:text-3xl md:text-4xl">PRIMUS PAY</h2>
+              <p className="mt-2 text-[9px] leading-4 text-white/78 sm:mt-5 sm:text-base sm:leading-6">
                 Advanced payroll automation with compliance, reports, employee access, and seamless payroll operations in one intelligent system.
               </p>
             </div>
