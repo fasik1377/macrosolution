@@ -234,7 +234,7 @@ export default function Home() {
                   >
                     <motion.div
                       whileHover={{ scale: 1.06 }}
-                      className="payroll-orbit-card relative flex h-16 w-16 items-center justify-center rounded-full border border-white/30 p-1.5 text-center text-[7px] font-bold text-white shadow-[0_18px_50px_rgba(8,59,138,0.38)] backdrop-blur-xl sm:h-28 sm:w-28 sm:p-3 sm:text-[11px] md:h-36 md:w-36 md:p-4 md:text-[13px]"
+                      className="payroll-orbit-card relative flex h-20 w-20 items-center justify-center rounded-full border border-white/30 p-2 text-center text-[8px] font-bold text-white shadow-[0_18px_50px_rgba(8,59,138,0.38)] backdrop-blur-xl sm:h-32 sm:w-32 sm:p-3 sm:text-xs md:h-40 md:w-40 md:p-4 md:text-sm"
                     >
                       <div className={`absolute inset-2 rounded-full bg-gradient-to-br ${item.color} opacity-95`} />
                       <div className="absolute inset-2 rounded-full bg-[linear-gradient(180deg,rgba(3,16,48,0.1),rgba(3,16,48,0.46))]" />

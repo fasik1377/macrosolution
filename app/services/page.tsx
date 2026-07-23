@@ -37,7 +37,7 @@ export default function ServicesPage() {
       <Navbar />
       <ServicesScrollHero3D />
 
-      <section className="relative -mt-10 overflow-hidden py-14 text-white [perspective:2200px] md:-mt-14 md:py-16">
+      <section className="relative -mt-10 overflow-hidden py-10 text-white [perspective:2200px] md:-mt-14 md:py-12">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_18%,rgba(77,159,255,0.12),transparent_24%),radial-gradient(circle_at_84%_70%,rgba(11,94,215,0.16),transparent_26%)]" />
         <motion.div
           aria-hidden="true"
@@ -97,7 +97,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden py-16 text-white [perspective:2200px] md:py-20">
+      <section className="relative overflow-hidden py-12 text-white [perspective:2200px] md:py-14">
         <DataNetworkBackground variant="light" className="opacity-88" />
         <div className="container relative z-10 mx-auto grid items-center gap-12 px-6 lg:grid-cols-[0.92fr_1.08fr]">
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
@@ -137,7 +137,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden py-16 text-white [perspective:2200px] md:py-20">
+      <section className="relative overflow-hidden py-12 text-white [perspective:2200px] md:py-14">
         <DataNetworkBackground variant="light" className="opacity-85" />
         <div className="container relative z-10 mx-auto px-6">
           <div className="mx-auto max-w-3xl text-center">

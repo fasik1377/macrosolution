@@ -59,7 +59,7 @@ export default function AboutPage() {
       <Navbar />
       <AboutScrollHero3D />
 
-      <section className="relative overflow-hidden py-16 text-white md:py-20">
+      <section className="relative overflow-hidden py-10 text-white md:py-12">
         <div className="container relative z-10 mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 32 }}
@@ -77,7 +77,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden py-10 text-white md:py-12">
+      <section className="relative overflow-hidden py-8 text-white md:py-10">
         <div className="container relative z-10 mx-auto px-6">
           <motion.div
             initial="hidden"
@@ -115,7 +115,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden py-16 text-white [perspective:1800px] md:py-20">
+      <section className="relative overflow-hidden py-10 text-white [perspective:1800px] md:py-12">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_22%,rgba(11,94,215,0.12),transparent_24%),radial-gradient(circle_at_88%_12%,rgba(77,159,255,0.14),transparent_26%)]" />
         <motion.div
           aria-hidden="true"
@@ -188,7 +188,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden py-14 text-white [perspective:1800px] md:py-20">
+      <section className="relative overflow-hidden py-10 text-white [perspective:1800px] md:py-12">
         <DataNetworkBackground variant="light" className="opacity-88" />
         <div className="container relative z-10 mx-auto px-6">
           <motion.div
@@ -226,7 +226,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden py-16 text-white [perspective:1800px] md:py-20">
+      <section className="relative overflow-hidden py-10 text-white [perspective:1800px] md:py-12">
         <DataNetworkBackground variant="light" className="opacity-85" />
         <div className="container relative z-10 mx-auto px-6">
           <div className="mx-auto max-w-3xl text-center">

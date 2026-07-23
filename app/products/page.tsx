@@ -42,7 +42,7 @@ export default function ProductsPage() {
 
       <ProductPortfolio3D />
 
-      <section className="relative overflow-hidden py-20 text-white [perspective:2000px]">
+      <section className="relative overflow-hidden py-12 text-white [perspective:2000px] md:py-14">
         <DataNetworkBackground variant="light" className="opacity-85" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_14%_18%,rgba(77,159,255,0.12),transparent_24%),radial-gradient(circle_at_86%_14%,rgba(11,94,215,0.14),transparent_28%),linear-gradient(180deg,rgba(255,255,255,0.12),rgba(3,18,48,0.08))]" />
         <div className="container relative z-10 mx-auto px-6">
@@ -114,7 +114,7 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden py-20 text-white [perspective:1800px]">
+      <section className="relative overflow-hidden py-12 text-white [perspective:1800px] md:py-14">
         <DataNetworkBackground variant="light" className="opacity-88" />
         <div className="container mx-auto grid items-center gap-10 px-6 lg:grid-cols-[0.95fr_1.05fr] relative z-10">
           <div>
@@ -130,7 +130,7 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden py-20 text-white [perspective:1800px]">
+      <section className="relative overflow-hidden py-12 text-white [perspective:1800px] md:py-14">
         <DataNetworkBackground variant="light" className="opacity-85" />
         <div className="container relative z-10 mx-auto px-6">
           <div className="mx-auto max-w-3xl text-center">
