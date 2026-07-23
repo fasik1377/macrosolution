@@ -107,9 +107,6 @@ export default function ProductPortfolio3D() {
           onMouseEnter={() => trackAnimation.current?.pause()}
           onMouseLeave={() => trackAnimation.current?.play()}
         >
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-16 bg-gradient-to-r from-[#0000FF] to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-16 bg-gradient-to-l from-[#0000FF] to-transparent" />
-
           <motion.div
             animate={{ rotateX: [0, 6, -3, 0], rotateY: [0, -6, 5, 0] }}
             transition={{

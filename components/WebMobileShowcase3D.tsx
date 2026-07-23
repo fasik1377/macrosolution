@@ -157,8 +157,8 @@ export default function WebMobileShowcase3D() {
   }, [marqueeX, shouldReduceMotion]);
 
   return (
-    <section ref={sectionRef} className="relative min-h-[150vh] overflow-hidden py-10 text-white md:min-h-[180vh] md:py-14">
-      <div className="sticky top-0 flex min-h-[90vh] items-start overflow-hidden pt-10 md:min-h-screen md:pt-16">
+    <section ref={sectionRef} className="relative overflow-hidden py-10 text-white md:py-14">
+      <div className="relative flex items-start pt-10 md:pt-16">
         <motion.div
           aria-hidden="true"
           style={{ rotate: orbitRotate }}
@@ -209,10 +209,10 @@ export default function WebMobileShowcase3D() {
             </div>
           </div>
 
-          <div className="relative h-[620px] [perspective:1800px]">
+          <div className="relative [perspective:1800px]">
             <motion.div
               style={{ y: panelY, rotateX: panelRotateX, rotateY: panelRotateY }}
-              className="absolute left-1/2 top-1/2 h-[28rem] w-[min(90vw,38rem)] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[2.4rem] border border-cyan-100/14 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03))] p-5 shadow-[0_45px_140px_rgba(0,0,0,0.28)] backdrop-blur-2xl [transform-style:preserve-3d]"
+              className="relative mx-auto h-[28rem] w-full max-w-[38rem] overflow-hidden rounded-[2.4rem] border border-cyan-100/14 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03))] p-5 shadow-[0_45px_140px_rgba(0,0,0,0.28)] backdrop-blur-2xl [transform-style:preserve-3d]"
             >
               <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.05),transparent_45%,rgba(77,159,255,0.05))]" />
               <div className="absolute -right-14 -top-14 h-40 w-40 rounded-full bg-white/6 blur-3xl" />
@@ -269,29 +269,30 @@ export default function WebMobileShowcase3D() {
               </div>
             </motion.div>
 
-            {featureCards.map((card, index) => {
-              const Icon = card.icon;
-              return (
-                <motion.div
-                  key={card.title}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  whileHover={{ y: -12, rotateY: index % 2 === 0 ? -8 : 8, scale: 1.03 }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
-                  className={
-                    "absolute z-20 w-[min(72vw,18rem)] rounded-[1.8rem] border border-white/12 bg-gradient-to-br " +
-                    card.className +
-                    " p-5 shadow-[0_25px_80px_rgba(0,0,0,0.28)] [transform-style:preserve-3d] " +
-                    (index === 0 ? "left-0 top-10" : index === 1 ? "bottom-8 right-0" : "right-10 top-6 hidden md:block")
-                  }
-                >
-                  <Icon className="text-white" />
-                  <h3 className="mt-6 text-2xl font-bold text-white">{card.title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-white/85">{card.description}</p>
-                </motion.div>
-              );
-            })}
+            <div className="relative z-20 mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+              {featureCards.map((card, index) => {
+                const Icon = card.icon;
+                return (
+                  <motion.div
+                    key={card.title}
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    whileHover={{ y: -8, scale: 1.02 }}
+                    transition={{ duration: 0.4, ease: "easeOut", delay: index * 0.06 }}
+                    className={
+                      "min-w-0 rounded-[1.5rem] border border-white/12 bg-gradient-to-br " +
+                      card.className +
+                      " p-5 shadow-[0_20px_60px_rgba(0,0,0,0.24)]"
+                    }
+                  >
+                    <Icon className="text-white" />
+                    <h3 className="mt-4 text-lg font-bold text-white">{card.title}</h3>
+                    <p className="mt-2 text-sm leading-6 text-white/85">{card.description}</p>
+                  </motion.div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>

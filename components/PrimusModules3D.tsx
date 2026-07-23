@@ -77,9 +77,6 @@ export default function PrimusModules3D() {
           onMouseEnter={() => sliderAnimation.current?.pause()}
           onMouseLeave={() => sliderAnimation.current?.play()}
         >
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-16 bg-gradient-to-r from-[#0000FF] to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-16 bg-gradient-to-l from-[#0000FF] to-transparent" />
-
           <motion.div
             style={{ x: sliderX }}
             className="flex w-max gap-6 px-3 py-8"

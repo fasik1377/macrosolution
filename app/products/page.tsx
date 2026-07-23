@@ -28,6 +28,10 @@ const productSignals = [
   { icon: BarChart3, label: "Clear Visibility" },
 ];
 
+const visibleProducts = products.filter(
+  (product) => !["Car Rental Management", "PETROSOFT"].includes(product.title),
+);
+
 export default function ProductsPage() {
   return (
     <main className="relative isolate overflow-x-clip bg-[#0000FF] text-white">
@@ -71,7 +75,7 @@ export default function ProductsPage() {
           </div>
 
           <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }} className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-            {products.map((product, index) => {
+            {visibleProducts.map((product, index) => {
               const Icon = product.icon;
 
               return (

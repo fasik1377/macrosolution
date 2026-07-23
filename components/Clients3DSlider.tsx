@@ -95,9 +95,6 @@ export default function Clients3DSlider() {
           onMouseEnter={() => trackAnimation.current?.pause()}
           onMouseLeave={() => trackAnimation.current?.play()}
         >
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-20 bg-gradient-to-r from-[#0000FF] via-[#0000FF]/70 to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-20 bg-gradient-to-l from-[#0000FF] via-[#0000FF]/70 to-transparent" />
-
           <motion.div
             animate={{ rotateX: [0, 3, -2, 0], rotateY: [0, -3, 2, 0] }}
             transition={{ rotateX: { duration: 18, repeat: Infinity, ease: "easeInOut" }, rotateY: { duration: 18, repeat: Infinity, ease: "easeInOut" } }}
