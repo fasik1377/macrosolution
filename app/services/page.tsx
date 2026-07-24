@@ -9,7 +9,7 @@ import Navbar from "@/components/Navbar";
 import DataNetworkBackground from "@/components/DataNetworkBackground";
 import TechPageBackground from "@/components/TechPageBackground";
 import { services } from "@/components/companyProfile";
-import { fadeUp, stagger } from "@/components/motion";
+import { fadeUp } from "@/components/motion";
 
 const ServicesScrollHero3D = dynamic(() => import("@/components/ServicesScrollHero3D"), {
   ssr: false,
@@ -61,20 +61,13 @@ export default function ServicesPage() {
             </p>
           </motion.div>
 
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className="mt-10 grid gap-6 md:mt-12 md:grid-cols-2 xl:grid-cols-4"
-          >
+          <div className="mt-10 grid gap-6 md:mt-12 md:grid-cols-2 xl:grid-cols-4">
             {services.map((service, index) => {
               const Icon = service.icon;
 
               return (
                 <motion.article
                   key={service.title}
-                  variants={fadeUp}
                   whileHover={{ y: -16, rotateX: 7, rotateY: index % 2 === 0 ? 8 : -8, scale: 1.03 }}
                   className="group relative overflow-hidden rounded-[2rem] border border-white/12 bg-white/8 p-8 shadow-[0_26px_80px_rgba(0,0,0,0.24)] backdrop-blur-xl [transform-style:preserve-3d]"
                 >
@@ -93,7 +86,7 @@ export default function ServicesPage() {
                 </motion.article>
               );
             })}
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -160,42 +153,32 @@ export default function ServicesPage() {
             </motion.h2>
           </div>
 
-          <div className="relative mt-12 h-[38rem] md:mt-16">
+          <div className="mt-12 grid gap-6 md:mt-16 md:grid-cols-2 xl:grid-cols-4">
             {deliveryLayers.map((layer, index) => {
               const Icon = layer.icon;
               return (
-                <motion.div
+                <article
                   key={layer.title}
-                  initial={{ opacity: 0, y: 40, rotateY: index % 2 === 0 ? -10 : 10 }}
-                  whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
-                  whileHover={{ y: -14, rotateX: 8, rotateY: index % 2 === 0 ? -8 : 8, scale: 1.03 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.7, ease: "easeOut" }}
-                  className="absolute left-1/2 w-[min(88vw,38rem)] -translate-x-1/2 rounded-[2rem] border border-white/12 bg-white/8 p-6 shadow-[0_30px_100px_rgba(0,0,0,0.24)] backdrop-blur-xl [transform-style:preserve-3d]"
-                  style={{ top: `${index * 94}px`, zIndex: 12 - index }}
+                  className="relative flex h-full flex-col overflow-hidden rounded-[2rem] border border-white/12 bg-white/8 p-6 shadow-[0_30px_100px_rgba(0,0,0,0.24)] backdrop-blur-xl"
                 >
                   <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(77,159,255,0.12),transparent_42%,rgba(255,255,255,0.04),rgba(77,159,255,0.08))]" />
-                  <div className="relative flex items-start justify-between gap-4 [transform:translateZ(22px)]">
+                  <div className="relative flex items-start justify-between gap-4">
                     <div>
                       <p className="text-sm font-semibold uppercase tracking-[0.35em] text-cyan-200">0{index + 1}</p>
-                      <h3 className="mt-4 text-3xl font-bold">{layer.title}</h3>
+                      <h3 className="mt-4 text-2xl font-bold">{layer.title}</h3>
                       <p className="mt-4 max-w-xl leading-7 text-white/72">{layer.text}</p>
                     </div>
-                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-blue to-button-blue text-white shadow-[0_16px_40px_rgba(11,94,215,0.22)]">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-blue to-button-blue text-white shadow-[0_16px_40px_rgba(11,94,215,0.22)]">
                       <Icon size={26} />
                     </div>
                   </div>
                   {index < deliveryLayers.length - 1 && (
-                    <motion.div
-                      animate={{ x: [0, 12, 0] }}
-                      transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut" }}
-                      className="absolute -bottom-8 right-10 flex items-center gap-2 text-cyan-200"
-                    >
+                    <div className="relative mt-auto flex items-center gap-2 pt-6 text-cyan-200">
                       <span className="text-xs font-semibold uppercase tracking-[0.3em]">Next</span>
                       <ArrowRight size={16} />
-                    </motion.div>
+                    </div>
                   )}
-                </motion.div>
+                </article>
               );
             })}
           </div>
