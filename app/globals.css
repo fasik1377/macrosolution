@@ -50,6 +50,16 @@ canvas {
   max-width: 100%;
 }
 
+@media (max-width: 767px) {
+  /*
+   * Mobile cards live in single-column layouts. Framer's animated translations
+   * can move them outside their allocated rows and into neighbouring cards.
+   */
+  .mobile-card-stable {
+    transform: none !important;
+  }
+}
+
 #about,
 #products {
   scroll-margin-top: 130px;

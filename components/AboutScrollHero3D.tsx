@@ -37,7 +37,7 @@ export default function AboutScrollHero3D() {
   const orbitScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.9, 1, 1.06]);
 
   return (
-    <section ref={sectionRef} className="relative min-h-[180vh] overflow-hidden text-white">
+    <section ref={sectionRef} className="relative min-h-[108vh] overflow-hidden text-white md:min-h-[112vh]">
       <div className="sticky top-0 flex min-h-screen items-center overflow-hidden bg-[#0000FF] pt-28">
         <DataNetworkBackground variant="light" className="absolute inset-0 opacity-70" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_16%,rgba(34,211,238,0.2),transparent_24%),radial-gradient(circle_at_80%_18%,rgba(96,165,250,0.26),transparent_22%),radial-gradient(circle_at_80%_74%,rgba(14,165,233,0.18),transparent_30%),linear-gradient(135deg,#0000FF_0%,#06174d_38%,#0018a8_68%,#083b8a_100%)] bg-[length:180%_180%]" />
@@ -95,12 +95,12 @@ export default function AboutScrollHero3D() {
         </motion.div>
 
         <div className="container relative z-10 mx-auto flex min-h-[620px] items-center justify-center px-6">
-          <div className="relative h-[620px] w-full max-w-4xl [perspective:1800px]">
+          <div className="relative h-[480px] w-full max-w-4xl [perspective:1800px] md:h-[640px]">
             <motion.div
               style={{ y: panelY, rotateX: panelRotateX, rotateY: panelRotateY, scale: panelScale }}
               animate={{ y: [0, -14, 0], rotateX: [0, 3, 0], rotateY: [0, -5, 0] }}
               transition={{ duration: 6.6, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute left-1/2 top-1/2 h-[27rem] w-[min(88vw,38rem)] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[2rem] border border-white/16 bg-white/10 p-6 shadow-[0_40px_120px_rgba(0,0,0,0.18)] backdrop-blur-xl [transform-style:preserve-3d]"
+              className="absolute left-1/2 top-0 h-[27rem] w-[min(88vw,38rem)] -translate-x-1/2 overflow-hidden rounded-[2rem] border border-white/16 bg-white/10 p-6 shadow-[0_40px_120px_rgba(0,0,0,0.18)] backdrop-blur-xl [transform-style:preserve-3d]"
             >
               <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),rgba(186,230,253,0.14)_38%,rgba(255,255,255,0.04)_60%,rgba(56,189,248,0.1))]" />
               <motion.div
@@ -133,10 +133,10 @@ export default function AboutScrollHero3D() {
             </motion.div>
 
             {[
-              { icon: Users, title: "Trusted Team", className: "left-0 top-12", color: "from-[#0b5ed7] to-[#4d9fff]" },
-              { icon: Lightbulb, title: "Creative Thinking", className: "right-0 top-24", color: "from-[#7c3aed] to-[#0b5ed7]" },
-              { icon: ShieldCheck, title: "Reliable Delivery", className: "bottom-10 left-10", color: "from-[#0891b2] to-[#38bdf8]" },
-              { icon: Sparkles, title: "Growth Focus", className: "bottom-6 right-8", color: "from-[#0f766e] to-[#22c55e]" },
+              { icon: Users, title: "Trusted Team", className: "bottom-36 left-0 md:bottom-8", color: "from-[#0b5ed7] to-[#4d9fff]" },
+              { icon: Lightbulb, title: "Creative Thinking", className: "bottom-36 right-0 md:bottom-8 md:right-[26%]", color: "from-[#7c3aed] to-[#0b5ed7]" },
+              { icon: ShieldCheck, title: "Reliable Delivery", className: "bottom-0 left-0 md:bottom-8 md:left-[26%]", color: "from-[#0891b2] to-[#38bdf8]" },
+              { icon: Sparkles, title: "Growth Focus", className: "bottom-0 right-0 md:bottom-8", color: "from-[#0f766e] to-[#22c55e]" },
             ].map((item, index) => {
               const Icon = item.icon;
               return (
@@ -146,10 +146,10 @@ export default function AboutScrollHero3D() {
                   animate={{ opacity: 1, y: [0, index % 2 === 0 ? -14 : 14, 0], rotateY: [0, index % 2 === 0 ? -10 : 10, 0], rotateX: [0, 6, 0] }}
                   whileHover={{ y: -18, scale: 1.04, rotateY: index % 2 === 0 ? -12 : 12 }}
                   transition={{ duration: 5 + index * 0.35, repeat: Infinity, ease: "easeInOut" }}
-                  className={`absolute ${item.className} rounded-[1.8rem] border border-white/18 bg-gradient-to-br ${item.color} p-5 shadow-[0_26px_80px_rgba(0,0,0,0.16)] [transform-style:preserve-3d]`}
+                  className={`absolute hidden ${item.className} w-[48%] rounded-[1.4rem] border border-white/18 bg-gradient-to-br ${item.color} p-4 shadow-[0_26px_80px_rgba(0,0,0,0.16)] [transform-style:preserve-3d] md:block md:w-[23%]`}
                 >
                   <Icon className="text-white" />
-                  <h3 className="mt-5 text-xl font-bold">{item.title}</h3>
+                  <h3 className="mt-3 text-base font-bold md:text-lg">{item.title}</h3>
                 </motion.div>
               );
             })}

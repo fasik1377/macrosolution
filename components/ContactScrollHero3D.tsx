@@ -27,16 +27,14 @@ export default function ContactScrollHero3D() {
     offset: ["start start", "end end"],
   });
 
-  const phoneY = useTransform(scrollYProgress, [0, 0.5, 1], [90, 0, -90]);
   const phoneRotateX = useTransform(scrollYProgress, [0, 0.5, 1], [20, 0, -8]);
   const phoneRotateY = useTransform(scrollYProgress, [0, 0.5, 1], [-18, 0, 10]);
-  const mailY = useTransform(scrollYProgress, [0, 0.5, 1], [120, 0, -110]);
   const orbitRotate = useTransform(scrollYProgress, [0, 1], [0, 240]);
   const orbitScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.92, 1, 1.08]);
   const glowY = useTransform(scrollYProgress, [0, 0.5, 1], [-36, 0, 36]);
 
   return (
-    <section ref={sectionRef} className="relative min-h-[250vh] overflow-hidden text-white">
+    <section ref={sectionRef} className="relative min-h-[108vh] overflow-hidden text-white md:min-h-[112vh]">
       <div className="sticky top-0 flex min-h-screen items-center overflow-hidden bg-[#0000FF] pt-28">
         <DataNetworkBackground variant="dark" className="absolute inset-0 opacity-64" />
         <motion.div
@@ -97,12 +95,12 @@ export default function ContactScrollHero3D() {
             </p>
           </motion.div>
 
-          <div className="relative h-[620px] [perspective:1800px]">
+          <div className="relative h-[700px] [perspective:1800px]">
             <motion.div
-              style={{ y: phoneY, rotateX: phoneRotateX, rotateY: phoneRotateY }}
+              style={{ rotateX: phoneRotateX, rotateY: phoneRotateY }}
               animate={{ y: [0, -12, 0], rotateX: [0, 4, 0], rotateY: [0, -6, 0] }}
               transition={{ duration: 6.4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute left-1/2 top-1/2 h-[27rem] w-[min(76vw,20rem)] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[2.4rem] border border-white/14 bg-[linear-gradient(180deg,rgba(255,255,255,0.12),rgba(255,255,255,0.04))] p-4 shadow-[0_40px_120px_rgba(0,0,0,0.24)] backdrop-blur-xl [transform-style:preserve-3d]"
+              className="absolute left-1/2 top-0 h-[27rem] w-[min(76vw,20rem)] -translate-x-1/2 overflow-hidden rounded-[2.4rem] border border-white/14 bg-[linear-gradient(180deg,rgba(255,255,255,0.12),rgba(255,255,255,0.04))] p-4 shadow-[0_40px_120px_rgba(0,0,0,0.24)] backdrop-blur-xl [transform-style:preserve-3d]"
             >
               <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_34%,rgba(255,255,255,0.04)_60%,rgba(186,230,253,0.12))]" />
               <div className="absolute left-1/2 top-3 h-1.5 w-16 -translate-x-1/2 rounded-full bg-white/20" />
@@ -133,30 +131,29 @@ export default function ContactScrollHero3D() {
             </motion.div>
 
             <motion.div
-              style={{ y: mailY }}
               animate={{ y: [0, -14, 0], rotateY: [0, 8, 0] }}
               transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute right-4 top-10 w-[min(72vw,18rem)] rounded-[1.8rem] border border-white/12 bg-[linear-gradient(135deg,rgba(11,94,215,0.9),rgba(77,159,255,0.82))] p-5 shadow-[0_26px_80px_rgba(11,94,215,0.24)]"
+              className="absolute bottom-0 left-0 w-[48%] rounded-[1.5rem] border border-white/12 bg-[linear-gradient(135deg,rgba(11,94,215,0.9),rgba(77,159,255,0.82))] p-4 shadow-[0_26px_80px_rgba(11,94,215,0.24)]"
             >
               <Mail className="text-white" />
-              <h3 className="mt-6 text-2xl font-bold">Mail Brief</h3>
-              <p className="mt-3 text-sm leading-6 text-white/85">Send your needs, expected outcome, and business priorities in one clear brief.</p>
+              <h3 className="mt-3 text-lg font-bold">Mail Brief</h3>
+              <p className="mt-2 text-sm leading-5 text-white/85">Send your needs, expected outcome, and business priorities in one clear brief.</p>
             </motion.div>
 
             <motion.div
               animate={{ y: [0, -10, 0], rotate: [0, 3, 0, -3, 0] }}
               transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute bottom-10 left-4 w-[min(72vw,18rem)] rounded-[1.8rem] border border-white/12 bg-[linear-gradient(135deg,rgba(124,58,237,0.88),rgba(11,94,215,0.76))] p-5 shadow-[0_26px_80px_rgba(0,0,0,0.22)]"
+              className="absolute bottom-0 right-0 w-[48%] rounded-[1.5rem] border border-white/12 bg-[linear-gradient(135deg,rgba(124,58,237,0.88),rgba(11,94,215,0.76))] p-4 shadow-[0_26px_80px_rgba(0,0,0,0.22)]"
             >
               <MapPin className="text-white" />
-              <h3 className="mt-6 text-2xl font-bold">Local Presence</h3>
-              <p className="mt-3 text-sm leading-6 text-white/85">A nearby technology partner for practical collaboration and long-term support.</p>
+              <h3 className="mt-3 text-lg font-bold">Local Presence</h3>
+              <p className="mt-2 text-sm leading-5 text-white/85">A nearby technology partner for practical collaboration and long-term support.</p>
             </motion.div>
 
             <motion.div
               animate={{ x: [0, 14, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute right-16 top-4 hidden items-center gap-2 rounded-full border border-white/18 bg-white/10 px-5 py-3 text-sm font-semibold text-cyan-100 shadow-[0_18px_60px_rgba(255,255,255,0.12)] backdrop-blur-md md:inline-flex"
+              className="absolute right-0 top-0 hidden items-center gap-2 rounded-full border border-white/18 bg-white/10 px-5 py-3 text-sm font-semibold text-cyan-100 shadow-[0_18px_60px_rgba(255,255,255,0.12)] backdrop-blur-md xl:inline-flex"
             >
               Connect with us
               <Send size={16} />

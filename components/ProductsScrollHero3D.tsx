@@ -91,12 +91,12 @@ export default function ProductsScrollHero3D() {
             </p>
           </motion.div>
 
-          <div className="relative h-[620px] [perspective:1800px]">
+          <div className="relative h-[760px] [perspective:1800px] md:h-[640px]">
             <motion.div
               style={{ y: panelY, rotateX: panelRotateX, rotateY: panelRotateY }}
               animate={{ y: [0, -12, 0], rotateX: [0, 4, 0], rotateY: [0, -6, 0] }}
               transition={{ duration: 6.4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute left-1/2 top-1/2 h-[27rem] w-[min(88vw,38rem)] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[2rem] border border-white/14 bg-white/10 p-6 shadow-[0_40px_120px_rgba(0,0,0,0.24)] backdrop-blur-xl [transform-style:preserve-3d]"
+              className="absolute left-1/2 top-0 h-[27rem] w-[min(88vw,38rem)] -translate-x-1/2 overflow-hidden rounded-[2rem] border border-white/14 bg-white/10 p-6 shadow-[0_40px_120px_rgba(0,0,0,0.24)] backdrop-blur-xl [transform-style:preserve-3d]"
             >
               <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_34%,rgba(255,255,255,0.04)_60%,rgba(186,230,253,0.12))]" />
               <motion.div
@@ -129,10 +129,10 @@ export default function ProductsScrollHero3D() {
             </motion.div>
 
             {[
-              { icon: Boxes, title: "Core Platform", className: "left-0 top-12", color: "from-[#0b5ed7] to-[#4d9fff]" },
-              { icon: Layers3, title: "Workflow Layer", className: "right-0 top-20", color: "from-[#7c3aed] to-[#0b5ed7]" },
-              { icon: ShoppingBag, title: "Operations", className: "bottom-12 left-10", color: "from-[#0891b2] to-[#38bdf8]" },
-              { icon: BarChart3, title: "Analytics", className: "bottom-6 right-8", color: "from-[#0f766e] to-[#22c55e]" },
+              { icon: Boxes, title: "Core Platform", className: "bottom-36 left-0 md:bottom-8", color: "from-[#0b5ed7] to-[#4d9fff]" },
+              { icon: Layers3, title: "Workflow Layer", className: "bottom-36 right-0 md:bottom-8 md:right-[26%]", color: "from-[#7c3aed] to-[#0b5ed7]" },
+              { icon: ShoppingBag, title: "Operations", className: "bottom-0 left-0 md:bottom-8 md:left-[26%]", color: "from-[#0891b2] to-[#38bdf8]" },
+              { icon: BarChart3, title: "Analytics", className: "bottom-0 right-0 md:bottom-8", color: "from-[#0f766e] to-[#22c55e]" },
             ].map((item, index) => {
               const Icon = item.icon;
               return (
@@ -142,10 +142,10 @@ export default function ProductsScrollHero3D() {
                   animate={{ opacity: 1, y: [0, index % 2 === 0 ? -14 : 14, 0], rotateY: [0, index % 2 === 0 ? -10 : 10, 0], rotateX: [0, 6, 0] }}
                   whileHover={{ y: -18, scale: 1.04, rotateY: index % 2 === 0 ? -12 : 12 }}
                   transition={{ duration: 5 + index * 0.35, repeat: Infinity, ease: "easeInOut" }}
-                  className={`absolute ${item.className} rounded-[1.8rem] border border-white/14 bg-gradient-to-br ${item.color} p-5 shadow-[0_26px_80px_rgba(0,0,0,0.22)] [transform-style:preserve-3d]`}
+                  className={`absolute ${item.className} w-[48%] rounded-[1.4rem] border border-white/14 bg-gradient-to-br ${item.color} p-4 shadow-[0_26px_80px_rgba(0,0,0,0.22)] [transform-style:preserve-3d] md:w-[23%]`}
                 >
                   <Icon className="text-white" />
-                  <h3 className="mt-5 text-xl font-bold">{item.title}</h3>
+                  <h3 className="mt-3 text-base font-bold md:text-lg">{item.title}</h3>
                 </motion.div>
               );
             })}

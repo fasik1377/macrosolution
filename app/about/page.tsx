@@ -96,7 +96,7 @@ export default function AboutPage() {
                   animate={{ y: index % 2 === 0 ? [0, -10, 0] : [0, 10, 0], rotateX: [0, 5, 0], rotateY: index % 2 === 0 ? [0, -6, 0] : [0, 6, 0] }}
                   whileHover={{ y: -18, rotateY: index % 2 === 0 ? -12 : 12, rotateX: 12, scale: 1.05 }}
                   transition={{ duration: 6 + index * 0.4, repeat: Infinity, ease: "easeInOut" }}
-                  className="relative overflow-hidden rounded-[2rem] border border-white/12 bg-white/[0.08] p-6 shadow-[0_30px_90px_rgba(0,0,0,0.22)] backdrop-blur-xl [transform-style:preserve-3d]"
+                  className="mobile-card-stable relative overflow-hidden rounded-[2rem] border border-white/12 bg-white/[0.08] p-6 shadow-[0_30px_90px_rgba(0,0,0,0.22)] backdrop-blur-xl [transform-style:preserve-3d]"
                 >
                   <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(77,159,255,0.12),transparent_38%,rgba(255,255,255,0.04),rgba(77,159,255,0.08))]" />
                   <div className="relative flex items-center justify-between [transform:translateZ(24px)]">
@@ -115,7 +115,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden py-10 text-white [perspective:1800px] md:py-12">
+      <section className="relative overflow-visible py-10 text-white [perspective:1800px] md:py-12">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_22%,rgba(11,94,215,0.12),transparent_24%),radial-gradient(circle_at_88%_12%,rgba(77,159,255,0.14),transparent_26%)]" />
         <motion.div
           aria-hidden="true"
@@ -137,11 +137,9 @@ export default function AboutPage() {
           <motion.div
             initial={{ opacity: 0, y: 36, rotateX: 6 }}
             whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-            animate={{ y: [0, -16, 0], x: [0, 8, 0, -8, 0], rotateX: [0, 6, 0], rotateY: [0, -10, 0, 10, 0] }}
-            whileHover={{ y: -22, rotateY: -14, rotateX: 10, scale: 1.05 }}
-            transition={{ duration: 7.2, repeat: Infinity, ease: "easeInOut" }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
             viewport={{ once: true }}
-            className="group relative overflow-hidden border border-sky-100/80 bg-[linear-gradient(145deg,rgba(240,250,255,0.96),rgba(212,241,255,0.92),rgba(191,233,255,0.9))] p-8 text-slate-900 shadow-[0_40px_120px_rgba(44,126,201,0.22)] backdrop-blur-xl [transform-style:preserve-3d] [clip-path:polygon(0_0,100%_0,100%_88%,90%_100%,0_100%)]"
+            className="mobile-card-stable group relative overflow-hidden border border-sky-100/80 bg-[linear-gradient(145deg,rgba(240,250,255,0.96),rgba(212,241,255,0.92),rgba(191,233,255,0.9))] p-8 text-slate-900 shadow-[0_40px_120px_rgba(44,126,201,0.22)] backdrop-blur-xl [transform-style:preserve-3d] [clip-path:polygon(0_0,100%_0,100%_88%,90%_100%,0_100%)]"
           >
             <motion.div
               aria-hidden="true"
@@ -177,7 +175,7 @@ export default function AboutPage() {
                   transition={{ duration: 0.55, delay: index * 0.08, ease: "easeOut" }}
                   whileHover={{ x: 10, y: -4, scale: 1.02 }}
                   animate={{ y: index % 2 === 0 ? [0, -4, 0] : [0, 4, 0] }}
-                  className="flex items-start gap-3 border border-sky-100/80 bg-white/55 p-4 shadow-[0_16px_40px_rgba(91,169,230,0.12)] backdrop-blur [transform:translateZ(20px)] [clip-path:polygon(0_0,100%_0,96%_100%,0_100%)]"
+                  className="mobile-card-stable flex items-start gap-3 border border-sky-100/80 bg-white/55 p-4 shadow-[0_16px_40px_rgba(91,169,230,0.12)] backdrop-blur [transform:translateZ(20px)] [clip-path:polygon(0_0,100%_0,96%_100%,0_100%)]"
                 >
                   <CheckCircle className="mt-1 shrink-0 text-[#0096FF]" size={20} />
                   <p className="leading-7 text-slate-700">{item}</p>
@@ -209,7 +207,7 @@ export default function AboutPage() {
                   animate={{ y: index % 2 === 0 ? [0, -12, 0] : [0, 12, 0], rotateX: [0, 6, 0], rotateY: index % 2 === 0 ? [0, 8, 0] : [0, -8, 0] }}
                   whileHover={{ y: -20, rotateX: 12, rotateY: index % 2 === 0 ? 12 : -12, scale: 1.05 }}
                   transition={{ duration: 6.6 + index * 0.35, repeat: Infinity, ease: "easeInOut" }}
-                  className="relative overflow-hidden border border-white/12 bg-white/[0.08] p-7 shadow-[0_28px_90px_rgba(0,0,0,0.2)] backdrop-blur-xl [transform-style:preserve-3d] [clip-path:polygon(0_0,100%_0,100%_84%,88%_100%,0_100%)]"
+                  className="mobile-card-stable relative overflow-hidden border border-white/12 bg-white/[0.08] p-7 shadow-[0_28px_90px_rgba(0,0,0,0.2)] backdrop-blur-xl [transform-style:preserve-3d] [clip-path:polygon(0_0,100%_0,100%_84%,88%_100%,0_100%)]"
                 >
                   <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(77,159,255,0.16),transparent_34%,rgba(255,255,255,0.04)_60%,rgba(77,159,255,0.12))]" />
                   <div className="relative [transform:translateZ(24px)]">
@@ -262,7 +260,7 @@ export default function AboutPage() {
                 whileHover={{ y: -20, rotateY: index % 2 === 0 ? -12 : 12, rotateX: 10, scale: 1.05 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 6.2 + index * 0.3, repeat: Infinity, ease: "easeInOut" }}
-                className="rounded-[2rem] border border-white/12 bg-white/[0.08] p-8 shadow-[0_30px_100px_rgba(0,0,0,0.24)] backdrop-blur-xl [transform-style:preserve-3d]"
+                className="mobile-card-stable rounded-[2rem] border border-white/12 bg-white/[0.08] p-8 shadow-[0_30px_100px_rgba(0,0,0,0.24)] backdrop-blur-xl [transform-style:preserve-3d]"
               >
                 <motion.div
                   animate={{ y: [0, -8, 0], rotate: [0, 4, 0, -4, 0] }}

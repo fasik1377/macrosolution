@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, Cpu, Layers3, Radar, Settings2, Workflow } from "lucide-react";
+import { ArrowRight, Radar, Settings2, Workflow } from "lucide-react";
 import { useRef } from "react";
 import DataNetworkBackground from "@/components/DataNetworkBackground";
 
@@ -18,11 +18,9 @@ export default function ServicesScrollHero3D() {
   const platformRotateX = useTransform(scrollYProgress, [0, 0.5, 1], [18, 0, -8]);
   const platformRotateY = useTransform(scrollYProgress, [0, 0.5, 1], [-18, 0, 10]);
   const orbitRotate = useTransform(scrollYProgress, [0, 1], [0, 240]);
-  const leftCardY = useTransform(scrollYProgress, [0, 0.5, 1], [90, 0, -90]);
-  const rightCardY = useTransform(scrollYProgress, [0, 0.5, 1], [120, 0, -110]);
 
   return (
-    <section ref={sectionRef} className="relative min-h-[180vh] overflow-hidden text-white">
+    <section ref={sectionRef} className="relative min-h-[112vh] overflow-hidden text-white">
       <div className="sticky top-0 flex min-h-screen items-center overflow-hidden bg-[#0000FF] pt-28">
         <DataNetworkBackground variant="light" className="absolute inset-0 opacity-76" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_16%,rgba(34,211,238,0.2),transparent_24%),radial-gradient(circle_at_80%_18%,rgba(96,165,250,0.26),transparent_22%),radial-gradient(circle_at_80%_74%,rgba(14,165,233,0.18),transparent_30%),linear-gradient(135deg,#0000FF_0%,#06174d_38%,#0018a8_68%,#083b8a_100%)] bg-[length:180%_180%]" />
@@ -78,10 +76,10 @@ export default function ServicesScrollHero3D() {
             </div>
           </motion.div>
 
-          <div className="relative h-[640px] [perspective:1800px]">
+          <div className="relative h-[700px] [perspective:1800px]">
             <motion.div
               style={{ y: platformY, rotateX: platformRotateX, rotateY: platformRotateY }}
-              className="absolute left-1/2 top-1/2 h-[27rem] w-[min(88vw,38rem)] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[2rem] border border-white/14 bg-white/8 p-6 shadow-[0_40px_120px_rgba(0,0,0,0.28)] backdrop-blur-xl [transform-style:preserve-3d]"
+              className="absolute left-1/2 top-0 h-[27rem] w-[min(88vw,38rem)] -translate-x-1/2 overflow-hidden rounded-[2rem] border border-white/14 bg-white/8 p-6 shadow-[0_40px_120px_rgba(0,0,0,0.28)] backdrop-blur-xl [transform-style:preserve-3d]"
             >
               <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(77,159,255,0.18),transparent_34%,rgba(255,255,255,0.04)_60%,rgba(77,159,255,0.12))]" />
               <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.72),transparent)]" />
@@ -104,21 +102,19 @@ export default function ServicesScrollHero3D() {
             </motion.div>
 
             <motion.div
-              style={{ y: leftCardY }}
-              className="absolute left-0 top-12 w-[min(70vw,16rem)] rounded-[1.8rem] border border-white/12 bg-[linear-gradient(135deg,rgba(11,94,215,0.9),rgba(77,159,255,0.8))] p-5 shadow-[0_26px_80px_rgba(11,94,215,0.28)]"
+              className="absolute bottom-0 left-0 w-[48%] rounded-[1.5rem] border border-white/12 bg-[linear-gradient(135deg,rgba(11,94,215,0.9),rgba(77,159,255,0.8))] p-4 shadow-[0_26px_80px_rgba(11,94,215,0.28)]"
             >
               <Radar className="text-white" />
-              <h3 className="mt-6 text-2xl font-bold">Discovery</h3>
-              <p className="mt-3 text-sm leading-6 text-white/85">Business mapping, need analysis, and practical service alignment.</p>
+              <h3 className="mt-3 text-lg font-bold">Discovery</h3>
+              <p className="mt-2 text-sm leading-5 text-white/85">Business mapping, need analysis, and practical service alignment.</p>
             </motion.div>
 
             <motion.div
-              style={{ y: rightCardY }}
-              className="absolute bottom-10 right-0 w-[min(72vw,18rem)] rounded-[1.8rem] border border-white/12 bg-[linear-gradient(135deg,rgba(124,58,237,0.88),rgba(11,94,215,0.76))] p-5 shadow-[0_26px_80px_rgba(0,0,0,0.24)]"
+              className="absolute bottom-0 right-0 w-[48%] rounded-[1.5rem] border border-white/12 bg-[linear-gradient(135deg,rgba(124,58,237,0.88),rgba(11,94,215,0.76))] p-4 shadow-[0_26px_80px_rgba(0,0,0,0.24)]"
             >
               <Workflow className="text-white" />
-              <h3 className="mt-6 text-2xl font-bold">Execution Flow</h3>
-              <p className="mt-3 text-sm leading-6 text-white/85">Design, build, deploy, and optimize through a guided service journey.</p>
+              <h3 className="mt-3 text-lg font-bold">Execution Flow</h3>
+              <p className="mt-2 text-sm leading-5 text-white/85">Design, build, deploy, and optimize through a guided service journey.</p>
             </motion.div>
 
             {orbitSteps.map((item, index) => (
@@ -135,7 +131,7 @@ export default function ServicesScrollHero3D() {
                   scale: { duration: 4.4 + index * 0.25, repeat: Infinity, ease: "easeInOut" },
                   y: { duration: 5 + index * 0.35, repeat: Infinity, ease: "easeInOut" },
                 }}
-                className="absolute left-1/2 top-1/2 hidden h-16 w-16 items-center justify-center rounded-2xl border border-white bg-white/85 text-xs font-bold text-dark-header shadow-lg backdrop-blur md:flex"
+                className="hidden"
                 style={{
                   marginLeft: `${Math.cos((index / orbitSteps.length) * Math.PI * 2) * 290 - 32}px`,
                   marginTop: `${Math.sin((index / orbitSteps.length) * Math.PI * 2) * 170 - 32}px`,
@@ -148,7 +144,7 @@ export default function ServicesScrollHero3D() {
             <motion.div
               animate={{ x: [0, 14, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute right-20 top-8 hidden items-center gap-2 rounded-full border border-cyan-300/18 bg-white/10 px-5 py-3 text-sm font-semibold text-cyan-200 shadow-[0_18px_60px_rgba(77,159,255,0.16)] backdrop-blur-md md:inline-flex"
+              className="absolute right-0 top-0 hidden items-center gap-2 rounded-full border border-cyan-300/18 bg-white/10 px-5 py-3 text-sm font-semibold text-cyan-200 shadow-[0_18px_60px_rgba(77,159,255,0.16)] backdrop-blur-md xl:inline-flex"
             >
               Scroll to explore
               <ArrowRight size={16} />
