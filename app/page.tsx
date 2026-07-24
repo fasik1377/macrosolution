@@ -320,14 +320,14 @@ export default function Home() {
             </div>
             </motion.div>
 
-          <div className="relative h-[620px] [perspective:1800px] sm:h-[700px]">
+          <div className="relative h-[650px] [perspective:1800px] sm:h-[700px]">
             <motion.div
               initial={{ opacity: 0, scale: 0.88, rotateX: 18, rotateY: -18 }}
               whileInView={{ opacity: 1, scale: 1, rotateX: 0, rotateY: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.9, ease: "easeOut" }}
               whileHover={{ rotateX: 6, rotateY: -8, y: -10 }}
-              className="absolute left-1/2 top-1/2 h-auto min-h-[24rem] w-[min(90vw,34rem)] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[1.5rem] border border-white/12 bg-white/8 p-5 shadow-[0_40px_120px_rgba(0,0,0,0.28)] backdrop-blur-xl [transform-style:preserve-3d] sm:h-[26rem] sm:rounded-[2rem] sm:p-6"
+              className="absolute left-1/2 top-0 h-[29rem] w-[min(90vw,34rem)] -translate-x-1/2 overflow-hidden rounded-[1.5rem] border border-white/12 bg-white/8 p-5 shadow-[0_40px_120px_rgba(0,0,0,0.28)] backdrop-blur-xl [transform-style:preserve-3d] sm:top-1/2 sm:h-[26rem] sm:-translate-y-1/2 sm:rounded-[2rem] sm:p-6"
             >
               <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_45%,rgba(77,159,255,0.08))]" />
               <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-white/70 to-transparent" />
@@ -343,7 +343,7 @@ export default function Home() {
                   </p>
                 </div>
 
-                <div className="grid gap-3 sm:grid-cols-2">
+                <div className="grid grid-cols-2 gap-3">
                   {[
                     "Custom Software",
                     "Mobile Apps",
@@ -366,19 +366,19 @@ export default function Home() {
             <motion.div
               animate={{ y: [0, -14, 0], rotate: [0, 4, 0, -4, 0] }}
               transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute left-2 top-14 rounded-[1.6rem] border border-white/12 bg-[linear-gradient(135deg,rgba(11,94,215,0.88),rgba(77,159,255,0.78))] p-5 shadow-[0_26px_80px_rgba(11,94,215,0.28)] md:left-6"
+              className="mobile-card-stable absolute bottom-0 left-0 w-[48%] rounded-[1.4rem] border border-white/12 bg-[linear-gradient(135deg,rgba(11,94,215,0.88),rgba(77,159,255,0.78))] p-4 shadow-[0_26px_80px_rgba(11,94,215,0.28)] sm:bottom-auto sm:left-2 sm:top-14 sm:w-auto sm:rounded-[1.6rem] sm:p-5 md:left-6"
             >
               <p className="text-sm uppercase tracking-[0.35em] text-white/75">18+ Years</p>
-              <p className="mt-3 text-3xl font-bold">Experience</p>
+              <p className="mt-3 text-xl font-bold sm:text-3xl">Experience</p>
             </motion.div>
 
             <motion.div
               animate={{ y: [0, 12, 0], rotate: [0, -3, 0, 3, 0] }}
               transition={{ duration: 6.2, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute bottom-12 right-0 rounded-[1.6rem] border border-white/12 bg-[linear-gradient(135deg,rgba(125,211,252,0.9),rgba(0,150,255,0.82),rgba(6,67,140,0.78))] p-5 shadow-[0_26px_80px_rgba(8,59,138,0.28)] md:right-4"
+              className="mobile-card-stable absolute bottom-0 right-0 w-[48%] rounded-[1.4rem] border border-white/12 bg-[linear-gradient(135deg,rgba(125,211,252,0.9),rgba(0,150,255,0.82),rgba(6,67,140,0.78))] p-4 shadow-[0_26px_80px_rgba(8,59,138,0.28)] sm:bottom-12 sm:w-auto sm:rounded-[1.6rem] sm:p-5 md:right-4"
             >
               <p className="text-sm uppercase tracking-[0.35em] text-white/75">Multi-Sector</p>
-              <p className="mt-3 text-3xl font-bold">Business Impact</p>
+              <p className="mt-3 text-xl font-bold sm:text-3xl">Business Impact</p>
             </motion.div>
 
             <motion.div
