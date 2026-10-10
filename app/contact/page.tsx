@@ -1,8 +1,9 @@
 ﻿"use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
-import { Clock, Mail, MapPin, Phone, Send, Settings, ShieldCheck } from "lucide-react";
+import { Clock, Mail, MapPin, Phone, Send, Settings, ShieldCheck, CheckCircle, AlertCircle } from "lucide-react";
 
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
@@ -41,6 +42,48 @@ const responseItems = [
 ];
 
 export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    company: "",
+    email: "",
+    solution: "",
+    message: "",
+  });
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("submitting");
+    setErrorMessage("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setStatus("success");
+        setFormData({ name: "", company: "", email: "", solution: "", message: "" });
+      } else {
+        setStatus("error");
+        setErrorMessage(data.error || "Failed to send message");
+      }
+    } catch {
+      setStatus("error");
+      setErrorMessage("Network error. Please try again.");
+    }
+  };
+
   return (
     <main className="relative isolate overflow-x-clip bg-[#0000FF] text-white">
       <TechPageBackground variant="ecosystem" />
@@ -82,50 +125,116 @@ export default function ContactPage() {
             </div>
           </motion.div>
 
-          <motion.form
-            initial={{ opacity: 0, y: 40, rotateX: 4 }}
-            whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="rounded-[2rem] border border-white/10 bg-white/8 p-6 shadow-[0_30px_100px_rgba(0,0,0,0.22)] backdrop-blur-xl md:p-10"
-          >
-            <div className="grid gap-5 md:grid-cols-2">
-              <label className="block">
-                <span className="text-sm font-bold text-white/75">Name</span>
-                <input className="mt-2 w-full rounded-xl border border-white/10 bg-white/10 px-4 py-4 text-white outline-none transition focus:border-cyan-300" placeholder="Your name" />
-              </label>
-              <label className="block">
-                <span className="text-sm font-bold text-white/75">Company</span>
-                <input className="mt-2 w-full rounded-xl border border-white/10 bg-white/10 px-4 py-4 text-white outline-none transition focus:border-cyan-300" placeholder="Company name" />
-              </label>
-              <label className="block">
-                <span className="text-sm font-bold text-white/75">Email</span>
-                <input type="email" className="mt-2 w-full rounded-xl border border-white/10 bg-white/10 px-4 py-4 text-white outline-none transition focus:border-cyan-300" placeholder="you@company.com" />
-              </label>
-              <label className="block">
-                <span className="text-sm font-bold text-white/75">Solution</span>
-                <select className="mt-2 w-full rounded-xl border border-white/10 bg-white/10 px-4 py-4 text-white outline-none transition focus:border-cyan-300">
-                  {products.map((product) => (
-                    <option key={product.title} className="text-black">{product.title}</option>
-                  ))}
-                  <option className="text-black">Mobile Application Development</option>
-                  <option className="text-black">Web Application Development</option>
-                  <option className="text-black">Custom Software Development</option>
-                  <option className="text-black">IT Security, Hardware & Networks</option>
-                </select>
-              </label>
-            </div>
+<motion.form
+              onSubmit={handleSubmit}
+              initial={{ opacity: 0, y: 40, rotateX: 4 }}
+              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="rounded-[2rem] border border-white/10 bg-white/8 p-6 shadow-[0_30px_100px_rgba(0,0,0,0.22)] backdrop-blur-xl md:p-10"
+            >
+              {status === "success" && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mb-6 flex items-center gap-3 rounded-xl bg-green-500/20 p-4 text-green-300 border border-green-500/30"
+                >
+                  <CheckCircle size={20} />
+                  <p>Thank you! Your inquiry has been sent successfully.</p>
+                </motion.div>
+              )}
 
-            <label className="mt-5 block">
-              <span className="text-sm font-bold text-white/75">Message</span>
-              <textarea className="mt-2 min-h-40 w-full rounded-xl border border-white/10 bg-white/10 px-4 py-4 text-white outline-none transition focus:border-cyan-300" placeholder="Tell us about your workflow, problem, or project." />
-            </label>
+              {status === "error" && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mb-6 flex items-center gap-3 rounded-xl bg-red-500/20 p-4 text-red-300 border border-red-500/30"
+                >
+                  <AlertCircle size={20} />
+                  <p>{errorMessage}</p>
+                </motion.div>
+              )}
 
-            <button type="button" className="mt-6 inline-flex items-center gap-2 rounded-full bg-button-blue px-7 py-4 font-bold text-white transition hover:bg-hover-blue">
-              Send inquiry
-              <Send size={18} />
-            </button>
-          </motion.form>
+              <div className="grid gap-5 md:grid-cols-2">
+                <label className="block">
+                  <span className="text-sm font-bold text-white/75">Name</span>
+                  <input
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="mt-2 w-full rounded-xl border border-white/10 bg-white/10 px-4 py-4 text-white outline-none transition focus:border-cyan-300"
+                    placeholder="Your name"
+                    required
+                    disabled={status === "submitting"}
+                  />
+                </label>
+                <label className="block">
+                  <span className="text-sm font-bold text-white/75">Company</span>
+                  <input
+                    name="company"
+                    value={formData.company}
+                    onChange={handleChange}
+                    className="mt-2 w-full rounded-xl border border-white/10 bg-white/10 px-4 py-4 text-white outline-none transition focus:border-cyan-300"
+                    placeholder="Company name"
+                    disabled={status === "submitting"}
+                  />
+                </label>
+                <label className="block">
+                  <span className="text-sm font-bold text-white/75">Email</span>
+                  <input
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="mt-2 w-full rounded-xl border border-white/10 bg-white/10 px-4 py-4 text-white outline-none transition focus:border-cyan-300"
+                    placeholder="you@company.com"
+                    required
+                    disabled={status === "submitting"}
+                  />
+                </label>
+                <label className="block">
+                  <span className="text-sm font-bold text-white/75">Solution</span>
+                  <select
+                    name="solution"
+                    value={formData.solution}
+                    onChange={handleChange}
+                    className="mt-2 w-full rounded-xl border border-white/10 bg-white/10 px-4 py-4 text-white outline-none transition focus:border-cyan-300"
+                    disabled={status === "submitting"}
+                  >
+                    <option value="" className="text-black">Select a solution</option>
+                    {products.map((product) => (
+                      <option key={product.title} value={product.title} className="text-black">{product.title}</option>
+                    ))}
+                    <option value="Mobile Application Development" className="text-black">Mobile Application Development</option>
+                    <option value="Web Application Development" className="text-black">Web Application Development</option>
+                    <option value="Custom Software Development" className="text-black">Custom Software Development</option>
+                    <option value="IT Security, Hardware & Networks" className="text-black">IT Security, Hardware & Networks</option>
+                  </select>
+                </label>
+              </div>
+
+              <label className="mt-5 block">
+                <span className="text-sm font-bold text-white/75">Message</span>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="mt-2 min-h-40 w-full rounded-xl border border-white/10 bg-white/10 px-4 py-4 text-white outline-none transition focus:border-cyan-300"
+                  placeholder="Tell us about your workflow, problem, or project."
+                  required
+                  disabled={status === "submitting"}
+                />
+              </label>
+
+              <button
+                type="submit"
+                disabled={status === "submitting"}
+                className="mt-6 inline-flex items-center gap-2 rounded-full bg-button-blue px-7 py-4 font-bold text-white transition hover:bg-hover-blue disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {status === "submitting" ? "Sending..." : "Send inquiry"}
+                <Send size={18} />
+              </button>
+            </motion.form>
         </div>
       </section>
 
