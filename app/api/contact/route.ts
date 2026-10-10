@@ -12,28 +12,26 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const response = await fetch("https://formsubmit.co/ajax/ranji.mani@gmail.com", {
+    const formData = new FormData();
+    formData.append("access_key", process.env.WEB3FORMS_ACCESS_KEY || "");
+    formData.append("name", name);
+    formData.append("company", company || "");
+    formData.append("email", email);
+    formData.append("solution", solution || "");
+    formData.append("message", message);
+    formData.append("subject", `New Contact Form Submission: ${solution || "General Inquiry"}`);
+    formData.append("replyto", email);
+    formData.append("from_name", "Macro Solution Contact Form");
+
+    const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        name,
-        company,
-        email,
-        solution,
-        message,
-        _subject: `New Contact Form Submission: ${solution || "General Inquiry"}`,
-        _replyto: email,
-        _template: "table",
-        _captcha: "false",
-      }),
+      body: formData,
     });
 
-    if (!response.ok) {
-      const errorData = await response.json();
-      console.error("FormSubmit error:", errorData);
+    const result = await response.json();
+
+    if (!response.ok || !result.success) {
+      console.error("Web3Forms error:", result);
       return NextResponse.json(
         { error: "Failed to send email" },
         { status: 500 }
