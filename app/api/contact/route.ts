@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const response = await fetch("https://formsubmit.co/ranjith@macrosolution.mu", {
+    const response = await fetch("https://formsubmit.co/ranji.mani@gmail.com", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
