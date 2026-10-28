@@ -57,6 +57,13 @@ export default function ContactPage() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  // Fallback when the server cannot send: opens the visitor's email app with the inquiry pre-filled.
+  const mailtoHref = `mailto:${company.email}?subject=${encodeURIComponent(
+    `Website Inquiry: ${formData.solution || "General Inquiry"}`
+  )}&body=${encodeURIComponent(
+    `Name: ${formData.name}\nCompany: ${formData.company || "-"}\nEmail: ${formData.email}\nSolution: ${formData.solution || "General Inquiry"}\n\n${formData.message}`
+  )}`;
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("submitting");
@@ -148,10 +155,19 @@ export default function ContactPage() {
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="mb-6 flex items-center gap-3 rounded-xl bg-red-500/20 p-4 text-red-300 border border-red-500/30"
+                  className="mb-6 flex items-start gap-3 rounded-xl bg-red-500/20 p-4 text-red-300 border border-red-500/30"
                 >
-                  <AlertCircle size={20} />
-                  <p>{errorMessage}</p>
+                  <AlertCircle size={20} className="mt-0.5 shrink-0" />
+                  <div>
+                    <p>{errorMessage}</p>
+                    <a
+                      href={mailtoHref}
+                      className="mt-3 inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-sm font-bold text-white transition hover:bg-white/25"
+                    >
+                      <Mail size={16} />
+                      Send with your email app instead
+                    </a>
+                  </div>
                 </motion.div>
               )}
 
